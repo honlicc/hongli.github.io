@@ -6,14 +6,12 @@ categories:
 tags:
 - unittest
 ---
-
+---
 
 
 
 # [unittes单元测试框架](https://docs.python.org/3/library/unittest.html)
 
-
-<br/>
 
 ## 什么是单元测试：
 	单元测试是开发人员编写的一小段代码，用于检验被测代码的一个很小的，很明确的功能是否正确。也可以理解为单元测试是用于判断摸个特定条件或者场景下某个特定函数的行为，通常由开发自测。
