@@ -1,4 +1,12 @@
-!-- vim-markdown-toc GFM -->
+---
+title: adb
+date: 2021-11-09 22:30:11
+categories: 
+- 测试开发
+tags:
+- adb
+---
+
 
 * [基本用法](#基本用法)
     * [命令语法](#命令语法)
