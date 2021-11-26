@@ -99,12 +99,10 @@ class AdbTools(object):
     :param path: 电脑路径
     :return:
     """
-    cmd_dump=r'/system/bin/uiautomator dump --compressed /data/local/tmp/dump.xml'
-    #dump页面结构保存至 /data/local/tmp/dump.xml
+    cmd_dump=r'/system/bin/uiautomator dump --compressed /data/local/tmp/dump.xml' 
     self.shell(cmd_dump)
-
-	#将dump.xml发送至PC端 path路径下
-	return self.pull(r'/data/local/tmp/dump.xml %s'%path)
+  
+    return self.pull(r'/data/local/tmp/dump.xml %s'%path)
 
   def mkdir(self, path):
     """
