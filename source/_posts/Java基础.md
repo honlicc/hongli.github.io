@@ -69,34 +69,34 @@ public class Helloword { // 这是一行注释
 	6. 空常量：null ,没有是任何数据
 	```sh 
 	public class Demo01Const {
-    public static void main(String []args) {
+		public static void main(String []args) {
 		
-		//字符串常量
-       System.out.println("Hello World");
-       System.out.println("abc");
-       System.out.println("");
-       System.out.println("123");
-	   
-	   //整数常量
-	   System.out.println(30);
-	   System.out.println(-530);
-	   
-	   //浮点数常量
-	   System.out.println(3.14);
-	   System.out.println(-2.5);
+			//字符串常量
+		   System.out.println("Hello World");
+		   System.out.println("abc");
+		   System.out.println("");
+		   System.out.println("123");
+		   
+		   //整数常量
+		   System.out.println(30);
+		   System.out.println(-530);
+		   
+		   //浮点数常量
+		   System.out.println(3.14);
+		   System.out.println(-2.5);
 
-		//字符常量
-		System.out.println('a');
-		System.out.println('6');
-		//System.out.println('');  两个单引号之间必须有且仅有一个字符，没有不行，两个也不行
-		//System.out.println('ab');
-		
-		//布尔常量
-		System.out.println(true);
-		System.out.println(false);
-		
-		//空常量
-		//System.out.println(null); 空常量不能直接用来打印输出
+			//字符常量
+			System.out.println('a');
+			System.out.println('6');
+			//System.out.println('');  两个单引号之间必须有且仅有一个字符，没有不行，两个也不行
+			//System.out.println('ab');
+			
+			//布尔常量
+			System.out.println(true);
+			System.out.println(false);
+			
+			//空常量
+			//System.out.println(null); 空常量不能直接用来打印输出
 	
     }
 }
