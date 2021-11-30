@@ -101,7 +101,7 @@ class AdbEvent(object):
         os.popen("adb shell input tap " + str(dx) + " " + str(dy))
 
 if __name__ == '__main__':
-    test=FindElements()
+    test=FindElementsDemo()
     x,y=test.findElementByName('通讯录')
 
     ev=AdbEvent()
