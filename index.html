@@ -180,31 +180,52 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h2 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础 "></a><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Lf4y1U7Cz?spm_id_from=333.999.0.0">Java基础 </a></h2><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><ol>
-<li>基础语法<h4 id="Helloword入门程序"><a href="#Helloword入门程序" class="headerlink" title="Helloword入门程序"></a>Helloword入门程序</h4> <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 这是一行注释</span><br><span class="line">public class Helloword &#123; // 这是一行注释</span><br><span class="line">  public static void main(String[] args)&#123;</span><br><span class="line">	    /*</span><br><span class="line">		 这是一行注释</span><br><span class="line">		 这是一行注释</span><br><span class="line">		 这是一行注释</span><br><span class="line">		*/</span><br><span class="line">		  System.out.println(<span class="string">&quot;Hello word&quot;</span>);</span><br><span class="line">	  &#125;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure>
- 编译：javac  Helloword.java ,生成 Helloword.class 文件<br> 执行：java Helloword.class<br> 输出： <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello World</span><br></pre></td></tr></table></figure></li>
+<li> 基础语法</li>
 </ol>
-<h5 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h5><pre><code> -  // 表示但阿訇注释
- -  /*  */ 表示多行注释
-</code></pre>
-<h5 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h5><pre><code>- 特点：
-    -  完全小写的字母
-    -  编译器中有特殊颜色
-</code></pre>
-<h5 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h5><pre><code>- 是指在程序中，我们自己定义的内容，比如类的名字，方法名字，变量名字等等都是标识符
-- 命名规则：
-    - 可以包含英文字母(区分大小写)，数字，$和下划线_
-    - 标识符不可以以数字开头
-    -  标识符不能是关键字
-- 命名规范:
-    - 类名规范
-        - 首字母大写，后面每个字母大写(大驼峰式)
-    - 变量名规范
-        - 首字母小写，后面每个单词字母大写(小驼峰)
-    - 方法名称规范:
-        - 同变量名
-        
-</code></pre>
-<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><ul>
+<p><strong>Helloword入门程序</strong></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 这是一行注释</span><br><span class="line">public class Helloword &#123; // 这是一行注释</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">		/*</span><br><span class="line">		 这是一行注释</span><br><span class="line">		 这是一行注释</span><br><span class="line">		 这是一行注释</span><br><span class="line">		*/</span><br><span class="line">		System.out.println(<span class="string">&quot;Hello word&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>编译：javac  Helloword.java ,生成 Helloword.class 文件<br>执行：java Helloword.class<br>输出：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello World</span><br></pre></td></tr></table></figure>
+<p><strong>注释</strong></p>
+<ul>
+<li> // 表示单行注释</li>
+<li> /*  */ 表示多行注释</li>
+</ul>
+<p><strong>关键字</strong></p>
+<ul>
+<li>特点：<ul>
+<li> 完全小写的字母</li>
+<li> 编译器中有特殊颜色</li>
+</ul>
+</li>
+</ul>
+<p><strong>标识符</strong></p>
+<ul>
+<li>是指在程序中，我们自己定义的内容，比如类的名字，方法名字，变量名字等等都是标识符</li>
+<li>命名规则：<ul>
+<li>可以包含英文字母(区分大小写)，数字，$和下划线_</li>
+<li>标识符不可以以数字开头</li>
+<li> 标识符不能是关键字</li>
+</ul>
+</li>
+<li>命名规范:<ul>
+<li>类名规范<ul>
+<li>首字母大写，后面每个字母大写(大驼峰式)</li>
+</ul>
+</li>
+<li>变量名规范<ul>
+<li>首字母小写，后面每个单词字母大写(小驼峰)</li>
+</ul>
+</li>
+<li>方法名称规范:<ul>
+<li>同变量名</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>常量</strong></p>
+<ul>
 <li> 常量：在程序运行期间，固定不变的量称为常量</li>
 <li>分类<ol>
 <li>字符串常量：凡是用双引号引起来的部分，叫做字符串常量        // “abc”   “123”</li>
@@ -217,7 +238,8 @@
 </ol>
 </li>
 </ul>
-<h4 id="基本数据类型-P19"><a href="#基本数据类型-P19" class="headerlink" title="基本数据类型   P19"></a>基本数据类型   P19</h4><ol start="2">
+<p><strong>基本数据类型   P19</strong></p>
+<ol start="2">
 <li><p>面向对象</p>
 </li>
 <li><p>继承与多态</p>
@@ -231,7 +253,7 @@
 <li> 异常</li>
 <li> 多线程</li>
 </ol>
-<h3 id="File类与IO流"><a href="#File类与IO流" class="headerlink" title="File类与IO流"></a>File类与IO流</h3><h3 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h3>
+<h3 id="File类与IO流"><a href="#File类与IO流" class="headerlink" title="File类与IO流"></a>File类与IO流</h3><h3 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h3><h1 id="持续更新中"><a href="#持续更新中" class="headerlink" title="持续更新中~"></a>持续更新中~</h1>
       
 
       
