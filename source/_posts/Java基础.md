@@ -18,14 +18,14 @@ tags:
 ```sh
 // 这是一行注释
 public class Helloword { // 这是一行注释
-  public static void main(String[] args){
+    public static void main(String[] args){
 		/*
 		 这是一行注释
 		 这是一行注释
 		 这是一行注释
 		*/
-		  System.out.println("Hello word");
-	  }
+		System.out.println("Hello word");
+	}
 }
 ```
 	
@@ -36,7 +36,7 @@ public class Helloword { // 这是一行注释
 	Hello World
 ```
 **注释**
- -  // 表示但阿訇注释
+ -  // 表示单行注释
  -  /*  */ 表示多行注释
 
 **关键字**
