@@ -128,11 +128,9 @@ adb 的安装可以有多种方式：
 
 这里以下载 SDK Platform Tools 为例：
 
-1. 访问 [SDK 平台工具](https://developer.android.com/studio/releases/platform-tools?hl=zh_cn)，在 下载 一栏中选择 
-"下载适用于Windows的SDK Platform-Tools"，点击直接下载即可。
+1. 访问 [SDK 平台工具](https://developer.android.com/studio/releases/platform-tools?hl=zh_cn)，在 下载 一栏中选择 "下载适用于Windows的SDK Platform-Tools"，点击直接下载即可。
 2. 解压已下载的SDK Platform-Tools文件夹，路径最好不要存在中文，以免出现不必要的麻烦。
-3. 添加环境变量：找到 “此电脑”，右键选择属性-->高级系统设置-->环境变量,在系统变量中找到 “Path” 项，选中并点击“编辑”，将“SDK Platform-Tools”文件夹
-的绝对路径添加到Path中，依次点击确定即可。
+3. 添加环境变量：找到 “此电脑”，右键选择属性-->高级系统设置-->环境变量,在系统变量中找到 “Path” 项，选中并点击“编辑”，将“SDK Platform-Tools”文件夹的绝对路径添加到Path中，依次点击确定即可。
 4. 按住 win+R 键打开cmd窗口，输入"adb version",展示adb版本信息即表示安装成功。
 
 ## 基本用法
