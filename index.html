@@ -62,7 +62,7 @@
 			</ul>
 		</nav>
 		<nav>
-			文章数 10
+			文章数 12
 		</nav>
 
 		<nav class="header-smart-menu">
@@ -158,6 +158,124 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-测试报告优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/12/14/%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E4%BC%98%E5%8C%96/">测试报告优化</a>
+    </h1>
+  
+
+        
+        <a href="/2021/12/14/%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E4%BC%98%E5%8C%96/" class="archive-article-date">
+  	<time datetime="2021-12-14T03:21:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-14</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HTMLTestRunner测试报告优化"><a href="#HTMLTestRunner测试报告优化" class="headerlink" title="HTMLTestRunner测试报告优化"></a>HTMLTestRunner测试报告优化</h2><h4 id="HTMLTestRunner-py下载"><a href="#HTMLTestRunner-py下载" class="headerlink" title="HTMLTestRunner.py下载"></a><a target="_blank" rel="noopener" href="https://github.com/Gelomen/HTMLTestReportCN-ScreenShot">HTMLTestRunner.py下载</a></h4><h3 id="创建HTMLTestRunner测试项目："><a href="#创建HTMLTestRunner测试项目：" class="headerlink" title="创建HTMLTestRunner测试项目："></a>创建HTMLTestRunner测试项目：</h3><ul>
+<li>新建python项目test01,在项目中新建 test_case.py模块，用来写测试case。</li>
+<li>下载<a target="_blank" rel="noopener" href="https://github.com/Gelomen/HTMLTestReportCN-ScreenShot/blob/master/src/lib/HTMLTestReportCN.py">HTMLTestRunner.py</a>并保存到项目中，命名为HTMLTestRunner.py。</li>
+<li>新建run.py文件用来编写执行case脚本。</li>
+<li>创建report文件夹，用来存放生成的测试报告</li>
+</ul>
+<p>打开test_case.py 模块添加如下case代码：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import unittest</span><br><span class="line"></span><br><span class="line">class TestDemo(unittest.TestCase):</span><br><span class="line"></span><br><span class="line">    def test_one(self):</span><br><span class="line">        assert 1 == 1</span><br><span class="line"></span><br><span class="line">    def test_two(self):</span><br><span class="line">        assert <span class="string">&#x27;H&#x27;</span> <span class="keyword">in</span> <span class="string">&quot;Helloword!&quot;</span></span><br><span class="line"></span><br><span class="line">    def test_three(self):</span><br><span class="line">        assert 5 == 10</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>打开run.py模块，添加如下代码：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import time</span><br><span class="line">from HTMLTestRunner import HTMLTestRunner</span><br><span class="line">from test_case import TestDemo</span><br><span class="line">import unittest</span><br><span class="line"></span><br><span class="line"><span class="comment"># 项目根目录</span></span><br><span class="line">base_path = os.path.dirname(os.path.abspath(__file__))</span><br><span class="line"><span class="comment"># 测试报告存放目录</span></span><br><span class="line">report_path = os.path.join(base_path, <span class="string">&quot;report&quot;</span>)</span><br><span class="line"><span class="comment"># 测试报告名称</span></span><br><span class="line">report_filename = os.path.join(report_path, str(time.strftime(<span class="string">&quot;%Y%m%d%H%M%S&quot;</span>, time.localtime())) + <span class="string">&quot;.html&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建测试集合</span></span><br><span class="line">case_suite = unittest.TestSuite()</span><br><span class="line">case_suite.addTest(TestDemo(<span class="string">&quot;test_one&quot;</span>))</span><br><span class="line">case_suite.addTest(TestDemo(<span class="string">&quot;test_two&quot;</span>))</span><br><span class="line">case_suite.addTest(TestDemo(<span class="string">&quot;test_three&quot;</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用HTMLTestRunner运行测试并生成测试报告</span></span><br><span class="line">def start():</span><br><span class="line">    with open(report_filename, <span class="string">&#x27;wb&#x27;</span>) as file:</span><br><span class="line">        runner = HTMLTestRunner(stream=file, title=<span class="string">&#x27;自动化测试报告&#x27;</span>, description=<span class="string">&#x27;用例执行情况：&#x27;</span>)</span><br><span class="line">        runner.run(case_suite)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    start()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>运行run.py后在report文件夹下生成一个以 .html结尾的测试报告<br><img src="https://s2.loli.net/2021/12/14/sZQ3ve4HfNGYFb7.png"></p>
+<p>通过浏览器打开该HTML测试报告，样子如下：<br><img src="https://s2.loli.net/2021/12/14/PrFwKizsn6Hbdp4.png"></p>
+<p>到此为止我们的项目准备工作完成，开始进行Html测试报告的优化工作</p>
+<h3 id="测试报告插入log"><a href="#测试报告插入log" class="headerlink" title="测试报告插入log:"></a>测试报告插入log:</h3><p>通过测试报告可以看出，执行失败的case可以在测试报告中看到错误信息，但执行通过的case却没有信息输出。现在我们要将log信息打印进测试报告中。</p>
+<ul>
+<li>添加log模块：</li>
+</ul>
+<p>首先我们需要在case中打印log，为了更好的进行log输出，我们在项目中新建 log.py文件，随后再新建Log文件夹用来存放log文件。</p>
+<ul>
+<li>log模块封装：</li>
+</ul>
+<p> 打开log.py文件，复制下面代码并添加<br> <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment"># !/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">import logging</span><br><span class="line">import os.path</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Logger(object):</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 初始化加载</span></span><br><span class="line">    def __init__(self):</span><br><span class="line">        <span class="comment"># 创建一个 logger 对象</span></span><br><span class="line">        self.logger = logging.getLogger(<span class="string">&quot;test&quot;</span>)  <span class="comment"># loggger 对象为被执行的对象类</span></span><br><span class="line">        self.logger.setLevel(logging.DEBUG)  <span class="comment"># 设置日志模式为调试模式</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 创建一个 handler，用于写入日志文件</span></span><br><span class="line">        rq = time.strftime(<span class="string">&#x27;%Y%m%d%H%M&#x27;</span>, time.localtime(time.time()))  <span class="comment"># 设置日期格式</span></span><br><span class="line">        log_path = os.path.join(os.getcwd(),<span class="string">&#x27;log/&#x27;</span>)</span><br><span class="line">        <span class="comment"># 判断 log 文件夹是否创建，未创建则进行创建</span></span><br><span class="line">        isExists = os.path.exists(log_path)</span><br><span class="line">        <span class="keyword">if</span> not isExists:</span><br><span class="line">            try:</span><br><span class="line">                os.makedirs(log_path)</span><br><span class="line">            except Exception as e:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;创建文件夹失败&quot;</span>, e)</span><br><span class="line">        log_name = log_path + rq + <span class="string">&#x27;.log&#x27;</span></span><br><span class="line">        <span class="built_in">print</span>(log_name)</span><br><span class="line">        fh = logging.FileHandler(log_name)</span><br><span class="line">        fh.setLevel(logging.INFO)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 创建一个 handler，用于输出到控制台</span></span><br><span class="line">        ch = logging.StreamHandler()</span><br><span class="line">        ch.setLevel(logging.INFO)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 定义 handler 输出格式</span></span><br><span class="line">        formatter = logging.Formatter(</span><br><span class="line">            <span class="string">&#x27;%(asctime)s - %(name)s - %(levelname)s - %(process)d - %(processName)s - %(message)s &#x27;</span>)</span><br><span class="line">        fh.setFormatter(formatter)</span><br><span class="line">        ch.setFormatter(formatter)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 给logger 添加 handler</span></span><br><span class="line">        self.logger.addHandler(fh)</span><br><span class="line">        self.logger.addHandler(ch)</span><br><span class="line"></span><br><span class="line">    def d(self, msg, *args, **kwargs):</span><br><span class="line">        self.logger.debug(msg, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">    def i(self, msg, *args, **kwargs):</span><br><span class="line">        self.logger.info(msg, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">    def w(self, msg, *args, **kwargs):</span><br><span class="line">        self.logger.warning(msg, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">    def c(self, msg, *args, **kwargs):</span><br><span class="line">        self.logger.critical(msg, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">    def e(self, msg, *args, **kwargs):</span><br><span class="line">        self.logger.error(msg, *args, **kwargs)</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>此时我们在 test_case.py模块中添加一些log信息</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import unittest</span><br><span class="line">from <span class="built_in">log</span> import Logger</span><br><span class="line"></span><br><span class="line"><span class="built_in">log</span>=Logger()</span><br><span class="line">class TestDemo(unittest.TestCase):</span><br><span class="line"></span><br><span class="line">    def test_one(self):</span><br><span class="line">        log.i(<span class="string">&quot;case name:test_one&quot;</span>)</span><br><span class="line">        assert 1 == 1</span><br><span class="line"></span><br><span class="line">    def test_two(self):</span><br><span class="line">        log.i(<span class="string">&quot;case name:test_two&quot;</span>)</span><br><span class="line">        assert <span class="string">&#x27;H&#x27;</span> <span class="keyword">in</span> <span class="string">&quot;Helloword!&quot;</span></span><br><span class="line"></span><br><span class="line">    def test_three(self):</span><br><span class="line">        log.i(<span class="string">&quot;case name:test_three&quot;</span>)</span><br><span class="line">        assert 5 == 10</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>运行run.py文件，此时我们可以在控制台输出的log信息，同时在 log/文件夹下也可以看到生成的.log文件，但测试报告中还是没显示log信息，</p>
+<p>控制台log</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">2021-12-14 15:23:39,614 - <span class="built_in">test</span> - INFO - 17952 - MainProcess - <span class="keyword">case</span> name:test_one </span><br><span class="line">  S  test_one (test_case.TestDemo)</span><br><span class="line">2021-12-14 15:23:39,614 - <span class="built_in">test</span> - INFO - 17952 - MainProcess - <span class="keyword">case</span> name:test_two </span><br><span class="line">  S  test_two (test_case.TestDemo)</span><br><span class="line">2021-12-14 15:23:39,615 - <span class="built_in">test</span> - INFO - 17952 - MainProcess - <span class="keyword">case</span> name:test_three </span><br><span class="line">  F  test_three (test_case.TestDemo)</span><br><span class="line"></span><br><span class="line">--------------------- 测试结束 ---------------------</span><br><span class="line">------------- 合计耗时: 0:00:00.000980 -------------</span><br></pre></td></tr></table></figure>
+
+<p>log/文件夹中的log信息：<br><img src="https://s2.loli.net/2021/12/14/zgILPVcO78taquw.png"></p>
+<h3 id="开始在测试报告中添加log信息："><a href="#开始在测试报告中添加log信息：" class="headerlink" title="开始在测试报告中添加log信息："></a>开始在测试报告中添加log信息：</h3><p>想要在测试报告中也输出log信息，需要对HTMLTestRunner.py进行修改，打开HTMLTestRunner.py文件。</p>
+<ul>
+<li>首先导入logging模块</li>
+</ul>
+<p><img src="https://s2.loli.net/2021/12/14/T8aLJcbOV6xHjtK.png"></p>
+<ul>
+<li>找到 class _TestResult(TestResult):，在init方法中添加 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.logger = logging.getLogger(<span class="string">&#x27;test&#x27;</span>)</span><br></pre></td></tr></table></figure>
+如下：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class _TestResult(TestResult):</span><br><span class="line">    <span class="comment"># note: _TestResult is a pure representation of results.</span></span><br><span class="line">    <span class="comment"># It lacks the output and reporting ability compares to unittest._TextTestResult.</span></span><br><span class="line"></span><br><span class="line">    def __init__(self, verbosity=1):</span><br><span class="line">        ... ... ...</span><br><span class="line">        ... ... ...</span><br><span class="line">        self.logger = logging.getLogger(<span class="string">&#x27;test&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<img src="https://s2.loli.net/2021/12/14/w3a1AmFxhfProNs.png"></li>
+</ul>
+<ul>
+<li>在 def startTest(self, test): 方法后面添加如下代码：</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">def startTest(self, <span class="built_in">test</span>):</span><br><span class="line">    stream = sys.stderr</span><br><span class="line">    <span class="comment"># stdout_content = &quot; Testing: &quot; + str(test)</span></span><br><span class="line">    <span class="comment"># stream.write(stdout_content)</span></span><br><span class="line">    <span class="comment"># stream.flush()</span></span><br><span class="line">    <span class="comment"># stream.write(&quot;\n&quot;)</span></span><br><span class="line">    TestResult.startTest(self, <span class="built_in">test</span>)</span><br><span class="line">    <span class="comment"># just one buffer for both stdout and stderr</span></span><br><span class="line">    self.outputBuffer = io.StringIO()</span><br><span class="line">    stdout_redirector.fp = self.outputBuffer</span><br><span class="line">    stderr_redirector.fp = self.outputBuffer</span><br><span class="line">    self.stdout0 = sys.stdout</span><br><span class="line">    self.stderr0 = sys.stderr</span><br><span class="line">    sys.stdout = stdout_redirector</span><br><span class="line">    sys.stderr = stderr_redirector</span><br><span class="line">    self.test_start_time = round(time.time(), 2)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ---添加 logging 输出以及格式化----</span></span><br><span class="line">    self.log_cap = io.StringIO()</span><br><span class="line">    self.ch = logging.StreamHandler(self.log_cap)</span><br><span class="line">    self.ch.setLevel(logging.DEBUG)</span><br><span class="line">    formatter = logging.Formatter(</span><br><span class="line">        <span class="string">&#x27;%(asctime)s - %(name)s - %(levelname)s - %(process)d - %(processName)s - %(message)s &#x27;</span>)</span><br><span class="line">    self.ch.setFormatter(formatter)</span><br><span class="line">    self.logger.addHandler(self.ch)</span><br></pre></td></tr></table></figure>
+<p>如图：<br><img src="https://s2.loli.net/2021/12/14/1lZh6QGpynqXSVd.png"></p>
+<ul>
+<li>找到 def complete_output(self):函数，在函数的返回值中加入logging存在内存中的输出，用换行符隔开。</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def complete_output(self):</span><br><span class="line">    <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">    Disconnect output redirection and return buffer.</span></span><br><span class="line"><span class="string">    Safe to call multiple times.</span></span><br><span class="line"><span class="string">    &quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">    self.test_end_time = round(time.time(), 2)</span><br><span class="line">    <span class="keyword">if</span> self.stdout0:</span><br><span class="line">        sys.stdout = self.stdout0</span><br><span class="line">        sys.stderr = self.stderr0</span><br><span class="line">        self.stdout0 = None</span><br><span class="line">        self.stderr0 = None</span><br><span class="line">        <span class="comment">#---添加 log out put ---</span></span><br><span class="line">        <span class="built_in">return</span> self.outputBuffer.getvalue() + <span class="string">&#x27;\n&#x27;</span> + self.log_cap.getvalue()</span><br></pre></td></tr></table></figure>
+<p>如图：<br><img src="https://s2.loli.net/2021/12/14/zwvlSIDrbcZ49yO.png"></p>
+<ul>
+<li>每个用例执行完后，清除handler，在stopTest函数中加入代码:<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def stopTest(self, <span class="built_in">test</span>):</span><br><span class="line">    <span class="comment"># Usually one of addSuccess, addError or addFailure would have been called.</span></span><br><span class="line">    <span class="comment"># But there are some path in unittest that would bypass this.</span></span><br><span class="line">    <span class="comment"># We must disconnect stdout in stopTest(), which is guaranteed to be called.</span></span><br><span class="line">    <span class="comment"># --- 清除log的handle ---</span></span><br><span class="line">    self.complete_output()</span><br><span class="line">    self.logger.removeHandler(self.ch)</span><br></pre></td></tr></table></figure>
+如图：<br><img src="https://s2.loli.net/2021/12/14/2MG3qXdLIvVSHyl.png"></li>
+</ul>
+<p>此时以修改完毕，我们保存后再次运行run.py生成新的测试报告并打开，可以看到 “通过”状态的case也展示了log信息<br><img src="https://s2.loli.net/2021/12/14/akyC9qOY5doPQ3w.png"></p>
+<h3 id="项目整体结构如下："><a href="#项目整体结构如下：" class="headerlink" title="项目整体结构如下："></a>项目整体结构如下：</h3><p><img src="https://s2.loli.net/2021/12/14/hi9HuFd6scqZVBJ.png"></p>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/12/14/%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E4%BC%98%E5%8C%96/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-Java基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -407,6 +525,371 @@
 
 
   
+    <article id="post-linux" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/30/linux/">Linux</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/30/linux/" class="archive-article-date">
+  	<time datetime="2021-11-30T14:36:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Linux-Command"><a href="#Linux-Command" class="headerlink" title="Linux Command"></a>Linux Command</h3><h4 id="查看帮助常用命令："><a href="#查看帮助常用命令：" class="headerlink" title="查看帮助常用命令："></a>查看帮助常用命令：</h4><p><em>[help, whatis, info, which, whereis, man]</em></p>
+<ol>
+<li>help :该命令是bash内建命令，用于显示bash内建命令的帮助信息。<ul>
+<li>格式语法<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">help</span>(选项)(参数)</span><br></pre></td></tr></table></figure></li>
+<li> 常用参数：</li>
+</ul>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-d</td>
+<td align="center">显示内建命令的简要描述。</td>
+</tr>
+<tr>
+<td align="center">m</td>
+<td align="center">按照man手册的格式输出内建命令的帮助信息。</td>
+</tr>
+<tr>
+<td align="center">s</td>
+<td align="center">仅输出内建命令的命令格式。</td>
+</tr>
+</tbody></table>
+<ul>
+<li>示例:<ul>
+<li>显示cd命令的帮助信息：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># help cd</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span>: <span class="built_in">cd</span> [-L|[-P [-e]] [-@]] [dir]</span><br><span class="line">Change the shell working directory.</span><br><span class="line">Change the current directory to DIR.  The default DIR is the value of the</span><br><span class="line">HOME shell variable.</span><br><span class="line"></span><br><span class="line">The variable CDPATH defines the search path <span class="keyword">for</span> the directory containing</span><br><span class="line">DIR.  Alternative directory names <span class="keyword">in</span> CDPATH are separated by a colon (:).</span><br><span class="line">A null directory name is the same as the current directory.  If DIR begins</span><br><span class="line">with a slash (/), <span class="keyword">then</span> CDPATH is not used.</span><br><span class="line"></span><br><span class="line">If the directory is not found, and the shell option `cdable_vars<span class="string">&#x27; is set,</span></span><br><span class="line"><span class="string">the word is assumed to be  a variable name.  If that variable has a value,</span></span><br><span class="line"><span class="string">its value is used for DIR.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Options:</span></span><br><span class="line"><span class="string">    -L	force symbolic links to be followed: resolve symbolic links in</span></span><br><span class="line"><span class="string">    DIR after processing instances of `..&#x27;</span></span><br><span class="line">    -P	use the physical directory structure without following symbolic</span><br><span class="line">    links: resolve symbolic links <span class="keyword">in</span> DIR before processing instances</span><br><span class="line">    of `..<span class="string">&#x27;</span></span><br><span class="line"><span class="string">    -e	if the -P option is supplied, and the current working directory</span></span><br><span class="line"><span class="string">    cannot be determined successfully, exit with a non-zero status</span></span><br><span class="line"><span class="string">    -@  on systems that support it, present a file with extended attributes</span></span><br><span class="line"><span class="string">        as a directory containing the file attributes</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">The default is to follow symbolic links, as if `-L&#x27;</span> were specified.</span><br><span class="line">`..<span class="string">&#x27; is processed by removing the immediately previous pathname component</span></span><br><span class="line"><span class="string">back to a slash or the beginning of DIR.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Exit Status:</span></span><br><span class="line"><span class="string">Returns 0 if the directory is changed, and if $PWD is set successfully when</span></span><br><span class="line"><span class="string">-P is used; non-zero otherwise.</span></span><br></pre></td></tr></table></figure></li>
+<li>以短格式显示cd命令的帮助信息：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># help -s cd</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span>: <span class="built_in">cd</span> [-L|[-P [-e]] [-@]] [dir]</span><br></pre></td></tr></table></figure></li>
+<li>输出cd命令的简短描述：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># help -d cd</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> - Change the shell working directory.</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>whatis:查看命令的简要说明</li>
+<li>info:查看命令的详细说明</li>
+<li>which:查看命令的位置 </li>
+<li>whereis:定位指令的二进制程序、源代码文件和 man 手册页等相关文件的路径</li>
+<li>man:查看命令的帮助手册（包含说明、用法等信息）</li>
+</ol>
+<h4 id="文件管理常用命令："><a href="#文件管理常用命令：" class="headerlink" title="文件管理常用命令："></a>文件管理常用命令：</h4><p><em>[cd, ls, pwd, mkdir, rmdir, tree, touch, ln, rename, stat, file, chmod, chown, locate, find, cp, mv, rm]</em></p>
+<ol>
+<li>cd:切换目录</li>
+</ol>
+<ul>
+<li><p>语法格式：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> [参数] [目录名]</span><br></pre></td></tr></table></figure></li>
+<li><p>常用参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-P</td>
+<td>如果切换的目标目录是一个符号链接，则直接切换到符号链接指向的目标目录</td>
+</tr>
+<tr>
+<td>-L</td>
+<td>如果切换的目标目录是一个符号链接，则直接切换到符号链接名所在的目录</td>
+</tr>
+<tr>
+<td>–</td>
+<td>仅使用”-“选项时，当前目录将被切换到环境变量”OLDPWD”对应值的目录</td>
+</tr>
+<tr>
+<td>~</td>
+<td>切换至当前用户目录</td>
+</tr>
+<tr>
+<td>..</td>
+<td>切换至当前目录位置的上一级目录</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>示例：</p>
+<ul>
+<li>将当前工作目录切换到dir目录，并使用pwd命令查看当前目录：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># cd dir</span></span><br><span class="line">[root@text~]<span class="comment"># cd pwd</span></span><br><span class="line">	</span><br><span class="line">/home/text/桌面/linuxTest/dir</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>使用“cd ~ ”和“cd .. ”命令进行目录的切换操作，并使用pwd命令查看当前目录：</p>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># cd ~</span></span><br><span class="line">[root@text~]<span class="comment"># cd pwd</span></span><br><span class="line">	</span><br><span class="line">/home/text</span><br><span class="line"></span><br><span class="line"> <span class="comment">#cd ..表示退回到上一级目录</span></span><br><span class="line">[root@text~]<span class="comment"># cd ..   </span></span><br><span class="line">[root@text~]<span class="comment"># cd pwd</span></span><br><span class="line">	</span><br><span class="line">/home/text/桌面/linuxTest</span><br><span class="line"></span><br><span class="line"> <span class="comment">#退回多级目录，用 / 分隔开</span></span><br><span class="line"> <span class="comment">#cd ../..  :表示退回到上两级目录</span></span><br><span class="line">[root@text~]<span class="comment"># cd ../..   </span></span><br><span class="line">[root@text~]<span class="comment"># cd pwd</span></span><br><span class="line">	</span><br><span class="line">/home/text/桌面</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>ls: 显示指定工作目录下的内容及属性信息<ul>
+<li>语法格式：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls [选项] [文件]</span><br></pre></td></tr></table></figure></li>
+<li>常用参数：</li>
+</ul>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="right">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-a</td>
+<td align="right">显示所有文件及目录 (包括以“.”开头的隐藏文件)</td>
+</tr>
+<tr>
+<td align="left">-l</td>
+<td align="right">使用长格式列出文件及目录信息</td>
+</tr>
+<tr>
+<td align="left">-r</td>
+<td align="right">将文件以相反次序显示(默认依英文字母次序)</td>
+</tr>
+<tr>
+<td align="left">-t</td>
+<td align="right">根据最后的修改时间排序</td>
+</tr>
+<tr>
+<td align="left">-A</td>
+<td align="right">同 -a ，但不列出 “.” (当前目录) 及 “..” (父目录)</td>
+</tr>
+<tr>
+<td align="left">-S</td>
+<td align="right">根据文件大小排序</td>
+</tr>
+<tr>
+<td align="left">-R</td>
+<td align="right">递归列出所有子目录</td>
+</tr>
+</tbody></table>
+<pre><code>- 示例:
+    - 默认展示当前目录的内容
+    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls</span></span><br><span class="line"></span><br><span class="line">_config.landscape.yml  _config.yml  package-lock.json  package.json  scaffolds/  <span class="built_in">source</span>/  themes/</span><br></pre></td></tr></table></figure>
+    - 列出所有文件(包括隐藏文件)：
+    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls -a</span></span><br><span class="line"></span><br><span class="line">./  ../  .git/  .github/  .gitignore  .idea/  _config.landscape.yml  _config.yml  package-lock.json  package.json  scaffolds/  <span class="built_in">source</span>/  themes/</span><br></pre></td></tr></table></figure>
+    - 列出文件的详细信息
+    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls -l  #可以简写为 ll</span></span><br><span class="line"></span><br><span class="line">$ ls -l</span><br><span class="line">total 84</span><br><span class="line">-rw-r--r-- 1 text 1049089     0 Dec  3 11:13 _config.landscape.yml</span><br><span class="line">-rw-r--r-- 1 text 1049089  3018 Dec  3 11:13 _config.yml</span><br><span class="line">-rw-r--r-- 1 text 1049089 75525 Dec  3 11:13 package-lock.json</span><br><span class="line">-rw-r--r-- 1 text 1049089   728 Dec  3 11:13 package.json</span><br><span class="line">drwxr-xr-x 1 text 1049089     0 Dec  3 11:13 scaffolds/</span><br><span class="line">drwxr-xr-x 1 text 1049089     0 Dec  3 11:13 <span class="built_in">source</span>/</span><br><span class="line">drwxr-xr-x 1 text 1049089     0 Dec  3 11:13 themes/</span><br></pre></td></tr></table></figure>
+     列出根目录(/)下的所有目录
+    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls /</span></span><br><span class="line"></span><br><span class="line">$ ls /</span><br><span class="line">LICENSE.txt  ReleaseNotes.html  bin/  cmd/  dev/  etc/  git-bash.exe*  git-cmd.exe*  mingw64/  proc/  tmp/  unins000.dat  unins000.exe*  unins000.msg  usr/</span><br></pre></td></tr></table></figure>
+    列出当前工作目录下所有文件及目录并以文件的大小进行排序(从大到小):
+    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls -lAS</span></span><br><span class="line"></span><br><span class="line">total 89</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089 75525 Dec  3 11:13 package-lock.json</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089  3018 Dec  3 11:13 _config.yml</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089   728 Dec  3 11:13 package.json</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089    71 Dec  3 11:13 .gitignore</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  6 10:15 .git/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .github/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .idea/</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089     0 Dec  3 11:13 _config.landscape.yml</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 scaffolds/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 <span class="built_in">source</span>/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 themes/</span><br></pre></td></tr></table></figure>
+    列出当前工作目录下所有文件及目录并以文件的大小进行排序(从小到大，借助 参数 -r 进行反转):
+    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls -lASr</span></span><br><span class="line"></span><br><span class="line">total 89</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 themes/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 <span class="built_in">source</span>/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 scaffolds/</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089     0 Dec  3 11:13 _config.landscape.yml</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .idea/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .github/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  6 10:15 .git/</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089    71 Dec  3 11:13 .gitignore</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089   728 Dec  3 11:13 package.json</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089  3018 Dec  3 11:13 _config.yml</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089 75525 Dec  3 11:13 package-lock.json</span><br></pre></td></tr></table></figure>
+</code></pre>
+<ol start="3">
+<li>pwd: 显示当前工作目录的绝对路径<ul>
+<li>语法格式：  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></table></figure></li>
+<li>示例:  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># pwd</span></span><br><span class="line"></span><br><span class="line">/e/WorkSpace/honlicc.github.io</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>mkdir: 创建目录<ul>
+<li>语法格式：  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir [参数] [目录]</span><br></pre></td></tr></table></figure></li>
+<li>常用参数：</li>
+</ul>
+</li>
+</ol>
+<p>|参数| 含义 |<br>| —— |<br>| -p | 递归创建多级目录 |<br>| -m | 建立目录的同时设置目录的权限 |<br>| -z| 设置安全上下文|<br>| -v | 显示目录的创建过程 |<br>    - 示例:<br>        在工作目录下，建立一个名为 dir 的子目录<br>        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># mkdir dir</span></span><br><span class="line"></span><br><span class="line">[root@text~]<span class="comment"># ll</span></span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:54 dir/</span><br></pre></td></tr></table></figure><br>        在工作目录下，建立一个名为 dir 的子目录<br>        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># mkdir dir</span></span><br><span class="line"></span><br><span class="line">[root@text~]<span class="comment"># ll</span></span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:54 dir/</span><br></pre></td></tr></table></figure><br>        在目录/usr/text下建立子目录dir，并且设置文件属主有读、写和执行权限，其他人无权访问:<br>        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># mkdir -m 700 /usr/text/dir</span></span><br></pre></td></tr></table></figure><br>        同时创建子目录dir1，dir2，dir3：<br>        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># mkdir dir1 dir2 dir3</span></span><br><span class="line"></span><br><span class="line">[root@text~]<span class="comment"># ll</span></span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:54 dir/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:57 dir1/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:57 dir2/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:57 dir3/</span><br></pre></td></tr></table></figure><br>        递归创建目录：<br>        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># mkdir -p dir4/test</span></span><br></pre></td></tr></table></figure><br>5. rmdir: 删除空目录<br>    - 语法格式：<br>    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rmdir [参数] [目录]</span><br></pre></td></tr></table></figure><br>    - 常用参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-p</td>
+<td>所有应用</td>
+</tr>
+<tr>
+<td>– – ignore-fail-on-non-empty</td>
+<td>显示应用关联的 apk 文件</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>只显示 disabled 的应用</td>
+</tr>
+</tbody></table>
+<pre><code>- 示例:
+    删除空目录
+    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># rmdir dir</span></span><br></pre></td></tr></table></figure>
+    递归删除指定的目录树：
+    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># rmdir -p dir/dir_1/dir_2</span></span><br></pre></td></tr></table></figure>
+    显示指令详细执行过程：
+    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># rmdir -v dir</span></span><br><span class="line">rmdir: 正在删除目录 <span class="string">&#x27;dir&#x27;</span></span><br></pre></td></tr></table></figure>
+</code></pre>
+<ol start="6">
+<li>tree:以树状图列出目录内容</li>
+<li>touch:</li>
+<li>ln:</li>
+<li>rename:</li>
+<li>stat:</li>
+<li>file:</li>
+<li>chmod:</li>
+<li>chown:</li>
+<li>locate:</li>
+<li>find:</li>
+<li>cp:</li>
+<li>mv:</li>
+<li>rm:</li>
+</ol>
+<h4 id="文件内容常用命令："><a href="#文件内容常用命令：" class="headerlink" title="文件内容常用命令："></a>文件内容常用命令：</h4><p>[cat, head, tail, more, less, sed, vi, grep]</p>
+<ol>
+<li>cat:</li>
+<li>head:</li>
+<li>tail:</li>
+<li>more:</li>
+<li>less:</li>
+<li>sed:</li>
+<li>vi:</li>
+<li>grep:</li>
+</ol>
+<h4 id="文件压缩和解压："><a href="#文件压缩和解压：" class="headerlink" title="文件压缩和解压："></a>文件压缩和解压：</h4><p>[tar, gzip, zip, unzip]</p>
+<ol>
+<li>tar:</li>
+<li>gzip:</li>
+<li>zip:</li>
+<li>unzip:</li>
+</ol>
+<h4 id="用户相关常用命令："><a href="#用户相关常用命令：" class="headerlink" title="用户相关常用命令："></a>用户相关常用命令：</h4><p>[groupadd, groupdel, groupmod, useradd, userdel, usermod, passwd, su, sudo]</p>
+<ol>
+<li>groupadd:</li>
+<li>groupdel:</li>
+<li>groupmod:</li>
+<li>useradd:</li>
+<li>userdel:</li>
+<li>usermod:</li>
+<li>passwd:</li>
+<li>su:</li>
+<li>sudo:</li>
+</ol>
+<h4 id="系统管理常用命令："><a href="#系统管理常用命令：" class="headerlink" title="系统管理常用命令："></a>系统管理常用命令：</h4><p>[eboot, exit, shutdown, date, mount, umount, ps, kill, systemctl, service, crontab]</p>
+<ol>
+<li>eboot:</li>
+<li>exit:</li>
+<li>shutdown:</li>
+<li>date:</li>
+<li>mount:</li>
+<li>umount:</li>
+<li>ps:</li>
+<li>kill:</li>
+<li>systemctl:</li>
+<li>service:</li>
+<li>crontab:</li>
+</ol>
+<h4 id="网络管理常用命令"><a href="#网络管理常用命令" class="headerlink" title="网络管理常用命令:"></a>网络管理常用命令:</h4><p>[curl, wget, telnet, ip, hostname, ifconfig, route, ssh, ssh-keygen, firewalld, iptables, host, nslookup, nc/netcat, ping, traceroute, netstat]</p>
+<ol>
+<li>curl:</li>
+<li>wget:</li>
+<li>telnet:</li>
+<li>ip:</li>
+<li>hostname:</li>
+<li>ifconfig:</li>
+<li>route:</li>
+<li>ssh:</li>
+<li>ssh-keygen:</li>
+<li>firewalld:</li>
+<li>iptables:</li>
+<li>host:</li>
+<li>nslookup:</li>
+<li>nc/netcat:</li>
+<li>ping:</li>
+<li>traceroute:</li>
+<li>netstat:</li>
+</ol>
+<h4 id="硬件管理常用命令"><a href="#硬件管理常用命令" class="headerlink" title="硬件管理常用命令:"></a>硬件管理常用命令:</h4><p>[df, du, top, free, iotop]</p>
+<ol>
+<li>df:</li>
+<li>du:</li>
+<li>top:</li>
+<li>free:</li>
+<li>iotop</li>
+</ol>
+<h4 id="软件管理常用命令"><a href="#软件管理常用命令" class="headerlink" title="软件管理常用命令:"></a>软件管理常用命令:</h4><p>[rpm, yum, apt-get]</p>
+<ol>
+<li>rpm:</li>
+<li>yum:</li>
+<li>apt-get:</li>
+</ol>
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/30/linux/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-adbTools" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -462,105 +945,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/11/26/adbTools/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/09/docker/">Docker</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/09/docker/" class="archive-article-date">
-  	<time datetime="2021-11-09T14:30:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h2 id="1-docker-历史"><a href="#1-docker-历史" class="headerlink" title="1.docker 历史:"></a>1.docker 历史:</h2><ul>
-<li>2013 ~ 开源应用容器引擎，go语言开发，可以让开发者打包他们的应用及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的系统</li>
-</ul>
-<h2 id="2-docker-优点"><a href="#2-docker-优点" class="headerlink" title="2.docker 优点:"></a>2.docker 优点:</h2><ul>
-<li>快速交付应用，打包快，加快测试，加快发布，缩短交付周期</li>
-<li>复杂环境管理，应用隔离，开发环境/测试环境/线上环境</li>
-<li>轻量级：对系统来说，一个docker只是一个进程，一个系统可以运行上千个容器</li>
-</ul>
-<h2 id="3-docker-架构"><a href="#3-docker-架构" class="headerlink" title="3. docker 架构:"></a>3. docker 架构:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- client:</span><br><span class="line">	docker build</span><br><span class="line">	docker pull</span><br><span class="line">	docker run</span><br><span class="line">	</span><br><span class="line">- docker_host:</span><br><span class="line">	docker_dameon</span><br><span class="line">	</span><br><span class="line">- registry:</span><br><span class="line">	下载。。。</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-docker与虚拟机的区别"><a href="#4-docker与虚拟机的区别" class="headerlink" title="4.docker与虚拟机的区别:"></a>4.docker与虚拟机的区别:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">容器与容器只是进程的隔离，虚拟机则是完全的资源隔离</span><br><span class="line">虚拟机启动慢，可能要几分钟，docker秒启动</span><br><span class="line">容器使用宿主操作系统的内核，虚拟机是完全独立的内核</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念:"></a>5.基本概念:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">镜像： docker images,每个镜像都可能依赖一个或多个下层的镜像组成另一个镜像，AUFS文件系统</span><br><span class="line">仓库：Docker registry 集中放镜像的地方</span><br><span class="line">容器：docker containers，镜像运行后的进程</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-docker安装与配置"><a href="#6-docker安装与配置" class="headerlink" title="6.docker安装与配置:"></a>6.docker安装与配置:</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/09/docker/">展开全文 >></a>
         </p>
       
 
@@ -2677,6 +3061,105 @@
 
 
   
+    <article id="post-docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/09/docker/">Docker</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/09/docker/" class="archive-article-date">
+  	<time datetime="2021-11-09T14:30:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="1-docker-历史"><a href="#1-docker-历史" class="headerlink" title="1.docker 历史:"></a>1.docker 历史:</h2><ul>
+<li>2013 ~ 开源应用容器引擎，go语言开发，可以让开发者打包他们的应用及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的系统</li>
+</ul>
+<h2 id="2-docker-优点"><a href="#2-docker-优点" class="headerlink" title="2.docker 优点:"></a>2.docker 优点:</h2><ul>
+<li>快速交付应用，打包快，加快测试，加快发布，缩短交付周期</li>
+<li>复杂环境管理，应用隔离，开发环境/测试环境/线上环境</li>
+<li>轻量级：对系统来说，一个docker只是一个进程，一个系统可以运行上千个容器</li>
+</ul>
+<h2 id="3-docker-架构"><a href="#3-docker-架构" class="headerlink" title="3. docker 架构:"></a>3. docker 架构:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- client:</span><br><span class="line">	docker build</span><br><span class="line">	docker pull</span><br><span class="line">	docker run</span><br><span class="line">	</span><br><span class="line">- docker_host:</span><br><span class="line">	docker_dameon</span><br><span class="line">	</span><br><span class="line">- registry:</span><br><span class="line">	下载。。。</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-docker与虚拟机的区别"><a href="#4-docker与虚拟机的区别" class="headerlink" title="4.docker与虚拟机的区别:"></a>4.docker与虚拟机的区别:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">容器与容器只是进程的隔离，虚拟机则是完全的资源隔离</span><br><span class="line">虚拟机启动慢，可能要几分钟，docker秒启动</span><br><span class="line">容器使用宿主操作系统的内核，虚拟机是完全独立的内核</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念:"></a>5.基本概念:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">镜像： docker images,每个镜像都可能依赖一个或多个下层的镜像组成另一个镜像，AUFS文件系统</span><br><span class="line">仓库：Docker registry 集中放镜像的地方</span><br><span class="line">容器：docker containers，镜像运行后的进程</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-docker安装与配置"><a href="#6-docker安装与配置" class="headerlink" title="6.docker安装与配置:"></a>6.docker安装与配置:</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/09/docker/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-exercises" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -3023,229 +3506,10 @@ if __name__ == &#39;__main__&#39;:
 
 
   
-    <article id="post-Markdown" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/03/Markdown/">Markdown学习</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/03/Markdown/" class="archive-article-date">
-  	<time datetime="2021-11-02T16:19:44.297Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-03</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h2 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h2><p>Markdown 语法说明 (简体中文版) ：<a target="_blank" rel="noopener" href="https://www.appinn.com/markdown/">https://www.appinn.com/markdown/</a><br>最完整的Markdown基础教程 ：<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/335db5716248">https://www.jianshu.com/p/335db5716248</a><br>献给写作者的 Markdown 新手指南 : <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/q81rer">https://www.jianshu.com/p/q81rer</a></p>
-<h3 id="编辑器：Typora"><a href="#编辑器：Typora" class="headerlink" title="编辑器：Typora"></a>编辑器：<a target="_blank" rel="noopener" href="https://www.typora.io/">Typora</a></h3><h2 id="标题"><a href="#标题" class="headerlink" title="标题 #"></a>标题 #</h2><h3 id="通过-表示，只需要在文本前面加上-即可"><a href="#通过-表示，只需要在文本前面加上-即可" class="headerlink" title="通过 # 表示，只需要在文本前面加上 # 即可"></a>通过 # 表示，只需要在文本前面加上 # 即可</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#  标题1</span><br><span class="line">##   标题2</span><br><span class="line">###    标题3</span><br><span class="line">####    标题4</span><br><span class="line">#####    标题5</span><br><span class="line">######    标题6</span><br></pre></td></tr></table></figure>
-<h2 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h2><h3 id="加粗、代码高亮、斜体、删除线"><a href="#加粗、代码高亮、斜体、删除线" class="headerlink" title="加粗、代码高亮、斜体、删除线"></a>加粗、代码高亮、斜体、删除线</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//斜体加粗</span><br><span class="line">***斜体加粗***</span><br><span class="line">//加粗  </span><br><span class="line">**加粗**</span><br><span class="line">//代码高亮</span><br><span class="line">==代码高亮==</span><br><span class="line">//斜体</span><br><span class="line">*斜体*</span><br><span class="line">//删除线</span><br><span class="line">~~被删除的文字~~</span><br></pre></td></tr></table></figure>
-<h4 id="效果展示"><a href="#效果展示" class="headerlink" title="效果展示"></a>效果展示</h4><p><em><strong>斜体加粗</strong></em><br><strong>加粗</strong><br><em>斜体内容</em><br>==代码高亮==<br><del>被删除的文字</del></p>
-<h3 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">// 引用语法</span><br><span class="line">&gt; 作者：我是作者</span><br><span class="line">&gt;&gt; 作者：我是作者</span><br></pre></td></tr></table></figure>
-
-<h4 id="效果展示-1"><a href="#效果展示-1" class="headerlink" title="效果展示"></a>效果展示</h4><blockquote>
-<p>作者：我是作者</p>
-<blockquote>
-<p>作者：我是作者</p>
-</blockquote>
-</blockquote>
-<h3 id="分割线-–-or"><a href="#分割线-–-or" class="headerlink" title="分割线 -– or ***"></a>分割线 -– or ***</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// 分割线</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line">***</span><br></pre></td></tr></table></figure>
-<h4 id="效果展示-2"><a href="#效果展示-2" class="headerlink" title="效果展示"></a>效果展示</h4><hr>
-<hr>
-<h3 id="图片插入"><a href="#图片插入" class="headerlink" title="图片插入"></a>图片插入</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//在线图片 or 本地图片</span><br><span class="line">![图片名字](图片路径地址)</span><br></pre></td></tr></table></figure>
-
-<h3 id="超链接"><a href="#超链接" class="headerlink" title="超链接"></a>超链接</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">//超链接</span><br><span class="line">[显示内容](地址)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h3 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">//无序列表</span><br><span class="line">- 目录1</span><br><span class="line">- 目录2</span><br><span class="line">- 目录3</span><br><span class="line"></span><br><span class="line">//有序列表</span><br><span class="line"></span><br><span class="line">数字.名称</span><br><span class="line">//例：</span><br><span class="line">1. 列表1</span><br><span class="line">1. 列表2</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<h4 id="效果展示-3"><a href="#效果展示-3" class="headerlink" title="效果展示"></a>效果展示</h4><ul>
-<li>目录1</li>
-<li>目录2</li>
-<li>目录3</li>
-</ul>
-<ol>
-<li>列表1</li>
-<li>列表2</li>
-</ol>
-<h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">比较麻烦，建议软件右键-&gt;插入-表格 直接处理</span><br></pre></td></tr></table></figure>
-
-
-
-<table>
-<thead>
-<tr>
-<th>表格1</th>
-<th>表格2</th>
-<th>表格3</th>
-</tr>
-</thead>
-<tbody><tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-<tr>
-<td></td>
-<td></td>
-<td></td>
-</tr>
-</tbody></table>
-
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Markdnow</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/Markdnow//" class="article-tag-list-link color4">Markdnow</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/03/Markdown/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-随笔" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/08/26/%E9%9A%8F%E7%AC%94/">随笔</a>
-    </h1>
-  
-
-        
-        <a href="/2021/08/26/%E9%9A%8F%E7%AC%94/" class="archive-article-date">
-  	<time datetime="2021-08-26T12:11:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-08-26</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<br>
-
-<br>
-
-<br>
-
-<h1 id="缘-妙不可言"><a href="#缘-妙不可言" class="headerlink" title="缘 妙不可言~"></a>缘 妙不可言~</h1>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">随笔</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/08/26/%E9%9A%8F%E7%AC%94/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
+    </nav>
   
 
 
@@ -3358,7 +3622,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">自动化测试</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3366,7 +3634,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">自动化测试</a>
               </li>
             
             <div class="clearfix"></div>

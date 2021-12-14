@@ -6,16 +6,19 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Tag: adb | 宏利的博客</title>
+  <title>Linux | 宏利的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个小网站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="宏利的博客">
-<meta property="og:url" content="http://example.com/tags/adb/index.html">
+  <meta name="description" content="Linux Command查看帮助常用命令：[help, whatis, info, which, whereis, man]  help :该命令是bash内建命令，用于显示bash内建命令的帮助信息。 格式语法1help(选项)(参数)  常用参数：       参数 含义    -d 显示内建命令的简要描述。   m 按照man手册的格式输出内建命令的帮助信息。   s 仅输出内建命令的命令">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux">
+<meta property="og:url" content="http://example.com/2021/11/30/linux/index.html">
 <meta property="og:site_name" content="宏利的博客">
-<meta property="og:description" content="一个小网站">
+<meta property="og:description" content="Linux Command查看帮助常用命令：[help, whatis, info, which, whereis, man]  help :该命令是bash内建命令，用于显示bash内建命令的帮助信息。 格式语法1help(选项)(参数)  常用参数：       参数 含义    -d 显示内建命令的简要描述。   m 按照man手册的格式输出内建命令的帮助信息。   s 仅输出内建命令的命令">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2021-11-30T14:36:20.000Z">
+<meta property="article:modified_time" content="2021-12-07T16:17:39.019Z">
 <meta property="article:author" content="honlicc">
+<meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="宏利的博客" type="application/atom+xml">
@@ -157,48 +160,358 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-linux" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux
+    </h1>
+  
+
+        
+        <a href="/2021/11/30/linux/" class="archive-article-date">
+  	<time datetime="2021-11-30T14:36:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="Linux-Command"><a href="#Linux-Command" class="headerlink" title="Linux Command"></a>Linux Command</h3><h4 id="查看帮助常用命令："><a href="#查看帮助常用命令：" class="headerlink" title="查看帮助常用命令："></a>查看帮助常用命令：</h4><p><em>[help, whatis, info, which, whereis, man]</em></p>
+<ol>
+<li>help :该命令是bash内建命令，用于显示bash内建命令的帮助信息。<ul>
+<li>格式语法<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">help</span>(选项)(参数)</span><br></pre></td></tr></table></figure></li>
+<li> 常用参数：</li>
+</ul>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="center">参数</th>
+<th align="center">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">-d</td>
+<td align="center">显示内建命令的简要描述。</td>
+</tr>
+<tr>
+<td align="center">m</td>
+<td align="center">按照man手册的格式输出内建命令的帮助信息。</td>
+</tr>
+<tr>
+<td align="center">s</td>
+<td align="center">仅输出内建命令的命令格式。</td>
+</tr>
+</tbody></table>
+<ul>
+<li>示例:<ul>
+<li>显示cd命令的帮助信息：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># help cd</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span>: <span class="built_in">cd</span> [-L|[-P [-e]] [-@]] [dir]</span><br><span class="line">Change the shell working directory.</span><br><span class="line">Change the current directory to DIR.  The default DIR is the value of the</span><br><span class="line">HOME shell variable.</span><br><span class="line"></span><br><span class="line">The variable CDPATH defines the search path <span class="keyword">for</span> the directory containing</span><br><span class="line">DIR.  Alternative directory names <span class="keyword">in</span> CDPATH are separated by a colon (:).</span><br><span class="line">A null directory name is the same as the current directory.  If DIR begins</span><br><span class="line">with a slash (/), <span class="keyword">then</span> CDPATH is not used.</span><br><span class="line"></span><br><span class="line">If the directory is not found, and the shell option `cdable_vars<span class="string">&#x27; is set,</span></span><br><span class="line"><span class="string">the word is assumed to be  a variable name.  If that variable has a value,</span></span><br><span class="line"><span class="string">its value is used for DIR.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Options:</span></span><br><span class="line"><span class="string">    -L	force symbolic links to be followed: resolve symbolic links in</span></span><br><span class="line"><span class="string">    DIR after processing instances of `..&#x27;</span></span><br><span class="line">    -P	use the physical directory structure without following symbolic</span><br><span class="line">    links: resolve symbolic links <span class="keyword">in</span> DIR before processing instances</span><br><span class="line">    of `..<span class="string">&#x27;</span></span><br><span class="line"><span class="string">    -e	if the -P option is supplied, and the current working directory</span></span><br><span class="line"><span class="string">    cannot be determined successfully, exit with a non-zero status</span></span><br><span class="line"><span class="string">    -@  on systems that support it, present a file with extended attributes</span></span><br><span class="line"><span class="string">        as a directory containing the file attributes</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">The default is to follow symbolic links, as if `-L&#x27;</span> were specified.</span><br><span class="line">`..<span class="string">&#x27; is processed by removing the immediately previous pathname component</span></span><br><span class="line"><span class="string">back to a slash or the beginning of DIR.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Exit Status:</span></span><br><span class="line"><span class="string">Returns 0 if the directory is changed, and if $PWD is set successfully when</span></span><br><span class="line"><span class="string">-P is used; non-zero otherwise.</span></span><br></pre></td></tr></table></figure></li>
+<li>以短格式显示cd命令的帮助信息：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># help -s cd</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span>: <span class="built_in">cd</span> [-L|[-P [-e]] [-@]] [dir]</span><br></pre></td></tr></table></figure></li>
+<li>输出cd命令的简短描述：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># help -d cd</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> - Change the shell working directory.</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>whatis:查看命令的简要说明</li>
+<li>info:查看命令的详细说明</li>
+<li>which:查看命令的位置 </li>
+<li>whereis:定位指令的二进制程序、源代码文件和 man 手册页等相关文件的路径</li>
+<li>man:查看命令的帮助手册（包含说明、用法等信息）</li>
+</ol>
+<h4 id="文件管理常用命令："><a href="#文件管理常用命令：" class="headerlink" title="文件管理常用命令："></a>文件管理常用命令：</h4><p><em>[cd, ls, pwd, mkdir, rmdir, tree, touch, ln, rename, stat, file, chmod, chown, locate, find, cp, mv, rm]</em></p>
+<ol>
+<li>cd:切换目录</li>
+</ol>
+<ul>
+<li><p>语法格式：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> [参数] [目录名]</span><br></pre></td></tr></table></figure></li>
+<li><p>常用参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-P</td>
+<td>如果切换的目标目录是一个符号链接，则直接切换到符号链接指向的目标目录</td>
+</tr>
+<tr>
+<td>-L</td>
+<td>如果切换的目标目录是一个符号链接，则直接切换到符号链接名所在的目录</td>
+</tr>
+<tr>
+<td>–</td>
+<td>仅使用”-“选项时，当前目录将被切换到环境变量”OLDPWD”对应值的目录</td>
+</tr>
+<tr>
+<td>~</td>
+<td>切换至当前用户目录</td>
+</tr>
+<tr>
+<td>..</td>
+<td>切换至当前目录位置的上一级目录</td>
+</tr>
+</tbody></table>
+<ul>
+<li><p>示例：</p>
+<ul>
+<li>将当前工作目录切换到dir目录，并使用pwd命令查看当前目录：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># cd dir</span></span><br><span class="line">[root@text~]<span class="comment"># cd pwd</span></span><br><span class="line">	</span><br><span class="line">/home/text/桌面/linuxTest/dir</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>使用“cd ~ ”和“cd .. ”命令进行目录的切换操作，并使用pwd命令查看当前目录：</p>
+  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># cd ~</span></span><br><span class="line">[root@text~]<span class="comment"># cd pwd</span></span><br><span class="line">	</span><br><span class="line">/home/text</span><br><span class="line"></span><br><span class="line"> <span class="comment">#cd ..表示退回到上一级目录</span></span><br><span class="line">[root@text~]<span class="comment"># cd ..   </span></span><br><span class="line">[root@text~]<span class="comment"># cd pwd</span></span><br><span class="line">	</span><br><span class="line">/home/text/桌面/linuxTest</span><br><span class="line"></span><br><span class="line"> <span class="comment">#退回多级目录，用 / 分隔开</span></span><br><span class="line"> <span class="comment">#cd ../..  :表示退回到上两级目录</span></span><br><span class="line">[root@text~]<span class="comment"># cd ../..   </span></span><br><span class="line">[root@text~]<span class="comment"># cd pwd</span></span><br><span class="line">	</span><br><span class="line">/home/text/桌面</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>ls: 显示指定工作目录下的内容及属性信息<ul>
+<li>语法格式：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls [选项] [文件]</span><br></pre></td></tr></table></figure></li>
+<li>常用参数：</li>
+</ul>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th align="left">参数</th>
+<th align="right">含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">-a</td>
+<td align="right">显示所有文件及目录 (包括以“.”开头的隐藏文件)</td>
+</tr>
+<tr>
+<td align="left">-l</td>
+<td align="right">使用长格式列出文件及目录信息</td>
+</tr>
+<tr>
+<td align="left">-r</td>
+<td align="right">将文件以相反次序显示(默认依英文字母次序)</td>
+</tr>
+<tr>
+<td align="left">-t</td>
+<td align="right">根据最后的修改时间排序</td>
+</tr>
+<tr>
+<td align="left">-A</td>
+<td align="right">同 -a ，但不列出 “.” (当前目录) 及 “..” (父目录)</td>
+</tr>
+<tr>
+<td align="left">-S</td>
+<td align="right">根据文件大小排序</td>
+</tr>
+<tr>
+<td align="left">-R</td>
+<td align="right">递归列出所有子目录</td>
+</tr>
+</tbody></table>
+<pre><code>- 示例:
+    - 默认展示当前目录的内容
+    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls</span></span><br><span class="line"></span><br><span class="line">_config.landscape.yml  _config.yml  package-lock.json  package.json  scaffolds/  <span class="built_in">source</span>/  themes/</span><br></pre></td></tr></table></figure>
+    - 列出所有文件(包括隐藏文件)：
+    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls -a</span></span><br><span class="line"></span><br><span class="line">./  ../  .git/  .github/  .gitignore  .idea/  _config.landscape.yml  _config.yml  package-lock.json  package.json  scaffolds/  <span class="built_in">source</span>/  themes/</span><br></pre></td></tr></table></figure>
+    - 列出文件的详细信息
+    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls -l  #可以简写为 ll</span></span><br><span class="line"></span><br><span class="line">$ ls -l</span><br><span class="line">total 84</span><br><span class="line">-rw-r--r-- 1 text 1049089     0 Dec  3 11:13 _config.landscape.yml</span><br><span class="line">-rw-r--r-- 1 text 1049089  3018 Dec  3 11:13 _config.yml</span><br><span class="line">-rw-r--r-- 1 text 1049089 75525 Dec  3 11:13 package-lock.json</span><br><span class="line">-rw-r--r-- 1 text 1049089   728 Dec  3 11:13 package.json</span><br><span class="line">drwxr-xr-x 1 text 1049089     0 Dec  3 11:13 scaffolds/</span><br><span class="line">drwxr-xr-x 1 text 1049089     0 Dec  3 11:13 <span class="built_in">source</span>/</span><br><span class="line">drwxr-xr-x 1 text 1049089     0 Dec  3 11:13 themes/</span><br></pre></td></tr></table></figure>
+     列出根目录(/)下的所有目录
+    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls /</span></span><br><span class="line"></span><br><span class="line">$ ls /</span><br><span class="line">LICENSE.txt  ReleaseNotes.html  bin/  cmd/  dev/  etc/  git-bash.exe*  git-cmd.exe*  mingw64/  proc/  tmp/  unins000.dat  unins000.exe*  unins000.msg  usr/</span><br></pre></td></tr></table></figure>
+    列出当前工作目录下所有文件及目录并以文件的大小进行排序(从大到小):
+    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls -lAS</span></span><br><span class="line"></span><br><span class="line">total 89</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089 75525 Dec  3 11:13 package-lock.json</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089  3018 Dec  3 11:13 _config.yml</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089   728 Dec  3 11:13 package.json</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089    71 Dec  3 11:13 .gitignore</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  6 10:15 .git/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .github/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .idea/</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089     0 Dec  3 11:13 _config.landscape.yml</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 scaffolds/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 <span class="built_in">source</span>/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 themes/</span><br></pre></td></tr></table></figure>
+    列出当前工作目录下所有文件及目录并以文件的大小进行排序(从小到大，借助 参数 -r 进行反转):
+    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls -lASr</span></span><br><span class="line"></span><br><span class="line">total 89</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 themes/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 <span class="built_in">source</span>/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 scaffolds/</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089     0 Dec  3 11:13 _config.landscape.yml</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .idea/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .github/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  6 10:15 .git/</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089    71 Dec  3 11:13 .gitignore</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089   728 Dec  3 11:13 package.json</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089  3018 Dec  3 11:13 _config.yml</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089 75525 Dec  3 11:13 package-lock.json</span><br></pre></td></tr></table></figure>
+</code></pre>
+<ol start="3">
+<li>pwd: 显示当前工作目录的绝对路径<ul>
+<li>语法格式：  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></table></figure></li>
+<li>示例:  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># pwd</span></span><br><span class="line"></span><br><span class="line">/e/WorkSpace/honlicc.github.io</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li>mkdir: 创建目录<ul>
+<li>语法格式：  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir [参数] [目录]</span><br></pre></td></tr></table></figure></li>
+<li>常用参数：</li>
+</ul>
+</li>
+</ol>
+<p>|参数| 含义 |<br>| —— |<br>| -p | 递归创建多级目录 |<br>| -m | 建立目录的同时设置目录的权限 |<br>| -z| 设置安全上下文|<br>| -v | 显示目录的创建过程 |<br>    - 示例:<br>        在工作目录下，建立一个名为 dir 的子目录<br>        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># mkdir dir</span></span><br><span class="line"></span><br><span class="line">[root@text~]<span class="comment"># ll</span></span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:54 dir/</span><br></pre></td></tr></table></figure><br>        在工作目录下，建立一个名为 dir 的子目录<br>        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># mkdir dir</span></span><br><span class="line"></span><br><span class="line">[root@text~]<span class="comment"># ll</span></span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:54 dir/</span><br></pre></td></tr></table></figure><br>        在目录/usr/text下建立子目录dir，并且设置文件属主有读、写和执行权限，其他人无权访问:<br>        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># mkdir -m 700 /usr/text/dir</span></span><br></pre></td></tr></table></figure><br>        同时创建子目录dir1，dir2，dir3：<br>        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># mkdir dir1 dir2 dir3</span></span><br><span class="line"></span><br><span class="line">[root@text~]<span class="comment"># ll</span></span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:54 dir/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:57 dir1/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:57 dir2/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:57 dir3/</span><br></pre></td></tr></table></figure><br>        递归创建目录：<br>        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># mkdir -p dir4/test</span></span><br></pre></td></tr></table></figure><br>5. rmdir: 删除空目录<br>    - 语法格式：<br>    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rmdir [参数] [目录]</span><br></pre></td></tr></table></figure><br>    - 常用参数：</p>
+<table>
+<thead>
+<tr>
+<th>参数</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-p</td>
+<td>所有应用</td>
+</tr>
+<tr>
+<td>– – ignore-fail-on-non-empty</td>
+<td>显示应用关联的 apk 文件</td>
+</tr>
+<tr>
+<td>-v</td>
+<td>只显示 disabled 的应用</td>
+</tr>
+</tbody></table>
+<pre><code>- 示例:
+    删除空目录
+    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># rmdir dir</span></span><br></pre></td></tr></table></figure>
+    递归删除指定的目录树：
+    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># rmdir -p dir/dir_1/dir_2</span></span><br></pre></td></tr></table></figure>
+    显示指令详细执行过程：
+    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># rmdir -v dir</span></span><br><span class="line">rmdir: 正在删除目录 <span class="string">&#x27;dir&#x27;</span></span><br></pre></td></tr></table></figure>
+</code></pre>
+<ol start="6">
+<li>tree:以树状图列出目录内容</li>
+<li>touch:</li>
+<li>ln:</li>
+<li>rename:</li>
+<li>stat:</li>
+<li>file:</li>
+<li>chmod:</li>
+<li>chown:</li>
+<li>locate:</li>
+<li>find:</li>
+<li>cp:</li>
+<li>mv:</li>
+<li>rm:</li>
+</ol>
+<h4 id="文件内容常用命令："><a href="#文件内容常用命令：" class="headerlink" title="文件内容常用命令："></a>文件内容常用命令：</h4><p>[cat, head, tail, more, less, sed, vi, grep]</p>
+<ol>
+<li>cat:</li>
+<li>head:</li>
+<li>tail:</li>
+<li>more:</li>
+<li>less:</li>
+<li>sed:</li>
+<li>vi:</li>
+<li>grep:</li>
+</ol>
+<h4 id="文件压缩和解压："><a href="#文件压缩和解压：" class="headerlink" title="文件压缩和解压："></a>文件压缩和解压：</h4><p>[tar, gzip, zip, unzip]</p>
+<ol>
+<li>tar:</li>
+<li>gzip:</li>
+<li>zip:</li>
+<li>unzip:</li>
+</ol>
+<h4 id="用户相关常用命令："><a href="#用户相关常用命令：" class="headerlink" title="用户相关常用命令："></a>用户相关常用命令：</h4><p>[groupadd, groupdel, groupmod, useradd, userdel, usermod, passwd, su, sudo]</p>
+<ol>
+<li>groupadd:</li>
+<li>groupdel:</li>
+<li>groupmod:</li>
+<li>useradd:</li>
+<li>userdel:</li>
+<li>usermod:</li>
+<li>passwd:</li>
+<li>su:</li>
+<li>sudo:</li>
+</ol>
+<h4 id="系统管理常用命令："><a href="#系统管理常用命令：" class="headerlink" title="系统管理常用命令："></a>系统管理常用命令：</h4><p>[eboot, exit, shutdown, date, mount, umount, ps, kill, systemctl, service, crontab]</p>
+<ol>
+<li>eboot:</li>
+<li>exit:</li>
+<li>shutdown:</li>
+<li>date:</li>
+<li>mount:</li>
+<li>umount:</li>
+<li>ps:</li>
+<li>kill:</li>
+<li>systemctl:</li>
+<li>service:</li>
+<li>crontab:</li>
+</ol>
+<h4 id="网络管理常用命令"><a href="#网络管理常用命令" class="headerlink" title="网络管理常用命令:"></a>网络管理常用命令:</h4><p>[curl, wget, telnet, ip, hostname, ifconfig, route, ssh, ssh-keygen, firewalld, iptables, host, nslookup, nc/netcat, ping, traceroute, netstat]</p>
+<ol>
+<li>curl:</li>
+<li>wget:</li>
+<li>telnet:</li>
+<li>ip:</li>
+<li>hostname:</li>
+<li>ifconfig:</li>
+<li>route:</li>
+<li>ssh:</li>
+<li>ssh-keygen:</li>
+<li>firewalld:</li>
+<li>iptables:</li>
+<li>host:</li>
+<li>nslookup:</li>
+<li>nc/netcat:</li>
+<li>ping:</li>
+<li>traceroute:</li>
+<li>netstat:</li>
+</ol>
+<h4 id="硬件管理常用命令"><a href="#硬件管理常用命令" class="headerlink" title="硬件管理常用命令:"></a>硬件管理常用命令:</h4><p>[df, du, top, free, iotop]</p>
+<ol>
+<li>df:</li>
+<li>du:</li>
+<li>top:</li>
+<li>free:</li>
+<li>iotop</li>
+</ol>
+<h4 id="软件管理常用命令"><a href="#软件管理常用命令" class="headerlink" title="软件管理常用命令:"></a>软件管理常用命令:</h4><p>[rpm, yum, apt-get]</p>
+<ol>
+<li>rpm:</li>
+<li>yum:</li>
+<li>apt-get:</li>
+</ol>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/30/AdbPublic/" class="archive-article-date">
-  	<time datetime="2021-11-30T14:37:33.736Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/30/AdbPublic/">AdbPublic</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">adb</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+      
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
@@ -211,115 +524,113 @@
 	</div>
 
 
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/11/30/linux/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/26/adbTools/" class="archive-article-date">
-  	<time datetime="2021-11-26T14:08:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-26</time>
-</a>
+<nav id="article-nav">
+  
+    <a href="/2021/11/30/AdbPublic/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          AdbPublic
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/11/26/adbTools/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">adbTools</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/26/adbTools/">adbTools</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">adb</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/09/adb/" class="archive-article-date">
-  	<time datetime="2021-11-09T14:30:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/09/adb/">adb</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">adb</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -341,9 +652,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,

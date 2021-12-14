@@ -6,17 +6,30 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>Tag: adb | 宏利的博客</title>
+  <title>测试报告优化 | 宏利的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一个小网站">
-<meta property="og:type" content="website">
-<meta property="og:title" content="宏利的博客">
-<meta property="og:url" content="http://example.com/tags/adb/index.html">
+  <meta name="description" content="HTMLTestRunner测试报告优化HTMLTestRunner.py下载创建HTMLTestRunner测试项目： 新建python项目test01,在项目中新建 test_case.py模块，用来写测试case。 下载HTMLTestRunner.py并保存到项目中，命名为HTMLTestRunner.py。 新建run.py文件用来编写执行case脚本。 创建report文件夹，用来存放">
+<meta property="og:type" content="article">
+<meta property="og:title" content="测试报告优化">
+<meta property="og:url" content="http://example.com/2021/12/14/%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E4%BC%98%E5%8C%96/index.html">
 <meta property="og:site_name" content="宏利的博客">
-<meta property="og:description" content="一个小网站">
+<meta property="og:description" content="HTMLTestRunner测试报告优化HTMLTestRunner.py下载创建HTMLTestRunner测试项目： 新建python项目test01,在项目中新建 test_case.py模块，用来写测试case。 下载HTMLTestRunner.py并保存到项目中，命名为HTMLTestRunner.py。 新建run.py文件用来编写执行case脚本。 创建report文件夹，用来存放">
 <meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://s2.loli.net/2021/12/14/sZQ3ve4HfNGYFb7.png">
+<meta property="og:image" content="https://s2.loli.net/2021/12/14/PrFwKizsn6Hbdp4.png">
+<meta property="og:image" content="https://s2.loli.net/2021/12/14/zgILPVcO78taquw.png">
+<meta property="og:image" content="https://s2.loli.net/2021/12/14/T8aLJcbOV6xHjtK.png">
+<meta property="og:image" content="https://s2.loli.net/2021/12/14/w3a1AmFxhfProNs.png">
+<meta property="og:image" content="https://s2.loli.net/2021/12/14/1lZh6QGpynqXSVd.png">
+<meta property="og:image" content="https://s2.loli.net/2021/12/14/zwvlSIDrbcZ49yO.png">
+<meta property="og:image" content="https://s2.loli.net/2021/12/14/2MG3qXdLIvVSHyl.png">
+<meta property="og:image" content="https://s2.loli.net/2021/12/14/akyC9qOY5doPQ3w.png">
+<meta property="og:image" content="https://s2.loli.net/2021/12/14/hi9HuFd6scqZVBJ.png">
+<meta property="article:published_time" content="2021-12-14T03:21:37.000Z">
+<meta property="article:modified_time" content="2021-12-14T15:14:16.513Z">
 <meta property="article:author" content="honlicc">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2021/12/14/sZQ3ve4HfNGYFb7.png">
   
     <link rel="alternative" href="/atom.xml" title="宏利的博客" type="application/atom+xml">
   
@@ -157,169 +170,221 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-测试报告优化" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      测试报告优化
+    </h1>
+  
+
+        
+        <a href="/2021/12/14/%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E4%BC%98%E5%8C%96/" class="archive-article-date">
+  	<time datetime="2021-12-14T03:21:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-12-14</time>
+</a>
+        
+      </header>
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="HTMLTestRunner测试报告优化"><a href="#HTMLTestRunner测试报告优化" class="headerlink" title="HTMLTestRunner测试报告优化"></a>HTMLTestRunner测试报告优化</h2><h4 id="HTMLTestRunner-py下载"><a href="#HTMLTestRunner-py下载" class="headerlink" title="HTMLTestRunner.py下载"></a><a target="_blank" rel="noopener" href="https://github.com/Gelomen/HTMLTestReportCN-ScreenShot">HTMLTestRunner.py下载</a></h4><h3 id="创建HTMLTestRunner测试项目："><a href="#创建HTMLTestRunner测试项目：" class="headerlink" title="创建HTMLTestRunner测试项目："></a>创建HTMLTestRunner测试项目：</h3><ul>
+<li>新建python项目test01,在项目中新建 test_case.py模块，用来写测试case。</li>
+<li>下载<a target="_blank" rel="noopener" href="https://github.com/Gelomen/HTMLTestReportCN-ScreenShot/blob/master/src/lib/HTMLTestReportCN.py">HTMLTestRunner.py</a>并保存到项目中，命名为HTMLTestRunner.py。</li>
+<li>新建run.py文件用来编写执行case脚本。</li>
+<li>创建report文件夹，用来存放生成的测试报告</li>
+</ul>
+<p>打开test_case.py 模块添加如下case代码：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import unittest</span><br><span class="line"></span><br><span class="line">class TestDemo(unittest.TestCase):</span><br><span class="line"></span><br><span class="line">    def test_one(self):</span><br><span class="line">        assert 1 == 1</span><br><span class="line"></span><br><span class="line">    def test_two(self):</span><br><span class="line">        assert <span class="string">&#x27;H&#x27;</span> <span class="keyword">in</span> <span class="string">&quot;Helloword!&quot;</span></span><br><span class="line"></span><br><span class="line">    def test_three(self):</span><br><span class="line">        assert 5 == 10</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>打开run.py模块，添加如下代码：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">import os</span><br><span class="line">import time</span><br><span class="line">from HTMLTestRunner import HTMLTestRunner</span><br><span class="line">from test_case import TestDemo</span><br><span class="line">import unittest</span><br><span class="line"></span><br><span class="line"><span class="comment"># 项目根目录</span></span><br><span class="line">base_path = os.path.dirname(os.path.abspath(__file__))</span><br><span class="line"><span class="comment"># 测试报告存放目录</span></span><br><span class="line">report_path = os.path.join(base_path, <span class="string">&quot;report&quot;</span>)</span><br><span class="line"><span class="comment"># 测试报告名称</span></span><br><span class="line">report_filename = os.path.join(report_path, str(time.strftime(<span class="string">&quot;%Y%m%d%H%M%S&quot;</span>, time.localtime())) + <span class="string">&quot;.html&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建测试集合</span></span><br><span class="line">case_suite = unittest.TestSuite()</span><br><span class="line">case_suite.addTest(TestDemo(<span class="string">&quot;test_one&quot;</span>))</span><br><span class="line">case_suite.addTest(TestDemo(<span class="string">&quot;test_two&quot;</span>))</span><br><span class="line">case_suite.addTest(TestDemo(<span class="string">&quot;test_three&quot;</span>))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用HTMLTestRunner运行测试并生成测试报告</span></span><br><span class="line">def start():</span><br><span class="line">    with open(report_filename, <span class="string">&#x27;wb&#x27;</span>) as file:</span><br><span class="line">        runner = HTMLTestRunner(stream=file, title=<span class="string">&#x27;自动化测试报告&#x27;</span>, description=<span class="string">&#x27;用例执行情况：&#x27;</span>)</span><br><span class="line">        runner.run(case_suite)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    start()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>运行run.py后在report文件夹下生成一个以 .html结尾的测试报告<br><img src="https://s2.loli.net/2021/12/14/sZQ3ve4HfNGYFb7.png"></p>
+<p>通过浏览器打开该HTML测试报告，样子如下：<br><img src="https://s2.loli.net/2021/12/14/PrFwKizsn6Hbdp4.png"></p>
+<p>到此为止我们的项目准备工作完成，开始进行Html测试报告的优化工作</p>
+<h3 id="测试报告插入log"><a href="#测试报告插入log" class="headerlink" title="测试报告插入log:"></a>测试报告插入log:</h3><p>通过测试报告可以看出，执行失败的case可以在测试报告中看到错误信息，但执行通过的case却没有信息输出。现在我们要将log信息打印进测试报告中。</p>
+<ul>
+<li>添加log模块：</li>
+</ul>
+<p>首先我们需要在case中打印log，为了更好的进行log输出，我们在项目中新建 log.py文件，随后再新建Log文件夹用来存放log文件。</p>
+<ul>
+<li>log模块封装：</li>
+</ul>
+<p> 打开log.py文件，复制下面代码并添加<br> <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment"># !/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding:utf-8 -*-</span></span><br><span class="line"></span><br><span class="line">import logging</span><br><span class="line">import os.path</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Logger(object):</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 初始化加载</span></span><br><span class="line">    def __init__(self):</span><br><span class="line">        <span class="comment"># 创建一个 logger 对象</span></span><br><span class="line">        self.logger = logging.getLogger(<span class="string">&quot;test&quot;</span>)  <span class="comment"># loggger 对象为被执行的对象类</span></span><br><span class="line">        self.logger.setLevel(logging.DEBUG)  <span class="comment"># 设置日志模式为调试模式</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 创建一个 handler，用于写入日志文件</span></span><br><span class="line">        rq = time.strftime(<span class="string">&#x27;%Y%m%d%H%M&#x27;</span>, time.localtime(time.time()))  <span class="comment"># 设置日期格式</span></span><br><span class="line">        log_path = os.path.join(os.getcwd(),<span class="string">&#x27;log/&#x27;</span>)</span><br><span class="line">        <span class="comment"># 判断 log 文件夹是否创建，未创建则进行创建</span></span><br><span class="line">        isExists = os.path.exists(log_path)</span><br><span class="line">        <span class="keyword">if</span> not isExists:</span><br><span class="line">            try:</span><br><span class="line">                os.makedirs(log_path)</span><br><span class="line">            except Exception as e:</span><br><span class="line">                <span class="built_in">print</span>(<span class="string">&quot;创建文件夹失败&quot;</span>, e)</span><br><span class="line">        log_name = log_path + rq + <span class="string">&#x27;.log&#x27;</span></span><br><span class="line">        <span class="built_in">print</span>(log_name)</span><br><span class="line">        fh = logging.FileHandler(log_name)</span><br><span class="line">        fh.setLevel(logging.INFO)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 创建一个 handler，用于输出到控制台</span></span><br><span class="line">        ch = logging.StreamHandler()</span><br><span class="line">        ch.setLevel(logging.INFO)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 定义 handler 输出格式</span></span><br><span class="line">        formatter = logging.Formatter(</span><br><span class="line">            <span class="string">&#x27;%(asctime)s - %(name)s - %(levelname)s - %(process)d - %(processName)s - %(message)s &#x27;</span>)</span><br><span class="line">        fh.setFormatter(formatter)</span><br><span class="line">        ch.setFormatter(formatter)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 给logger 添加 handler</span></span><br><span class="line">        self.logger.addHandler(fh)</span><br><span class="line">        self.logger.addHandler(ch)</span><br><span class="line"></span><br><span class="line">    def d(self, msg, *args, **kwargs):</span><br><span class="line">        self.logger.debug(msg, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">    def i(self, msg, *args, **kwargs):</span><br><span class="line">        self.logger.info(msg, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">    def w(self, msg, *args, **kwargs):</span><br><span class="line">        self.logger.warning(msg, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">    def c(self, msg, *args, **kwargs):</span><br><span class="line">        self.logger.critical(msg, *args, **kwargs)</span><br><span class="line"></span><br><span class="line">    def e(self, msg, *args, **kwargs):</span><br><span class="line">        self.logger.error(msg, *args, **kwargs)</span><br><span class="line"></span><br></pre></td></tr></table></figure></p>
+<p>此时我们在 test_case.py模块中添加一些log信息</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">import unittest</span><br><span class="line">from <span class="built_in">log</span> import Logger</span><br><span class="line"></span><br><span class="line"><span class="built_in">log</span>=Logger()</span><br><span class="line">class TestDemo(unittest.TestCase):</span><br><span class="line"></span><br><span class="line">    def test_one(self):</span><br><span class="line">        log.i(<span class="string">&quot;case name:test_one&quot;</span>)</span><br><span class="line">        assert 1 == 1</span><br><span class="line"></span><br><span class="line">    def test_two(self):</span><br><span class="line">        log.i(<span class="string">&quot;case name:test_two&quot;</span>)</span><br><span class="line">        assert <span class="string">&#x27;H&#x27;</span> <span class="keyword">in</span> <span class="string">&quot;Helloword!&quot;</span></span><br><span class="line"></span><br><span class="line">    def test_three(self):</span><br><span class="line">        log.i(<span class="string">&quot;case name:test_three&quot;</span>)</span><br><span class="line">        assert 5 == 10</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>运行run.py文件，此时我们可以在控制台输出的log信息，同时在 log/文件夹下也可以看到生成的.log文件，但测试报告中还是没显示log信息，</p>
+<p>控制台log</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">2021-12-14 15:23:39,614 - <span class="built_in">test</span> - INFO - 17952 - MainProcess - <span class="keyword">case</span> name:test_one </span><br><span class="line">  S  test_one (test_case.TestDemo)</span><br><span class="line">2021-12-14 15:23:39,614 - <span class="built_in">test</span> - INFO - 17952 - MainProcess - <span class="keyword">case</span> name:test_two </span><br><span class="line">  S  test_two (test_case.TestDemo)</span><br><span class="line">2021-12-14 15:23:39,615 - <span class="built_in">test</span> - INFO - 17952 - MainProcess - <span class="keyword">case</span> name:test_three </span><br><span class="line">  F  test_three (test_case.TestDemo)</span><br><span class="line"></span><br><span class="line">--------------------- 测试结束 ---------------------</span><br><span class="line">------------- 合计耗时: 0:00:00.000980 -------------</span><br></pre></td></tr></table></figure>
+
+<p>log/文件夹中的log信息：<br><img src="https://s2.loli.net/2021/12/14/zgILPVcO78taquw.png"></p>
+<h3 id="开始在测试报告中添加log信息："><a href="#开始在测试报告中添加log信息：" class="headerlink" title="开始在测试报告中添加log信息："></a>开始在测试报告中添加log信息：</h3><p>想要在测试报告中也输出log信息，需要对HTMLTestRunner.py进行修改，打开HTMLTestRunner.py文件。</p>
+<ul>
+<li>首先导入logging模块</li>
+</ul>
+<p><img src="https://s2.loli.net/2021/12/14/T8aLJcbOV6xHjtK.png"></p>
+<ul>
+<li>找到 class _TestResult(TestResult):，在init方法中添加 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">self.logger = logging.getLogger(<span class="string">&#x27;test&#x27;</span>)</span><br></pre></td></tr></table></figure>
+如下：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">class _TestResult(TestResult):</span><br><span class="line">    <span class="comment"># note: _TestResult is a pure representation of results.</span></span><br><span class="line">    <span class="comment"># It lacks the output and reporting ability compares to unittest._TextTestResult.</span></span><br><span class="line"></span><br><span class="line">    def __init__(self, verbosity=1):</span><br><span class="line">        ... ... ...</span><br><span class="line">        ... ... ...</span><br><span class="line">        self.logger = logging.getLogger(<span class="string">&#x27;test&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<img src="https://s2.loli.net/2021/12/14/w3a1AmFxhfProNs.png"></li>
+</ul>
+<ul>
+<li>在 def startTest(self, test): 方法后面添加如下代码：</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">def startTest(self, <span class="built_in">test</span>):</span><br><span class="line">    stream = sys.stderr</span><br><span class="line">    <span class="comment"># stdout_content = &quot; Testing: &quot; + str(test)</span></span><br><span class="line">    <span class="comment"># stream.write(stdout_content)</span></span><br><span class="line">    <span class="comment"># stream.flush()</span></span><br><span class="line">    <span class="comment"># stream.write(&quot;\n&quot;)</span></span><br><span class="line">    TestResult.startTest(self, <span class="built_in">test</span>)</span><br><span class="line">    <span class="comment"># just one buffer for both stdout and stderr</span></span><br><span class="line">    self.outputBuffer = io.StringIO()</span><br><span class="line">    stdout_redirector.fp = self.outputBuffer</span><br><span class="line">    stderr_redirector.fp = self.outputBuffer</span><br><span class="line">    self.stdout0 = sys.stdout</span><br><span class="line">    self.stderr0 = sys.stderr</span><br><span class="line">    sys.stdout = stdout_redirector</span><br><span class="line">    sys.stderr = stderr_redirector</span><br><span class="line">    self.test_start_time = round(time.time(), 2)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># ---添加 logging 输出以及格式化----</span></span><br><span class="line">    self.log_cap = io.StringIO()</span><br><span class="line">    self.ch = logging.StreamHandler(self.log_cap)</span><br><span class="line">    self.ch.setLevel(logging.DEBUG)</span><br><span class="line">    formatter = logging.Formatter(</span><br><span class="line">        <span class="string">&#x27;%(asctime)s - %(name)s - %(levelname)s - %(process)d - %(processName)s - %(message)s &#x27;</span>)</span><br><span class="line">    self.ch.setFormatter(formatter)</span><br><span class="line">    self.logger.addHandler(self.ch)</span><br></pre></td></tr></table></figure>
+<p>如图：<br><img src="https://s2.loli.net/2021/12/14/1lZh6QGpynqXSVd.png"></p>
+<ul>
+<li>找到 def complete_output(self):函数，在函数的返回值中加入logging存在内存中的输出，用换行符隔开。</li>
+</ul>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">def complete_output(self):</span><br><span class="line">    <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">    Disconnect output redirection and return buffer.</span></span><br><span class="line"><span class="string">    Safe to call multiple times.</span></span><br><span class="line"><span class="string">    &quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">    self.test_end_time = round(time.time(), 2)</span><br><span class="line">    <span class="keyword">if</span> self.stdout0:</span><br><span class="line">        sys.stdout = self.stdout0</span><br><span class="line">        sys.stderr = self.stderr0</span><br><span class="line">        self.stdout0 = None</span><br><span class="line">        self.stderr0 = None</span><br><span class="line">        <span class="comment">#---添加 log out put ---</span></span><br><span class="line">        <span class="built_in">return</span> self.outputBuffer.getvalue() + <span class="string">&#x27;\n&#x27;</span> + self.log_cap.getvalue()</span><br></pre></td></tr></table></figure>
+<p>如图：<br><img src="https://s2.loli.net/2021/12/14/zwvlSIDrbcZ49yO.png"></p>
+<ul>
+<li>每个用例执行完后，清除handler，在stopTest函数中加入代码:<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">def stopTest(self, <span class="built_in">test</span>):</span><br><span class="line">    <span class="comment"># Usually one of addSuccess, addError or addFailure would have been called.</span></span><br><span class="line">    <span class="comment"># But there are some path in unittest that would bypass this.</span></span><br><span class="line">    <span class="comment"># We must disconnect stdout in stopTest(), which is guaranteed to be called.</span></span><br><span class="line">    <span class="comment"># --- 清除log的handle ---</span></span><br><span class="line">    self.complete_output()</span><br><span class="line">    self.logger.removeHandler(self.ch)</span><br></pre></td></tr></table></figure>
+如图：<br><img src="https://s2.loli.net/2021/12/14/2MG3qXdLIvVSHyl.png"></li>
+</ul>
+<p>此时以修改完毕，我们保存后再次运行run.py生成新的测试报告并打开，可以看到 “通过”状态的case也展示了log信息<br><img src="https://s2.loli.net/2021/12/14/akyC9qOY5doPQ3w.png"></p>
+<h3 id="项目整体结构如下："><a href="#项目整体结构如下：" class="headerlink" title="项目整体结构如下："></a>项目整体结构如下：</h3><p><img src="https://s2.loli.net/2021/12/14/hi9HuFd6scqZVBJ.png"></p>
+
+      
+
+      
+        <div class="page-reward">
+          <a href="javascript:;" class="page-reward-btn tooltip-top">
+            <div class="tooltip tooltip-east">
+            <span class="tooltip-item">
+              赏
+            </span>
+            <span class="tooltip-content">
+              <span class="tooltip-text">
+                <span class="tooltip-inner">
+                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖<i class="icon icon-quo-right"></i></p>
+                  <div class="reward-box">
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/alipay.png">
+                      <span class="reward-type">支付宝</span>
+                    </div>
+                    
+                    
+                    <div class="reward-box-item">
+                      <img class="reward-img" src="/img/wechat.png">
+                      <span class="reward-type">微信</span>
+                    </div>
+                    
+                  </div>
+                </span>
+              </span>
+            </span>
+          </div>
+          </a>
+        </div>
+      
+    </div>
+    <div class="article-info article-info-index">
       
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
+      
+
+      
+
+      
+        
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/30/AdbPublic/" class="archive-article-date">
-  	<time datetime="2021-11-30T14:37:33.736Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/30/AdbPublic/">AdbPublic</a>
-    </h1>
-  
+      </div>
+    </span>
+  </div>
+</div>
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">adb</a>
-        		</li>
-      		
-		</ul>
-	</div>
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/12/14/%E6%B5%8B%E8%AF%95%E6%8A%A5%E5%91%8A%E4%BC%98%E5%8C%96/" alt="微信分享二维码">
+    </div>
+</div>
 
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+<div class="mask js-mask"></div>
+      
+      <div class="clearfix"></div>
+    </div>
   </div>
 </article>
+
   
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/26/adbTools/" class="archive-article-date">
-  	<time datetime="2021-11-26T14:08:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-26</time>
-</a>
+<nav id="article-nav">
+  
+  
+    <a href="/2021/11/30/Java%E5%9F%BA%E7%A1%80/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/26/adbTools/">adbTools</a>
-    </h1>
-  
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">adb</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
+        
+        
+    </div>
+</aside>
 
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2021/11/09/adb/" class="archive-article-date">
-  	<time datetime="2021-11-09T14:30:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-09</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2021/11/09/adb/">adb</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">adb</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
   
   
-    </div></section>
   
 
-    
+  
+
+  
+
+  
 
 
           </div>
@@ -341,9 +406,9 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
-		isTag: true,
+		isTag: false,
 		isCategory: false,
 		open_in_new: false,
 		toc_hide_index: true,
