@@ -243,7 +243,29 @@
     <div class="article-info article-info-index">
       
       
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">自动化测试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
       
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
 
       
         <p class="article-more-link">
@@ -945,6 +967,105 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/11/26/adbTools/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/09/docker/">Docker</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/09/docker/" class="archive-article-date">
+  	<time datetime="2021-11-09T14:30:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="1-docker-历史"><a href="#1-docker-历史" class="headerlink" title="1.docker 历史:"></a>1.docker 历史:</h2><ul>
+<li>2013 ~ 开源应用容器引擎，go语言开发，可以让开发者打包他们的应用及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的系统</li>
+</ul>
+<h2 id="2-docker-优点"><a href="#2-docker-优点" class="headerlink" title="2.docker 优点:"></a>2.docker 优点:</h2><ul>
+<li>快速交付应用，打包快，加快测试，加快发布，缩短交付周期</li>
+<li>复杂环境管理，应用隔离，开发环境/测试环境/线上环境</li>
+<li>轻量级：对系统来说，一个docker只是一个进程，一个系统可以运行上千个容器</li>
+</ul>
+<h2 id="3-docker-架构"><a href="#3-docker-架构" class="headerlink" title="3. docker 架构:"></a>3. docker 架构:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- client:</span><br><span class="line">	docker build</span><br><span class="line">	docker pull</span><br><span class="line">	docker run</span><br><span class="line">	</span><br><span class="line">- docker_host:</span><br><span class="line">	docker_dameon</span><br><span class="line">	</span><br><span class="line">- registry:</span><br><span class="line">	下载。。。</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-docker与虚拟机的区别"><a href="#4-docker与虚拟机的区别" class="headerlink" title="4.docker与虚拟机的区别:"></a>4.docker与虚拟机的区别:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">容器与容器只是进程的隔离，虚拟机则是完全的资源隔离</span><br><span class="line">虚拟机启动慢，可能要几分钟，docker秒启动</span><br><span class="line">容器使用宿主操作系统的内核，虚拟机是完全独立的内核</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念:"></a>5.基本概念:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">镜像： docker images,每个镜像都可能依赖一个或多个下层的镜像组成另一个镜像，AUFS文件系统</span><br><span class="line">仓库：Docker registry 集中放镜像的地方</span><br><span class="line">容器：docker containers，镜像运行后的进程</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-docker安装与配置"><a href="#6-docker安装与配置" class="headerlink" title="6.docker安装与配置:"></a>6.docker安装与配置:</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/09/docker/">展开全文 >></a>
         </p>
       
 
@@ -3061,105 +3182,6 @@
 
 
   
-    <article id="post-docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/09/docker/">Docker</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/09/docker/" class="archive-article-date">
-  	<time datetime="2021-11-09T14:30:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h2 id="1-docker-历史"><a href="#1-docker-历史" class="headerlink" title="1.docker 历史:"></a>1.docker 历史:</h2><ul>
-<li>2013 ~ 开源应用容器引擎，go语言开发，可以让开发者打包他们的应用及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的系统</li>
-</ul>
-<h2 id="2-docker-优点"><a href="#2-docker-优点" class="headerlink" title="2.docker 优点:"></a>2.docker 优点:</h2><ul>
-<li>快速交付应用，打包快，加快测试，加快发布，缩短交付周期</li>
-<li>复杂环境管理，应用隔离，开发环境/测试环境/线上环境</li>
-<li>轻量级：对系统来说，一个docker只是一个进程，一个系统可以运行上千个容器</li>
-</ul>
-<h2 id="3-docker-架构"><a href="#3-docker-架构" class="headerlink" title="3. docker 架构:"></a>3. docker 架构:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- client:</span><br><span class="line">	docker build</span><br><span class="line">	docker pull</span><br><span class="line">	docker run</span><br><span class="line">	</span><br><span class="line">- docker_host:</span><br><span class="line">	docker_dameon</span><br><span class="line">	</span><br><span class="line">- registry:</span><br><span class="line">	下载。。。</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-docker与虚拟机的区别"><a href="#4-docker与虚拟机的区别" class="headerlink" title="4.docker与虚拟机的区别:"></a>4.docker与虚拟机的区别:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">容器与容器只是进程的隔离，虚拟机则是完全的资源隔离</span><br><span class="line">虚拟机启动慢，可能要几分钟，docker秒启动</span><br><span class="line">容器使用宿主操作系统的内核，虚拟机是完全独立的内核</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念:"></a>5.基本概念:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">镜像： docker images,每个镜像都可能依赖一个或多个下层的镜像组成另一个镜像，AUFS文件系统</span><br><span class="line">仓库：Docker registry 集中放镜像的地方</span><br><span class="line">容器：docker containers，镜像运行后的进程</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-docker安装与配置"><a href="#6-docker安装与配置" class="headerlink" title="6.docker安装与配置:"></a>6.docker安装与配置:</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/09/docker/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-exercises" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -3626,7 +3648,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+                <a href="javascript:void(0)" class="js-tag color1">自动化测试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3634,7 +3656,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">自动化测试</a>
+                <a href="javascript:void(0)" class="js-tag color3">随笔</a>
               </li>
             
             <div class="clearfix"></div>
