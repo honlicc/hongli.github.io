@@ -63,8 +63,8 @@ class FindElementsDemo(object):
                 Ypoint = (int(coord[3]) - int(coord[1])) / 2.0 + int(coord[1])
 
                 return Xpoint, Ypoint
-				
-	def __elements(self, attrib, name):
+
+    def __elements(self, attrib, name):
         """
         同属性多个元素，返回坐标元组列表
         """
