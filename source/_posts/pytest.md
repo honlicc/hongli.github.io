@@ -142,7 +142,7 @@ test_class.py::TestClass::test_three PASSED                              [100%]
 | 类         |Test开头|
 
 
-**注：测试勒种不可用__init__构造函数**
+**注：测试类种不可用__init__构造函数**
 
 
 
@@ -151,8 +151,8 @@ test_class.py::TestClass::test_three PASSED                              [100%]
 
 * 运行包下所有用例：pytest/py.test [包名]
 * 单独运行一个pytest模块：pytest 文件名.py
-* 运行某个模块里的某个类，pytest 文件夹.py::类名
-* 运行某个模块里面某个类的某个方法 pytest 文件名.py::类名::方法名:
+* 运行某个模块里的某个类：pytest 文件夹.py::类名
+* 运行某个模块里面某个类的某个方法： pytest 文件名.py::类名::方法名:
 
 示例:
 我们在项目目录中分别创建两个py文件并复制如下代码：
@@ -351,6 +351,180 @@ FAILED test_sample.py::TestCase::test_four - AssertionError: assert False
 
 ```
 可以看到只执行了 test_sample.py->TestClass->test_four 这一条case
+
+
+
+### fixTure:测试装置介绍(前置、后置条件、装饰器)
+| 类型       | 规则                   |
+|:------|:----------------|
+| setup_module/teardown_module         |全局模块级,模块始末，全局的(优先级最高)|
+| setup_function/teardown_function |函数级/在类外,只对函数用例生效(不在类中)|
+| setup_class/teardown_class          |类级，只在类中前后运行一次(在类中)|
+| setup_method/teardown_method         | 方法级、类中的每个方法执行前后,开始于方法始末(在类中)|
+| setup/teardown         |在类中，运行在调用方法前后(重点)，只在类中前后运行一次(在类中)|
+
+
+* 先看下 **setup_function/teardown_function** 与case的执行关系
+
+创建测试文件test_setup_teardown.py，粘贴如下代码：
+
+```angular2html
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+
+def test_case_first():
+    print("test case first")
+
+
+def test_case_second():
+    print("test case second")
+
+
+def setup_function():
+    print("资源准备：setup function")
+
+
+def teardown_function():
+    print("资源消毁：teardown function")
+
+
+```
+
+命令：(运行模块里面所有case, 注：[-vs] 参数,展示详细的执行过程)
+```angular2html
+pytest test_steup_teardown.py -vs
+```
+
+输出：
+```angular2html
+================================================= test session starts =================================================
+platform win32 -- Python 3.10.1, pytest-6.2.5, py-1.11.0, pluggy-1.0.0 -- C:\Users\Administrator\AppData\Local\Programs\Python\Python310\python.exe
+cachedir: .pytest_cache
+rootdir: E:\study\test20\test_pytest, configfile: pytest.ini
+plugins: allure-pytest-2.9.45
+collected 2 items
+
+test_steup_teardown.py::test_case_first 资源准备：setup function
+test case first
+PASSED资源消毁：teardown function
+
+test_steup_teardown.py::test_case_second 资源准备：setup function
+test case second
+PASSED资源消毁：teardown function
+
+
+================================================== 2 passed in 0.03s ==================================================
+```
+
+分析：
+可以看到，当执行 case **test_case_first** 之前，首先执行了 **setup_function**，输出了 **资源准备：setup function**，随后执行 case **test_case_first**，输出了 **test case first** ，最后执行了 **teardown_function**，输出了 **资源消毁：teardown function**。
+接着又开始执行case **test_case_second**,和执行 **test_case_first**一样，先执行**setup_function**，其次执行case **test_case_second**,最后执行**teardown_function**
+
+结论：
+setup_function：在每一条case执行之前调用
+teardown_function：在每一条case执行之后调用
+
+* 再看下 **setup_module/teardown_module** 与**setup_function/teardown_function** 和case的执行关系
+
+在测试文件中test_setup_teardown.py，粘贴如下代码：
+
+```angular2html
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+
+# 模块级别,只被调用一次
+def setup_module():
+    print("资源准备：setup module")
+
+
+def teardown_module():
+    print("资源准备：teardown module")
+
+
+def test_case_first():
+    print("test case first")
+
+
+def test_case_second():
+    print("test case second")
+
+
+def setup_function():
+    print("资源准备：setup function")
+
+
+def teardown_function():
+    print("资源消毁：teardown function")
+```
+
+
+命令：(运行模块里面所有case, 注：[-vs] 参数,展示详细的执行过程)
+```angular2html
+pytest test_steup_teardown.py -vs
+```
+
+输出：
+```angular2html
+====================================================== test session starts ======================================================
+platform win32 -- Python 3.10.1, pytest-6.2.5, py-1.11.0, pluggy-1.0.0 -- C:\Users\Administrator\AppData\Local\Programs\Python\Pyt
+hon310\python.exe
+cachedir: .pytest_cache
+rootdir: E:\study\test20\test_pytest, configfile: pytest.ini
+plugins: allure-pytest-2.9.45
+collected 2 items                                                                                                                
+
+test_steup_teardown.py::test_case_first 资源准备：setup module
+资源准备：setup function
+test case first
+PASSED资源消毁：teardown function
+
+test_steup_teardown.py::test_case_second 资源准备：setup function
+test case second
+PASSED资源消毁：teardown function
+资源准备：teardown module
+
+
+======================================================= 2 passed in 0.01s =======================================================
+
+```
+
+分析：
+可以看到执行顺序为 **setup_module**->**setup_function**->**test_case_first**->**teardown_function**->**setup_function**->**test_case_second**->**teardown_function**->**teardown_module**
+结论：
+setup_module：全局模块级,模块最开始，全局的(优先级最高)，类似于 unittest的 setUpClass
+setup_function：在每一条case执行之前调用，类似于 unittest的 setUp
+teardown_function：在每一条case执行之后调用，类似于 unittest的 tearDown
+teardown_module：全局模块级,模块最末尾，全局的(优先级最高)，类似于 unittest的 tearDownClass
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 **持续补充ing~**
 。。。
