@@ -16,7 +16,7 @@
 <meta property="og:description" content="Pytest：注：本文内容较长，建议收藏&#x2F;订阅后慢慢学习 前言： 自动化测试前：需要提前准备好测试数据，测试完成后，需要自动清里测试脏数据，有没有更好用的框架？ 自动化测试中：需要使用多套测试数据实现用例的参数化，有没有更便捷的方式？ 自动化测试后：需要自动生成优雅，简洁的测试报告，有没有更好的生成办法？  Pytest: pytest能够支持简单的单元测试和复杂的功能测试； pytest可以结合">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-11-04T11:38:24.000Z">
-<meta property="article:modified_time" content="2022-01-04T15:26:05.276Z">
+<meta property="article:modified_time" content="2022-03-01T16:39:48.720Z">
 <meta property="article:author" content="honlicc">
 <meta property="article:tag" content="自动化测试">
 <meta name="twitter:card" content="summary">
@@ -242,12 +242,12 @@
 <td align="left">Test开头</td>
 </tr>
 </tbody></table>
-<p><strong>注：测试勒种不可用__init__构造函数</strong></p>
+<p><strong>注：测试类种不可用__init__构造函数</strong></p>
 <h3 id="运行多条用例："><a href="#运行多条用例：" class="headerlink" title="运行多条用例："></a>运行多条用例：</h3><ul>
 <li>运行包下所有用例：pytest/py.test [包名]</li>
 <li>单独运行一个pytest模块：pytest 文件名.py</li>
-<li>运行某个模块里的某个类，pytest 文件夹.py::类名</li>
-<li>运行某个模块里面某个类的某个方法 pytest 文件名.py::类名::方法名:</li>
+<li>运行某个模块里的某个类：pytest 文件夹.py::类名</li>
+<li>运行某个模块里面某个类的某个方法： pytest 文件名.py::类名::方法名:</li>
 </ul>
 <p>示例:<br>我们在项目目录中分别创建两个py文件并复制如下代码：<br>test_sample.py</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line">def test_one():</span><br><span class="line">    print(&quot;正在执行----test_one&quot;)</span><br><span class="line">    x = &quot;this&quot;</span><br><span class="line">    assert &#x27;h&#x27; in x</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def test_two():</span><br><span class="line">    print(&quot;正在执行----test_two&quot;)</span><br><span class="line">    x = &quot;hello&quot;</span><br><span class="line">    assert hasattr(x, &#x27;check&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class TestCase():</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def test_three(self):</span><br><span class="line">        print(&quot;正在执行----test_three&quot;)</span><br><span class="line">        x = &quot;this&quot;</span><br><span class="line">        assert &#x27;h&#x27; in x</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def test_four(self):</span><br><span class="line">        print(&quot;正在执行----test_four&quot;)</span><br><span class="line">        x = &quot;hello&quot;</span><br><span class="line">        assert hasattr(x, &#x27;check&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
@@ -281,6 +281,62 @@
 <p>输出：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">===================================== test session starts ================================</span><br><span class="line">platform win32 -- Python 3.10.1, pytest-6.2.5, py-1.11.0, pluggy-1.0.0</span><br><span class="line">rootdir: E:\study\test20\test_pytest_demo</span><br><span class="line">plugins: allure-pytest-2.9.45</span><br><span class="line">collected 1 item                                                                                                                                                                                          </span><br><span class="line"></span><br><span class="line">test_sample.py F                                                                                                                                                                                    [100%]</span><br><span class="line"></span><br><span class="line">============================================= FAILURES ====================================</span><br><span class="line">________________________________________ TestCase.test_four _______________________________</span><br><span class="line"></span><br><span class="line">self = &lt;test_pytest_demo.test_sample.TestCase object at 0x0000020DF29659C0&gt;</span><br><span class="line"></span><br><span class="line">    def test_four(self):</span><br><span class="line">        print(&quot;正在执行----test_four&quot;)</span><br><span class="line">        x = &quot;hello&quot;</span><br><span class="line">&gt;       assert hasattr(x, &#x27;check&#x27;)</span><br><span class="line">E       AssertionError: assert False</span><br><span class="line">E        +  where False = hasattr(&#x27;hello&#x27;, &#x27;check&#x27;)</span><br><span class="line"></span><br><span class="line">test_sample.py:31: AssertionError</span><br><span class="line">-------------------------------------------- Captured stdout call ---------------------------</span><br><span class="line">正在执行----test_four</span><br><span class="line">=========================================== short test summary info =========================</span><br><span class="line">FAILED test_sample.py::TestCase::test_four - AssertionError: assert False</span><br><span class="line">============================================== 1 failed in 0.05s ============================</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>可以看到只执行了 test_sample.py-&gt;TestClass-&gt;test_four 这一条case</p>
+<h3 id="fixTure-测试装置介绍-前置、后置条件、装饰器"><a href="#fixTure-测试装置介绍-前置、后置条件、装饰器" class="headerlink" title="fixTure:测试装置介绍(前置、后置条件、装饰器)"></a>fixTure:测试装置介绍(前置、后置条件、装饰器)</h3><table>
+<thead>
+<tr>
+<th align="left">类型</th>
+<th align="left">规则</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">setup_module/teardown_module</td>
+<td align="left">全局模块级,模块始末，全局的(优先级最高)</td>
+</tr>
+<tr>
+<td align="left">setup_function/teardown_function</td>
+<td align="left">函数级/在类外,只对函数用例生效(不在类中)</td>
+</tr>
+<tr>
+<td align="left">setup_class/teardown_class</td>
+<td align="left">类级，只在类中前后运行一次(在类中)</td>
+</tr>
+<tr>
+<td align="left">setup_method/teardown_method</td>
+<td align="left">方法级、类中的每个方法执行前后,开始于方法始末(在类中)</td>
+</tr>
+<tr>
+<td align="left">setup/teardown</td>
+<td align="left">在类中，运行在调用方法前后(重点)，只在类中前后运行一次(在类中)</td>
+</tr>
+</tbody></table>
+<ul>
+<li>先看下 <strong>setup_function/teardown_function</strong> 与case的执行关系</li>
+</ul>
+<p>创建测试文件test_setup_teardown.py，粘贴如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def test_case_first():</span><br><span class="line">    print(&quot;test case first&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def test_case_second():</span><br><span class="line">    print(&quot;test case second&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def setup_function():</span><br><span class="line">    print(&quot;资源准备：setup function&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def teardown_function():</span><br><span class="line">    print(&quot;资源消毁：teardown function&quot;)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>命令：(运行模块里面所有case, 注：[-vs] 参数,展示详细的执行过程)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest test_steup_teardown.py -vs</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">================================================= test session starts =================================================</span><br><span class="line">platform win32 -- Python 3.10.1, pytest-6.2.5, py-1.11.0, pluggy-1.0.0 -- C:\Users\Administrator\AppData\Local\Programs\Python\Python310\python.exe</span><br><span class="line">cachedir: .pytest_cache</span><br><span class="line">rootdir: E:\study\test20\test_pytest, configfile: pytest.ini</span><br><span class="line">plugins: allure-pytest-2.9.45</span><br><span class="line">collected 2 items</span><br><span class="line"></span><br><span class="line">test_steup_teardown.py::test_case_first 资源准备：setup function</span><br><span class="line">test case first</span><br><span class="line">PASSED资源消毁：teardown function</span><br><span class="line"></span><br><span class="line">test_steup_teardown.py::test_case_second 资源准备：setup function</span><br><span class="line">test case second</span><br><span class="line">PASSED资源消毁：teardown function</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">================================================== 2 passed in 0.03s ==================================================</span><br></pre></td></tr></table></figure>
+
+<p>分析：<br>可以看到，当执行 case <strong>test_case_first</strong> 之前，首先执行了 <strong>setup_function</strong>，输出了 <strong>资源准备：setup function</strong>，随后执行 case <strong>test_case_first</strong>，输出了 <strong>test case first</strong> ，最后执行了 <strong>teardown_function</strong>，输出了 <strong>资源消毁：teardown function</strong>。<br>接着又开始执行case <strong>test_case_second</strong>,和执行 <strong>test_case_first</strong>一样，先执行<strong>setup_function</strong>，其次执行case <strong>test_case_second</strong>,最后执行<strong>teardown_function</strong></p>
+<p>结论：<br>setup_function：在每一条case执行之前调用<br>teardown_function：在每一条case执行之后调用</p>
+<ul>
+<li>再看下 <strong>setup_module/teardown_module</strong> 与<strong>setup_function/teardown_function</strong> 和case的执行关系</li>
+</ul>
+<p>在测试文件中test_setup_teardown.py，粘贴如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 模块级别,只被调用一次</span><br><span class="line">def setup_module():</span><br><span class="line">    print(&quot;资源准备：setup module&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def teardown_module():</span><br><span class="line">    print(&quot;资源准备：teardown module&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def test_case_first():</span><br><span class="line">    print(&quot;test case first&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def test_case_second():</span><br><span class="line">    print(&quot;test case second&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def setup_function():</span><br><span class="line">    print(&quot;资源准备：setup function&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def teardown_function():</span><br><span class="line">    print(&quot;资源消毁：teardown function&quot;)</span><br></pre></td></tr></table></figure>
+
+
+<p>命令：(运行模块里面所有case, 注：[-vs] 参数,展示详细的执行过程)</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest test_steup_teardown.py -vs</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">====================================================== test session starts ======================================================</span><br><span class="line">platform win32 -- Python 3.10.1, pytest-6.2.5, py-1.11.0, pluggy-1.0.0 -- C:\Users\Administrator\AppData\Local\Programs\Python\Pyt</span><br><span class="line">hon310\python.exe</span><br><span class="line">cachedir: .pytest_cache</span><br><span class="line">rootdir: E:\study\test20\test_pytest, configfile: pytest.ini</span><br><span class="line">plugins: allure-pytest-2.9.45</span><br><span class="line">collected 2 items                                                                                                                </span><br><span class="line"></span><br><span class="line">test_steup_teardown.py::test_case_first 资源准备：setup module</span><br><span class="line">资源准备：setup function</span><br><span class="line">test case first</span><br><span class="line">PASSED资源消毁：teardown function</span><br><span class="line"></span><br><span class="line">test_steup_teardown.py::test_case_second 资源准备：setup function</span><br><span class="line">test case second</span><br><span class="line">PASSED资源消毁：teardown function</span><br><span class="line">资源准备：teardown module</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">======================================================= 2 passed in 0.01s =======================================================</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>分析：<br>可以看到执行顺序为 <strong>setup_module</strong>-&gt;<strong>setup_function</strong>-&gt;<strong>test_case_first</strong>-&gt;<strong>teardown_function</strong>-&gt;<strong>setup_function</strong>-&gt;<strong>test_case_second</strong>-&gt;<strong>teardown_function</strong>-&gt;<strong>teardown_module</strong><br>结论：<br>setup_module：全局模块级,模块最开始，全局的(优先级最高)，类似于 unittest的 setUpClass<br>setup_function：在每一条case执行之前调用，类似于 unittest的 setUp<br>teardown_function：在每一条case执行之后调用，类似于 unittest的 tearDown<br>teardown_module：全局模块级,模块最末尾，全局的(优先级最高)，类似于 unittest的 tearDownClass</p>
 <p><strong>持续补充ing~</strong><br>。。。</p>
 <p>。。。</p>
 <h3 id="fixture："><a href="#fixture：" class="headerlink" title="fixture："></a>fixture：</h3>
@@ -544,6 +600,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdnow</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">adb</a>
               </li>
              
@@ -552,15 +612,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdnow</a>
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">每日一题</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
