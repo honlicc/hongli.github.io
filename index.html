@@ -62,7 +62,7 @@
 			</ul>
 		</nav>
 		<nav>
-			文章数 12
+			文章数 13
 		</nav>
 
 		<nav class="header-smart-menu">
@@ -158,6 +158,426 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-tkinter" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/22/tkinter/">Python GUI编程(Tkinter)</a>
+    </h1>
+  
+
+        
+        <a href="/2022/03/22/tkinter/" class="archive-article-date">
+  	<time datetime="2022-03-22T03:06:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.10/library/tk.html">点我-&gt;Tkinter官方文档地址</a><br><a target="_blank" rel="noopener" href="https://www.runoob.com/python/python-gui-tkinter.html">点我-&gt;菜鸟编程</a></p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
+<li><a href="#%E7%AC%AC%E4%B8%80%E4%B8%AATkinter%E7%A8%8B%E5%BA%8F">第一个Tkinter程序</a></li>
+<li><a href="#%E4%B8%BB%E7%AA%97%E5%8F%A3%E8%AE%BE%E7%BD%AE">主窗口设置</a></li>
+<li><a href="#%E9%80%9A%E8%BF%87%E7%B1%BB%E6%9D%A5%E5%AE%9E%E7%8E%B0GUI%E7%A8%8B%E5%BA%8F">通过类来实现GUI程序</a></li>
+<li><a href="#Tkinter%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%8415%E4%B8%AA%E6%8E%A7%E4%BB%B6">常用控件列表</a></li>
+<li><a href="#Button%E6%8E%A7%E4%BB%B6">Button控件</a></li>
+<li><a href="#Label%E6%8E%A7%E4%BB%B6">Label控件</a></li>
+</ul>
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>GUI编程：图形用户界面编程<br>Tkinter库：是 Python 的标准 GUI 库。Python 使用 Tkinter 可以快速的创建 GUI 应用程序。支持跨平台的GUI程序开发，适合小型的GUI编程，也是特别适合初学者学习的GUI编程。</p>
+<h3 id="第一个Tkinter程序"><a href="#第一个Tkinter程序" class="headerlink" title="第一个Tkinter程序"></a>第一个Tkinter程序</h3><p>tkinter模块创建GUI程序主要包含以下4个步骤：<br>1.创建主窗口程序:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">from tkinter import *</span><br><span class="line">root = Tk()</span><br></pre></td></tr></table></figure>
+
+<p>2.在主窗口中添加各种组件:<br>文本框(Label)、按钮(Button)等。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">btn=Button(root)</span><br></pre></td></tr></table></figure>
+
+<p>3.通过布局管理器，来管理组件的位置、大小。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">btn.pack()</span><br></pre></td></tr></table></figure>
+
+<p>4.事件处理:</p>
+<ul>
+<li>通过绑定事件处理程序，响应用户操作(单击、双击等)</li>
+<li>调用组件的mainloop,进入事件循环</li>
+</ul>
+<p>示例代码：<br>test01.py</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">from tkinter import *</span><br><span class="line">from tkinter import messagebox</span><br><span class="line"></span><br><span class="line"><span class="comment"># root：主窗口</span></span><br><span class="line">root = Tk()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 组件 button</span></span><br><span class="line">btn = Button(root)</span><br><span class="line">btn[<span class="string">&quot;text&quot;</span>] = <span class="string">&quot;hello word&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 布局管理器</span></span><br><span class="line">btn.pack()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 事件  e:代表事件对象</span></span><br><span class="line">def <span class="built_in">test</span>(e):</span><br><span class="line">    messagebox.showinfo(<span class="string">&quot;Message&quot;</span>, <span class="string">&quot;这是一个按钮&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;点击按钮&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 事件绑定</span></span><br><span class="line">btn.bind(<span class="string">&quot;&lt;Button-1&gt;&quot;</span>, <span class="built_in">test</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用组件的mainloop,进入事件循环。</span></span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure>
+
+<h3 id="主窗口设置"><a href="#主窗口设置" class="headerlink" title="主窗口设置"></a>主窗口设置</h3><p>主窗口的大小、位置等，通过geometry(“wxh ± x ± y”)进行设置，w表示宽度，h表示高度.  (注：宽x高,注,此处不能为 “*”,必须使用 “x”)<br>+x表示距屏幕左边的距离，-x表示距屏幕右边的距离。<br>+y表示距屏幕上边的距离，-h表示距屏幕下边的距离。</p>
+<p>示例代码：<br>test02.py</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">from tkinter import *</span><br><span class="line">from tkinter import messagebox</span><br><span class="line"></span><br><span class="line"><span class="comment"># root：主窗口</span></span><br><span class="line">root = Tk()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置程序窗口title</span></span><br><span class="line">root.title(<span class="string">&quot;第一个GUI程序&quot;</span>)</span><br><span class="line"><span class="comment"># 设置窗口大小以及在屏幕上的位置 ，宽x高,注,此处不能为 &quot;*&quot;,必须使用 &quot;x&quot;</span></span><br><span class="line">root.geometry(<span class="string">&quot;600x400+400+200&quot;</span>)</span><br><span class="line"><span class="comment"># 更改左上角窗口的的icon图标</span></span><br><span class="line">root.iconbitmap(<span class="string">&#x27;C:/Users/Administrator/Desktop/test.ico&#x27;</span>)</span><br><span class="line"><span class="comment"># 设置主窗口的背景颜色,颜色值可以是英文单词，或者颜色值的16进制数</span></span><br><span class="line">root[<span class="string">&quot;background&quot;</span>] = <span class="string">&quot;#C9C9C9&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 组件 button</span></span><br><span class="line">btn = Button(root)</span><br><span class="line">btn[<span class="string">&quot;text&quot;</span>] = <span class="string">&quot;hello word&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 布局管理器</span></span><br><span class="line">btn.pack()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 事件  e:代表事件对象</span></span><br><span class="line">def <span class="built_in">test</span>(e):</span><br><span class="line">    messagebox.showinfo(<span class="string">&quot;Message&quot;</span>, <span class="string">&quot;这是一个按钮&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;点击按钮&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># 事件绑定</span></span><br><span class="line">btn.bind(<span class="string">&quot;&lt;Button-1&gt;&quot;</span>, <span class="built_in">test</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 调用组件的mainloop,进入事件循环。</span></span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure>
+
+<h3 id="通过类来实现GUI程序"><a href="#通过类来实现GUI程序" class="headerlink" title="通过类来实现GUI程序"></a>通过类来实现GUI程序</h3><p>通过Application组织整个GUI程序，类Application继承自Farme，通过继承拥有了父类的特性，通过构造函数初始化窗口中的对象，通过 createWidget()方法创建窗口中的对象。<br>Frame 是框架控件,表示一个矩形区域。一般作为容器使用。</p>
+<p>我们重写一下上面的代码<br>示例代码：<br>test03.py</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">from tkinter import *</span><br><span class="line">from tkinter import messagebox</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Applicaton(Frame):</span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        <span class="comment"># super代表的是父类的定义，而不是父类对象</span></span><br><span class="line">        super().__init__(master)</span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.createWidget()</span><br><span class="line"></span><br><span class="line">   </span><br><span class="line">    def createWidget(self):</span><br><span class="line">        self.btn = Button(self)</span><br><span class="line">        self.btn[<span class="string">&quot;text&quot;</span>] = <span class="string">&quot;hello word&quot;</span></span><br><span class="line">        self.btn.pack()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># command 绑定事件，功能同bind</span></span><br><span class="line">        self.btn[<span class="string">&quot;command&quot;</span>] = self.test</span><br><span class="line"></span><br><span class="line">    def <span class="built_in">test</span>(self):</span><br><span class="line">        messagebox.showinfo(<span class="string">&quot;Message&quot;</span>, <span class="string">&quot;这是一个按钮&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;点击按钮&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;400x330+200+300&quot;</span>)</span><br><span class="line">    app = Applicaton(master=root)</span><br><span class="line">    root.mainloop()</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Tkinter中常用的15个控件"><a href="#Tkinter中常用的15个控件" class="headerlink" title="Tkinter中常用的15个控件"></a>Tkinter中常用的15个控件</h3><table>
+<thead>
+<tr>
+<th align="left">控件</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">Button</td>
+<td align="left">按钮控件：用于增加各种按钮</td>
+</tr>
+<tr>
+<td align="left">Canvas</td>
+<td align="left">画布控件：用于在窗口上绘制图形，显示图形元素如线条或文本。</td>
+</tr>
+<tr>
+<td align="left">Checkbutton</td>
+<td align="left">多选框：用于显示多选框的工具</td>
+</tr>
+<tr>
+<td align="left">Entry</td>
+<td align="left">输入控件：显示单行文本域。它一般用于接受用户值</td>
+</tr>
+<tr>
+<td align="left">Frame</td>
+<td align="left">框架控件：在屏幕上显示一个矩形区域，多用来作为容器， 另外的窗件可以加入进来</td>
+</tr>
+<tr>
+<td align="left">Label</td>
+<td align="left">标签控件；可以显示文本和位图</td>
+</tr>
+<tr>
+<td align="left">Listbox</td>
+<td align="left">列表框控件；在Listbox窗口小部件是用来显示一个字符串列表给用户</td>
+</tr>
+<tr>
+<td align="left">Menubutton</td>
+<td align="left">菜单按钮控件，用于显示菜单项。</td>
+</tr>
+<tr>
+<td align="left">Menu</td>
+<td align="left">菜单控件；显示菜单栏,下拉菜单和弹出菜单</td>
+</tr>
+<tr>
+<td align="left">Message</td>
+<td align="left">消息控件；用来显示多行文本，与label比较类似</td>
+</tr>
+<tr>
+<td align="left">Radiobutton</td>
+<td align="left">单选按钮控件；显示一个单选的按钮状态</td>
+</tr>
+<tr>
+<td align="left">Scale</td>
+<td align="left">范围控件；显示一个数值刻度，为输出限定范围的数字区间</td>
+</tr>
+<tr>
+<td align="left">Scrollbar</td>
+<td align="left">滚动条控件，当内容超过可视化区域时使用，如列表框</td>
+</tr>
+<tr>
+<td align="left">Text</td>
+<td align="left">文本控件；用于显示多行文本</td>
+</tr>
+<tr>
+<td align="left">Toplevel</td>
+<td align="left">容器控件；用来提供一个单独的对话框，和Frame比较类似</td>
+</tr>
+<tr>
+<td align="left">Spinbox</td>
+<td align="left">输入控件；与Entry类似，但是可以指定输入范围值</td>
+</tr>
+<tr>
+<td align="left">PanedWindow</td>
+<td align="left">PanedWindow是一个窗口布局管理的插件，可以包含一个或者多个子控件</td>
+</tr>
+<tr>
+<td align="left">LabelFrame</td>
+<td align="left">labelframe 是一个简单的容器控件。常用与复杂的窗口布局</td>
+</tr>
+<tr>
+<td align="left">tkMessageBox</td>
+<td align="left">用于显示你应用程序的消息框</td>
+</tr>
+</tbody></table>
+<hr>
+<h3 id="Button控件"><a href="#Button控件" class="headerlink" title="Button控件:"></a>Button控件:</h3><p>Button: 用于增加各种按钮</p>
+<p>语法格式：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">btn=Button(master, option, ...)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>master:父容器</li>
+<li>option:可选项，即该按钮可设置的属性，通过key-value形式设置,以逗号分隔。</li>
+</ul>
+<p>option说明：</p>
+<table>
+<thead>
+<tr>
+<th align="left">可选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">activebackground</td>
+<td align="left">当鼠标放上去时，按钮的背景色</td>
+</tr>
+<tr>
+<td align="left">activeforeground</td>
+<td align="left">当鼠标放上去时，按钮的前景色</td>
+</tr>
+<tr>
+<td align="left">bd</td>
+<td align="left">按钮边框的大小，默认为 2 个像素</td>
+</tr>
+<tr>
+<td align="left">bg</td>
+<td align="left">按钮的背景色</td>
+</tr>
+<tr>
+<td align="left">command</td>
+<td align="left">按钮关联的函数，当按钮被点击时，执行该函数</td>
+</tr>
+<tr>
+<td align="left">fg</td>
+<td align="left">按钮的前景色（按钮文本的颜色）</td>
+</tr>
+<tr>
+<td align="left">font</td>
+<td align="left">文本字体</td>
+</tr>
+<tr>
+<td align="left">height</td>
+<td align="left">按钮的高度</td>
+</tr>
+<tr>
+<td align="left">highlightcolor</td>
+<td align="left">要高亮的颜色</td>
+</tr>
+<tr>
+<td align="left">image</td>
+<td align="left">按钮上要显示的图片</td>
+</tr>
+<tr>
+<td align="left">justify</td>
+<td align="left">显示多行文本的时候,设置不同行之间的对齐方式，可选项包括LEFT, RIGHT, CENTER</td>
+</tr>
+<tr>
+<td align="left">padx</td>
+<td align="left">按钮在x轴方向上的内边距(padding)，是指按钮的内容与按钮边缘的距离</td>
+</tr>
+<tr>
+<td align="left">pady</td>
+<td align="left">按钮在y轴方向上的内边距(padding)</td>
+</tr>
+<tr>
+<td align="left">relief</td>
+<td align="left">边框样式，设置控件3D效果，可选的有：FLAT、SUNKEN、RAISED、GROOVE、RIDGE。默认为 FLAT。</td>
+</tr>
+<tr>
+<td align="left">state</td>
+<td align="left">设置按钮组件状态,可选的有NORMAL、ACTIVE、 DISABLED。默认 NORMAL。</td>
+</tr>
+<tr>
+<td align="left">underline</td>
+<td align="left">下划线。默认按钮上的文本都不带下划线。取值就是带下划线的字符串索引，为 0 时，第一个字符带下划线，为 1 时，前两个字符带下划线，以此类推</td>
+</tr>
+<tr>
+<td align="left">width</td>
+<td align="left">按钮的宽度，如未设置此项，其大小以适应按钮的内容（文本或图片的大小）</td>
+</tr>
+<tr>
+<td align="left">wraplength</td>
+<td align="left">限制按钮每行显示的字符的数量</td>
+</tr>
+<tr>
+<td align="left">text</td>
+<td align="left">按钮的文本内容</td>
+</tr>
+<tr>
+<td align="left">anchor</td>
+<td align="left">锚选项，控制文本的位置，默认为中心</td>
+</tr>
+</tbody></table>
+<p>anchor:控制文本的显示位置,示意图如下：<br><img src="https://s2.loli.net/2022/03/24/5bBOQEr9jnCoivF.png"></p>
+<p>示例代码:<br>testButton.py</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">from tkinter import *</span><br><span class="line">from tkinter import messagebox</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Applicaton(Frame):</span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        <span class="comment"># super代表的是父类的定义，而不是父类对象</span></span><br><span class="line">        super().__init__(master)</span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.createWidget()</span><br><span class="line"></span><br><span class="line">    def createWidget(self):</span><br><span class="line">        self.btn = Button(self, text=<span class="string">&quot;登录&quot;</span>, <span class="built_in">command</span>=self.login)</span><br><span class="line">        self.btn.pack()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 注: PhotoImage 只能添加gif</span></span><br><span class="line">        global img</span><br><span class="line">        img = PhotoImage(file=<span class="string">&quot;c.gif&quot;</span>)</span><br><span class="line">        self.btn02 = Button(self, image=img, <span class="built_in">command</span>=self.login)</span><br><span class="line">        self.btn02.pack()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># anchor 文字在button中的位置</span></span><br><span class="line">        self.btn03 = Button(self, text=<span class="string">&quot;登录2&quot;</span>, <span class="built_in">command</span>=self.login, anchor=N,height=10,width=20)</span><br><span class="line">        self.btn03.pack()</span><br><span class="line"></span><br><span class="line">    def login(self):</span><br><span class="line">        messagebox.showinfo(<span class="string">&quot;Message&quot;</span>, <span class="string">&quot;登录成功！&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;800x530+200+300&quot;</span>)</span><br><span class="line">    app = Applicaton(master=root)</span><br><span class="line">    root.mainloop()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Label控件"><a href="#Label控件" class="headerlink" title="Label控件:"></a>Label控件:</h3><p>Label：主要用于显示文本信息，也可以显示图像信息</p>
+<p>语法格式：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lab=Label(master, option, ...)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>master:父容器</li>
+<li>option:可选项，即该标签可设置的属性，通过key-value形式设置,以逗号分隔。</li>
+</ul>
+<p>option说明：</p>
+<table>
+<thead>
+<tr>
+<th align="left">可选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">anchor</td>
+<td align="left">文本或图像在背景内容区的位置，默认为 center，可选值为（n,s,w,e,ne,nw,sw,se,center）eswn 是东南西北英文的首字母，表示：上北下南左西右东。</td>
+</tr>
+<tr>
+<td align="left">bg</td>
+<td align="left">标签背景颜色</td>
+</tr>
+<tr>
+<td align="left">bd</td>
+<td align="left">标签的大小，默认为 2 个像素</td>
+</tr>
+<tr>
+<td align="left">bitmap</td>
+<td align="left">指定标签上的位图，如果指定了图片，则该选项忽略</td>
+</tr>
+<tr>
+<td align="left">cursor</td>
+<td align="left">鼠标移动到标签时，光标的形状，可以设置为 arrow, circle, cross, plus 等。</td>
+</tr>
+<tr>
+<td align="left">font</td>
+<td align="left">设置字体。</td>
+</tr>
+<tr>
+<td align="left">fg</td>
+<td align="left">设置前景色。</td>
+</tr>
+<tr>
+<td align="left">height</td>
+<td align="left">标签的高度，默认值是 0。</td>
+</tr>
+<tr>
+<td align="left">image</td>
+<td align="left">设置标签图像。</td>
+</tr>
+<tr>
+<td align="left">justify</td>
+<td align="left">定义对齐方式，可选值有：LEFT,RIGHT,CENTER，默认为 CENTER。</td>
+</tr>
+<tr>
+<td align="left">padx</td>
+<td align="left">x 轴间距，以像素计，默认 1。</td>
+</tr>
+<tr>
+<td align="left">pady</td>
+<td align="left">y 轴间距，以像素计，默认 1。</td>
+</tr>
+<tr>
+<td align="left">relief</td>
+<td align="left">边框样式，可选的有：FLAT、SUNKEN、RAISED、GROOVE、RIDGE、SOLID。默认为 FLAT。</td>
+</tr>
+<tr>
+<td align="left">text</td>
+<td align="left">设置文本，可以包含换行符(\n)。</td>
+</tr>
+<tr>
+<td align="left">textvariable</td>
+<td align="left">标签显示 Tkinter 变量，StringVar。如果变量被修改，标签文本将自动更新。</td>
+</tr>
+<tr>
+<td align="left">underline</td>
+<td align="left">设置下划线，默认 -1，如果设置 1，则是从第二个字符开始画下划线。</td>
+</tr>
+<tr>
+<td align="left">width</td>
+<td align="left">设置标签宽度，默认值是 0，自动计算，单位以像素计。</td>
+</tr>
+<tr>
+<td align="left">wraplength</td>
+<td align="left">设置标签文本为多少行显示，默认为 0。</td>
+</tr>
+</tbody></table>
+<p>Label控件构成<br>一个控件主要由背景和前景两部分组成。其中背景由三部分构成分别是内容区域、填充区、边框，这三个区域的大小通过以下属性进行控制，如下所示：</p>
+<ul>
+<li>width/height</li>
+<li>padx/pady</li>
+<li>borderwidth<br><img src="https://s2.loli.net/2022/03/24/Ex25UOJPwoSXFuh.png"></li>
+</ul>
+<p>示例代码:<br>test_Label.py</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">from tkinter import *</span><br><span class="line">from tkinter import messagebox</span><br><span class="line"></span><br><span class="line">class Applicaton(Frame):</span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        <span class="comment"># super代表的是父类的定义，而不是父类对象</span></span><br><span class="line">        super().__init__(master)</span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.createWidget()</span><br><span class="line"></span><br><span class="line">    def createWidget(self):</span><br><span class="line">        self.label = Label(self, text=<span class="string">&quot;这是一个label&quot;</span>, width=10, height=2, <span class="built_in">bg</span>=<span class="string">&quot;black&quot;</span>, <span class="built_in">fg</span>=<span class="string">&quot;white&quot;</span>)</span><br><span class="line">        self.label.pack()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># font:设置字体</span></span><br><span class="line">        self.label02 = Label(self, text=<span class="string">&quot;这是一个label02&quot;</span>, width=30, height=2, <span class="built_in">bg</span>=<span class="string">&quot;black&quot;</span>, <span class="built_in">fg</span>=<span class="string">&quot;white&quot;</span>, font=(<span class="string">&quot;黑体&quot;</span>, 15))</span><br><span class="line">        self.label02.pack()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># image:显示图片，只支持gif(PNG貌似也可以)</span></span><br><span class="line">        global photo  <span class="comment"># 注：mainloop()属于循环执行，需要声明全局变量，否则为局部变量图片会消失</span></span><br><span class="line">        photo = PhotoImage(file=<span class="string">&quot;c.gif&quot;</span>)</span><br><span class="line">        self.label03 = Label(self, text=<span class="string">&quot;这是一个label03&quot;</span>, <span class="built_in">bg</span>=<span class="string">&quot;black&quot;</span>, <span class="built_in">fg</span>=<span class="string">&quot;white&quot;</span>, font=(<span class="string">&quot;黑体&quot;</span>, 15), image=photo)</span><br><span class="line">        self.label03.pack()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># justify:对齐方式 可选值有 LEFT,RIGHT,CENTER，默认为 CENTER。</span></span><br><span class="line">        self.label04 = Label(self, text=<span class="string">&quot;这是一个label04\n1234567890\nqwertyuio&quot;</span>, borderwidth=1, relief=<span class="string">&quot;solid&quot;</span>,</span><br><span class="line">                             justify=<span class="string">&quot;right&quot;</span>)</span><br><span class="line">        self.label04.pack()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;600x530+200+300&quot;</span>)</span><br><span class="line">    app = Applicaton(master=root)</span><br><span class="line">    root.mainloop()</span><br></pre></td></tr></table></figure>
+<h3 id="Options参数"><a href="#Options参数" class="headerlink" title="Options参数"></a>Options参数</h3><p>通过上面对Button、Label控件的学习，我们发现可以通过Options设置控件的属性，我们可以通过三种方式设置Options选项，这在其它GUI组件中用法一致。</p>
+<ol>
+<li><p>创建对象时，使用关键字参数(key-value)</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">btn01=Button(master,<span class="built_in">fg</span>=<span class="string">&quot;red&quot;</span>,<span class="built_in">bg</span>=<span class="string">&quot;black&quot;</span>)</span><br></pre></td></tr></table></figure></li>
+<li><p>创建对象后，使用字典索引方式</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">btn02=Button(master)</span><br><span class="line">btn02[<span class="string">&quot;fg&quot;</span>]=<span class="string">&quot;red&quot;</span></span><br><span class="line">btn02[<span class="string">&quot;bg&quot;</span>]=<span class="string">&quot;black&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>创建对象后，使用config方式</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">btn03=Button(master)</span><br><span class="line">btn03.config(<span class="built_in">fg</span>=<span class="string">&quot;red&quot;</span>,<span class="built_in">bg</span>=<span class="string">&quot;black&quot;</span>)</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>示例代码:<br>test_Options.py</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import *</span><br><span class="line">from tkinter import messagebox</span><br><span class="line"></span><br><span class="line">class Application(tk.Frame):</span><br><span class="line">    <span class="string">&quot;&quot;</span><span class="string">&quot;GUI程序类&quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        super().__init__(master)  <span class="comment"># super()代表父类的定义</span></span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.createWidget()</span><br><span class="line"></span><br><span class="line">    def createWidget(self):</span><br><span class="line">        <span class="string">&quot;&quot;</span><span class="string">&quot;添加组件&quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 关键字参数</span></span><br><span class="line">        fred01=Button(self,<span class="built_in">fg</span>=<span class="string">&#x27;red&#x27;</span>,<span class="built_in">bg</span>=<span class="string">&quot;blue&quot;</span>)</span><br><span class="line">        fred01.pack()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 创建对象后，使用字典索引方式</span></span><br><span class="line">        fred02=Button(self)</span><br><span class="line">        fred02[<span class="string">&quot;fg&quot;</span>]=<span class="string">&quot;red&quot;</span></span><br><span class="line">        fred02[<span class="string">&quot;bg&quot;</span>]=<span class="string">&quot;blue&quot;</span></span><br><span class="line">        fred02.pack</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 创建对象后，使用config()方法</span></span><br><span class="line">        fred03 = Button(self)</span><br><span class="line">        fred03.config(<span class="built_in">fg</span>=<span class="string">&#x27;red&#x27;</span>,<span class="built_in">bg</span>=<span class="string">&#x27;blue&#x27;</span>)</span><br><span class="line">        fred03.pack()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">    root = tk.Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;800x900+800+300&quot;</span>)</span><br><span class="line">    root.title(<span class="string">&quot;GUI程序类测试&quot;</span>)</span><br><span class="line">    app = Application(master=root)</span><br><span class="line">    root.mainloop()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">GUI</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/03/22/tkinter/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-测试报告优化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
@@ -967,6 +1387,105 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/11/26/adbTools/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/09/docker/">Docker</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/09/docker/" class="archive-article-date">
+  	<time datetime="2021-11-09T14:30:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="1-docker-历史"><a href="#1-docker-历史" class="headerlink" title="1.docker 历史:"></a>1.docker 历史:</h2><ul>
+<li>2013 ~ 开源应用容器引擎，go语言开发，可以让开发者打包他们的应用及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的系统</li>
+</ul>
+<h2 id="2-docker-优点"><a href="#2-docker-优点" class="headerlink" title="2.docker 优点:"></a>2.docker 优点:</h2><ul>
+<li>快速交付应用，打包快，加快测试，加快发布，缩短交付周期</li>
+<li>复杂环境管理，应用隔离，开发环境/测试环境/线上环境</li>
+<li>轻量级：对系统来说，一个docker只是一个进程，一个系统可以运行上千个容器</li>
+</ul>
+<h2 id="3-docker-架构"><a href="#3-docker-架构" class="headerlink" title="3. docker 架构:"></a>3. docker 架构:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- client:</span><br><span class="line">	docker build</span><br><span class="line">	docker pull</span><br><span class="line">	docker run</span><br><span class="line">	</span><br><span class="line">- docker_host:</span><br><span class="line">	docker_dameon</span><br><span class="line">	</span><br><span class="line">- registry:</span><br><span class="line">	下载。。。</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-docker与虚拟机的区别"><a href="#4-docker与虚拟机的区别" class="headerlink" title="4.docker与虚拟机的区别:"></a>4.docker与虚拟机的区别:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">容器与容器只是进程的隔离，虚拟机则是完全的资源隔离</span><br><span class="line">虚拟机启动慢，可能要几分钟，docker秒启动</span><br><span class="line">容器使用宿主操作系统的内核，虚拟机是完全独立的内核</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念:"></a>5.基本概念:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">镜像： docker images,每个镜像都可能依赖一个或多个下层的镜像组成另一个镜像，AUFS文件系统</span><br><span class="line">仓库：Docker registry 集中放镜像的地方</span><br><span class="line">容器：docker containers，镜像运行后的进程</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-docker安装与配置"><a href="#6-docker安装与配置" class="headerlink" title="6.docker安装与配置:"></a>6.docker安装与配置:</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/09/docker/">展开全文 >></a>
         </p>
       
 
@@ -3083,105 +3602,6 @@
 
 
   
-    <article id="post-docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/09/docker/">Docker</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/09/docker/" class="archive-article-date">
-  	<time datetime="2021-11-09T14:30:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h2 id="1-docker-历史"><a href="#1-docker-历史" class="headerlink" title="1.docker 历史:"></a>1.docker 历史:</h2><ul>
-<li>2013 ~ 开源应用容器引擎，go语言开发，可以让开发者打包他们的应用及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的系统</li>
-</ul>
-<h2 id="2-docker-优点"><a href="#2-docker-优点" class="headerlink" title="2.docker 优点:"></a>2.docker 优点:</h2><ul>
-<li>快速交付应用，打包快，加快测试，加快发布，缩短交付周期</li>
-<li>复杂环境管理，应用隔离，开发环境/测试环境/线上环境</li>
-<li>轻量级：对系统来说，一个docker只是一个进程，一个系统可以运行上千个容器</li>
-</ul>
-<h2 id="3-docker-架构"><a href="#3-docker-架构" class="headerlink" title="3. docker 架构:"></a>3. docker 架构:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- client:</span><br><span class="line">	docker build</span><br><span class="line">	docker pull</span><br><span class="line">	docker run</span><br><span class="line">	</span><br><span class="line">- docker_host:</span><br><span class="line">	docker_dameon</span><br><span class="line">	</span><br><span class="line">- registry:</span><br><span class="line">	下载。。。</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-docker与虚拟机的区别"><a href="#4-docker与虚拟机的区别" class="headerlink" title="4.docker与虚拟机的区别:"></a>4.docker与虚拟机的区别:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">容器与容器只是进程的隔离，虚拟机则是完全的资源隔离</span><br><span class="line">虚拟机启动慢，可能要几分钟，docker秒启动</span><br><span class="line">容器使用宿主操作系统的内核，虚拟机是完全独立的内核</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念:"></a>5.基本概念:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">镜像： docker images,每个镜像都可能依赖一个或多个下层的镜像组成另一个镜像，AUFS文件系统</span><br><span class="line">仓库：Docker registry 集中放镜像的地方</span><br><span class="line">容器：docker containers，镜像运行后的进程</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-docker安装与配置"><a href="#6-docker安装与配置" class="headerlink" title="6.docker安装与配置:"></a>6.docker安装与配置:</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/09/docker/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-exercises" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -3203,7 +3623,41 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h3 id="1-比特求和："><a href="#1-比特求和：" class="headerlink" title="1. 比特求和："></a>1. 比特求和：</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">描述： 给定一个正整数 n,请编写一个函数，计算它的二进制形式的所有数字的和</span><br><span class="line"></span><br><span class="line">示例：</span><br><span class="line">输入：1234</span><br><span class="line">输出：5  # 1234--转二进制--&gt; 10011010010，5个1 和为 5</span><br><span class="line"></span><br><span class="line">def count_bits(n:int)-&gt;int:</span><br><span class="line"></span><br><span class="line">	...你的代码...</span><br><span class="line">	</span><br><span class="line">assert count_bits(4)==1</span><br><span class="line">assert count_bits(9)==2</span><br><span class="line">assert count_bits(10)==2</span><br><span class="line">assert count_bits(1234)==5</span><br><span class="line">---------------------------------------------------------------------------------</span><br><span class="line">思路:</span><br><span class="line"></span><br><span class="line">二进制均为1或0组成，只需统计处1出现的次数便可得到结果</span><br><span class="line"></span><br><span class="line">def count_bits(n:int)-&gt;int:</span><br><span class="line">	return bin(n).count(&quot;1&quot;)</span><br></pre></td></tr></table></figure>
+<h3 id="1-比特求和："><a href="#1-比特求和：" class="headerlink" title="1. 比特求和："></a>1. 比特求和：</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">描述： 给定一个正整数 n,请编写一个函数，计算它的二进制形式的所有数字的和</span><br><span class="line">示例：</span><br><span class="line">输入：1234</span><br><span class="line">输出：5  <span class="comment"># 1234--转二进制--&gt; 10011010010，5个1 和为 5</span></span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">def count_bits(n:int)-&gt;int:</span><br><span class="line"></span><br><span class="line">	...你的代码...</span><br><span class="line">	</span><br><span class="line">assert count_bits(4)==1</span><br><span class="line">assert count_bits(9)==2</span><br><span class="line">assert count_bits(10)==2</span><br><span class="line">assert count_bits(1234)==5</span><br><span class="line">-----------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">思路:</span><br><span class="line"></span><br><span class="line">二进制均为1或0组成，只需统计处1出现的次数便可得到结果</span><br><span class="line"></span><br><span class="line">代码实现:</span><br><span class="line">def count_bits(n:int)-&gt;int:</span><br><span class="line">	<span class="built_in">return</span> bin(n).count(<span class="string">&quot;1&quot;</span>)</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="2-求最长子串的长度。"><a href="#2-求最长子串的长度。" class="headerlink" title="2.求最长子串的长度。"></a>2.求最长子串的长度。</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">描述：给定一个字符串 s ，请找出其中不含有重复字符的最长子串的长度。</span><br><span class="line"></span><br><span class="line">示例 1:</span><br><span class="line">输入: s = <span class="string">&quot;abcabcbb&quot;</span></span><br><span class="line">输出: 3 </span><br><span class="line">解释: 因为无重复字符的最长子串是 <span class="string">&quot;abc&quot;</span>，所以其长度为 3。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">示例 2:</span><br><span class="line">输入: s = <span class="string">&quot;bbbbb&quot;</span></span><br><span class="line">输出: 1</span><br><span class="line">解释: 因为无重复字符的最长子串是 <span class="string">&quot;b&quot;</span>，所以其长度为 1。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">示例 3:</span><br><span class="line">输入: s = <span class="string">&quot;pwwkew&quot;</span></span><br><span class="line">输出: 3</span><br><span class="line">解释: 因为无重复字符的最长子串是 <span class="string">&quot;wke&quot;</span>，所以其长度为 3。</span><br><span class="line">     请注意，你的答案必须是 子串 的长度，<span class="string">&quot;pwke&quot;</span> 是一个子序列，不是子串。</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">伪代码:</span><br><span class="line"></span><br><span class="line">class Solution:</span><br><span class="line">    def lengthOfLongestSubstring(self, s: str) -&gt; int:</span><br><span class="line">		...你的代码...</span><br><span class="line">	</span><br><span class="line">-----------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">思路1: 创建两个空字符串a,b=<span class="string">&quot;&quot;</span>,<span class="keyword">for</span> 循环目标字符串s获取key字符串i,判断i是否存在于a中，不存在则a+=i;存在时则获取 i在a中的索引并+1进行切片，再对</span><br><span class="line">切片后的字符串a+=i操作；并通过<span class="keyword">if</span>判断a和b字符串的长度，若len(a)&gt;len(b)，则 b=a,最后返回 len(b)</span><br><span class="line"></span><br><span class="line">代码实现：</span><br><span class="line">class Solution:</span><br><span class="line">    def lengthOfLongestSubstring(self, s: str) -&gt; int:</span><br><span class="line">        <span class="keyword">if</span> not s:</span><br><span class="line">            <span class="built_in">return</span> 0</span><br><span class="line"></span><br><span class="line">        a=<span class="string">&quot;&quot;</span></span><br><span class="line">        b=<span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> s:</span><br><span class="line">            <span class="keyword">if</span> i not <span class="keyword">in</span> a:</span><br><span class="line">                a+=i</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                a=a[a.index(i)+1:]</span><br><span class="line">                a+=i</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> len(a)&gt;len(b):</span><br><span class="line">                b=a</span><br><span class="line"></span><br><span class="line">        <span class="built_in">return</span> len(b)</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="3-两数之和。"><a href="#3-两数之和。" class="headerlink" title="3.两数之和。"></a>3.两数之和。</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">描述：给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出和为目标值target的那两个整数，并返回它们的数组下标。</span><br><span class="line"></span><br><span class="line">示例 1:</span><br><span class="line">输入：nums = [2,7,11,15], target = 9</span><br><span class="line">输出：[0,1]</span><br><span class="line">解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。</span><br><span class="line"></span><br><span class="line">示例 2:</span><br><span class="line">输入：nums = [3,2,4], target = 6</span><br><span class="line">输出：[1,2]</span><br><span class="line"></span><br><span class="line">示例 3:</span><br><span class="line">输入: s = <span class="string">&quot;pwwkew&quot;</span></span><br><span class="line">输出: 3</span><br><span class="line">解释: 因为无重复字符的最长子串是 <span class="string">&quot;wke&quot;</span>，所以其长度为 3。</span><br><span class="line">     请注意，你的答案必须是 子串 的长度，<span class="string">&quot;pwke&quot;</span> 是一个子序列，不是子串。</span><br><span class="line"></span><br><span class="line">伪代码:</span><br><span class="line">class Solution:</span><br><span class="line">    def twoSum(self, nums: List[int], target: int) -&gt; List[int]:</span><br><span class="line">		...你的代码...</span><br><span class="line"></span><br><span class="line">-----------------------------------------------------------------------------------------------------------------------------------------</span><br><span class="line">思路1:双循环遍历，返回两数相加==target 两数索引</span><br><span class="line"></span><br><span class="line">实现：</span><br><span class="line">class Solution:</span><br><span class="line">    def twoSum(self, nums: List[int], target: int) -&gt; List[int]:</span><br><span class="line">        sums=[]</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(i+1,len(nums)):</span><br><span class="line">                <span class="keyword">if</span> nums[i] + nums[j] ==target:</span><br><span class="line">                    sums.append(i)</span><br><span class="line">                    sums.append(j)</span><br><span class="line"></span><br><span class="line">        <span class="built_in">return</span> sums</span><br><span class="line">-----------------------------------------------------------------------------------------------------------------------------------------	</span><br><span class="line">思路2：单循环遍历，判断 target-nums[i]获取到的值是否存在，不存在则以字典形式存储值和索引 d[nums[i]]=i</span><br><span class="line"></span><br><span class="line">实现：</span><br><span class="line">class Solution:</span><br><span class="line">    </span><br><span class="line">    def twoSum(self, nums: List[int], target: int) -&gt; List[int]:</span><br><span class="line">        d=&#123;&#125;</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(len(nums)):</span><br><span class="line">            <span class="keyword">if</span> (target-nums[i]) <span class="keyword">in</span> d:</span><br><span class="line">                <span class="built_in">return</span> [d.get(target-nums[i]),i]</span><br><span class="line">            d[nums[i]]=i</span><br><span class="line">			</span><br><span class="line">执行结果：通过</span><br><span class="line"></span><br><span class="line">执行用时：40 ms, 在所有 Python3 提交中击败了68.33%的用户</span><br><span class="line">内存消耗：16.1 MB, 在所有 Python3 提交中击败了16.17%的用户</span><br><span class="line">通过测试用例：57 / 57</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
       
@@ -3444,249 +3898,6 @@ if __name__ == &#39;__main__&#39;:
 
 
   
-    <article id="post-pytest" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/04/pytest/">pytest</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/04/pytest/" class="archive-article-date">
-  	<time datetime="2021-11-04T11:38:24.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-04</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Pytest："><a href="#Pytest：" class="headerlink" title="Pytest："></a>Pytest：</h2><p><strong>注：本文内容较长，建议收藏/订阅后慢慢学习</strong></p>
-<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><ul>
-<li>自动化测试前：需要提前准备好测试数据，测试完成后，需要自动清里测试脏数据，有没有更好用的框架？</li>
-<li>自动化测试中：需要使用多套测试数据实现用例的参数化，有没有更便捷的方式？</li>
-<li>自动化测试后：需要自动生成优雅，简洁的测试报告，有没有更好的生成办法？</li>
-</ul>
-<h3 id="Pytest"><a href="#Pytest" class="headerlink" title="Pytest:"></a>Pytest:</h3><ul>
-<li>pytest能够支持简单的单元测试和复杂的功能测试；</li>
-<li>pytest可以结合requests实现接口测试，结合Selenium,appium实现自动化功能测试。</li>
-<li>使用pytest结合Allure集成到jekins中可以实现持续集成。</li>
-<li>pytest支持315种以上插件。</li>
-</ul>
-<h3 id="特点："><a href="#特点：" class="headerlink" title="特点："></a>特点：</h3><p>pytest为python的第三方单元测试库，需额外安装。它是一个非常成熟的全功能的python测试框架，主要有以下几个特点：</p>
-<ul>
-<li>简单灵活，容易上手。</li>
-<li>支持参数化。</li>
-<li>能够支持简单的单元测试和复杂的功能测试。</li>
-<li>pytest具有很多第三方插件，并且可以自定义扩展。</li>
-<li>执行测试过程中可以将某些测试跳过（skip），或者对某些预期失败的case标记成失败。</li>
-<li>支持重复执行(rerun)失败的case。</li>
-<li>方便的和持续集成工具jenkins集成。</li>
-<li>可支持执行部分用例</li>
-</ul>
-<h3 id="安装"><a href="#安装" class="headerlink" title="安装:"></a>安装:</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install -U pytest</span><br></pre></td></tr></table></figure>
-
-<h3 id="查看版本"><a href="#查看版本" class="headerlink" title="查看版本:"></a>查看版本:</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest --version</span><br></pre></td></tr></table></figure>
-
-<h3 id="第一个脚本"><a href="#第一个脚本" class="headerlink" title="第一个脚本:"></a>第一个脚本:</h3><p>新建一个test_demo.py文件，写入如下代码：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def test_answer():</span><br><span class="line">    assert 3==5</span><br></pre></td></tr></table></figure>
-<br> 
-打开cmd  进入 test_demo.py 文件所在文件夹,输入 pytest 或者 pytest test_demo.py,结果如下：
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">================================================= <span class="built_in">test</span> session starts =================================================</span><br><span class="line">platform win32 -- Python 3.7.7, pytest-6.2.5, py-1.10.0, pluggy-1.0.0</span><br><span class="line">rootdir: E:\test1\aabb\<span class="keyword">case</span></span><br><span class="line">collected 1 item</span><br><span class="line"></span><br><span class="line">test_sample.py F                                                                                                 [100%]</span><br><span class="line"></span><br><span class="line">====================================================== FAILURES =======================================================</span><br><span class="line">_____________________________________________________ test_answer _____________________________________________________</span><br><span class="line"></span><br><span class="line">    def test_answer():</span><br><span class="line">&gt;       assert 3==5</span><br><span class="line">E       assert 3 == 5</span><br><span class="line"></span><br><span class="line">test_sample.py:3: AssertionError</span><br><span class="line">=============================================== short <span class="built_in">test</span> summary info ===============================================</span><br><span class="line">FAILED test_sample.py::test_answer - assert 3 == 5</span><br><span class="line">================================================== 1 failed <span class="keyword">in</span> 0.14s ==================================================</span><br></pre></td></tr></table></figure>
-<br> 
-
-<h3 id="pytest运行规则："><a href="#pytest运行规则：" class="headerlink" title="pytest运行规则："></a>pytest运行规则：</h3><p>pytest运行规则：查找当前目录及其子目录下以test_*.py或*_test.py文件，找到文件后，在文件中找到以test开头函数并执行</p>
-<h3 id="以类的形式编写case"><a href="#以类的形式编写case" class="headerlink" title="以类的形式编写case:"></a>以类的形式编写case:</h3><p>上面是一个测试函数，当case较多的情况就不太合适了，我们可以把case写在类里面。<br>新建一个 test_demoClass.py文件，编写如下的代码：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import pytest</span><br><span class="line">class TestClass:</span><br><span class="line">    def test_one(self):</span><br><span class="line">        x = <span class="string">&quot;this&quot;</span></span><br><span class="line">        assert <span class="string">&#x27;h&#x27;</span> <span class="keyword">in</span> x</span><br><span class="line"></span><br><span class="line">    def test_two(self):</span><br><span class="line">        x = <span class="string">&quot;hello&quot;</span></span><br><span class="line">        assert hasattr(x, <span class="string">&#x27;check&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    def test_three(self):</span><br><span class="line">        a = <span class="string">&quot;hello&quot;</span></span><br><span class="line">        b = <span class="string">&quot;hello world&quot;</span></span><br><span class="line">        assert a <span class="keyword">in</span> b</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&quot;__main__&quot;</span>:</span><br><span class="line">    pytest.main(<span class="string">&#x27;-q test_class.py&#x27;</span>)</span><br></pre></td></tr></table></figure>
-<br> 
-
-<p>运行该类，结果如下：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">Testing started at 18:42 ...</span><br><span class="line">Launching pytest with arguments E:/test1/aabb/<span class="keyword">case</span>/test_class.py --no-header --no-summary -q <span class="keyword">in</span> E:\test1\aabb\<span class="keyword">case</span></span><br><span class="line"></span><br><span class="line">============================= <span class="built_in">test</span> session starts =============================</span><br><span class="line">collecting ... collected 3 items</span><br><span class="line"></span><br><span class="line">test_class.py::TestClass::test_one PASSED                                [ 33%]</span><br><span class="line">test_class.py::TestClass::test_two FAILED                                [ 66%]</span><br><span class="line">test_class.py:8 (TestClass.test_two)</span><br><span class="line">self = &lt;aabb.case.test_class.TestClass object at 0x0000019378686E48&gt;</span><br><span class="line"></span><br><span class="line">    def test_two(self):</span><br><span class="line">        x = <span class="string">&quot;hello&quot;</span></span><br><span class="line">&gt;       assert hasattr(x, <span class="string">&#x27;check&#x27;</span>)</span><br><span class="line">E       AssertionError: assert False</span><br><span class="line">E        +  <span class="built_in">where</span> False = hasattr(<span class="string">&#x27;hello&#x27;</span>, <span class="string">&#x27;check&#x27;</span>)</span><br><span class="line"></span><br><span class="line">test_class.py:11: AssertionError</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">test_class.py::TestClass::test_three PASSED                              [100%]</span><br><span class="line"></span><br><span class="line">========================= 1 failed, 2 passed <span class="keyword">in</span> 0.07s =========================</span><br></pre></td></tr></table></figure>
-
-<h3 id="命名规则："><a href="#命名规则：" class="headerlink" title="命名规则："></a>命名规则：</h3><table>
-<thead>
-<tr>
-<th align="left">类型</th>
-<th align="left">规则</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">文件名</td>
-<td align="left">test_开头或者_test结尾</td>
-</tr>
-<tr>
-<td align="left">方法</td>
-<td align="left">test_开头</td>
-</tr>
-<tr>
-<td align="left">类</td>
-<td align="left">Test开头</td>
-</tr>
-</tbody></table>
-<p><strong>注：测试类种不可用__init__构造函数</strong></p>
-<h3 id="运行多条用例："><a href="#运行多条用例：" class="headerlink" title="运行多条用例："></a>运行多条用例：</h3><ul>
-<li>运行包下所有用例：pytest/py.test [包名]</li>
-<li>单独运行一个pytest模块：pytest 文件名.py</li>
-<li>运行某个模块里的某个类：pytest 文件夹.py::类名</li>
-<li>运行某个模块里面某个类的某个方法： pytest 文件名.py::类名::方法名:</li>
-</ul>
-<p>示例:<br>我们在项目目录中分别创建两个py文件并复制如下代码：<br>test_sample.py</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line">def test_one():</span><br><span class="line">    print(&quot;正在执行----test_one&quot;)</span><br><span class="line">    x = &quot;this&quot;</span><br><span class="line">    assert &#x27;h&#x27; in x</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def test_two():</span><br><span class="line">    print(&quot;正在执行----test_two&quot;)</span><br><span class="line">    x = &quot;hello&quot;</span><br><span class="line">    assert hasattr(x, &#x27;check&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class TestCase():</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def test_three(self):</span><br><span class="line">        print(&quot;正在执行----test_three&quot;)</span><br><span class="line">        x = &quot;this&quot;</span><br><span class="line">        assert &#x27;h&#x27; in x</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def test_four(self):</span><br><span class="line">        print(&quot;正在执行----test_four&quot;)</span><br><span class="line">        x = &quot;hello&quot;</span><br><span class="line">        assert hasattr(x, &#x27;check&#x27;)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>test_sample2.py</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python3</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line">def test_samples():</span><br><span class="line">    print(&quot;正在执行----test_samples&quot;)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>打开cmd,进入项目目录中执行命令</p>
-<p>命令： (运行包下所有用例：pytest/py.test [包名])</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">:\study\test20\test_pytest_demo&gt;pytest</span><br><span class="line">=================================== test session starts ====================================</span><br><span class="line">platform win32 -- Python 3.10.1, pytest-6.2.5, py-1.11.0, pluggy-1.0.0</span><br><span class="line">rootdir: E:\study\test20\test_pytest_demo</span><br><span class="line">plugins: allure-pytest-2.9.45</span><br><span class="line">collected 5 items                                                                           </span><br><span class="line"></span><br><span class="line">test_sample.py .F.F                                                                   [ 80%]</span><br><span class="line">test_sample2.py .                                                                     [100%]</span><br><span class="line"></span><br><span class="line">========================================= FAILURES =========================================</span><br><span class="line">_________________________________________ test_two _________________________________________</span><br><span class="line"></span><br><span class="line">    def test_two():</span><br><span class="line">        print(&quot;正在执行----test_two&quot;)</span><br><span class="line">        x = &quot;hello&quot;</span><br><span class="line">&gt;       assert hasattr(x, &#x27;check&#x27;)</span><br><span class="line">E       AssertionError: assert False</span><br><span class="line">E        +  where False = hasattr(&#x27;hello&#x27;, &#x27;check&#x27;)</span><br><span class="line"></span><br><span class="line">test_sample.py:16: AssertionError</span><br><span class="line">----------------------------------- Captured stdout call -----------------------------------</span><br><span class="line">正在执行----test_two</span><br><span class="line">____________________________________ TestCase.test_four ____________________________________</span><br><span class="line"></span><br><span class="line">self = &lt;test_pytest_demo.test_sample.TestCase object at 0x0000014AAC862380&gt;</span><br><span class="line"></span><br><span class="line">    def test_four(self):</span><br><span class="line">        print(&quot;正在执行----test_four&quot;)</span><br><span class="line">        x = &quot;hello&quot;</span><br><span class="line">&gt;       assert hasattr(x, &#x27;check&#x27;)</span><br><span class="line">E       AssertionError: assert False</span><br><span class="line">E        +  where False = hasattr(&#x27;hello&#x27;, &#x27;check&#x27;)</span><br><span class="line"></span><br><span class="line">test_sample.py:31: AssertionError</span><br><span class="line">----------------------------------- Captured stdout call -----------------------------------</span><br><span class="line">正在执行----test_four</span><br><span class="line">================================= short test summary info ==================================</span><br><span class="line">FAILED test_sample.py::test_two - AssertionError: assert False</span><br><span class="line">FAILED test_sample.py::TestCase::test_four - AssertionError: assert False</span><br><span class="line">=============================== 2 failed, 3 passed in 0.20s ================================</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>可以看到里面有一段这样的内容</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">test_sample.py .F.F                                                                   [ 80%]</span><br><span class="line">test_sample2.py .                                                                     [100%]</span><br></pre></td></tr></table></figure>
-<p>当我们执行pytest命令时，test_sample.py 和 test_sample2.py文件都被执行了</p>
-<p>命令:(单独运行一个pytest模块：pytest 文件名.py)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest test_sample2.py</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">=============================== test session starts ===============================</span><br><span class="line">platform win32 -- Python 3.10.1, pytest-6.2.5, py-1.11.0, pluggy-1.0.0</span><br><span class="line">rootdir: E:\study\test20\test_pytest_demo</span><br><span class="line">plugins: allure-pytest-2.9.45</span><br><span class="line">collected 1 item                                                                                                                                                                                          </span><br><span class="line"></span><br><span class="line">test_sample2.py .                                                                                                                                                                                   [100%]</span><br><span class="line"></span><br><span class="line">================================ 1 passed in 0.01s ==================================</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>可以看到只执行了test_sample2.py 文件中的case</p>
-<p>命令：(运行某个模块里的某个类，pytest 文件夹.py::类名)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest test_sample.py::TestCase</span><br></pre></td></tr></table></figure>
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">================================= test session starts =================================</span><br><span class="line">platform win32 -- Python 3.10.1, pytest-6.2.5, py-1.11.0, pluggy-1.0.0</span><br><span class="line">rootdir: E:\study\test20\test_pytest_demo</span><br><span class="line">plugins: allure-pytest-2.9.45</span><br><span class="line">collected 2 items                                                                                                                                                                                         </span><br><span class="line"></span><br><span class="line">test_sample.py .F                                                                                                                                                                                   [100%]</span><br><span class="line"></span><br><span class="line">======================================= FAILURES =======================================</span><br><span class="line">____________________________________ TestCase.test_four ________________________________</span><br><span class="line"></span><br><span class="line">self = &lt;test_pytest_demo.test_sample.TestCase object at 0x000002B272F95AE0&gt;</span><br><span class="line"></span><br><span class="line">    def test_four(self):</span><br><span class="line">        print(&quot;正在执行----test_four&quot;)</span><br><span class="line">        x = &quot;hello&quot;</span><br><span class="line">&gt;       assert hasattr(x, &#x27;check&#x27;)</span><br><span class="line">E       AssertionError: assert False</span><br><span class="line">E        +  where False = hasattr(&#x27;hello&#x27;, &#x27;check&#x27;)</span><br><span class="line"></span><br><span class="line">test_sample.py:31: AssertionError</span><br><span class="line">------------------------------------- Captured stdout call -------------------------------</span><br><span class="line">正在执行----test_four</span><br><span class="line">==================================== short test summary info =============================</span><br><span class="line">FAILED test_sample.py::TestCase::test_four - AssertionError: assert False</span><br><span class="line">=================================== 1 failed, 1 passed in 0.05s ==========================</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>可以看到只运行了test_samples.py的TestCase类里边的case;test_three运行通过，test_four运行失败</p>
-<p>命令：(运行某个模块里面某个类的某个方法 pytest 文件名.py::类名::方法名:)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest test_sample.py::TestCase::test_four</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">===================================== test session starts ================================</span><br><span class="line">platform win32 -- Python 3.10.1, pytest-6.2.5, py-1.11.0, pluggy-1.0.0</span><br><span class="line">rootdir: E:\study\test20\test_pytest_demo</span><br><span class="line">plugins: allure-pytest-2.9.45</span><br><span class="line">collected 1 item                                                                                                                                                                                          </span><br><span class="line"></span><br><span class="line">test_sample.py F                                                                                                                                                                                    [100%]</span><br><span class="line"></span><br><span class="line">============================================= FAILURES ====================================</span><br><span class="line">________________________________________ TestCase.test_four _______________________________</span><br><span class="line"></span><br><span class="line">self = &lt;test_pytest_demo.test_sample.TestCase object at 0x0000020DF29659C0&gt;</span><br><span class="line"></span><br><span class="line">    def test_four(self):</span><br><span class="line">        print(&quot;正在执行----test_four&quot;)</span><br><span class="line">        x = &quot;hello&quot;</span><br><span class="line">&gt;       assert hasattr(x, &#x27;check&#x27;)</span><br><span class="line">E       AssertionError: assert False</span><br><span class="line">E        +  where False = hasattr(&#x27;hello&#x27;, &#x27;check&#x27;)</span><br><span class="line"></span><br><span class="line">test_sample.py:31: AssertionError</span><br><span class="line">-------------------------------------------- Captured stdout call ---------------------------</span><br><span class="line">正在执行----test_four</span><br><span class="line">=========================================== short test summary info =========================</span><br><span class="line">FAILED test_sample.py::TestCase::test_four - AssertionError: assert False</span><br><span class="line">============================================== 1 failed in 0.05s ============================</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>可以看到只执行了 test_sample.py-&gt;TestClass-&gt;test_four 这一条case</p>
-<h3 id="fixTure-测试装置介绍-前置、后置条件、装饰器"><a href="#fixTure-测试装置介绍-前置、后置条件、装饰器" class="headerlink" title="fixTure:测试装置介绍(前置、后置条件、装饰器)"></a>fixTure:测试装置介绍(前置、后置条件、装饰器)</h3><table>
-<thead>
-<tr>
-<th align="left">类型</th>
-<th align="left">规则</th>
-</tr>
-</thead>
-<tbody><tr>
-<td align="left">setup_module/teardown_module</td>
-<td align="left">全局模块级,模块始末，全局的(优先级最高)</td>
-</tr>
-<tr>
-<td align="left">setup_function/teardown_function</td>
-<td align="left">函数级/在类外,只对函数用例生效(不在类中)</td>
-</tr>
-<tr>
-<td align="left">setup_class/teardown_class</td>
-<td align="left">类级，只在类中前后运行一次(在类中)</td>
-</tr>
-<tr>
-<td align="left">setup_method/teardown_method</td>
-<td align="left">方法级、类中的每个方法执行前后,开始于方法始末(在类中)</td>
-</tr>
-<tr>
-<td align="left">setup/teardown</td>
-<td align="left">在类中，运行在调用方法前后(重点)，只在类中前后运行一次(在类中)</td>
-</tr>
-</tbody></table>
-<ul>
-<li>先看下 <strong>setup_function/teardown_function</strong> 与case的执行关系</li>
-</ul>
-<p>创建测试文件test_setup_teardown.py，粘贴如下代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def test_case_first():</span><br><span class="line">    print(&quot;test case first&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def test_case_second():</span><br><span class="line">    print(&quot;test case second&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def setup_function():</span><br><span class="line">    print(&quot;资源准备：setup function&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def teardown_function():</span><br><span class="line">    print(&quot;资源消毁：teardown function&quot;)</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>命令：(运行模块里面所有case, 注：[-vs] 参数,展示详细的执行过程)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest test_steup_teardown.py -vs</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">================================================= test session starts =================================================</span><br><span class="line">platform win32 -- Python 3.10.1, pytest-6.2.5, py-1.11.0, pluggy-1.0.0 -- C:\Users\Administrator\AppData\Local\Programs\Python\Python310\python.exe</span><br><span class="line">cachedir: .pytest_cache</span><br><span class="line">rootdir: E:\study\test20\test_pytest, configfile: pytest.ini</span><br><span class="line">plugins: allure-pytest-2.9.45</span><br><span class="line">collected 2 items</span><br><span class="line"></span><br><span class="line">test_steup_teardown.py::test_case_first 资源准备：setup function</span><br><span class="line">test case first</span><br><span class="line">PASSED资源消毁：teardown function</span><br><span class="line"></span><br><span class="line">test_steup_teardown.py::test_case_second 资源准备：setup function</span><br><span class="line">test case second</span><br><span class="line">PASSED资源消毁：teardown function</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">================================================== 2 passed in 0.03s ==================================================</span><br></pre></td></tr></table></figure>
-
-<p>分析：<br>可以看到，当执行 case <strong>test_case_first</strong> 之前，首先执行了 <strong>setup_function</strong>，输出了 <strong>资源准备：setup function</strong>，随后执行 case <strong>test_case_first</strong>，输出了 <strong>test case first</strong> ，最后执行了 <strong>teardown_function</strong>，输出了 <strong>资源消毁：teardown function</strong>。<br>接着又开始执行case <strong>test_case_second</strong>,和执行 <strong>test_case_first</strong>一样，先执行<strong>setup_function</strong>，其次执行case <strong>test_case_second</strong>,最后执行<strong>teardown_function</strong></p>
-<p>结论：<br>setup_function：在每一条case执行之前调用<br>teardown_function：在每一条case执行之后调用</p>
-<ul>
-<li>再看下 <strong>setup_module/teardown_module</strong> 与<strong>setup_function/teardown_function</strong> 和case的执行关系</li>
-</ul>
-<p>在测试文件中test_setup_teardown.py，粘贴如下代码：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">#!/usr/bin/env python</span><br><span class="line"># -*- coding: utf-8 -*-</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"># 模块级别,只被调用一次</span><br><span class="line">def setup_module():</span><br><span class="line">    print(&quot;资源准备：setup module&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def teardown_module():</span><br><span class="line">    print(&quot;资源准备：teardown module&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def test_case_first():</span><br><span class="line">    print(&quot;test case first&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def test_case_second():</span><br><span class="line">    print(&quot;test case second&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def setup_function():</span><br><span class="line">    print(&quot;资源准备：setup function&quot;)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def teardown_function():</span><br><span class="line">    print(&quot;资源消毁：teardown function&quot;)</span><br></pre></td></tr></table></figure>
-
-
-<p>命令：(运行模块里面所有case, 注：[-vs] 参数,展示详细的执行过程)</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest test_steup_teardown.py -vs</span><br></pre></td></tr></table></figure>
-
-<p>输出：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">====================================================== test session starts ======================================================</span><br><span class="line">platform win32 -- Python 3.10.1, pytest-6.2.5, py-1.11.0, pluggy-1.0.0 -- C:\Users\Administrator\AppData\Local\Programs\Python\Pyt</span><br><span class="line">hon310\python.exe</span><br><span class="line">cachedir: .pytest_cache</span><br><span class="line">rootdir: E:\study\test20\test_pytest, configfile: pytest.ini</span><br><span class="line">plugins: allure-pytest-2.9.45</span><br><span class="line">collected 2 items                                                                                                                </span><br><span class="line"></span><br><span class="line">test_steup_teardown.py::test_case_first 资源准备：setup module</span><br><span class="line">资源准备：setup function</span><br><span class="line">test case first</span><br><span class="line">PASSED资源消毁：teardown function</span><br><span class="line"></span><br><span class="line">test_steup_teardown.py::test_case_second 资源准备：setup function</span><br><span class="line">test case second</span><br><span class="line">PASSED资源消毁：teardown function</span><br><span class="line">资源准备：teardown module</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">======================================================= 2 passed in 0.01s =======================================================</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-<p>分析：<br>可以看到执行顺序为 <strong>setup_module</strong>-&gt;<strong>setup_function</strong>-&gt;<strong>test_case_first</strong>-&gt;<strong>teardown_function</strong>-&gt;<strong>setup_function</strong>-&gt;<strong>test_case_second</strong>-&gt;<strong>teardown_function</strong>-&gt;<strong>teardown_module</strong><br>结论：<br>setup_module：全局模块级,模块最开始，全局的(优先级最高)，类似于 unittest的 setUpClass<br>setup_function：在每一条case执行之前调用，类似于 unittest的 setUp<br>teardown_function：在每一条case执行之后调用，类似于 unittest的 tearDown<br>teardown_module：全局模块级,模块最末尾，全局的(优先级最高)，类似于 unittest的 tearDownClass</p>
-<p><strong>持续补充ing~</strong><br>。。。</p>
-<p>。。。</p>
-<h3 id="fixture："><a href="#fixture：" class="headerlink" title="fixture："></a>fixture：</h3>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">自动化测试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/pytest//" class="article-tag-list-link color2">pytest</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/04/pytest/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
@@ -3783,15 +3994,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdnow</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">adb</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">Java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdnow</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -3808,6 +4019,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">自动化测试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">GUI</a>
               </li>
              
               <li class="article-tag-list-item">

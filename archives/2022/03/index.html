@@ -6,19 +6,16 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>AdbPublic | 宏利的博客</title>
+  <title>Archives: 2022/3 | 宏利的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="简介在通过uiautomator2做UI自动化测试的过程中，发现一些元素 u2无法获取，这里通 过adb来实现对元素的操作 思路通过 adb dump 获取页面的xml结构树并pull发送到本地目录进行解析，在解析过程中发现note 节点下可以找到这些属性：text，resource-id，class，bounds，而 bounds 表示的是 元素的坐标(x,y),有了坐标之后就可以通过 adb">
-<meta property="og:type" content="article">
-<meta property="og:title" content="AdbPublic">
-<meta property="og:url" content="http://example.com/2021/11/30/AdbPublic/index.html">
+  <meta name="description" content="一个小网站">
+<meta property="og:type" content="website">
+<meta property="og:title" content="宏利的博客">
+<meta property="og:url" content="http://example.com/archives/2022/03/index.html">
 <meta property="og:site_name" content="宏利的博客">
-<meta property="og:description" content="简介在通过uiautomator2做UI自动化测试的过程中，发现一些元素 u2无法获取，这里通 过adb来实现对元素的操作 思路通过 adb dump 获取页面的xml结构树并pull发送到本地目录进行解析，在解析过程中发现note 节点下可以找到这些属性：text，resource-id，class，bounds，而 bounds 表示的是 元素的坐标(x,y),有了坐标之后就可以通过 adb">
+<meta property="og:description" content="一个小网站">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-11-30T14:37:33.736Z">
-<meta property="article:modified_time" content="2022-03-07T02:51:34.550Z">
 <meta property="article:author" content="honlicc">
-<meta property="article:tag" content="adb">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="宏利的博客" type="application/atom+xml">
@@ -160,202 +157,71 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-AdbPublic" class="article article-type-post " itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
+            
   
-    <h1 class="article-title" itemprop="name">
-      AdbPublic
+  
+    
+    
+      
+      
+      <section class="archives-wrap">
+        <div class="archive-year-wrap">
+          <a href="/archives/2022" class="archive-year">2022</a>
+        </div>
+        <div class="archives">
+    
+    <article class="archive-article archive-type-post">
+  <div class="archive-article-inner">
+    <header class="archive-article-header">
+      	<div class="article-meta">
+	      	<a href="/2022/03/22/tkinter/" class="archive-article-date">
+  	<time datetime="2022-03-22T03:06:17.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-22</time>
+</a>
+        </div>
+    	 
+  
+    <h1 itemprop="name">
+      <a class="archive-article-title" href="/2022/03/22/tkinter/">Python GUI编程(Tkinter)</a>
     </h1>
   
 
-        
-        <a href="/2021/11/30/AdbPublic/" class="archive-article-date">
-  	<time datetime="2021-11-30T14:37:33.736Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>在通过uiautomator2做UI自动化测试的过程中，发现一些元素 u2无法获取，这里通</p>
-<p>过adb来实现对元素的操作</p>
-<h3 id="思路"><a href="#思路" class="headerlink" title="思路"></a>思路</h3><p>通过 adb dump 获取页面的xml结构树并pull发送到本地目录进行解析，在解析过程中发现note 节点下可以找到这些属性：text，resource-id，class，bounds，而 bounds 表示的是 元素的坐标(x,y),有了坐标之后就可以通过 adb shell input tap x,y来实现对元素的点击操作，其它操作动作动作同理。这里只封装了点击事件。</p>
-<h3 id="实现代码"><a href="#实现代码" class="headerlink" title="实现代码"></a>实现代码</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/usr/bin/python</span></span><br><span class="line"><span class="comment"># -*- coding: utf-8 -*-</span></span><br><span class="line"><span class="comment"># @Emailn : honlicc@163.com</span></span><br><span class="line"></span><br><span class="line"><span class="string">&#x27;&#x27;</span><span class="string">&#x27;</span></span><br><span class="line"><span class="string">封装了adb的部分操作，用来处理uiautomatow2处理不了的元素事件</span></span><br><span class="line"><span class="string">&#x27;</span><span class="string">&#x27;&#x27;</span></span><br><span class="line">import os</span><br><span class="line">import re</span><br><span class="line"></span><br><span class="line">from conf.base_config import base_path <span class="comment">#项目根目录路径</span></span><br><span class="line">import xml.etree.cElementTree as ET</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class FindElementsDemo(object):</span><br><span class="line"></span><br><span class="line">    def __init__(self):</span><br><span class="line">	   <span class="comment">#xml存放到 apk目录下 </span></span><br><span class="line">        self.tempFile=os.path.join(base_path,<span class="string">&quot;apk&quot;</span>)</span><br><span class="line">        self.pattern = re.compile(r<span class="string">&quot;\d+&quot;</span>)</span><br><span class="line"></span><br><span class="line">    def __uidump(self):</span><br><span class="line">        <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">        获取当前Activity控件树并pull到本地目录</span></span><br><span class="line"><span class="string">        &quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">        os.popen(<span class="string">&quot;adb shell uiautomator dump --compressed /data/local/tmp/uidump.xml&quot;</span>)</span><br><span class="line">        os.popen(<span class="string">&quot;adb pull /data/local/tmp/uidump.xml &quot;</span> + self.tempFile)</span><br><span class="line"></span><br><span class="line">    def __element(self, attrib, name):</span><br><span class="line">        <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">        同属性单个元素，返回单个坐标元组</span></span><br><span class="line"><span class="string">        &quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">        self.__uidump()</span><br><span class="line">        tree = ET.ElementTree(file=self.tempFile + <span class="string">&quot;\\uidump.xml&quot;</span>)</span><br><span class="line">        treeIter = tree.iter(tag=<span class="string">&quot;node&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> elem <span class="keyword">in</span> treeIter:</span><br><span class="line">            <span class="keyword">if</span> elem.attrib[attrib] == name:</span><br><span class="line">                bounds = elem.attrib[<span class="string">&quot;bounds&quot;</span>]</span><br><span class="line">                coord = self.pattern.findall(bounds)</span><br><span class="line">                Xpoint = (int(coord[2]) - int(coord[0])) / 2.0 + int(coord[0])</span><br><span class="line">                Ypoint = (int(coord[3]) - int(coord[1])) / 2.0 + int(coord[1])</span><br><span class="line"></span><br><span class="line">                <span class="built_in">return</span> Xpoint, Ypoint</span><br><span class="line"></span><br><span class="line">    def __elements(self, attrib, name):</span><br><span class="line">        <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">        同属性多个元素，返回坐标元组列表</span></span><br><span class="line"><span class="string">        &quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">        list = []</span><br><span class="line">        self.__uidump()</span><br><span class="line">        tree = ET.ElementTree(file=self.tempFile + <span class="string">&quot;\\uidump.xml&quot;</span>)</span><br><span class="line">        treeIter = tree.iter(tag=<span class="string">&quot;node&quot;</span>)</span><br><span class="line">        <span class="keyword">for</span> elem <span class="keyword">in</span> treeIter:</span><br><span class="line">            <span class="keyword">if</span> elem.attrib[attrib] == name:</span><br><span class="line">                bounds = elem.attrib[<span class="string">&quot;bounds&quot;</span>]</span><br><span class="line">                coord = self.pattern.findall(bounds)</span><br><span class="line">                Xpoint = (int(coord[2]) - int(coord[0])) / 2.0 + int(coord[0])</span><br><span class="line">                Ypoint = (int(coord[3]) - int(coord[1])) / 2.0 + int(coord[1])</span><br><span class="line">                list.append((Xpoint, Ypoint))</span><br><span class="line">        <span class="built_in">return</span> list</span><br><span class="line"></span><br><span class="line">    def findElementByName(self, name):</span><br><span class="line">        <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">        通过元素名称定位</span></span><br><span class="line"><span class="string">        usage: findElementByName(u&quot;</span>text<span class="string">&quot;)</span></span><br><span class="line"><span class="string">        &quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">        <span class="built_in">return</span> self.__element(<span class="string">&quot;text&quot;</span>, name)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class AdbEvent(object):</span><br><span class="line">    def __init__(self):</span><br><span class="line">        os.popen(<span class="string">&quot;adb wait-for-device&quot;</span>)</span><br><span class="line"></span><br><span class="line">    def touch(self, dx, dy):</span><br><span class="line">        <span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">        触摸事件</span></span><br><span class="line"><span class="string">        usage: touch(500, 500)</span></span><br><span class="line"><span class="string">        &quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line">        os.popen(<span class="string">&quot;adb shell input tap &quot;</span> + str(dx) + <span class="string">&quot; &quot;</span> + str(dy))</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    <span class="built_in">test</span>=FindElementsDemo()</span><br><span class="line">    x,y=test.findElementByName(<span class="string">&#x27;通讯录&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    ev=AdbEvent()</span><br><span class="line">    ev.touch(x,y)</span><br></pre></td></tr></table></figure>
-
-<h3 id="待补充"><a href="#待补充" class="headerlink" title="待补充"></a>待补充</h3><p>目前项目中只需要一个点击事件即可满足，所以未过多封装其它事件方法，欢迎大家补充</p>
-
-      
-
-      
-        <div class="page-reward">
-          <a href="javascript:;" class="page-reward-btn tooltip-top">
-            <div class="tooltip tooltip-east">
-            <span class="tooltip-item">
-              赏
-            </span>
-            <span class="tooltip-content">
-              <span class="tooltip-text">
-                <span class="tooltip-inner">
-                  <p class="reward-p"><i class="icon icon-quo-left"></i>谢谢你请我吃糖<i class="icon icon-quo-right"></i></p>
-                  <div class="reward-box">
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/alipay.png">
-                      <span class="reward-type">支付宝</span>
-                    </div>
-                    
-                    
-                    <div class="reward-box-item">
-                      <img class="reward-img" src="/img/wechat.png">
-                      <span class="reward-type">微信</span>
-                    </div>
-                    
-                  </div>
-                </span>
-              </span>
-            </span>
-          </div>
-          </a>
-        </div>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
+        <div class="article-info info-on-right">
+          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">adb</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">GUI</a>
         		</li>
       		
 		</ul>
 	</div>
 
-      
+          
 	<div class="article-category tagcloud">
 		<i class="icon-book icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
+        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
         		</li>
       		
 		</ul>
 	</div>
 
 
-      
-
-      
-        
-<div class="share-btn share-icons tooltip-left">
-  <div class="tooltip tooltip-east">
-    <span class="tooltip-item">
-      <a href="javascript:;" class="share-sns share-outer">
-        <i class="icon icon-share"></i>
-      </a>
-    </span>
-    <span class="tooltip-content">
-      <div class="share-wrap">
-        <div class="share-icons">
-          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
-            <i class="icon icon-weibo"></i>
-          </a>
-          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
-            <i class="icon icon-weixin"></i>
-          </a>
-          <a class="qq share-sns" href="javascript:;" data-type="qq">
-            <i class="icon icon-qq"></i>
-          </a>
-          <a class="douban share-sns" href="javascript:;" data-type="douban">
-            <i class="icon icon-douban"></i>
-          </a>
-          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
-            <i class="icon icon-qzone"></i>
-          </a>
-          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
-            <i class="icon icon-facebook"></i>
-          </a>
-          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
-            <i class="icon icon-twitter"></i>
-          </a>
-          <a class="google share-sns" href="javascript:;" data-type="google">
-            <i class="icon icon-google"></i>
-          </a>
         </div>
-      </div>
-    </span>
-  </div>
-</div>
-
-<div class="page-modal wx-share js-wx-box">
-    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
-    <p>扫一扫，分享到微信</p>
-    <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2021/11/30/AdbPublic/" alt="微信分享二维码">
-    </div>
-</div>
-
-<div class="mask js-mask"></div>
-      
-      <div class="clearfix"></div>
-    </div>
+        <div class="clearfix"></div>
+    </header>
   </div>
 </article>
-
-  
-<nav id="article-nav">
-  
-    <a href="/2021/11/30/Java%E5%9F%BA%E7%A1%80/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Java
-        
-      </div>
-    </a>
   
   
-    <a href="/2021/11/30/linux/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Linux</div>
-      <i class="icon-circle-right"></i>
-    </a>
-  
-</nav>
-
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-  
-  
+    </div></section>
   
 
-  
-
-  
-
-  
+    
 
 
           </div>
@@ -377,8 +243,8 @@
 	var yiliaConfig = {
 		mathjax: false,
 		isHome: false,
-		isPost: true,
-		isArchive: false,
+		isPost: false,
+		isArchive: true,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
