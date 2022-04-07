@@ -8,17 +8,21 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Python GUI编程(Tkinter) | 宏利的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="参考文档点我-&gt;Tkinter官方文档地址点我-&gt;菜鸟编程 目录 简介 第一个Tkinter程序 主窗口设置 通过类来实现GUI程序 常用控件列表 Button控件 Label控件 Options参数设置方式  简介GUI编程：图形用户界面编程Tkinter库：是 Python 的标准 GUI 库。Python 使用 Tkinter 可以快速的创建 GUI 应用程序。支持跨平台的GU">
+  <meta name="description" content="参考文档点我-&gt;Tkinter官方文档地址点我-&gt;菜鸟编程 目录 简介 第一个Tkinter程序 主窗口设置 通过类来实现GUI程序 常用控件列表 Button控件 Label控件 Options参数设置 Entry单行文本框 Text多行文本框 Raduibutton单选框 CheckButton多选框 Canvas画布 Grid布局管理器 使用Grid实现计算器页面布局 Pack">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python GUI编程(Tkinter)">
 <meta property="og:url" content="http://example.com/2022/03/22/tkinter/index.html">
 <meta property="og:site_name" content="宏利的博客">
-<meta property="og:description" content="参考文档点我-&gt;Tkinter官方文档地址点我-&gt;菜鸟编程 目录 简介 第一个Tkinter程序 主窗口设置 通过类来实现GUI程序 常用控件列表 Button控件 Label控件 Options参数设置方式  简介GUI编程：图形用户界面编程Tkinter库：是 Python 的标准 GUI 库。Python 使用 Tkinter 可以快速的创建 GUI 应用程序。支持跨平台的GU">
+<meta property="og:description" content="参考文档点我-&gt;Tkinter官方文档地址点我-&gt;菜鸟编程 目录 简介 第一个Tkinter程序 主窗口设置 通过类来实现GUI程序 常用控件列表 Button控件 Label控件 Options参数设置 Entry单行文本框 Text多行文本框 Raduibutton单选框 CheckButton多选框 Canvas画布 Grid布局管理器 使用Grid实现计算器页面布局 Pack">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://s2.loli.net/2022/03/24/5bBOQEr9jnCoivF.png">
 <meta property="og:image" content="https://s2.loli.net/2022/03/24/Ex25UOJPwoSXFuh.png">
+<meta property="og:image" content="https://s2.loli.net/2022/04/07/R5blZe8JyfspaYG.png">
+<meta property="og:image" content="https://s2.loli.net/2022/04/07/L7a9b34qrtfWMIV.png">
+<meta property="og:image" content="https://s2.loli.net/2022/04/07/lARIaiDs9y4KF7L.png">
+<meta property="og:image" content="https://s2.loli.net/2022/04/07/742MtG3yxHiWTCg.png">
 <meta property="article:published_time" content="2022-03-22T03:06:17.000Z">
-<meta property="article:modified_time" content="2022-03-25T14:59:41.637Z">
+<meta property="article:modified_time" content="2022-04-07T15:07:17.097Z">
 <meta property="article:author" content="honlicc">
 <meta property="article:tag" content="GUI">
 <meta name="twitter:card" content="summary">
@@ -193,7 +197,16 @@
 <li><a href="#Tkinter%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%8415%E4%B8%AA%E6%8E%A7%E4%BB%B6">常用控件列表</a></li>
 <li><a href="#Button%E6%8E%A7%E4%BB%B6">Button控件</a></li>
 <li><a href="#Label%E6%8E%A7%E4%BB%B6">Label控件</a></li>
-<li><a href="#Options%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE%E6%96%B9%E5%BC%8F">Options参数设置方式</a></li>
+<li><a href="#Options%E5%8F%82%E6%95%B0%E8%AE%BE%E7%BD%AE%E6%96%B9%E5%BC%8F">Options参数设置</a></li>
+<li><a href="#Entry%E5%8D%95%E8%A1%8C%E6%96%87%E6%9C%AC%E6%A1%86">Entry单行文本框</a></li>
+<li><a href="#Text%E5%A4%9A%E8%A1%8C%E6%96%87%E6%9C%AC%E6%A1%86">Text多行文本框</a></li>
+<li><a href="#Raduibutton%E5%8D%95%E9%80%89%E6%A1%86">Raduibutton单选框</a></li>
+<li><a href="#CheckButton%E5%A4%9A%E9%80%89%E6%A1%86">CheckButton多选框</a></li>
+<li><a href="#Canvas%E7%94%BB%E5%B8%83">Canvas画布</a></li>
+<li><a href="#Grid%E5%B8%83%E5%B1%80%E7%AE%A1%E7%90%86%E5%99%A8">Grid布局管理器</a></li>
+<li><a href="#%E4%BD%BF%E7%94%A8Grid%E5%AE%9E%E7%8E%B0%E8%AE%A1%E7%AE%97%E5%99%A8%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80">使用Grid实现计算器页面布局</a></li>
+<li><a href="#Pack%E5%B8%83%E5%B1%80%E7%AE%A1%E7%90%86%E5%99%A8">Pack布局管理器</a></li>
+<li><a href="#Place%E5%B8%83%E5%B1%80%E7%AE%A1%E7%90%86%E5%99%A8">Place布局管理器</a></li>
 </ul>
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>GUI编程：图形用户界面编程<br>Tkinter库：是 Python 的标准 GUI 库。Python 使用 Tkinter 可以快速的创建 GUI 应用程序。支持跨平台的GUI程序开发，适合小型的GUI编程，也是特别适合初学者学习的GUI编程。</p>
 <h3 id="第一个Tkinter程序"><a href="#第一个Tkinter程序" class="headerlink" title="第一个Tkinter程序"></a>第一个Tkinter程序</h3><p>tkinter模块创建GUI程序主要包含以下4个步骤：<br>1.创建主窗口程序:</p>
@@ -515,13 +528,712 @@
 
 <p>示例代码:<br>test_Options.py</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import *</span><br><span class="line">from tkinter import messagebox</span><br><span class="line"></span><br><span class="line">class Application(tk.Frame):</span><br><span class="line">    <span class="string">&quot;&quot;</span><span class="string">&quot;GUI程序类&quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        super().__init__(master)  <span class="comment"># super()代表父类的定义</span></span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.createWidget()</span><br><span class="line"></span><br><span class="line">    def createWidget(self):</span><br><span class="line">        <span class="string">&quot;&quot;</span><span class="string">&quot;添加组件&quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 关键字参数</span></span><br><span class="line">        fred01=Button(self,<span class="built_in">fg</span>=<span class="string">&#x27;red&#x27;</span>,<span class="built_in">bg</span>=<span class="string">&quot;blue&quot;</span>)</span><br><span class="line">        fred01.pack()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 创建对象后，使用字典索引方式</span></span><br><span class="line">        fred02=Button(self)</span><br><span class="line">        fred02[<span class="string">&quot;fg&quot;</span>]=<span class="string">&quot;red&quot;</span></span><br><span class="line">        fred02[<span class="string">&quot;bg&quot;</span>]=<span class="string">&quot;blue&quot;</span></span><br><span class="line">        fred02.pack</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 创建对象后，使用config()方法</span></span><br><span class="line">        fred03 = Button(self)</span><br><span class="line">        fred03.config(<span class="built_in">fg</span>=<span class="string">&#x27;red&#x27;</span>,<span class="built_in">bg</span>=<span class="string">&#x27;blue&#x27;</span>)</span><br><span class="line">        fred03.pack()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line"></span><br><span class="line">    root = tk.Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;800x900+800+300&quot;</span>)</span><br><span class="line">    root.title(<span class="string">&quot;GUI程序类测试&quot;</span>)</span><br><span class="line">    app = Application(master=root)</span><br><span class="line">    root.mainloop()</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Entry单行文本框"><a href="#Entry单行文本框" class="headerlink" title="Entry单行文本框"></a>Entry单行文本框</h3><p>Entry 是用来接收一行字符串的控件，如果用户输入的文字长度长于Entry控件的宽度，文字会自动向后滚动，如果想输入多行文本，需要使用Text控件。</p>
+<p>语法格式：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">lab=Label(master, option, ...)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>master:父容器</li>
+<li>options: 可选项，即该按钮的可设置的属性。这些选项可以用键 = 值的形式设置，并以逗号分隔。</li>
+</ul>
+<p>option说明：</p>
+<table>
+<thead>
+<tr>
+<th align="left">可选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bg</td>
+<td align="left">输入框背景颜色</td>
+</tr>
+<tr>
+<td align="left">bd</td>
+<td align="left">边框的大小，默认为 2 个像素</td>
+</tr>
+<tr>
+<td align="left">cursor</td>
+<td align="left">光标的形状设定，如arrow, circle, cross, plus 等</td>
+</tr>
+<tr>
+<td align="left">font</td>
+<td align="left">文本字体</td>
+</tr>
+<tr>
+<td align="left">exportselection</td>
+<td align="left">默认情况下，你如果在输入框中选中文本，默认会复制到粘贴板，如果要忽略这个功能刻工艺设置 exportselection=0。</td>
+</tr>
+<tr>
+<td align="left">fg</td>
+<td align="left">文字颜色。值为颜色或为颜色代码，如：’red’,’#ff0000’</td>
+</tr>
+<tr>
+<td align="left">highlightcolor</td>
+<td align="left">文本框高亮边框颜色，当文本框获取焦点时显示</td>
+</tr>
+<tr>
+<td align="left">justify</td>
+<td align="left">显示多行文本的时候,设置不同行之间的对齐方式，可选项包括LEFT, RIGHT, CENTER</td>
+</tr>
+<tr>
+<td align="left">relief</td>
+<td align="left">边框样式，设置控件3D效果，可选的有：FLAT、SUNKEN、RAISED、GROOVE、RIDGE。默认为 FLAT。</td>
+</tr>
+<tr>
+<td align="left">selectbackground</td>
+<td align="left">选中文字的背景颜色</td>
+</tr>
+<tr>
+<td align="left">selectborderwidth</td>
+<td align="left">选中文字的背景边框宽度</td>
+</tr>
+<tr>
+<td align="left">selectforeground</td>
+<td align="left">选中文字的颜色</td>
+</tr>
+<tr>
+<td align="left">show</td>
+<td align="left">指定文本框内容显示为字符，值随意，满足字符即可。如密码可以将值设为 show=”*”</td>
+</tr>
+<tr>
+<td align="left">state</td>
+<td align="left">默认为 state=NORMAL, 文框状态，分为只读和可写，值为：normal/disabled</td>
+</tr>
+<tr>
+<td align="left">textvariable</td>
+<td align="left">文本框的值，是一个StringVar()对象</td>
+</tr>
+<tr>
+<td align="left">width</td>
+<td align="left">文本框宽度</td>
+</tr>
+<tr>
+<td align="left">xscrollcommand</td>
+<td align="left">设置水平方向滚动条，一般在用户输入的文本框内容宽度大于文本框显示的宽度时使用。</td>
+</tr>
+</tbody></table>
+<p>方法：<br>下表为文本框组件常用的方法</p>
+<table>
+<thead>
+<tr>
+<th align="left">可选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">delete(first,last=None)</td>
+<td align="left">删除文本框里直接位置值</td>
+</tr>
+<tr>
+<td align="left">get()</td>
+<td align="left">获取文件框的值</td>
+</tr>
+<tr>
+<td align="left">set()</td>
+<td align="left">设置文件框的值</td>
+</tr>
+<tr>
+<td align="left">icursor(index)</td>
+<td align="left">将光标移动到指定索引位置，只有当文框获取焦点后成立</td>
+</tr>
+<tr>
+<td align="left">index(index)</td>
+<td align="left">返回指定的索引值</td>
+</tr>
+<tr>
+<td align="left">insert(index,s)</td>
+<td align="left">返回指定的索引值</td>
+</tr>
+<tr>
+<td align="left">select_adjust(index)</td>
+<td align="left">选中指定索引和光标所在位置之前的值</td>
+</tr>
+<tr>
+<td align="left">select_clear(index)</td>
+<td align="left">清空文本框</td>
+</tr>
+<tr>
+<td align="left">select_from(index)</td>
+<td align="left">设置光标的位置，通过索引值 index 来设置</td>
+</tr>
+<tr>
+<td align="left">select_present()</td>
+<td align="left">如果有选中，返回 true，否则返回 false。</td>
+</tr>
+<tr>
+<td align="left">select_range(start,end)</td>
+<td align="left">选中指定索引位置的值，start(包含) 为开始位置，end(不包含) 为结束位置start必须比end小</td>
+</tr>
+<tr>
+<td align="left">select_to(index)</td>
+<td align="left">选中指定索引与光标之间的值</td>
+</tr>
+<tr>
+<td align="left">xview(index)</td>
+<td align="left">该方法在文本框链接到水平滚动条上很有用。</td>
+</tr>
+<tr>
+<td align="left">xview_scroll(number,what)</td>
+<td align="left">用于水平滚动文本框。 what 参数可以是 UNITS, 按字符宽度滚动，或者可以是 PAGES, 按文本框组件块滚动。 number 参数，正数为由左到右滚动，负数为由右到左滚动。</td>
+</tr>
+</tbody></table>
+<p>模拟获取用户名+密码完成登录功能的示例代码：<br>test_Entry_StringVar.py</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line">from tkinter import *</span><br><span class="line">from tkinter import messagebox</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Applicaton(Frame):</span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        <span class="comment"># super代表的是父类的定义，而不是父类对象</span></span><br><span class="line">        super().__init__(master)</span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.createWidget()</span><br><span class="line"></span><br><span class="line">    def createWidget(self):</span><br><span class="line">        self.label = Label(self, text=<span class="string">&quot;用户名&quot;</span>)</span><br><span class="line">        self.label.pack()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 定义变量接收输入 StringVar变量关联到指定的组件</span></span><br><span class="line">        <span class="comment"># StringVar 变量的值发生变化 组件内容也发生变化</span></span><br><span class="line">        <span class="comment"># 同理，组件内容发生变化，StringVar 内容也发生变化</span></span><br><span class="line">        v1 = StringVar()</span><br><span class="line">        self.entry01 = Entry(self, textvariable=v1)</span><br><span class="line">        self.entry01.pack()</span><br><span class="line">        <span class="comment"># 通过set给变量设置默认值</span></span><br><span class="line">        v1.set(<span class="string">&quot;admin&quot;</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 通过get获取Entry输入的内容</span></span><br><span class="line">        <span class="built_in">print</span>(v1.get())</span><br><span class="line">        <span class="built_in">print</span>(self.entry01.get())</span><br><span class="line"></span><br><span class="line">        self.label = Label(self, text=<span class="string">&quot;密码&quot;</span>)</span><br><span class="line">        self.label.pack()</span><br><span class="line">        v2 = StringVar()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># show=&quot;*&quot;  表示输入内容的时候显示为 “*”</span></span><br><span class="line">        self.entry02 = Entry(self, textvariable=v2, show=<span class="string">&quot;*&quot;</span>)</span><br><span class="line">        self.entry02.pack()</span><br><span class="line"></span><br><span class="line">        Button(self, text=<span class="string">&quot;登录&quot;</span>, <span class="built_in">command</span>=self.login).pack()</span><br><span class="line"></span><br><span class="line">    def login(self):</span><br><span class="line">        get_user_name = self.entry01.get()</span><br><span class="line">        get_pass_word = self.entry02.get()</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> get_user_name == <span class="string">&quot;admin&quot;</span> and get_pass_word == <span class="string">&quot;admin123&quot;</span>:</span><br><span class="line">            messagebox.showinfo(<span class="string">&quot;登录&quot;</span>, <span class="string">&quot;登录成功！&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            messagebox.showinfo(<span class="string">&quot;登录&quot;</span>, <span class="string">&quot;登录失败！&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;600x530+200+300&quot;</span>)</span><br><span class="line">    app = Applicaton(master=root)</span><br><span class="line">    root.mainloop()</span><br></pre></td></tr></table></figure>
 
 
+<h3 id="Text多行文本框"><a href="#Text多行文本框" class="headerlink" title="Text多行文本框"></a>Text多行文本框</h3><p>Text(多行文本框)的主要用于显示多行文本，还可以显示网页链接、图片、HTML页面、甚至CSS样式表，添加组件等。因此，也常被当做简单的文本处理器，文本编辑器，或者网页浏览器来<br>使用</p>
+<p>语法格式：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">text=Text(master, option, ...)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>master:父容器</li>
+<li>options: 可选项，即该按钮的可设置的属性。这些选项可以用键 = 值的形式设置，并以逗号分隔。</li>
+</ul>
+<p>option说明：</p>
+<table>
+<thead>
+<tr>
+<th align="left">可选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">autoseparators</td>
+<td align="left">默认为 True，表示执行撤销操作时是否自动插入一个“分隔符”（其作用是用于分隔操作记录）</td>
+</tr>
+<tr>
+<td align="left">exportselection</td>
+<td align="left">默认值为 True，表示被选中的文本是否可以被复制到剪切板，若是 False 则表示不允许。</td>
+</tr>
+<tr>
+<td align="left">insertbackground</td>
+<td align="left">设置插入光标的颜色，默认为 BLACK</td>
+</tr>
+<tr>
+<td align="left">insertborderwidth</td>
+<td align="left">设置插入光标的边框宽度，默认值为 0</td>
+</tr>
+<tr>
+<td align="left">insertofftime</td>
+<td align="left">该选项控制光标的闪烁频频率（灭的状态）</td>
+</tr>
+<tr>
+<td align="left">insertontime</td>
+<td align="left">该选项控制光标的闪烁频频率（亮的状态）</td>
+</tr>
+<tr>
+<td align="left">selectbackground</td>
+<td align="left">指定被选中文本的背景颜色，默认由系统决定</td>
+</tr>
+<tr>
+<td align="left">selectborderwidth</td>
+<td align="left">指定被选中文本的背景颜色，默认值是0</td>
+</tr>
+<tr>
+<td align="left">selectforeground</td>
+<td align="left">指定被选中文本的字体颜色，默认值由系统指定</td>
+</tr>
+<tr>
+<td align="left">setgrid</td>
+<td align="left">默认值是 False，指定一个布尔类型的值，确定是否启用网格控制</td>
+</tr>
+<tr>
+<td align="left">spacing1</td>
+<td align="left">指定 Text 控件文本块中每一行与上方的空白间隔，注意忽略自动换行，且默认值为 0。</td>
+</tr>
+<tr>
+<td align="left">spacing2</td>
+<td align="left">指定 Text 控件文本块中自动换行的各行间的空白间隔，忽略换行符，默认值为0</td>
+</tr>
+<tr>
+<td align="left">spacing3</td>
+<td align="left">指定 Text 组件文本中每一行与下方的空白间隔，忽略自动换行，默认值是 0</td>
+</tr>
+<tr>
+<td align="left">tabs</td>
+<td align="left">定制 Tag 所描述的文本块中 Tab 按键的功能，默认被定义为 8 个字符宽度，比如 tabs=(‘1c’, ‘2c’, ‘8c’) 表示前 3 个 Tab 宽度分别为 1厘米，2厘米，8厘米。</td>
+</tr>
+<tr>
+<td align="left">undo</td>
+<td align="left">该参数默认为 False，表示关闭 Text 控件的“撤销”功能，若为 True 则表示开启</td>
+</tr>
+<tr>
+<td align="left">wrap</td>
+<td align="left">该参数用来设置当一行文本的长度超过 width 选项设置的宽度时，是否自动换行，参数值 none（不自动换行）、char（按字符自动换行）、word（按单词自动换行）</td>
+</tr>
+<tr>
+<td align="left">xscrollcommand</td>
+<td align="left">该参数与 Scrollbar 相关联，表示沿水平方向上下滑动</td>
+</tr>
+<tr>
+<td align="left">yscrollcommand</td>
+<td align="left">该参数与 Scrollbar 相关联，表示沿垂直方向左右滑动</td>
+</tr>
+</tbody></table>
+<p>方法：<br>Text 中的方法有几十个之多，这里不进行一一列举，主要对常用的方法进行介绍，如下表所示：</p>
+<table>
+<thead>
+<tr>
+<th align="left">可选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">bbox(index)</td>
+<td align="left">返回指定索引的字符的边界框，返回值是一个 4 元组，格式为(x,y,width,height)</td>
+</tr>
+<tr>
+<td align="left">edit_modified()</td>
+<td align="left">该方法用于查询和设置 modified 标志（该标标志用于追踪 Text 组件的内容是否发生变化）</td>
+</tr>
+<tr>
+<td align="left">edit_redo()</td>
+<td align="left">“恢复”上一次的“撤销”操作，如果设置 undo 选项为 False，则该方法无效。</td>
+</tr>
+<tr>
+<td align="left">edit_separator()</td>
+<td align="left">插入一个“分隔符”到存放操作记录的栈中，用于表示已经完成一次完整的操作，如果设置 undo 选项为 False，则该方法无效。</td>
+</tr>
+<tr>
+<td align="left">get(index1, index2)</td>
+<td align="left">返回特定位置的字符，或者一个范围内的文字。</td>
+</tr>
+<tr>
+<td align="left">image_cget(index, option)</td>
+<td align="left">返回 index 参数指定的嵌入 image 对象的 option 选项的值，如果给定的位置没有嵌入 image 对象，则抛出 TclError 异常</td>
+</tr>
+<tr>
+<td align="left">image_create()</td>
+<td align="left">在 index 参数指定的位置嵌入一个 image 对象，该 image 对象必须是 Tkinter 的 PhotoImage 或 BitmapImage 实例。</td>
+</tr>
+<tr>
+<td align="left">insert(index, text)</td>
+<td align="left">在 index 参数指定的位置插入字符串，第一个参数也可以设置为 INSERT，表示在光标处插入，END 表示在末尾处插入。</td>
+</tr>
+<tr>
+<td align="left">delete(startindex [, endindex])</td>
+<td align="left">删除特定位置的字符，或者一个范围内的文字。</td>
+</tr>
+<tr>
+<td align="left">see(index)</td>
+<td align="left">如果指定索引位置的文字是可见的，则返回 True，否则返回 False。</td>
+</tr>
+</tbody></table>
+<p>示例代码:<br>test_Text.py</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line">import webbrowser</span><br><span class="line">from tkinter import *</span><br><span class="line">from tkinter import messagebox</span><br><span class="line"></span><br><span class="line">class Applicaton(Frame):</span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        <span class="comment"># super代表的是父类的定义，而不是父类对象</span></span><br><span class="line">        super().__init__(master)</span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.createWidget()</span><br><span class="line"></span><br><span class="line">    def createWidget(self):</span><br><span class="line">        self.text = Text(self, width=40, height=12, <span class="built_in">bg</span>=<span class="string">&quot;gray&quot;</span>)</span><br><span class="line">        self.text.pack()</span><br><span class="line"></span><br><span class="line">        self.text.insert(1.0, <span class="string">&quot;123456789\n987654321&quot;</span>)</span><br><span class="line">        self.text.insert(2.3, <span class="string">&quot;锄禾日当午,汗滴禾下土.谁知盘中餐,粒粒皆辛苦.\n&quot;</span>)</span><br><span class="line"></span><br><span class="line">        Button(self, text=<span class="string">&quot;重复插入文本&quot;</span>, <span class="built_in">command</span>=self.insertText).pack(side=<span class="string">&quot;left&quot;</span>)</span><br><span class="line">        Button(self, text=<span class="string">&quot;返回文本&quot;</span>, <span class="built_in">command</span>=self.returntText).pack(side=<span class="string">&quot;left&quot;</span>)</span><br><span class="line">        Button(self, text=<span class="string">&quot;添加图片&quot;</span>, <span class="built_in">command</span>=self.addImg).pack(side=<span class="string">&quot;left&quot;</span>)</span><br><span class="line">        Button(self, text=<span class="string">&quot;添加组件&quot;</span>, <span class="built_in">command</span>=self.addWidget).pack(side=<span class="string">&quot;left&quot;</span>)</span><br><span class="line">        Button(self, text=<span class="string">&quot;通过tag控制文本&quot;</span>, <span class="built_in">command</span>=self.testTag).pack(side=<span class="string">&quot;left&quot;</span>)</span><br><span class="line"></span><br><span class="line">    def insertText(self):</span><br><span class="line">        <span class="comment"># INSERT索引标识在光标处插入</span></span><br><span class="line">        self.text.insert(INSERT, <span class="string">&quot;hello word!&quot;</span>)</span><br><span class="line">        <span class="comment"># END表示在最后插入</span></span><br><span class="line">        self.text.insert(END, <span class="string">&quot;[text]&quot;</span>)</span><br><span class="line"></span><br><span class="line">    def returntText(self):</span><br><span class="line">        <span class="comment"># Indexes(索引)用来指向Text组件中文本的位置，Text的组件索引也是对应实际字符之间的位置</span></span><br><span class="line">        <span class="comment"># 行号以0开始，列号以1开始</span></span><br><span class="line">        <span class="built_in">print</span>(self.text.get(1.3, 1.8))</span><br><span class="line">        self.text.insert(1.9, <span class="string">&quot;哈哈哈&quot;</span>)</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;所有文本内容:\n&quot;</span> + self.text.get(1.0, END))</span><br><span class="line"></span><br><span class="line">    def addImg(self):</span><br><span class="line">        <span class="comment"># global photo</span></span><br><span class="line">        self.photo = PhotoImage(file=<span class="string">&quot;c.gif&quot;</span>)</span><br><span class="line">        self.text.image_create(END, image=self.photo)</span><br><span class="line"></span><br><span class="line">    def addWidget(self):</span><br><span class="line">        <span class="comment"># 在text中创建组件</span></span><br><span class="line">        btn = Button(self.text, text=<span class="string">&quot;点我&quot;</span>)</span><br><span class="line">        self.text.window_create(INSERT, window=btn)</span><br><span class="line"></span><br><span class="line">    def testTag(self):</span><br><span class="line">        self.text.delete(1.0, END)</span><br><span class="line">        self.text.insert(INSERT, <span class="string">&quot;good good study day day up!\n锄禾日当午,\n汗滴禾下土.\n谁知盘中餐,\n粒粒皆辛苦.\n百度一下&quot;</span>)</span><br><span class="line">        </span><br><span class="line">        <span class="comment"># 添加tag，可单独设置样式，也可以绑定事件</span></span><br><span class="line">        self.text.tag_add(<span class="string">&quot;good&quot;</span>, 1.0, 1.9)</span><br><span class="line">        self.text.tag_config(<span class="string">&quot;good&quot;</span>, background=<span class="string">&quot;yellow&quot;</span>, foreground=<span class="string">&#x27;red&#x27;</span>)</span><br><span class="line"></span><br><span class="line">        self.text.tag_add(<span class="string">&quot;baidu&quot;</span>, 5.0, 5.4)</span><br><span class="line">        self.text.tag_config(<span class="string">&quot;baidu&quot;</span>, underline=True)</span><br><span class="line">        self.text.tag_bind(<span class="string">&quot;baidu&quot;</span>, <span class="string">&quot;&lt;Button-1&gt;&quot;</span>, self.webshow)</span><br><span class="line"></span><br><span class="line">    def webshow(self,event):</span><br><span class="line">        webbrowser.open(<span class="string">&quot;http://www.baidu.com&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;600x530+200+300&quot;</span>)</span><br><span class="line">    app = Applicaton(master=root)</span><br><span class="line">    root.mainloop()</span><br></pre></td></tr></table></figure>
 
+<hr>
+<h3 id="Raduibutton单选框"><a href="#Raduibutton单选框" class="headerlink" title="Raduibutton单选框"></a>Raduibutton单选框</h3><p>在同一组选项中选择一个，可以显示文本，也可以显示图像</p>
+<p>语法格式：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">radioBtn=Radiobutton(master, option, ...)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>master:父容器</li>
+<li>options: 可选项，即该按钮的可设置的属性。这些选项可以用键 = 值的形式设置，并以逗号分隔。</li>
+</ul>
+<p>option说明：</p>
+<table>
+<thead>
+<tr>
+<th align="left">可选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">activebackground</td>
+<td align="left">设置当 Radiobutton 处于活动状态（通过 state 选项设置状态）的背景色，默认值由系统指定</td>
+</tr>
+<tr>
+<td align="left">activeforeground</td>
+<td align="left">设置当 Radiobutton 处于活动状态（通过 state 选项设置状态）的前景色，默认值由系统指定</td>
+</tr>
+<tr>
+<td align="left">compound</td>
+<td align="left">默认值为 None，控制 Radiobutton 中文本和图像的混合模式，默认情况下，如果有指定位图或图片，则不显示文本 。如果该选项设置为 “center”，文本显示在图像上（文本重叠图像）。设置为 “bottom”，”left”，”right” 或 “top”，那么图像显示在文本的旁边，比如如”bottom”，则显示图像在文本的下方。</td>
+</tr>
+<tr>
+<td align="left">disabledforeground</td>
+<td align="left">指定当 Radiobutton 不可用的时的前景色颜色，默认由系统指定</td>
+</tr>
+<tr>
+<td align="left">indicatoron</td>
+<td align="left">该参数表示选项前面的小圆圈是否被绘制，默认为 True，即绘制如果设置为 False，则会改变单选按钮的样式，当点击时按钮会变成 “sunken”（凹陷），再次点击变为 “raised”（凸起）；</td>
+</tr>
+<tr>
+<td align="left">selectcolor</td>
+<td align="left">设置当 Radiobutton 为选中状态的时候显示的图片；如果没有指定 image 选项，该选项被忽略</td>
+</tr>
+<tr>
+<td align="left">takefocus</td>
+<td align="left">如果是 True，该组件接受输入焦点，默认为 False</td>
+</tr>
+<tr>
+<td align="left">variable</td>
+<td align="left">表示与 Radiobutton 控件关联的变量，注意同一组中的所有按钮的 variable 选项应该都指向同一个变量，通过将该变量与 value 选项值对比，可以判断用户选中了哪个按钮</td>
+</tr>
+</tbody></table>
+<p>方法：<br>常用方法如下所示：</p>
+<table>
+<thead>
+<tr>
+<th align="left">可选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">deselect()</td>
+<td align="left">取消该按钮的选中状态</td>
+</tr>
+<tr>
+<td align="left">flash()</td>
+<td align="left">刷新 Radiobutton 控件，该方法将重绘 Radiobutton控件若干次（即在”active” 和 “normal” 状态间切换）</td>
+</tr>
+<tr>
+<td align="left">invoke()</td>
+<td align="left">调用 Radiobutton 中 command 参数指定的函数，并返回函数的返回值;如果 Radiobutton 控件的 state(状态) 是 “disabled” （不可用）或没有指定 command 选项，则该方法无效</td>
+</tr>
+<tr>
+<td align="left">select()</td>
+<td align="left">将 Radiobutton 控件设置为选中状态</td>
+</tr>
+</tbody></table>
+<p>示例代码：<br>test_Radiobutton.py</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import *</span><br><span class="line">from tkinter import ttk, messagebox</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Applicaton(Frame):</span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        super().__init__(master)</span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.creatWidgetRadioButton()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 单选框</span></span><br><span class="line">    def creatWidgetRadioButton(self):</span><br><span class="line">        <span class="comment"># 创建变量</span></span><br><span class="line">        self.v = StringVar()</span><br><span class="line">        <span class="comment"># 设置默认值</span></span><br><span class="line">        self.v.set(<span class="string">&quot;F&quot;</span>)</span><br><span class="line"></span><br><span class="line">        self.r01 = Radiobutton(self, text=<span class="string">&quot;男性&quot;</span>, value=<span class="string">&#x27;M&#x27;</span>, variable=self.v)</span><br><span class="line">        self.r02 = Radiobutton(self, text=<span class="string">&quot;女性&quot;</span>, value=<span class="string">&#x27;F&#x27;</span>, variable=self.v)</span><br><span class="line"></span><br><span class="line">        self.r01.pack(side=<span class="string">&quot;left&quot;</span>)</span><br><span class="line">        self.r02.pack(side=<span class="string">&quot;left&quot;</span>)</span><br><span class="line"></span><br><span class="line">        Button(self, text=<span class="string">&quot;确定&quot;</span>, <span class="built_in">command</span>=self.confirm).pack(side=<span class="string">&#x27;left&#x27;</span>)</span><br><span class="line"></span><br><span class="line">    def confirm(self):</span><br><span class="line">        messagebox.showinfo(<span class="string">&quot;单选&quot;</span>, <span class="string">&quot;选择的性别为:&quot;</span> + self.v.get())</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;400x130+200+300&quot;</span>)</span><br><span class="line">    app = Applicaton(master=root)</span><br><span class="line">    root.mainloop()</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="CheckButton多选框"><a href="#CheckButton多选框" class="headerlink" title="CheckButton多选框"></a>CheckButton多选框</h3><p>CheckButton多选框，可以显示文本，也可以显示图像,各个选项之间属于并列的关系</p>
+<p>语法格式：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">checkBtn=CheckButton(master, option, ...)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>master:父容器</li>
+<li>options: 可选项，即该按钮的可设置的属性。这些选项可以用键 = 值的形式设置，并以逗号分隔。</li>
+</ul>
+<p>option说明：</p>
+<table>
+<thead>
+<tr>
+<th align="left">可选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">text</td>
+<td align="left">显示的文本，使用 “\n” 来对文本进行换行。</td>
+</tr>
+<tr>
+<td align="left">variable</td>
+<td align="left">和复选框按钮关联的变量，该变量值会随着用户选择行为来改变（选或不选），即在 onvalue 和 offvalue 设置值之间切换，这些操作由系统自动完成。在默认情况下，variable 选项设置为 1 表示选中状态，反之则为 0，表示不选中。</td>
+</tr>
+<tr>
+<td align="left">onvalue</td>
+<td align="left">通过设置 onvalue 的值来自定义选中状态的值。</td>
+</tr>
+<tr>
+<td align="left">offvalue</td>
+<td align="left">通过设置 offvalue 的值来自定义未选中状态的值。</td>
+</tr>
+<tr>
+<td align="left">indicatoron</td>
+<td align="left">默认为 True，表示是否绘制用来选择的选项的小方块，当设置为 False 时，会改变原有按钮的样式，与单选按钮相同。</td>
+</tr>
+<tr>
+<td align="left">selectcolor</td>
+<td align="left">选择框的颜色（即小方块的颜色），默认由系统指定</td>
+</tr>
+<tr>
+<td align="left">selectimage</td>
+<td align="left">设置当 Checkbutton 为选中状态的时候显示的图片，若如果没有指定 image 选项，该选项被忽略</td>
+</tr>
+<tr>
+<td align="left">textvariable</td>
+<td align="left">Checkbutton 显示 Tkinter 变量（通常是一个 StringVar 变量）的内容，如果变量被修改，Checkbutton 的文本会自动更新</td>
+</tr>
+<tr>
+<td align="left">wraplength</td>
+<td align="left">表示复选框文本应该被分成多少行，该选项指定每行的长度，单位是屏幕单元，默认值为 0</td>
+</tr>
+</tbody></table>
+<p>方法：<br>常用方法如下所示：</p>
+<table>
+<thead>
+<tr>
+<th align="left">可选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">desellect()</td>
+<td align="left">取消 Checkbutton 组件的选中状态，也就是设置 variable 为 offvalue。</td>
+</tr>
+<tr>
+<td align="left">flash()</td>
+<td align="left">刷新 Checkbutton 组件，对其进行重绘操作，即将前景色与背景色互换从而产生闪烁的效果。</td>
+</tr>
+<tr>
+<td align="left">invoke()</td>
+<td align="left">调用 Checkbutton 中 command 选项指定的函数或方法，并返回函数的返回值。如果 Checkbutton 的state(状态)”disabled”是 （不可用）或没有指定 command 选项，则该方法无效。</td>
+</tr>
+<tr>
+<td align="left">select()</td>
+<td align="left">将 Checkbutton 组件设置为选中状态，也就是设置 variable 为 onvalue</td>
+</tr>
+<tr>
+<td align="left">toggle()</td>
+<td align="left">改变复选框的状态，如果复选框现在状态是 on，就改成 off，反之亦然</td>
+</tr>
+</tbody></table>
+<p>示例代码:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import *</span><br><span class="line">from tkinter import ttk, messagebox</span><br><span class="line"></span><br><span class="line">class Applicaton(Frame):</span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        super().__init__(master)</span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.creatWidgetCheckButton()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 多选框</span></span><br><span class="line">    def creatWidgetCheckButton(self):</span><br><span class="line">        self.codeHubby = IntVar()</span><br><span class="line">        self.videoHobby = IntVar()</span><br><span class="line"></span><br><span class="line">        self.c1 = Checkbutton(self, text=<span class="string">&quot;敲代码&quot;</span>, variable=self.codeHubby, onvalue=1, offvalue=0)</span><br><span class="line">        self.c2 = Checkbutton(self, text=<span class="string">&quot;看视频&quot;</span>, variable=self.videoHobby, onvalue=1, offvalue=0)</span><br><span class="line"></span><br><span class="line">        self.c1.pack(side=<span class="string">&quot;left&quot;</span>)</span><br><span class="line">        self.c2.pack(side=<span class="string">&quot;left&quot;</span>)</span><br><span class="line"></span><br><span class="line">        Button(self, text=<span class="string">&quot;确定&quot;</span>, <span class="built_in">command</span>=self.confirm).pack(side=<span class="string">&quot;left&quot;</span>)</span><br><span class="line"></span><br><span class="line">    def confirm(self):</span><br><span class="line">        <span class="keyword">if</span> self.videoHobby.get() == 0 and self.codeHubby.get() == 0:</span><br><span class="line">            messagebox.showinfo(<span class="string">&quot;弹窗&quot;</span>, <span class="string">&quot;请选择一项后点击确定！&quot;</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            res = <span class="string">&quot;看视频&quot;</span> <span class="keyword">if</span> self.videoHobby.get() == 1 <span class="keyword">else</span> <span class="string">&quot;&quot;</span></span><br><span class="line">            res += <span class="string">&quot;敲代码&quot;</span> <span class="keyword">if</span> self.codeHubby.get() == 1 <span class="keyword">else</span> <span class="string">&quot;&quot;</span></span><br><span class="line">            messagebox.showinfo(<span class="string">&quot;弹窗&quot;</span>, <span class="string">&#x27;今天开始:&#x27;</span> + res)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;400x130+200+300&quot;</span>)</span><br><span class="line">    app = Applicaton(master=root)</span><br><span class="line">    root.mainloop()</span><br></pre></td></tr></table></figure>
+<hr>
+<h5 id="Canvas画布"><a href="#Canvas画布" class="headerlink" title="Canvas画布"></a>Canvas画布</h5><p>Canvas画布，画布是一个矩形区域，可添加图片、图像、组件等，可以绘制各种图形/图像；</p>
+<p>语法格式：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">canv=Canvas画布(master, option, ...)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>master:父容器</li>
+<li>options: 可选项，即该按钮的可设置的属性。这些选项可以用键 = 值的形式设置，并以逗号分隔。</li>
+</ul>
+<p>option说明：</p>
+<table>
+<thead>
+<tr>
+<th align="left">可选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">background(bg)</td>
+<td align="left">指定 Canvas 控件的背景颜色</td>
+</tr>
+<tr>
+<td align="left">borderwidth(bd)</td>
+<td align="left">指定 Canvas 控件的边框宽度</td>
+</tr>
+<tr>
+<td align="left">closeenough</td>
+<td align="left">指定一个距离，当鼠标与画布对象的距离小于该值时，认为鼠标位于画布对象上。该选项是一个浮点类型的值</td>
+</tr>
+<tr>
+<td align="left">confine</td>
+<td align="left">指定 Canvas 控件是否允许滚动超出 scrollregion 选项设置的滚动范围，默认值为 True</td>
+</tr>
+<tr>
+<td align="left">selectbackground</td>
+<td align="left">指定当画布对象（即在 Canvas 画布上绘制的图形）被选中时的背景色，</td>
+</tr>
+<tr>
+<td align="left">selectborderwidth</td>
+<td align="left">指定当画布对象被选中时的边框宽度（选中边框）</td>
+</tr>
+<tr>
+<td align="left">selectforeground</td>
+<td align="left">指定当画布对象被选中时的前景色</td>
+</tr>
+<tr>
+<td align="left">state</td>
+<td align="left">设置 Canvas 的状态：”normal” 或 “disabled”，默认值是 “normal”，注意，该值不会影响画布对象的状态</td>
+</tr>
+<tr>
+<td align="left">takefocus</td>
+<td align="left">指定使用 Tab 键可以将焦点移动到输入框中，默认为开启，将该选项设置为 False 避免焦点在此输入框中</td>
+</tr>
+<tr>
+<td align="left">width</td>
+<td align="left">指定 Canvas 的宽度，单位为像素</td>
+</tr>
+<tr>
+<td align="left">xscrollcommand</td>
+<td align="left">与 scrollbar（滚动条）控件相关联（沿着 x 轴水平方向）</td>
+</tr>
+<tr>
+<td align="left">xscrollincrement</td>
+<td align="left">该选项指定 Canvas 水平滚动的“步长” ,例如 ‘3c’ 表示 3 厘米，还可以选择的单位有 ‘i’（英寸），’m’（毫米）和 ‘p’（DPI，大约是 ‘1i’ 等于 ‘72p’） 。默认为 0，表示可以水平滚动到任意位置</td>
+</tr>
+<tr>
+<td align="left">yscrollcommand</td>
+<td align="left">与 scrollbar 控件（滚动条）相关联（沿着 y 轴垂直方向）</td>
+</tr>
+<tr>
+<td align="left">yscrollincrement</td>
+<td align="left">1. 该选项指定 Canvas 垂直滚动的“步长” ,例如 ‘3c’ 表示 3 厘米，还可以选择的单位有 ‘i’（英寸），’m’（毫米）和 ‘p’（DPI，大约是 ‘1i’ 等于 ‘72p’）.默认值是 0，表示可以垂直方向滚动到任意位置</td>
+</tr>
+</tbody></table>
+<p>方法：<br>Cansvas 控件提供了一系列绘制几何图形的常用方法，下面对这些方法做简单介绍:</p>
+<table>
+<thead>
+<tr>
+<th align="left">可选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">create_line(x0, y0, x1, y1, … , xn, yn, options)</td>
+<td align="left">根据给定的坐标创建一条或者多条线段； 参数 x0,y0,x1,y1,…,xn,yn 定义线条的坐标；参数 options 表示其他可选参数</td>
+</tr>
+<tr>
+<td align="left">create_oval(x0, y0, x1, y1, options)</td>
+<td align="left">绘制一个圆形或椭圆形；参数 x0 与 y0 定义绘图区域的左上角坐标；参数 x1 与 y1 定义绘图区域的右下角坐标；参数 options 表示其他可选参数</td>
+</tr>
+<tr>
+<td align="left">create_polygon(x0, y0, x1, y1, … , xn, yn, options)</td>
+<td align="left">绘制一个至少三个点的多边形；参数 x0、y0、x1、y1、…、xn、yn 定义多边形的坐标；参数 options 表示其他可选参数</td>
+</tr>
+<tr>
+<td align="left">create_rectangle(x0, y0, x1, y1, options)</td>
+<td align="left">绘制一个矩形；参数 x0 与 y0 定义矩形的左上角坐标；参数 x 与 y1 定义矩形的右下角坐标； 参数 options 表示其他可选参数</td>
+</tr>
+<tr>
+<td align="left">create_text(x0, y0, text, options)</td>
+<td align="left">绘制一个文字字符串。其中参数 x0 与 y0 定义文字字符串的左上角坐标，参数 text 定义文字字符串的文字；参数 options 表示其他可选参数</td>
+</tr>
+<tr>
+<td align="left">create_image(x, y, image)</td>
+<td align="left">创建一个图片;参数 x 与 y 定义图片的左上角坐标；参数 image 定义图片的来源，必须是 tkinter 模块的 BitmapImage 类或 PhotoImage 类的实例变量。</td>
+</tr>
+<tr>
+<td align="left">create_bitmap(x, y, bitmap)</td>
+<td align="left">创建一个位图；参数 x 与 y 定义位图的左上角坐标；参数 bitmap 定义位图的来源，参数值可以是 gray12、gray25、gray50、gray75、hourglass、error、questhead、info、warning 或 question，或者也可以直接使用 XBM（X Bitmap）类型的文件，此时需要在 XBM 文件名称前添加一个 @ 符号，例如 bitmap=@hello.xbm</td>
+</tr>
+<tr>
+<td align="left">create_arc(coord, start, extent, fill)</td>
+<td align="left">绘制一个弧形；参数 coord 定义画弧形区块的左上角与右下角坐标；参数 start 定义画弧形区块的起始角度（逆时针方向）；参数 extent 定义画弧形区块的结束角度（逆时针方向）； 参数 fill 定义填充弧形区块的颜色。</td>
+</tr>
+</tbody></table>
+<p>注意：上述方法都会返回一个画布对象的唯一 ID。关于 options 参数，下面会通过一个示例对经常使用的参数做相关介绍。（但由于可选参数较多，并且每个方法中的参数作用大同小异，因此对它们不再逐一列举）</p>
+<p>从上述表格不难看出，Canvas 控件采用了坐标系的方式来确定画布中的每一点。一般情况下，默认主窗口的左上角为坐标原点，这种坐标系被称作为“窗口坐标系”，但也会存在另外一种情况，即画布的大小可能大于主窗口，当发生这种情况的时，可以采用带滚动条的 Canvas 控件，此时会以画布的左上角为坐标原点，我们将这种坐标系称为“画布坐标系”。</p>
+<p>示例代码:<br>test_Canvas.py</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import *</span><br><span class="line">from tkinter import ttk, messagebox</span><br><span class="line"></span><br><span class="line">class Applicaton(Frame):</span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        super().__init__(master)</span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.creatWidgetCanvas()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># canvas 画布</span></span><br><span class="line">    def creatWidgetCanvas(self):</span><br><span class="line">        self.canvas = Canvas(self, width=300, height=200, <span class="built_in">bg</span>=<span class="string">&quot;green&quot;</span>)</span><br><span class="line">        self.canvas.pack()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 画一条线</span></span><br><span class="line">        line = self.canvas.create_line(10, 10, 50, 50, 20, 100, 100, 20)</span><br><span class="line">        <span class="comment"># 画一个矩形</span></span><br><span class="line">        rect = self.canvas.create_rectangle(30, 30, 120, 20)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 画一个圆</span></span><br><span class="line">        oval = self.canvas.create_oval(60, 60, 100, 100)</span><br><span class="line"></span><br><span class="line">        Button(self, text=<span class="string">&quot;画10个矩形&quot;</span>, <span class="built_in">command</span>=self.drawOval).pack(side=<span class="string">&quot;left&quot;</span>)</span><br><span class="line"></span><br><span class="line">    def drawOval(self):</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(0, 10):</span><br><span class="line">            x1 = random.randrange(int(self.canvas[<span class="string">&quot;width&quot;</span>]) / 2)</span><br><span class="line">            y1 = random.randrange(int(self.canvas[<span class="string">&quot;height&quot;</span>]) / 2)</span><br><span class="line">            x2 = x1 + random.randrange(int(self.canvas[<span class="string">&quot;width&quot;</span>]) / 2)</span><br><span class="line">            y2 = y1 + random.randrange(int(self.canvas[<span class="string">&quot;height&quot;</span>]) / 2)</span><br><span class="line">            self.canvas.create_rectangle(x1, x2, y1, y2)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;400x330+200+300&quot;</span>)</span><br><span class="line">    app = Applicaton(master=root)</span><br><span class="line">    root.mainloop() </span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Grid布局管理器"><a href="#Grid布局管理器" class="headerlink" title="Grid布局管理器"></a>Grid布局管理器</h3><p>一个完整的软件必定有许多的组件组成，这些组件的排布则通过布局管理器来进行管理；tkinter 提供了三种布局管理器，分别是</p>
+<ol>
+<li>pack:垂直/水平排列，此方法灵活性较差</li>
+<li>grid:表格布局管，采用表格结构管理组件，子组件的位置由行和列的单元格来确定，并且可以跨越行和列，从而实现复杂的页面布局，此种方法使用起来较为灵活</li>
+<li>place:位置管理器，通过像素位置控制组件，可以指定组件大小以及摆放位置，三个方法中最为灵活的布局方法</li>
+</ol>
+<p>Grid布局介绍：</p>
+<table>
+<thead>
+<tr>
+<th align="left">可选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">column</td>
+<td align="left">指定组件插入的列（0 表示第 1 列）,默认值是 0</td>
+</tr>
+<tr>
+<td align="left">columnspan</td>
+<td align="left">指定用多少列（跨列）显示该组件</td>
+</tr>
+<tr>
+<td align="left">ipadx</td>
+<td align="left">指定水平方向上的内边距</td>
+</tr>
+<tr>
+<td align="left">ipady</td>
+<td align="left">指定垂直方向上的内边距</td>
+</tr>
+<tr>
+<td align="left">padx</td>
+<td align="left">指定水平方向上的外边距</td>
+</tr>
+<tr>
+<td align="left">pady</td>
+<td align="left">指定垂直方向上的外边距</td>
+</tr>
+<tr>
+<td align="left">row</td>
+<td align="left">指定组件插入的行（0 表示第 1 行）,指定用多少行（跨行）显示该组件</td>
+</tr>
+<tr>
+<td align="left">sticky</td>
+<td align="left">控制组件在 grid 分配的空间中的位置;</td>
+</tr>
+</tbody></table>
+<p>示例代码1:<br>test_Grid.py</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import *</span><br><span class="line">from tkinter import ttk, messagebox</span><br><span class="line"></span><br><span class="line">class Applicaton(Frame):</span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        super().__init__(master)</span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.creatWidgetGrid()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Grid</span></span><br><span class="line">    def creatWidgetGrid(self):</span><br><span class="line">        self.label01 = Label(self, text=<span class="string">&quot;用户名：&quot;</span>)</span><br><span class="line">        self.label01.grid(row=0, column=0)</span><br><span class="line"></span><br><span class="line">        self.entry01 = Entry(self)</span><br><span class="line">        self.entry01.grid(row=0, column=1)</span><br><span class="line"></span><br><span class="line">        Label(self, text=<span class="string">&quot;用户名为手机号&quot;</span>).grid(row=0, column=2)</span><br><span class="line"></span><br><span class="line">        Label(self, text=<span class="string">&quot;密码&quot;</span>).grid(row=1, column=0)</span><br><span class="line">        Entry(self, text=<span class="string">&quot;*&quot;</span>).grid(row=1, column=1)</span><br><span class="line"></span><br><span class="line">        Button(self, text=<span class="string">&quot;登录&quot;</span>).grid(row=2, column=1, sticky=EW)</span><br><span class="line">        Button(self, text=<span class="string">&quot;取消&quot;</span>).grid(row=2, column=2, sticky=E)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;400x330+200+300&quot;</span>)</span><br><span class="line">    app = Applicaton(master=root)</span><br><span class="line">    root.mainloop()</span><br></pre></td></tr></table></figure>
 
+<p>行/列展示代码2：<br>test_Grid2.py</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import *</span><br><span class="line">from tkinter import ttk, messagebox</span><br><span class="line"></span><br><span class="line">class Applicaton(Frame):</span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        super().__init__(master)</span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.creatWidgetGrid()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Grid</span></span><br><span class="line">    def creatWidgetGrid(self):</span><br><span class="line">        <span class="comment"># 在窗口内创建按钮，以表格的形式依次排列</span></span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> range(10):</span><br><span class="line">            <span class="keyword">for</span> j <span class="keyword">in</span> range(10):</span><br><span class="line">                Button(self, text=<span class="string">&quot; (&quot;</span> + str(i) + <span class="string">&quot;,&quot;</span> + str(j) + <span class="string">&quot;)&quot;</span>, <span class="built_in">bg</span>=<span class="string">&#x27;#D1EEEE&#x27;</span>).grid(row=i, column=j)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;400x330+200+300&quot;</span>)</span><br><span class="line">    app = Applicaton(master=root)</span><br><span class="line">    root.mainloop()</span><br></pre></td></tr></table></figure>
+<p>效果展示：</p>
+<h2 id=""><a href="#" class="headerlink" title=""></a><img src="https://s2.loli.net/2022/04/07/R5blZe8JyfspaYG.png"></h2><h3 id="使用Grid实现计算器页面布局"><a href="#使用Grid实现计算器页面布局" class="headerlink" title="使用Grid实现计算器页面布局"></a>使用Grid实现计算器页面布局</h3><p>示例代码：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import *</span><br><span class="line">from tkinter import ttk, messagebox</span><br><span class="line"></span><br><span class="line"><span class="string">&quot;&quot;</span><span class="string">&quot;</span></span><br><span class="line"><span class="string">通过 Grid 实现计算器实布局实现  7x4布局</span></span><br><span class="line"><span class="string">&quot;</span><span class="string">&quot;&quot;</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Applicaton(Frame):</span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        super().__init__(master)</span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.creatWidget()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 计算器软件界面设计</span></span><br><span class="line">    def creatWidget(self):</span><br><span class="line">        buttonText = ((<span class="string">&quot;CE&quot;</span>, <span class="string">&quot;C&quot;</span>, <span class="string">&quot;&lt;-&quot;</span>, <span class="string">&quot;÷&quot;</span>),</span><br><span class="line">                      (<span class="string">&quot;7&quot;</span>, <span class="string">&quot;8&quot;</span>, <span class="string">&quot;9&quot;</span>, <span class="string">&quot;X&quot;</span>),</span><br><span class="line">                      (<span class="string">&quot;4&quot;</span>, <span class="string">&quot;5&quot;</span>, <span class="string">&quot;6&quot;</span>, <span class="string">&quot;-&quot;</span>),</span><br><span class="line">                      (<span class="string">&quot;1&quot;</span>, <span class="string">&quot;2&quot;</span>, <span class="string">&quot;3&quot;</span>, <span class="string">&quot;+&quot;</span>),</span><br><span class="line">                      (<span class="string">&quot;±&quot;</span>, <span class="string">&quot;0&quot;</span>, <span class="string">&quot;.&quot;</span>, <span class="string">&quot;=&quot;</span>))</span><br><span class="line"></span><br><span class="line">        Entry(self).grid(row=0, column=0, columnspan=4, pady=10)</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span> rindex, r <span class="keyword">in</span> enumerate(buttonText):</span><br><span class="line">            <span class="keyword">for</span> cindex, c <span class="keyword">in</span> enumerate(r):</span><br><span class="line">                Button(self, text=c, width=3).grid(row=rindex + 1, column=cindex,sticky=NSEW)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;400x330+200+300&quot;</span>)</span><br><span class="line">    app = Applicaton(master=root)</span><br><span class="line">    root.mainloop()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
+<p>效果展示:</p>
+<h2 id="-1"><a href="#-1" class="headerlink" title=""></a><img src="https://s2.loli.net/2022/04/07/L7a9b34qrtfWMIV.png"></h2><h3 id="Pack布局管理器"><a href="#Pack布局管理器" class="headerlink" title="Pack布局管理器"></a>Pack布局管理器</h3><p>pack() 是一种较为简单的布局方法，在不使用任何参数的情况下，它会将控件以添加时的先后顺序，自上而下，一行一行的进行排列，并且默认居中显示。pack() 方法的常用参数如下所示：</p>
+<table>
+<thead>
+<tr>
+<th align="left">可选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">anchor</td>
+<td align="left">组件在窗口中的对齐方式，有 9 个方位参数值，比如”n”/“w”/“s”/“e”/“ne”，以及 “center” 等（这里的 e w s n分别代表，东西南北）</td>
+</tr>
+<tr>
+<td align="left">expand</td>
+<td align="left">是否可扩展窗口，参数值为 True（扩展）或者 False（不扩展），默认为 False，若设置为 True，则控件的位置始终位于窗口的中央位置</td>
+</tr>
+<tr>
+<td align="left">fill</td>
+<td align="left">参数值为 X/Y/BOTH/NONE，表示允许控件在水平/垂直/同时在两个方向上进行拉伸，比如当 fill = X 时，控件会占满水平方向上的所有剩余的空间。</td>
+</tr>
+<tr>
+<td align="left">ipadx,ipady</td>
+<td align="left">需要与 fill 参数值共同使用，表示组件与内容和组件边框的距离（内边距），比如文本内容和组件边框的距离，单位为像素(p)，或者厘米(c)、英寸(i)</td>
+</tr>
+<tr>
+<td align="left">padx,pady</td>
+<td align="left">用于控制组件之间的上下、左右的距离（外边距），单位为像素(p)，或者厘米(c)、英寸(i)</td>
+</tr>
+<tr>
+<td align="left">side</td>
+<td align="left">组件放置在窗口的哪个位置上，参数值 ‘top’,’bottom’,’left’,’right’。注意，单词小写时需要使用字符串格式，若为大写单词则不必使用字符串格式</td>
+</tr>
+</tbody></table>
+<p>示例代码：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import *</span><br><span class="line">from tkinter import ttk, messagebox</span><br><span class="line"></span><br><span class="line">class Applicaton(Frame):</span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        super().__init__(master)</span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.creatWidgetPack()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># pack</span></span><br><span class="line">    def creatWidgetPack(self):</span><br><span class="line">        lb_red = Label(self, text=<span class="string">&quot;红色&quot;</span>, <span class="built_in">bg</span>=<span class="string">&quot;Red&quot;</span>, <span class="built_in">fg</span>=<span class="string">&#x27;#ffffff&#x27;</span>, relief=GROOVE)</span><br><span class="line">        <span class="comment"># 默认以top方式放置</span></span><br><span class="line">        lb_red.pack()</span><br><span class="line">        lb_blue = Label(self, text=<span class="string">&quot;蓝色&quot;</span>, <span class="built_in">bg</span>=<span class="string">&quot;blue&quot;</span>, <span class="built_in">fg</span>=<span class="string">&#x27;#ffffff&#x27;</span>, relief=GROOVE)</span><br><span class="line">        <span class="comment"># 沿着水平方向填充，使用 pady 控制蓝色标签与其他标签的上下距离为 5 个像素</span></span><br><span class="line">        lb_blue.pack(fill=X, pady=<span class="string">&#x27;5px&#x27;</span>)</span><br><span class="line">        lb_green = Label(self, text=<span class="string">&quot;绿色&quot;</span>, <span class="built_in">bg</span>=<span class="string">&quot;green&quot;</span>, <span class="built_in">fg</span>=<span class="string">&#x27;#ffffff&#x27;</span>, relief=RAISED)</span><br><span class="line">        <span class="comment"># 将 黄色标签所在区域都填充为黄色，当使用 fill 参数时，必须设置 expand = 1，否则不能生效</span></span><br><span class="line">        lb_green.pack(side=LEFT, expand=1, fill=BOTH)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;400x330+200+300&quot;</span>)</span><br><span class="line">    app = Applicaton(master=root)</span><br><span class="line">    root.mainloop()</span><br></pre></td></tr></table></figure>
+<p>效果展示:<br><img src="https://s2.loli.net/2022/04/07/lARIaiDs9y4KF7L.png"></p>
+<hr>
+<h3 id="Place布局管理器"><a href="#Place布局管理器" class="headerlink" title="Place布局管理器"></a>Place布局管理器</h3><p>与前两种布局方法相比，采用 place() 方法进行布局管理要更加精细化，通过 place() 布局管理器可以直接指定控件在窗体内的绝对位置，或者相对于其他控件定位的相对位置。</p>
+<table>
+<thead>
+<tr>
+<th align="left">可选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">anchor</td>
+<td align="left">定义控件在窗体内的方位，参数值N/NE/E/SE/S/SW/W/NW 或 CENTER，默认值是 NW</td>
+</tr>
+<tr>
+<td align="left">bordermode</td>
+<td align="left">定义控件的坐标是否要考虑边界的宽度，参数值为 OUTSIDE（排除边界） 或 INSIDE（包含边界），默认值 INSIDE。</td>
+</tr>
+<tr>
+<td align="left">x、y</td>
+<td align="left">定义控件在根窗体中水平和垂直方向上的起始绝对位置</td>
+</tr>
+<tr>
+<td align="left">relx、rely</td>
+<td align="left">定义控件相对于根窗口（或其他控件）在水平和垂直方向上的相对位置（即位移比例），取值范围再 0.0~1.0 之间,可设置 in_ 参数项，相对于某个其他控件的位置</td>
+</tr>
+<tr>
+<td align="left">height、width</td>
+<td align="left">控件自身的高度和宽度（单位为像素）</td>
+</tr>
+<tr>
+<td align="left">relheight、relwidth</td>
+<td align="left">控件高度和宽度相对于根窗体高度和宽度的比例，取值也在 0.0~1.0 之间</td>
+</tr>
+</tbody></table>
+<p>示例代码:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import *</span><br><span class="line">from tkinter import ttk, messagebox</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class Applicaton(Frame):</span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        super().__init__(master)</span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.creatWidgetPlace()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># Place</span></span><br><span class="line">    def creatWidgetPlace(self):</span><br><span class="line">        <span class="comment"># 创建一个frame窗体对象，用来包裹标签</span></span><br><span class="line">        frame = Frame(self, relief=SUNKEN, borderwidth=2, width=450, height=250)</span><br><span class="line">        <span class="comment"># 在水平、垂直方向上填充窗体</span></span><br><span class="line">        frame.pack(side=TOP, fill=BOTH, expand=1)</span><br><span class="line">        <span class="comment"># 创建 &quot;位置1&quot;</span></span><br><span class="line">        Label1 = Label(frame, text=<span class="string">&quot;位置1&quot;</span>, <span class="built_in">bg</span>=<span class="string">&#x27;blue&#x27;</span>, <span class="built_in">fg</span>=<span class="string">&#x27;white&#x27;</span>)</span><br><span class="line">        <span class="comment"># 使用 place,设置第一个标签位于距离窗体左上角的位置（40,40）和其大小（width，height）</span></span><br><span class="line">        <span class="comment"># 注意这里（x,y）位置坐标指的是标签左上角的位置（以NW左上角进行绝对定位，默认为NW）</span></span><br><span class="line">        Label1.place(x=40, y=40, width=60, height=30)</span><br><span class="line">        <span class="comment"># 设置标签2</span></span><br><span class="line">        Label2 = Label(frame, text=<span class="string">&quot;位置2&quot;</span>, <span class="built_in">bg</span>=<span class="string">&#x27;purple&#x27;</span>, <span class="built_in">fg</span>=<span class="string">&#x27;white&#x27;</span>)</span><br><span class="line">        <span class="comment"># 以右上角进行绝对值定位，anchor=NE，第二个标签的位置在距离窗体左上角的(180，80)</span></span><br><span class="line">        Label2.place(x=180, y=80, anchor=NE, width=60, height=30)</span><br><span class="line">        <span class="comment"># 设置标签3</span></span><br><span class="line">        Label3 = Label(frame, text=<span class="string">&quot;位置3&quot;</span>, <span class="built_in">bg</span>=<span class="string">&#x27;green&#x27;</span>, <span class="built_in">fg</span>=<span class="string">&#x27;white&#x27;</span>)</span><br><span class="line">        <span class="comment"># 设置水平起始位置相对于窗体水平距离的0.6倍，垂直的绝对距离为80，大小为60，30</span></span><br><span class="line">        Label3.place(relx=0.6, y=80, width=60, height=30)</span><br><span class="line">        <span class="comment"># 设置标签4</span></span><br><span class="line">        Label4 = Label(frame, text=<span class="string">&quot;位置4&quot;</span>, <span class="built_in">bg</span>=<span class="string">&#x27;gray&#x27;</span>, <span class="built_in">fg</span>=<span class="string">&#x27;white&#x27;</span>)</span><br><span class="line">        <span class="comment"># 设置水平起始位置相对于窗体水平距离的0.01倍，垂直的绝对距离为80，并设置高度为窗体高度比例的0.5倍，宽度为80</span></span><br><span class="line">        Label4.place(relx=0.01, y=80, relheight=0.4, width=80)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;400x330+200+300&quot;</span>)</span><br><span class="line">    app = Applicaton(master=root)</span><br><span class="line">    root.mainloop()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
-
+<p>效果展示:<br><img src="https://s2.loli.net/2022/04/07/742MtG3yxHiWTCg.png"></p>
+<hr>
+<p>未完待续 …</p>
 
       
 
@@ -786,11 +1498,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">每日一题</a>
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color5">每日一题</a>
               </li>
              
               <li class="article-tag-list-item">
