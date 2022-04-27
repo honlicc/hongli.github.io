@@ -199,6 +199,8 @@
 <li><a href="#%E4%BD%BF%E7%94%A8Grid%E5%AE%9E%E7%8E%B0%E8%AE%A1%E7%AE%97%E5%99%A8%E9%A1%B5%E9%9D%A2%E5%B8%83%E5%B1%80">使用Grid实现计算器页面布局</a></li>
 <li><a href="#Pack%E5%B8%83%E5%B1%80%E7%AE%A1%E7%90%86%E5%99%A8">Pack布局管理器</a></li>
 <li><a href="#Place%E5%B8%83%E5%B1%80%E7%AE%A1%E7%90%86%E5%99%A8">Place布局管理器</a></li>
+<li><a href="#Event%E4%BA%8B%E4%BB%B6">Event事件</a></li>
+<li><a href="#Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92">Lambda表达式和事件参数传递</a></li>
 </ul>
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>GUI编程：图形用户界面编程<br>Tkinter库：是 Python 的标准 GUI 库。Python 使用 Tkinter 可以快速的创建 GUI 应用程序。支持跨平台的GUI程序开发，适合小型的GUI编程，也是特别适合初学者学习的GUI编程。</p>
 <h3 id="第一个Tkinter程序"><a href="#第一个Tkinter程序" class="headerlink" title="第一个Tkinter程序"></a>第一个Tkinter程序</h3><p>tkinter模块创建GUI程序主要包含以下4个步骤：<br>1.创建主窗口程序:</p>
@@ -1225,6 +1227,159 @@
 
 <p>效果展示:<br><img src="https://s2.loli.net/2022/04/07/742MtG3yxHiWTCg.png"></p>
 <hr>
+<h3 id="Event事件"><a href="#Event事件" class="headerlink" title="Event事件"></a>Event事件</h3><p>Event事件处理：一个GUI应用整个生命周期都处在一个消息循环中(event loop)，它等待事件的发生，并做相应的处理。Tkinter 提供了用以处理相关事件的机制，处理函数可以被绑定给各个控件的各种事件<br>widget.bind(event,handler)<br>如果相关事件发生，handler函数会被处发，事件对象event会传递给handler函数</p>
+<p>部分鼠标和键盘事件</p>
+<table>
+<thead>
+<tr>
+<th align="left">可选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">&lt; Button-1 &gt;&lt; ButtonPress-1 &gt;&lt;1&gt;</td>
+<td align="left">鼠标左键按下，2表示中键(滚轮),3表示右键</td>
+</tr>
+<tr>
+<td align="left">&lt; ButtonRelease-1 &gt;</td>
+<td align="left">鼠标左键释放</td>
+</tr>
+<tr>
+<td align="left">&lt; B1-Motion &gt;</td>
+<td align="left">按住鼠标左键移动</td>
+</tr>
+<tr>
+<td align="left">&lt; Double-Button-1 &gt;</td>
+<td align="left">双击左键</td>
+</tr>
+<tr>
+<td align="left">&lt; Enter &gt;</td>
+<td align="left">鼠标指针进入某一组件区域</td>
+</tr>
+<tr>
+<td align="left">&lt; Leave &gt;</td>
+<td align="left">鼠标指针离开某一组件区域</td>
+</tr>
+<tr>
+<td align="left">&lt; MouseWheel &gt;</td>
+<td align="left">滚动滚轮</td>
+</tr>
+<tr>
+<td align="left">&lt; KeyPress-a &gt;</td>
+<td align="left">按下a键,a键可替代</td>
+</tr>
+<tr>
+<td align="left">&lt; KeyPrelease-a &gt;</td>
+<td align="left">释放a键</td>
+</tr>
+<tr>
+<td align="left">&lt; KeyPress-A &gt;</td>
+<td align="left">按下A键(大写A)</td>
+</tr>
+<tr>
+<td align="left">&lt; Alt-KeyPress-a &gt;</td>
+<td align="left">同时按下alt和a键；alt可用ctrl和shift键代替</td>
+</tr>
+<tr>
+<td align="left">&lt; Double-KeyPress-a &gt;</td>
+<td align="left">快速按下两次a键</td>
+</tr>
+<tr>
+<td align="left">&lt; Control-V &gt;</td>
+<td align="left">Ctrl和V同时按下，V可换成其它键位</td>
+</tr>
+</tbody></table>
+<p>Event对象常用属性</p>
+<table>
+<thead>
+<tr>
+<th align="left">可选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">char</td>
+<td align="left">按键字符，仅对键盘事件有效</td>
+</tr>
+<tr>
+<td align="left">keycode</td>
+<td align="left">按键编码，仅对键盘事件有效</td>
+</tr>
+<tr>
+<td align="left">keysym</td>
+<td align="left">按键名称，仅对键盘事件有效。比如按下a键：键的char:a  键的keycode 65; 键的keysym: a</td>
+</tr>
+<tr>
+<td align="left">num</td>
+<td align="left">鼠标按键，仅对鼠标事件有效</td>
+</tr>
+<tr>
+<td align="left">type</td>
+<td align="left">所触发的事件类型</td>
+</tr>
+<tr>
+<td align="left">widget</td>
+<td align="left">引起事件的组件</td>
+</tr>
+<tr>
+<td align="left">width/height</td>
+<td align="left">组件改变后的大小，仅Configure有效</td>
+</tr>
+<tr>
+<td align="left">x,y</td>
+<td align="left">鼠标当前位置，相对于父容器</td>
+</tr>
+<tr>
+<td align="left">x_root/y_root</td>
+<td align="left">鼠标当前位置，相对于整个屏幕</td>
+</tr>
+</tbody></table>
+<p>示例代码:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import *</span><br><span class="line">from tkinter import ttk, messagebox</span><br><span class="line"></span><br><span class="line">root = Tk()</span><br><span class="line"></span><br><span class="line">root.geometry(<span class="string">&quot;400x330+200+300&quot;</span>)</span><br><span class="line"></span><br><span class="line">c1 = Canvas(root, width=200, height=200, <span class="built_in">bg</span>=<span class="string">&quot;green&quot;</span>)</span><br><span class="line">c1.pack()</span><br><span class="line"></span><br><span class="line">def mouseTest(event):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;鼠标左键单击位置(相对于父容器)：&#123;0&#125;，&#123;1&#125;&quot;</span>.format(event.x, event.y))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;鼠标左键单击位置(相对于屏幕)：&#123;0&#125;，&#123;1&#125;&quot;</span>.format(event.x_root, event.y_root))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;事件绑定的组件:&#123;&#125;&quot;</span>.format(event.widget))</span><br><span class="line"></span><br><span class="line">def testDrag(event):</span><br><span class="line">    c1.create_oval(event.x, event.y, event.x + 1, event.y + 1)</span><br><span class="line"></span><br><span class="line">def keybordTest(event):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;键的keycode:&#123;&#125;,键的char:&#123;&#125;,键的keysym:&#123;&#125;:&quot;</span>.format(event.keycode, event.char, event.keysym))</span><br><span class="line"></span><br><span class="line">def press_a_test(event):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;press a&quot;</span>)</span><br><span class="line"></span><br><span class="line">def release_a_test(event):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;release-a&quot;</span>)</span><br><span class="line"></span><br><span class="line">c1.bind(<span class="string">&quot;&lt;Button-1&gt;&quot;</span>, mouseTest)</span><br><span class="line"></span><br><span class="line">c1.bind(<span class="string">&quot;&lt;B1-Motion&gt;&quot;</span>, testDrag)</span><br><span class="line"></span><br><span class="line">root.bind(<span class="string">&quot;&lt;KeyPress&gt;&quot;</span>, keybordTest)</span><br><span class="line">root.bind(<span class="string">&quot;&lt;KeyPress-a&gt;&quot;</span>, press_a_test)</span><br><span class="line">root.bind(<span class="string">&quot;&lt;KeyRelease-a&gt;&quot;</span>, release_a_test)</span><br><span class="line"></span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Lambda表达式和事件参数传递"><a href="#Lambda表达式和事件参数传递" class="headerlink" title="Lambda表达式和事件参数传递"></a>Lambda表达式和事件参数传递</h3><p>lambda 表达式 和事件传参:lambda 表达式是一个匿名函数，只适合简单的输入参数，简单返回计算结果，不适合复杂的场景<br>lambda 表达式定义的匿名函数也有输入、输出、只是没有名字，语法格式如下：<br><code>sh lambda 参数值列表：表达式 </code><br>参数值列表即为输入，表达式计算结构即为输出。</p>
+<p>示例代码:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a=lambda x,y,z:x+y+z</span><br><span class="line"><span class="built_in">print</span>(a(1,2,3))</span><br></pre></td></tr></table></figure>
+<p>上面的表达式相当于下面的方法:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def a(x,y,z):</span><br><span class="line">    <span class="built_in">return</span> x+y+z </span><br></pre></td></tr></table></figure>
+<p>lambda表达式的参数值列表内容：</p>
+<table>
+<thead>
+<tr>
+<th align="left">可选项</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">lambda x,y:x*y</td>
+<td align="left">函数输入是x和y,输出是x*y</td>
+</tr>
+<tr>
+<td align="left">lambda:None</td>
+<td align="left">函数没有参数，输出为None</td>
+</tr>
+<tr>
+<td align="left">lambd:aaa(2,3)</td>
+<td align="left">函数没有参数，输出为aaa(2,3)的结果</td>
+</tr>
+<tr>
+<td align="left">lambda *args:sum(args)</td>
+<td align="left">输入是任意个数的参数，输出是他们的和</td>
+</tr>
+<tr>
+<td align="left">lambda **kwargs:1</td>
+<td align="left">输入是任意键值对参数，输出是1</td>
+</tr>
+</tbody></table>
+<p>示例代码：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import *</span><br><span class="line">from tkinter import ttk, messagebox</span><br><span class="line"></span><br><span class="line">class Applicaton(Frame):</span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        super().__init__(master)</span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.creatWidget()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># event</span></span><br><span class="line">    def creatWidget(self):</span><br><span class="line">        <span class="comment"># 事件：借助 lambda表达式可进行传参</span></span><br><span class="line">        Button(self, text=<span class="string">&quot;点击&quot;</span>, <span class="built_in">command</span>=lambda: self.mousTest(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>)).pack(side=<span class="string">&quot;left&quot;</span>)</span><br><span class="line"></span><br><span class="line">    def mousTest(self, a, b):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;test:a=&#123;&#125;,b=&#123;&#125;&quot;</span>.format(a, b))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;400x330+200+300&quot;</span>)</span><br><span class="line">    app = Applicaton(master=root)</span><br><span class="line">    root.mainloop()</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
 <p>未完待续 …</p>
 
       
@@ -2098,105 +2253,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/11/26/adbTools/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/09/docker/">Docker</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/09/docker/" class="archive-article-date">
-  	<time datetime="2021-11-09T14:30:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h2 id="1-docker-历史"><a href="#1-docker-历史" class="headerlink" title="1.docker 历史:"></a>1.docker 历史:</h2><ul>
-<li>2013 ~ 开源应用容器引擎，go语言开发，可以让开发者打包他们的应用及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的系统</li>
-</ul>
-<h2 id="2-docker-优点"><a href="#2-docker-优点" class="headerlink" title="2.docker 优点:"></a>2.docker 优点:</h2><ul>
-<li>快速交付应用，打包快，加快测试，加快发布，缩短交付周期</li>
-<li>复杂环境管理，应用隔离，开发环境/测试环境/线上环境</li>
-<li>轻量级：对系统来说，一个docker只是一个进程，一个系统可以运行上千个容器</li>
-</ul>
-<h2 id="3-docker-架构"><a href="#3-docker-架构" class="headerlink" title="3. docker 架构:"></a>3. docker 架构:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- client:</span><br><span class="line">	docker build</span><br><span class="line">	docker pull</span><br><span class="line">	docker run</span><br><span class="line">	</span><br><span class="line">- docker_host:</span><br><span class="line">	docker_dameon</span><br><span class="line">	</span><br><span class="line">- registry:</span><br><span class="line">	下载。。。</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-docker与虚拟机的区别"><a href="#4-docker与虚拟机的区别" class="headerlink" title="4.docker与虚拟机的区别:"></a>4.docker与虚拟机的区别:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">容器与容器只是进程的隔离，虚拟机则是完全的资源隔离</span><br><span class="line">虚拟机启动慢，可能要几分钟，docker秒启动</span><br><span class="line">容器使用宿主操作系统的内核，虚拟机是完全独立的内核</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念:"></a>5.基本概念:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">镜像： docker images,每个镜像都可能依赖一个或多个下层的镜像组成另一个镜像，AUFS文件系统</span><br><span class="line">仓库：Docker registry 集中放镜像的地方</span><br><span class="line">容器：docker containers，镜像运行后的进程</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-docker安装与配置"><a href="#6-docker安装与配置" class="headerlink" title="6.docker安装与配置:"></a>6.docker安装与配置:</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/09/docker/">展开全文 >></a>
         </p>
       
 
@@ -4313,6 +4369,105 @@
 
 
   
+    <article id="post-docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/09/docker/">Docker</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/09/docker/" class="archive-article-date">
+  	<time datetime="2021-11-09T14:30:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="1-docker-历史"><a href="#1-docker-历史" class="headerlink" title="1.docker 历史:"></a>1.docker 历史:</h2><ul>
+<li>2013 ~ 开源应用容器引擎，go语言开发，可以让开发者打包他们的应用及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的系统</li>
+</ul>
+<h2 id="2-docker-优点"><a href="#2-docker-优点" class="headerlink" title="2.docker 优点:"></a>2.docker 优点:</h2><ul>
+<li>快速交付应用，打包快，加快测试，加快发布，缩短交付周期</li>
+<li>复杂环境管理，应用隔离，开发环境/测试环境/线上环境</li>
+<li>轻量级：对系统来说，一个docker只是一个进程，一个系统可以运行上千个容器</li>
+</ul>
+<h2 id="3-docker-架构"><a href="#3-docker-架构" class="headerlink" title="3. docker 架构:"></a>3. docker 架构:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- client:</span><br><span class="line">	docker build</span><br><span class="line">	docker pull</span><br><span class="line">	docker run</span><br><span class="line">	</span><br><span class="line">- docker_host:</span><br><span class="line">	docker_dameon</span><br><span class="line">	</span><br><span class="line">- registry:</span><br><span class="line">	下载。。。</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-docker与虚拟机的区别"><a href="#4-docker与虚拟机的区别" class="headerlink" title="4.docker与虚拟机的区别:"></a>4.docker与虚拟机的区别:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">容器与容器只是进程的隔离，虚拟机则是完全的资源隔离</span><br><span class="line">虚拟机启动慢，可能要几分钟，docker秒启动</span><br><span class="line">容器使用宿主操作系统的内核，虚拟机是完全独立的内核</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念:"></a>5.基本概念:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">镜像： docker images,每个镜像都可能依赖一个或多个下层的镜像组成另一个镜像，AUFS文件系统</span><br><span class="line">仓库：Docker registry 集中放镜像的地方</span><br><span class="line">容器：docker containers，镜像运行后的进程</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-docker安装与配置"><a href="#6-docker安装与配置" class="headerlink" title="6.docker安装与配置:"></a>6.docker安装与配置:</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/09/docker/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-exercises" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -4705,11 +4860,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">adb</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color4">adb</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -4733,11 +4888,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GUI</a>
+                <a href="javascript:void(0)" class="js-tag color4">unittest</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">unittest</a>
+                <a href="javascript:void(0)" class="js-tag color4">GUI</a>
               </li>
              
               <li class="article-tag-list-item">
