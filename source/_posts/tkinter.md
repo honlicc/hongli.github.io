@@ -31,6 +31,8 @@ tags:
 * [使用Grid实现计算器页面布局](#使用Grid实现计算器页面布局)
 * [Pack布局管理器](#Pack布局管理器)
 * [Place布局管理器](#Place布局管理器)
+* [Event事件](#Event事件)
+* [Lambda表达式和事件参数传递](#Lambda表达式和事件参数传递)
 
 
 ### 简介
@@ -1177,7 +1179,169 @@ if __name__ == '__main__':
 效果展示:
 ![](https://s2.loli.net/2022/04/07/742MtG3yxHiWTCg.png)
 ---
+### Event事件
+Event事件处理：一个GUI应用整个生命周期都处在一个消息循环中(event loop)，它等待事件的发生，并做相应的处理。Tkinter 提供了用以处理相关事件的机制，处理函数可以被绑定给各个控件的各种事件
+widget.bind(event,handler)
+如果相关事件发生，handler函数会被处发，事件对象event会传递给handler函数
+
+部分鼠标和键盘事件
+
+|可选项|描述|
+|:--|:--|
+|< Button-1 >< ButtonPress-1 ><1>|鼠标左键按下，2表示中键(滚轮),3表示右键|
+|< ButtonRelease-1 >|鼠标左键释放|
+|< B1-Motion >|按住鼠标左键移动|
+|< Double-Button-1 >|双击左键|
+|< Enter >|鼠标指针进入某一组件区域|
+|< Leave >|鼠标指针离开某一组件区域|
+|< MouseWheel >|滚动滚轮|
+|< KeyPress-a >|按下a键,a键可替代|
+|< KeyPrelease-a >|释放a键|
+|< KeyPress-A >|按下A键(大写A)|
+|< Alt-KeyPress-a >|同时按下alt和a键；alt可用ctrl和shift键代替|
+|< Double-KeyPress-a >|快速按下两次a键|
+|< Control-V >|Ctrl和V同时按下，V可换成其它键位|
+
+
+Event对象常用属性
+
+|可选项|描述|
+|:--|:--|
+|char|按键字符，仅对键盘事件有效|
+|keycode|按键编码，仅对键盘事件有效|
+|keysym|按键名称，仅对键盘事件有效。比如按下a键：键的char:a  键的keycode 65; 键的keysym: a|
+|num|鼠标按键，仅对鼠标事件有效|
+|type|所触发的事件类型|
+|widget|引起事件的组件|
+|width/height|组件改变后的大小，仅Configure有效|
+|x,y|鼠标当前位置，相对于父容器|
+|x_root/y_root|鼠标当前位置，相对于整个屏幕|
+
+示例代码:
+```sh
+import random
+import tkinter as tk
+from tkinter import *
+from tkinter import ttk, messagebox
+
+root = Tk()
+
+root.geometry("400x330+200+300")
+
+c1 = Canvas(root, width=200, height=200, bg="green")
+c1.pack()
+
+def mouseTest(event):
+    print("鼠标左键单击位置(相对于父容器)：{0}，{1}".format(event.x, event.y))
+    print("鼠标左键单击位置(相对于屏幕)：{0}，{1}".format(event.x_root, event.y_root))
+    print("事件绑定的组件:{}".format(event.widget))
+
+def testDrag(event):
+    c1.create_oval(event.x, event.y, event.x + 1, event.y + 1)
+
+def keybordTest(event):
+    print("键的keycode:{},键的char:{},键的keysym:{}:".format(event.keycode, event.char, event.keysym))
+
+def press_a_test(event):
+    print("press a")
+
+def release_a_test(event):
+    print("release-a")
+
+c1.bind("<Button-1>", mouseTest)
+
+c1.bind("<B1-Motion>", testDrag)
+
+root.bind("<KeyPress>", keybordTest)
+root.bind("<KeyPress-a>", press_a_test)
+root.bind("<KeyRelease-a>", release_a_test)
+
+root.mainloop()
+```
+---
+### Lambda表达式和事件参数传递
+lambda 表达式 和事件传参:lambda 表达式是一个匿名函数，只适合简单的输入参数，简单返回计算结果，不适合复杂的场景
+lambda 表达式定义的匿名函数也有输入、输出、只是没有名字，语法格式如下：
+``sh
+lambda 参数值列表：表达式
+``
+参数值列表即为输入，表达式计算结构即为输出。
+
+示例代码:
+```sh
+a=lambda x,y,z:x+y+z
+print(a(1,2,3))
+```
+上面的表达式相当于下面的方法:
+```sh
+def a(x,y,z):
+    return x+y+z 
+```
+lambda表达式的参数值列表内容：
+
+|可选项|描述|
+|:--|:--|
+|lambda x,y:x*y|函数输入是x和y,输出是x*y|
+|lambda:None|函数没有参数，输出为None|
+|lambd:aaa(2,3)|函数没有参数，输出为aaa(2,3)的结果|
+|lambda *args:sum(args)|输入是任意个数的参数，输出是他们的和|
+|lambda **kwargs:1|输入是任意键值对参数，输出是1|
+
+示例代码：
+```sh
+import random
+import tkinter as tk
+from tkinter import *
+from tkinter import ttk, messagebox
+
+class Applicaton(Frame):
+
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.master = master
+        self.pack()
+        self.creatWidget()
+
+    # event
+    def creatWidget(self):
+        # 事件：借助 lambda表达式可进行传参
+        Button(self, text="点击", command=lambda: self.mousTest("a", "b")).pack(side="left")
+
+    def mousTest(self, a, b):
+        print("test:a={},b={}".format(a, b))
+
+
+if __name__ == '__main__':
+    root = Tk()
+    root.geometry("400x330+200+300")
+    app = Applicaton(master=root)
+    root.mainloop()
+```
+
+
+
+
+
+
+
 未完待续 ...
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
