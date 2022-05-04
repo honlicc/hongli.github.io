@@ -9,7 +9,7 @@ tags:
 ---
 
 ### 参考文档
-[点我->Tkinter官方文档地址](https://docs.python.org/zh-cn/3.10/library/tk.html)
+[点我->Tkinter官方文档地址](https://docs.python.org/3.10/library/tk.html)
 [点我->菜鸟编程](https://www.runoob.com/python/python-gui-tkinter.html)
 
 
@@ -33,7 +33,14 @@ tags:
 * [Place布局管理器](#Place布局管理器)
 * [Event事件](#Event事件)
 * [Lambda表达式和事件参数传递](#Lambda表达式和事件参数传递)
-
+* [三种事件绑定方式总结](#三种事件绑定方式总结)
+* [OptionMenu下拉选项](#OptionMenu下拉选项)
+* [Scale移动滑块](#Scale移动滑块)
+* [Color颜色框](#Color颜色框)
+* [File文件选择框](#File文件选择框)
+* [Simpdialog简单对话框](#simpdialog简单对话框)
+* [Messagebox通用消息框](#Messagebox通用消息框)
+* [ttk子模块控件](#ttk子模块控件)
 
 ### 简介
 GUI编程：图形用户界面编程
@@ -1259,6 +1266,8 @@ root.bind("<KeyRelease-a>", release_a_test)
 root.mainloop()
 ```
 ---
+
+
 ### Lambda表达式和事件参数传递
 lambda 表达式 和事件传参:lambda 表达式是一个匿名函数，只适合简单的输入参数，简单返回计算结果，不适合复杂的场景
 lambda 表达式定义的匿名函数也有输入、输出、只是没有名字，语法格式如下：
@@ -1317,34 +1326,300 @@ if __name__ == '__main__':
     app = Applicaton(master=root)
     root.mainloop()
 ```
+---
+### 三种事件绑定方式总结
+事件绑定汇总：
+* 组件对象的绑定：
+
+1.command属性绑定(适合简单不需要获取event对象)
+```sh
+Button(self,text="点击",command=func)
+```
+2.通过bind绑定（适合获取event对象）:
+```sh
+c1=Canvars();c1.bind("<Button-1>",func)
+```
+    
+* 组件类的绑定：
+调用对象的bind_class函数，将该组件类所有的组件绑定事件：
+```sh
+w.bind_class("Butten","Button-1",func)
+```
+示例代码:
+```sh 
+root = Tk()
+
+root.geometry("400x330+200+300")
+
+def mouseTest1(event):
+    print("bind()方式绑定，可以获取event对象")
+    print(event.widget)
+
+def mouseTest2(a, b):
+    print("a={},b={}".format(a, b))
+    print("command方式绑定,不能直接获取event对象")
+
+def mouseTest3(event):
+    print("右键单击事件绑定,绑定给所有按钮！！")
+    print(event.widget)
+
+
+# bind方式绑定事件
+b1 = Button(root, text="测试bind()绑定")
+b1.pack(side="left")
+b1.bind("<Button-1>", mouseTest1)
+
+# command方式绑定事件
+b2 = Button(root, text="测试command()绑定", command=lambda: mouseTest2("测试", "hello word"))
+b2.pack(side="left")
+
+# 给所有Button按钮绑定右键单击事件<Button-3>
+b1.bind_class("Button", "<Button-3>", mouseTest3)
+
+root.mainloop()
+```
+
+### OptionMenu下拉选项
+OptionMenu 用来做多选一，选中的项在顶部显示
+示例代码:
+```sh 
+import random
+import tkinter as tk
+from tkinter import *
+from tkinter import ttk, messagebox
+
+class Applicaton(Frame):
+
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.master = master
+        self.pack()
+        self.creatWidget()
+
+    # optionmenu
+    def creatWidget(self):
+        # v:代表选项值
+        v = StringVar()
+        v.set("夏阿姨")
+        om = OptionMenu(self, v, "刘阿叔", "夏阿姨", "宋大妈")
+        om["width"] = 20
+        om.pack()
+
+if __name__ == '__main__':
+    root = Tk()
+    root.geometry("400x330+200+300")
+    app = Applicaton(master=root)
+    root.mainloop()
+```
+### Scale移动滑块
+用于在指定的数值区间，通过滑块的移动来实现选择值
+示例代码:
+
+```sh 
+import random
+import tkinter as tk
+from tkinter import *
+from tkinter import ttk, messagebox
+
+class Applicaton(Frame):
+
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.master = master
+        self.pack()
+        self.creatWidget()
+
+
+    # scale :使用滑块改变字体大小
+    def creatWidget(self):
+        #  from_=10, to=50 ,从10到50， tickinterval：标记 从10-50之间，每5个一个标记  orient=HORIZONTAL：水平方向，默认垂直
+        self.s1 = Scale(self, from_=10, to=50, length=200, tickinterval=5, orient=HORIZONTAL, command=self.test1)
+        self.s1.pack()
+
+        self.a = Label(self, text="花花花花", width=10, height=10, bg="black", fg="white")
+        self.a.pack()
+
+    def test1(self, value):
+        newFont = ("宋体", value)
+        self.a.config(font=newFont)
+
+
+if __name__ == '__main__':
+    root = Tk()
+    root.geometry("400x330+200+300")
+    app = Applicaton(master=root)
+    root.mainloop()
+```
+---
+### Color颜色框
+颜色选择框可以设置背景色，前景色，画笔色，字体颜色等
+使用 colorchooser.askcolor 方法，需要导入包 colorchooser
+示例代码：
+```sh 
+import tkinter as tk
+from tkinter import *
+from tkinter import ttk, messagebox,colorchooser
+
+class Applicaton(Frame):
+
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.master = master
+        self.pack()
+        self.creatWidget()
+
+
+    # 颜色选择框
+    def creatWidget(self):
+        Button(self,text="选择颜色",command=self.selectColor).pack()
+
+
+    def selectColor(self):
+        s1=colorchooser.askcolor(color='red',title='选择颜色')
+        print(s1)
+        # s1的值： ((0, 255, 64), '#00ff40')
+        root.config(bg=s1[1])
+
+if __name__ == '__main__':
+    root = Tk()
+    root.geometry("400x330+200+300")
+    app = Applicaton(master=root)
+    root.mainloop()
+```
+---
+
+### File文件选择框
+文件对话框：用来获取文件，可以实现操作目录，操作文件，将文件、目录的信息传入到程序中，文件对话框包含如下一些常用函数：
+使用 tkinter.filedialog里面的方法，例如导入方法askopenfile
+
+|函数名|对话框|描述|
+|:--|:--|:--|
+|askopenfilename(**options)|文件对话框|返回打开的文件名|
+|askopenfilenames(**options)|文件对话框|返回打开的多个文件名|
+|askopenfile(**options)|文件对话框|返回打开的文件对象|
+|askopenfiles(**options)|文件对话框|返回打开的文件对象的列表|
+|askdirectory(**options)|目录对话框|返回目录名|
+|asksavefile(**options)|保存对话框|返回保存的文件对象|
+|asksavefilename(**options)|保存对话框|返回保存的文件名|
 
 
 
+options参数常见值：
+
+|参数名|描述|
+|:--|:--|
+|defaultextension|默认后缀:.xxx|
+|filetypes=[(label1,parttern1),(label2,parttern2)]|文件名显示过滤器|
+|initaldir|初始目录|
+|initalfile|初始文件|
+|parent|父窗口，默认根窗口|
+|title|窗口标题|
+
+示例代码:
+```sh 
+import tkinter as tk
+from tkinter import *
+from tkinter.filedialog import *
+
+class Applicaton(Frame):
+
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.master = master
+        self.pack()
+        self.creatWidget()
 
 
 
+    # 文件选择框
+    def creatWidget(self):
+        Button(self,text="选择文件",command=self.selectFile).pack()
+        self.show = Label(self, width=40, height=20, bg='green')
+        self.show.pack()
+
+    def selectFile(self):
+        with askopenfile(title="上传文件",initialdir="f:",filetypes=[("文本文件",".txt")]) as f:
+            print(f)
+            # 将文件内容展示在 self.show 标签内
+            self.show['text']=f.read()
+
+if __name__ == '__main__':
+    root = Tk()
+    root.geometry("400x330+200+300")
+    app = Applicaton(master=root)
+    root.mainloop()
+
+```
+---
+### simpdialog简单对话框
+simpdialog包含如下常用函数：
+
+|函数名|描述|
+|:--|:--|
+|askfloat(title,prompt,**kw)|输入并返回浮点数|
+|askinteger(title,prompt,**kw)|输入并返回整数|
+|askstring(title,prompt,**kw)|输入并返回字符串|
+
+参数中，title表示窗口标题;prompt是提示信息；命名参数kw为各种选项:initialvalue(初始值)/minvalue(最小值)/maxvalue(最大值)
+
+示例代码:
+```sh 
+import tkinter as tk
+from tkinter.simpledialog import *
+from tkinter import *
+
+root = tk.Tk()
+root.geometry("800x500+800+300")
+
+
+def test1():
+    a = askinteger(title="输入年龄:", prompt="请输入年龄：", initialvalue=18, minvalue=1, maxvalue=150)
+    show["text"] = a
+
+
+Button(root, text="你今年多大了", command=test1).pack()
+
+show = Label(root, width=40, height=3, bg="green")
+show.pack()
+
+root.mainloop()
+
+```
+---
+### Messagebox通用消息框
+messagebox通用消息框用于和用户进行简单的交互，用户点击确定、取消，如下列出了messagebox常见函数：
+
+|函数名|说明|
+|:--|:--|
+|askokcancel(title,message,**options)|Ok/Cancel 对话框|
+|askquestion(title,message,**options)|Yes/No 对话框|
+|askretrycancle(title,message,**options)|Retry/Cancle 对话框|
+|showerror(title,message,**options)|错误消息 对话框|
+|showinfo(title,message,**options)|消息框|
+|showwarning(title,message,**options)|警告消息框|
+
+示例代码:
+```sh 
+import tkinter as tk
+from tkinter import *
+from tkinter.messagebox import *
+
+root = tk.Tk()
+root.geometry("800x500+800+300")
+
+
+al=showinfo(title="Gui学习",message="tkinter教程")
+print(al)
+
+root.mainloop()
+```
+---
+### ttk子模块控件
+我们在前面学习的组件是tkinter模块下的组件，整体风格比较老，为了弥补不足，推出了ttk组件，ttk组件更加美观、功能也更加强大，新增了许多新的组件。这里不再过多介绍，感兴趣的朋友可以自己研究学习，
+ttk子模块官方地址如下:
+[点我->ttk子模块](https://docs.python.org/3.10/library/tkinter.ttk.html)
+
+---
+### 主菜单
 
 未完待续 ...
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
