@@ -180,7 +180,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <hr>
-<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a target="_blank" rel="noopener" href="https://docs.python.org/zh-cn/3.10/library/tk.html">点我-&gt;Tkinter官方文档地址</a><br><a target="_blank" rel="noopener" href="https://www.runoob.com/python/python-gui-tkinter.html">点我-&gt;菜鸟编程</a></p>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><p><a target="_blank" rel="noopener" href="https://docs.python.org/3.10/library/tk.html">点我-&gt;Tkinter官方文档地址</a><br><a target="_blank" rel="noopener" href="https://www.runoob.com/python/python-gui-tkinter.html">点我-&gt;菜鸟编程</a></p>
 <h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
 <li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
 <li><a href="#%E7%AC%AC%E4%B8%80%E4%B8%AATkinter%E7%A8%8B%E5%BA%8F">第一个Tkinter程序</a></li>
@@ -201,6 +201,14 @@
 <li><a href="#Place%E5%B8%83%E5%B1%80%E7%AE%A1%E7%90%86%E5%99%A8">Place布局管理器</a></li>
 <li><a href="#Event%E4%BA%8B%E4%BB%B6">Event事件</a></li>
 <li><a href="#Lambda%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%92%8C%E4%BA%8B%E4%BB%B6%E5%8F%82%E6%95%B0%E4%BC%A0%E9%80%92">Lambda表达式和事件参数传递</a></li>
+<li><a href="#%E4%B8%89%E7%A7%8D%E4%BA%8B%E4%BB%B6%E7%BB%91%E5%AE%9A%E6%96%B9%E5%BC%8F%E6%80%BB%E7%BB%93">三种事件绑定方式总结</a></li>
+<li><a href="#OptionMenu%E4%B8%8B%E6%8B%89%E9%80%89%E9%A1%B9">OptionMenu下拉选项</a></li>
+<li><a href="#Scale%E7%A7%BB%E5%8A%A8%E6%BB%91%E5%9D%97">Scale移动滑块</a></li>
+<li><a href="#Color%E9%A2%9C%E8%89%B2%E6%A1%86">Color颜色框</a></li>
+<li><a href="#File%E6%96%87%E4%BB%B6%E9%80%89%E6%8B%A9%E6%A1%86">File文件选择框</a></li>
+<li><a href="#simpdialog%E7%AE%80%E5%8D%95%E5%AF%B9%E8%AF%9D%E6%A1%86">Simpdialog简单对话框</a></li>
+<li><a href="#Messagebox%E9%80%9A%E7%94%A8%E6%B6%88%E6%81%AF%E6%A1%86">Messagebox通用消息框</a></li>
+<li><a href="#ttk%E5%AD%90%E6%A8%A1%E5%9D%97%E6%8E%A7%E4%BB%B6">ttk子模块控件</a></li>
 </ul>
 <h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>GUI编程：图形用户界面编程<br>Tkinter库：是 Python 的标准 GUI 库。Python 使用 Tkinter 可以快速的创建 GUI 应用程序。支持跨平台的GUI程序开发，适合小型的GUI编程，也是特别适合初学者学习的GUI编程。</p>
 <h3 id="第一个Tkinter程序"><a href="#第一个Tkinter程序" class="headerlink" title="第一个Tkinter程序"></a>第一个Tkinter程序</h3><p>tkinter模块创建GUI程序主要包含以下4个步骤：<br>1.创建主窗口程序:</p>
@@ -1373,14 +1381,172 @@
 </tbody></table>
 <p>示例代码：</p>
 <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import *</span><br><span class="line">from tkinter import ttk, messagebox</span><br><span class="line"></span><br><span class="line">class Applicaton(Frame):</span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        super().__init__(master)</span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.creatWidget()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># event</span></span><br><span class="line">    def creatWidget(self):</span><br><span class="line">        <span class="comment"># 事件：借助 lambda表达式可进行传参</span></span><br><span class="line">        Button(self, text=<span class="string">&quot;点击&quot;</span>, <span class="built_in">command</span>=lambda: self.mousTest(<span class="string">&quot;a&quot;</span>, <span class="string">&quot;b&quot;</span>)).pack(side=<span class="string">&quot;left&quot;</span>)</span><br><span class="line"></span><br><span class="line">    def mousTest(self, a, b):</span><br><span class="line">        <span class="built_in">print</span>(<span class="string">&quot;test:a=&#123;&#125;,b=&#123;&#125;&quot;</span>.format(a, b))</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;400x330+200+300&quot;</span>)</span><br><span class="line">    app = Applicaton(master=root)</span><br><span class="line">    root.mainloop()</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-<p>未完待续 …</p>
+<hr>
+<h3 id="三种事件绑定方式总结"><a href="#三种事件绑定方式总结" class="headerlink" title="三种事件绑定方式总结"></a>三种事件绑定方式总结</h3><p>事件绑定汇总：</p>
+<ul>
+<li>组件对象的绑定：</li>
+</ul>
+<p>1.command属性绑定(适合简单不需要获取event对象)</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Button(self,text=<span class="string">&quot;点击&quot;</span>,<span class="built_in">command</span>=func)</span><br></pre></td></tr></table></figure>
+<p>2.通过bind绑定（适合获取event对象）:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">c1=Canvars();c1.bind(<span class="string">&quot;&lt;Button-1&gt;&quot;</span>,func)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>组件类的绑定：<br>调用对象的bind_class函数，将该组件类所有的组件绑定事件：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">w.bind_class(<span class="string">&quot;Butten&quot;</span>,<span class="string">&quot;Button-1&quot;</span>,func)</span><br></pre></td></tr></table></figure>
+示例代码:<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">root = Tk()</span><br><span class="line"></span><br><span class="line">root.geometry(<span class="string">&quot;400x330+200+300&quot;</span>)</span><br><span class="line"></span><br><span class="line">def mouseTest1(event):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;bind()方式绑定，可以获取event对象&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(event.widget)</span><br><span class="line"></span><br><span class="line">def mouseTest2(a, b):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;a=&#123;&#125;,b=&#123;&#125;&quot;</span>.format(a, b))</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;command方式绑定,不能直接获取event对象&quot;</span>)</span><br><span class="line"></span><br><span class="line">def mouseTest3(event):</span><br><span class="line">    <span class="built_in">print</span>(<span class="string">&quot;右键单击事件绑定,绑定给所有按钮！！&quot;</span>)</span><br><span class="line">    <span class="built_in">print</span>(event.widget)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># bind方式绑定事件</span></span><br><span class="line">b1 = Button(root, text=<span class="string">&quot;测试bind()绑定&quot;</span>)</span><br><span class="line">b1.pack(side=<span class="string">&quot;left&quot;</span>)</span><br><span class="line">b1.bind(<span class="string">&quot;&lt;Button-1&gt;&quot;</span>, mouseTest1)</span><br><span class="line"></span><br><span class="line"><span class="comment"># command方式绑定事件</span></span><br><span class="line">b2 = Button(root, text=<span class="string">&quot;测试command()绑定&quot;</span>, <span class="built_in">command</span>=lambda: mouseTest2(<span class="string">&quot;测试&quot;</span>, <span class="string">&quot;hello word&quot;</span>))</span><br><span class="line">b2.pack(side=<span class="string">&quot;left&quot;</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 给所有Button按钮绑定右键单击事件&lt;Button-3&gt;</span></span><br><span class="line">b1.bind_class(<span class="string">&quot;Button&quot;</span>, <span class="string">&quot;&lt;Button-3&gt;&quot;</span>, mouseTest3)</span><br><span class="line"></span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h3 id="OptionMenu下拉选项"><a href="#OptionMenu下拉选项" class="headerlink" title="OptionMenu下拉选项"></a>OptionMenu下拉选项</h3><p>OptionMenu 用来做多选一，选中的项在顶部显示<br>示例代码:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import *</span><br><span class="line">from tkinter import ttk, messagebox</span><br><span class="line"></span><br><span class="line">class Applicaton(Frame):</span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        super().__init__(master)</span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.creatWidget()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># optionmenu</span></span><br><span class="line">    def creatWidget(self):</span><br><span class="line">        <span class="comment"># v:代表选项值</span></span><br><span class="line">        v = StringVar()</span><br><span class="line">        v.set(<span class="string">&quot;夏阿姨&quot;</span>)</span><br><span class="line">        om = OptionMenu(self, v, <span class="string">&quot;刘阿叔&quot;</span>, <span class="string">&quot;夏阿姨&quot;</span>, <span class="string">&quot;宋大妈&quot;</span>)</span><br><span class="line">        om[<span class="string">&quot;width&quot;</span>] = 20</span><br><span class="line">        om.pack()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;400x330+200+300&quot;</span>)</span><br><span class="line">    app = Applicaton(master=root)</span><br><span class="line">    root.mainloop()</span><br></pre></td></tr></table></figure>
+<h3 id="Scale移动滑块"><a href="#Scale移动滑块" class="headerlink" title="Scale移动滑块"></a>Scale移动滑块</h3><p>用于在指定的数值区间，通过滑块的移动来实现选择值<br>示例代码:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">import random</span><br><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import *</span><br><span class="line">from tkinter import ttk, messagebox</span><br><span class="line"></span><br><span class="line">class Applicaton(Frame):</span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        super().__init__(master)</span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.creatWidget()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># scale :使用滑块改变字体大小</span></span><br><span class="line">    def creatWidget(self):</span><br><span class="line">        <span class="comment">#  from_=10, to=50 ,从10到50， tickinterval：标记 从10-50之间，每5个一个标记  orient=HORIZONTAL：水平方向，默认垂直</span></span><br><span class="line">        self.s1 = Scale(self, from_=10, to=50, length=200, tickinterval=5, orient=HORIZONTAL, <span class="built_in">command</span>=self.test1)</span><br><span class="line">        self.s1.pack()</span><br><span class="line"></span><br><span class="line">        self.a = Label(self, text=<span class="string">&quot;花花花花&quot;</span>, width=10, height=10, <span class="built_in">bg</span>=<span class="string">&quot;black&quot;</span>, <span class="built_in">fg</span>=<span class="string">&quot;white&quot;</span>)</span><br><span class="line">        self.a.pack()</span><br><span class="line"></span><br><span class="line">    def test1(self, value):</span><br><span class="line">        newFont = (<span class="string">&quot;宋体&quot;</span>, value)</span><br><span class="line">        self.a.config(font=newFont)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;400x330+200+300&quot;</span>)</span><br><span class="line">    app = Applicaton(master=root)</span><br><span class="line">    root.mainloop()</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Color颜色框"><a href="#Color颜色框" class="headerlink" title="Color颜色框"></a>Color颜色框</h3><p>颜色选择框可以设置背景色，前景色，画笔色，字体颜色等<br>使用 colorchooser.askcolor 方法，需要导入包 colorchooser<br>示例代码：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import *</span><br><span class="line">from tkinter import ttk, messagebox,colorchooser</span><br><span class="line"></span><br><span class="line">class Applicaton(Frame):</span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        super().__init__(master)</span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.creatWidget()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 颜色选择框</span></span><br><span class="line">    def creatWidget(self):</span><br><span class="line">        Button(self,text=<span class="string">&quot;选择颜色&quot;</span>,<span class="built_in">command</span>=self.selectColor).pack()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    def selectColor(self):</span><br><span class="line">        s1=colorchooser.askcolor(color=<span class="string">&#x27;red&#x27;</span>,title=<span class="string">&#x27;选择颜色&#x27;</span>)</span><br><span class="line">        <span class="built_in">print</span>(s1)</span><br><span class="line">        <span class="comment"># s1的值： ((0, 255, 64), &#x27;#00ff40&#x27;)</span></span><br><span class="line">        root.config(<span class="built_in">bg</span>=s1[1])</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;400x330+200+300&quot;</span>)</span><br><span class="line">    app = Applicaton(master=root)</span><br><span class="line">    root.mainloop()</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="File文件选择框"><a href="#File文件选择框" class="headerlink" title="File文件选择框"></a>File文件选择框</h3><p>文件对话框：用来获取文件，可以实现操作目录，操作文件，将文件、目录的信息传入到程序中，文件对话框包含如下一些常用函数：<br>使用 tkinter.filedialog里面的方法，例如导入方法askopenfile</p>
+<table>
+<thead>
+<tr>
+<th align="left">函数名</th>
+<th align="left">对话框</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">askopenfilename(**options)</td>
+<td align="left">文件对话框</td>
+<td align="left">返回打开的文件名</td>
+</tr>
+<tr>
+<td align="left">askopenfilenames(**options)</td>
+<td align="left">文件对话框</td>
+<td align="left">返回打开的多个文件名</td>
+</tr>
+<tr>
+<td align="left">askopenfile(**options)</td>
+<td align="left">文件对话框</td>
+<td align="left">返回打开的文件对象</td>
+</tr>
+<tr>
+<td align="left">askopenfiles(**options)</td>
+<td align="left">文件对话框</td>
+<td align="left">返回打开的文件对象的列表</td>
+</tr>
+<tr>
+<td align="left">askdirectory(**options)</td>
+<td align="left">目录对话框</td>
+<td align="left">返回目录名</td>
+</tr>
+<tr>
+<td align="left">asksavefile(**options)</td>
+<td align="left">保存对话框</td>
+<td align="left">返回保存的文件对象</td>
+</tr>
+<tr>
+<td align="left">asksavefilename(**options)</td>
+<td align="left">保存对话框</td>
+<td align="left">返回保存的文件名</td>
+</tr>
+</tbody></table>
+<p>options参数常见值：</p>
+<table>
+<thead>
+<tr>
+<th align="left">参数名</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">defaultextension</td>
+<td align="left">默认后缀:.xxx</td>
+</tr>
+<tr>
+<td align="left">filetypes=[(label1,parttern1),(label2,parttern2)]</td>
+<td align="left">文件名显示过滤器</td>
+</tr>
+<tr>
+<td align="left">initaldir</td>
+<td align="left">初始目录</td>
+</tr>
+<tr>
+<td align="left">initalfile</td>
+<td align="left">初始文件</td>
+</tr>
+<tr>
+<td align="left">parent</td>
+<td align="left">父窗口，默认根窗口</td>
+</tr>
+<tr>
+<td align="left">title</td>
+<td align="left">窗口标题</td>
+</tr>
+</tbody></table>
+<p>示例代码:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import *</span><br><span class="line">from tkinter.filedialog import *</span><br><span class="line"></span><br><span class="line">class Applicaton(Frame):</span><br><span class="line"></span><br><span class="line">    def __init__(self, master=None):</span><br><span class="line">        super().__init__(master)</span><br><span class="line">        self.master = master</span><br><span class="line">        self.pack()</span><br><span class="line">        self.creatWidget()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 文件选择框</span></span><br><span class="line">    def creatWidget(self):</span><br><span class="line">        Button(self,text=<span class="string">&quot;选择文件&quot;</span>,<span class="built_in">command</span>=self.selectFile).pack()</span><br><span class="line">        self.show = Label(self, width=40, height=20, <span class="built_in">bg</span>=<span class="string">&#x27;green&#x27;</span>)</span><br><span class="line">        self.show.pack()</span><br><span class="line"></span><br><span class="line">    def selectFile(self):</span><br><span class="line">        with askopenfile(title=<span class="string">&quot;上传文件&quot;</span>,initialdir=<span class="string">&quot;f:&quot;</span>,filetypes=[(<span class="string">&quot;文本文件&quot;</span>,<span class="string">&quot;.txt&quot;</span>)]) as f:</span><br><span class="line">            <span class="built_in">print</span>(f)</span><br><span class="line">            <span class="comment"># 将文件内容展示在 self.show 标签内</span></span><br><span class="line">            self.show[<span class="string">&#x27;text&#x27;</span>]=f.read()</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">&#x27;__main__&#x27;</span>:</span><br><span class="line">    root = Tk()</span><br><span class="line">    root.geometry(<span class="string">&quot;400x330+200+300&quot;</span>)</span><br><span class="line">    app = Applicaton(master=root)</span><br><span class="line">    root.mainloop()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="simpdialog简单对话框"><a href="#simpdialog简单对话框" class="headerlink" title="simpdialog简单对话框"></a>simpdialog简单对话框</h3><p>simpdialog包含如下常用函数：</p>
+<table>
+<thead>
+<tr>
+<th align="left">函数名</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">askfloat(title,prompt,**kw)</td>
+<td align="left">输入并返回浮点数</td>
+</tr>
+<tr>
+<td align="left">askinteger(title,prompt,**kw)</td>
+<td align="left">输入并返回整数</td>
+</tr>
+<tr>
+<td align="left">askstring(title,prompt,**kw)</td>
+<td align="left">输入并返回字符串</td>
+</tr>
+</tbody></table>
+<p>参数中，title表示窗口标题;prompt是提示信息；命名参数kw为各种选项:initialvalue(初始值)/minvalue(最小值)/maxvalue(最大值)</p>
+<p>示例代码:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">import tkinter as tk</span><br><span class="line">from tkinter.simpledialog import *</span><br><span class="line">from tkinter import *</span><br><span class="line"></span><br><span class="line">root = tk.Tk()</span><br><span class="line">root.geometry(<span class="string">&quot;800x500+800+300&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def test1():</span><br><span class="line">    a = askinteger(title=<span class="string">&quot;输入年龄:&quot;</span>, prompt=<span class="string">&quot;请输入年龄：&quot;</span>, initialvalue=18, minvalue=1, maxvalue=150)</span><br><span class="line">    show[<span class="string">&quot;text&quot;</span>] = a</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Button(root, text=<span class="string">&quot;你今年多大了&quot;</span>, <span class="built_in">command</span>=test1).pack()</span><br><span class="line"></span><br><span class="line">show = Label(root, width=40, height=3, <span class="built_in">bg</span>=<span class="string">&quot;green&quot;</span>)</span><br><span class="line">show.pack()</span><br><span class="line"></span><br><span class="line">root.mainloop()</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="Messagebox通用消息框"><a href="#Messagebox通用消息框" class="headerlink" title="Messagebox通用消息框"></a>Messagebox通用消息框</h3><p>messagebox通用消息框用于和用户进行简单的交互，用户点击确定、取消，如下列出了messagebox常见函数：</p>
+<table>
+<thead>
+<tr>
+<th align="left">函数名</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">askokcancel(title,message,**options)</td>
+<td align="left">Ok/Cancel 对话框</td>
+</tr>
+<tr>
+<td align="left">askquestion(title,message,**options)</td>
+<td align="left">Yes/No 对话框</td>
+</tr>
+<tr>
+<td align="left">askretrycancle(title,message,**options)</td>
+<td align="left">Retry/Cancle 对话框</td>
+</tr>
+<tr>
+<td align="left">showerror(title,message,**options)</td>
+<td align="left">错误消息 对话框</td>
+</tr>
+<tr>
+<td align="left">showinfo(title,message,**options)</td>
+<td align="left">消息框</td>
+</tr>
+<tr>
+<td align="left">showwarning(title,message,**options)</td>
+<td align="left">警告消息框</td>
+</tr>
+</tbody></table>
+<p>示例代码:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import tkinter as tk</span><br><span class="line">from tkinter import *</span><br><span class="line">from tkinter.messagebox import *</span><br><span class="line"></span><br><span class="line">root = tk.Tk()</span><br><span class="line">root.geometry(<span class="string">&quot;800x500+800+300&quot;</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">al=showinfo(title=<span class="string">&quot;Gui学习&quot;</span>,message=<span class="string">&quot;tkinter教程&quot;</span>)</span><br><span class="line"><span class="built_in">print</span>(al)</span><br><span class="line"></span><br><span class="line">root.mainloop()</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="ttk子模块控件"><a href="#ttk子模块控件" class="headerlink" title="ttk子模块控件"></a>ttk子模块控件</h3><p>我们在前面学习的组件是tkinter模块下的组件，整体风格比较老，为了弥补不足，推出了ttk组件，ttk组件更加美观、功能也更加强大，新增了许多新的组件。这里不再过多介绍，感兴趣的朋友可以自己研究学习，<br>ttk子模块官方地址如下:<br><a target="_blank" rel="noopener" href="https://docs.python.org/3.10/library/tkinter.ttk.html">点我-&gt;ttk子模块</a></p>
+<hr>
+<h3 id="主菜单"><a href="#主菜单" class="headerlink" title="主菜单"></a>主菜单</h3><p>未完待续 …</p>
 
       
 
@@ -2253,6 +2419,105 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/11/26/adbTools/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/09/docker/">Docker</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/09/docker/" class="archive-article-date">
+  	<time datetime="2021-11-09T14:30:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="1-docker-历史"><a href="#1-docker-历史" class="headerlink" title="1.docker 历史:"></a>1.docker 历史:</h2><ul>
+<li>2013 ~ 开源应用容器引擎，go语言开发，可以让开发者打包他们的应用及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的系统</li>
+</ul>
+<h2 id="2-docker-优点"><a href="#2-docker-优点" class="headerlink" title="2.docker 优点:"></a>2.docker 优点:</h2><ul>
+<li>快速交付应用，打包快，加快测试，加快发布，缩短交付周期</li>
+<li>复杂环境管理，应用隔离，开发环境/测试环境/线上环境</li>
+<li>轻量级：对系统来说，一个docker只是一个进程，一个系统可以运行上千个容器</li>
+</ul>
+<h2 id="3-docker-架构"><a href="#3-docker-架构" class="headerlink" title="3. docker 架构:"></a>3. docker 架构:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- client:</span><br><span class="line">	docker build</span><br><span class="line">	docker pull</span><br><span class="line">	docker run</span><br><span class="line">	</span><br><span class="line">- docker_host:</span><br><span class="line">	docker_dameon</span><br><span class="line">	</span><br><span class="line">- registry:</span><br><span class="line">	下载。。。</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-docker与虚拟机的区别"><a href="#4-docker与虚拟机的区别" class="headerlink" title="4.docker与虚拟机的区别:"></a>4.docker与虚拟机的区别:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">容器与容器只是进程的隔离，虚拟机则是完全的资源隔离</span><br><span class="line">虚拟机启动慢，可能要几分钟，docker秒启动</span><br><span class="line">容器使用宿主操作系统的内核，虚拟机是完全独立的内核</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念:"></a>5.基本概念:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">镜像： docker images,每个镜像都可能依赖一个或多个下层的镜像组成另一个镜像，AUFS文件系统</span><br><span class="line">仓库：Docker registry 集中放镜像的地方</span><br><span class="line">容器：docker containers，镜像运行后的进程</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-docker安装与配置"><a href="#6-docker安装与配置" class="headerlink" title="6.docker安装与配置:"></a>6.docker安装与配置:</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/09/docker/">展开全文 >></a>
         </p>
       
 
@@ -4369,105 +4634,6 @@
 
 
   
-    <article id="post-docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/09/docker/">Docker</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/09/docker/" class="archive-article-date">
-  	<time datetime="2021-11-09T14:30:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h2 id="1-docker-历史"><a href="#1-docker-历史" class="headerlink" title="1.docker 历史:"></a>1.docker 历史:</h2><ul>
-<li>2013 ~ 开源应用容器引擎，go语言开发，可以让开发者打包他们的应用及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的系统</li>
-</ul>
-<h2 id="2-docker-优点"><a href="#2-docker-优点" class="headerlink" title="2.docker 优点:"></a>2.docker 优点:</h2><ul>
-<li>快速交付应用，打包快，加快测试，加快发布，缩短交付周期</li>
-<li>复杂环境管理，应用隔离，开发环境/测试环境/线上环境</li>
-<li>轻量级：对系统来说，一个docker只是一个进程，一个系统可以运行上千个容器</li>
-</ul>
-<h2 id="3-docker-架构"><a href="#3-docker-架构" class="headerlink" title="3. docker 架构:"></a>3. docker 架构:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- client:</span><br><span class="line">	docker build</span><br><span class="line">	docker pull</span><br><span class="line">	docker run</span><br><span class="line">	</span><br><span class="line">- docker_host:</span><br><span class="line">	docker_dameon</span><br><span class="line">	</span><br><span class="line">- registry:</span><br><span class="line">	下载。。。</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-docker与虚拟机的区别"><a href="#4-docker与虚拟机的区别" class="headerlink" title="4.docker与虚拟机的区别:"></a>4.docker与虚拟机的区别:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">容器与容器只是进程的隔离，虚拟机则是完全的资源隔离</span><br><span class="line">虚拟机启动慢，可能要几分钟，docker秒启动</span><br><span class="line">容器使用宿主操作系统的内核，虚拟机是完全独立的内核</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念:"></a>5.基本概念:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">镜像： docker images,每个镜像都可能依赖一个或多个下层的镜像组成另一个镜像，AUFS文件系统</span><br><span class="line">仓库：Docker registry 集中放镜像的地方</span><br><span class="line">容器：docker containers，镜像运行后的进程</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-docker安装与配置"><a href="#6-docker安装与配置" class="headerlink" title="6.docker安装与配置:"></a>6.docker安装与配置:</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/09/docker/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-exercises" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -4860,11 +5026,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
+                <a href="javascript:void(0)" class="js-tag color4">adb</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">adb</a>
+                <a href="javascript:void(0)" class="js-tag color5">Java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -4884,15 +5050,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">GUI</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">自动化测试</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">unittest</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GUI</a>
               </li>
              
               <li class="article-tag-list-item">
