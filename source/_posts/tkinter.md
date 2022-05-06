@@ -1259,7 +1259,7 @@ event,handler)
 |< Enter >|鼠标指针进入某一组件区域|
 |< Leave >|鼠标指针离开某一组件区域|
 |< MouseWheel >|滚动滚轮|
-|<KeyPress-a >|按下a键,a键可替代|
+|< KeyPress-a >|按下a键,a键可替代|
 |< KeyPrelease-a >|释放a键|
 |< KeyPress-A >|按下A键(大写A)|
 |< Alt-KeyPress-a >|同时按下alt和a键；alt可用ctrl和shift键代替|
