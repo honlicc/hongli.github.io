@@ -1919,12 +1919,12 @@ if __name__ == '__main__':
 ---
 ### 打包成exe文件
 需要使用新的模块 pyinstaller 来将python项目打包成exe文件，操作步骤如下：
-1.安装 pyinstaller 模块：
+安装 pyinstaller 模块：
 ```sh
 pip install pyinstaller 
 ```
 执行打包命令：
-在 pycharm 的terminal或者cmd进入项目，只想下面命令
+在 pycharm 的terminal或者cmd进入项目，执行下面命令
 ```sh
 pyinstaller -F xxx.py
 ```
