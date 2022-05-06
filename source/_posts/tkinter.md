@@ -1,19 +1,21 @@
 ---
 title: Python GUI编程(Tkinter)
-date: 2022-03-22 11:06:17
-categories: 
-- python
+date: 2022-03-22 11:06:17 
+categories:
+- python 
 tags:
 - GUI
+
 ---
 ---
 
 ### 参考文档
+
 [点我->Tkinter官方文档地址](https://docs.python.org/3.10/library/tk.html)
 [点我->菜鸟编程](https://www.runoob.com/python/python-gui-tkinter.html)
 
-
 ## 目录
+
 * [简介](#简介)
 * [第一个Tkinter程序](#第一个Tkinter程序)
 * [主窗口设置](#主窗口设置)
@@ -41,15 +43,19 @@ tags:
 * [Simpdialog简单对话框](#simpdialog简单对话框)
 * [Messagebox通用消息框](#Messagebox通用消息框)
 * [ttk子模块控件](#ttk子模块控件)
+* [主菜单和上下文菜单](#主菜单和上下文菜单)
+* [记事本项目实战](#记事本项目实战)
+* [打包成exe文件](#打包成exe文件)
 
 ### 简介
-GUI编程：图形用户界面编程
-Tkinter库：是 Python 的标准 GUI 库。Python 使用 Tkinter 可以快速的创建 GUI 应用程序。支持跨平台的GUI程序开发，适合小型的GUI编程，也是特别适合初学者学习的GUI编程。
 
+GUI编程：图形用户界面编程 Tkinter库：是 Python 的标准 GUI 库。Python 使用 Tkinter 可以快速的创建 GUI
+应用程序。支持跨平台的GUI程序开发，适合小型的GUI编程，也是特别适合初学者学习的GUI编程。
 
 ### 第一个Tkinter程序
-tkinter模块创建GUI程序主要包含以下4个步骤：
-1.创建主窗口程序:
+
+tkinter模块创建GUI程序主要包含以下4个步骤： 1.创建主窗口程序:
+
 ```sh
 from tkinter import *
 root = Tk()
@@ -57,22 +63,24 @@ root = Tk()
 
 2.在主窗口中添加各种组件:
 文本框(Label)、按钮(Button)等。
+
 ```sh
 btn=Button(root)
 ```
 
 3.通过布局管理器，来管理组件的位置、大小。
+
 ```sh
 btn.pack()
 ```
 
 4.事件处理:
+
 * 通过绑定事件处理程序，响应用户操作(单击、双击等)
 * 调用组件的mainloop,进入事件循环
 
+示例代码： test01.py
 
-示例代码：
-test01.py
 ```sh
 from tkinter import *
 from tkinter import messagebox
@@ -102,12 +110,12 @@ root.mainloop()
 ```
 
 ### 主窗口设置
-主窗口的大小、位置等，通过geometry("wxh ± x ± y")进行设置，w表示宽度，h表示高度.  (注：宽x高,注,此处不能为 "*",必须使用 "x")
-+x表示距屏幕左边的距离，-x表示距屏幕右边的距离。
-+y表示距屏幕上边的距离，-h表示距屏幕下边的距离。
 
-示例代码：
-test02.py
+主窗口的大小、位置等，通过geometry("wxh ± x ± y")进行设置，w表示宽度，h表示高度.  (注：宽x高,注,此处不能为 "*",必须使用 "x")
++x表示距屏幕左边的距离，-x表示距屏幕右边的距离。 +y表示距屏幕上边的距离，-h表示距屏幕下边的距离。
+
+示例代码： test02.py
+
 ```sh
 from tkinter import *
 from tkinter import messagebox
@@ -146,12 +154,12 @@ root.mainloop()
 ```
 
 ### 通过类来实现GUI程序
-通过Application组织整个GUI程序，类Application继承自Farme，通过继承拥有了父类的特性，通过构造函数初始化窗口中的对象，通过 createWidget()方法创建窗口中的对象。
-Frame 是框架控件,表示一个矩形区域。一般作为容器使用。
 
-我们重写一下上面的代码
-示例代码：
-test03.py
+通过Application组织整个GUI程序，类Application继承自Farme，通过继承拥有了父类的特性，通过构造函数初始化窗口中的对象，通过 createWidget()方法创建窗口中的对象。 Frame
+是框架控件,表示一个矩形区域。一般作为容器使用。
+
+我们重写一下上面的代码 示例代码： test03.py
+
 ```sh
 from tkinter import *
 from tkinter import messagebox
@@ -186,6 +194,7 @@ if __name__ == '__main__':
     app = Applicaton(master=root)
     root.mainloop()
 ```
+
 ---
 
 ### Tkinter中常用的15个控件
@@ -213,47 +222,51 @@ if __name__ == '__main__':
 |tkMessageBox|用于显示你应用程序的消息框|
 
 ---
+
 ### Button控件:
+
 Button: 用于增加各种按钮
 
 语法格式：
+
 ```sh
 btn=Button(master, option, ...)
 ```
+
 * master:父容器
 * option:可选项，即该按钮可设置的属性，通过key-value形式设置,以逗号分隔。
 
 option说明：
 
 |可选项|描述|
-|:--|:--|
+|:--|:--| 
 |activebackground|当鼠标放上去时，按钮的背景色|
-|activeforeground|当鼠标放上去时，按钮的前景色|
+|activeforeground|当鼠标放上去时，按钮的前景色| 
 |bd|按钮边框的大小，默认为 2 个像素|
 |bg|按钮的背景色|
-|command|按钮关联的函数，当按钮被点击时，执行该函数|
-|fg|按钮的前景色（按钮文本的颜色）|
+|command|按钮关联的函数，当按钮被点击时，执行该函数| 
+|fg|按钮的前景色（按钮文本的颜色）| 
 |font|文本字体|
-|height|按钮的高度|
+|height|按钮的高度| 
 |highlightcolor|要高亮的颜色|
 |image|按钮上要显示的图片|
-|justify|显示多行文本的时候,设置不同行之间的对齐方式，可选项包括LEFT, RIGHT, CENTER|
+|justify|显示多行文本的时候,设置不同行之间的对齐方式，可选项包括LEFT, RIGHT, CENTER| 
 |padx|按钮在x轴方向上的内边距(padding)，是指按钮的内容与按钮边缘的距离|
-|pady|按钮在y轴方向上的内边距(padding)|
+|pady|按钮在y轴方向上的内边距(padding)| 
 |relief|边框样式，设置控件3D效果，可选的有：FLAT、SUNKEN、RAISED、GROOVE、RIDGE。默认为 FLAT。|
-|state|设置按钮组件状态,可选的有NORMAL、ACTIVE、 DISABLED。默认 NORMAL。|
-|underline|下划线。默认按钮上的文本都不带下划线。取值就是带下划线的字符串索引，为 0 时，第一个字符带下划线，为 1 时，前两个字符带下划线，以此类推|
-|width|按钮的宽度，如未设置此项，其大小以适应按钮的内容（文本或图片的大小）|
+|state|设置按钮组件状态,可选的有NORMAL、ACTIVE、 DISABLED。默认 NORMAL。| 
+|underline|下划线。默认按钮上的文本都不带下划线。取值就是带下划线的字符串索引，为 0 时，第一个字符带下划线，为 1 时，前两个字符带下划线，以此类推| 
+|width|按钮的宽度，如未设置此项，其大小以适应按钮的内容（文本或图片的大小）| 
 |wraplength|限制按钮每行显示的字符的数量|
 |text|按钮的文本内容|
 |anchor|锚选项，控制文本的位置，默认为中心|
-
 
 anchor:控制文本的显示位置,示意图如下：
 ![](https://s2.loli.net/2022/03/24/5bBOQEr9jnCoivF.png)
 
 示例代码:
 testButton.py
+
 ```sh
 from tkinter import *
 from tkinter import messagebox
@@ -293,51 +306,55 @@ if __name__ == '__main__':
     root.mainloop()
 
 ```
+
 ---
 
-
 ### Label控件:
+
 Label：主要用于显示文本信息，也可以显示图像信息
 
 语法格式：
+
 ```sh
 lab=Label(master, option, ...)
 ```
+
 * master:父容器
 * option:可选项，即该标签可设置的属性，通过key-value形式设置,以逗号分隔。
 
 option说明：
 
 |可选项|描述|
-|:--|:--|
+|:--|:--| 
 |anchor|文本或图像在背景内容区的位置，默认为 center，可选值为（n,s,w,e,ne,nw,sw,se,center）eswn 是东南西北英文的首字母，表示：上北下南左西右东。|
-|bg|标签背景颜色|
-|bd|标签的大小，默认为 2 个像素|
+|bg|标签背景颜色| 
+|bd|标签的大小，默认为 2 个像素| 
 |bitmap|指定标签上的位图，如果指定了图片，则该选项忽略|
 |cursor|鼠标移动到标签时，光标的形状，可以设置为 arrow, circle, cross, plus 等。|
 |font|设置字体。|
 |fg|设置前景色。|
 |height|标签的高度，默认值是 0。|
-|image|设置标签图像。|
-|justify|定义对齐方式，可选值有：LEFT,RIGHT,CENTER，默认为 CENTER。|
-|padx|x 轴间距，以像素计，默认 1。|
+|image|设置标签图像。| 
+|justify|定义对齐方式，可选值有：LEFT,RIGHT,CENTER，默认为 CENTER。| 
+|padx|x 轴间距，以像素计，默认 1。| 
 |pady|y 轴间距，以像素计，默认 1。|
-|relief|边框样式，可选的有：FLAT、SUNKEN、RAISED、GROOVE、RIDGE、SOLID。默认为 FLAT。|
-|text|设置文本，可以包含换行符(\n)。|
+|relief|边框样式，可选的有：FLAT、SUNKEN、RAISED、GROOVE、RIDGE、SOLID。默认为 FLAT。| 
+|text|设置文本，可以包含换行符(\n)。| 
 |textvariable|标签显示 Tkinter 变量，StringVar。如果变量被修改，标签文本将自动更新。|
 |underline|设置下划线，默认 -1，如果设置 1，则是从第二个字符开始画下划线。|
 |width|设置标签宽度，默认值是 0，自动计算，单位以像素计。|
 |wraplength|设置标签文本为多少行显示，默认为 0。|
 
-Label控件构成
-一个控件主要由背景和前景两部分组成。其中背景由三部分构成分别是内容区域、填充区、边框，这三个区域的大小通过以下属性进行控制，如下所示：
+Label控件构成 一个控件主要由背景和前景两部分组成。其中背景由三部分构成分别是内容区域、填充区、边框，这三个区域的大小通过以下属性进行控制，如下所示：
+
 * width/height
 * padx/pady
 * borderwidth
-![](https://s2.loli.net/2022/03/24/Ex25UOJPwoSXFuh.png)
+  ![](https://s2.loli.net/2022/03/24/Ex25UOJPwoSXFuh.png)
 
 示例代码:
 test_Label.py
+
 ```sh
 from tkinter import *
 from tkinter import messagebox
@@ -377,16 +394,21 @@ if __name__ == '__main__':
     app = Applicaton(master=root)
     root.mainloop()
 ```
+
 ---
+
 ### Options参数设置方式
+
 通过上面对Button、Label控件的学习，我们发现可以通过Options设置控件的属性，我们可以通过三种方式设置Options选项，这在其它GUI组件中用法一致。
 
 1.创建对象时，使用关键字参数(key=value)
+
 ```sh
 btn01=Button(master,fg="red",bg="black")
 ```
 
 2.创建对象后，使用字典索引方式
+
 ```sh
 btn02=Button(master)
 btn02["fg"]="red"
@@ -394,6 +416,7 @@ btn02["bg"]="black"
 ```
 
 3.创建对象后，使用config方式
+
 ```sh
 btn03=Button(master)
 btn03.config(fg="red",bg="black")
@@ -401,6 +424,7 @@ btn03.config(fg="red",bg="black")
 
 示例代码:
 test_Options.py
+
 ```sh
 import tkinter as tk
 from tkinter import *
@@ -441,41 +465,45 @@ if __name__ == '__main__':
     app = Application(master=root)
     root.mainloop()
 ```
+
 ---
+
 ### Entry单行文本框
+
 Entry 是用来接收一行字符串的控件，如果用户输入的文字长度长于Entry控件的宽度，文字会自动向后滚动，如果想输入多行文本，需要使用Text控件。
 
 语法格式：
+
 ```sh
 lab=Label(master, option, ...)
 ```
+
 * master:父容器
 * options: 可选项，即该按钮的可设置的属性。这些选项可以用键 = 值的形式设置，并以逗号分隔。
 
 option说明：
 
 |可选项|描述|
-|:--|:--|
-|bg|输入框背景颜色|
-|bd|边框的大小，默认为 2 个像素|
-|cursor|光标的形状设定，如arrow, circle, cross, plus 等|
+|:--|:--| 
+|bg|输入框背景颜色| 
+|bd|边框的大小，默认为 2 个像素| 
+|cursor|光标的形状设定，如arrow, circle, cross, plus 等| 
 |font|文本字体|
-|exportselection|默认情况下，你如果在输入框中选中文本，默认会复制到粘贴板，如果要忽略这个功能刻工艺设置 exportselection=0。|
+|exportselection|默认情况下，你如果在输入框中选中文本，默认会复制到粘贴板，如果要忽略这个功能刻工艺设置 exportselection=0。| 
 |fg|文字颜色。值为颜色或为颜色代码，如：'red','#ff0000'|
 |highlightcolor|文本框高亮边框颜色，当文本框获取焦点时显示|
 |justify|显示多行文本的时候,设置不同行之间的对齐方式，可选项包括LEFT, RIGHT, CENTER|
-|relief|边框样式，设置控件3D效果，可选的有：FLAT、SUNKEN、RAISED、GROOVE、RIDGE。默认为 FLAT。|
+|relief|边框样式，设置控件3D效果，可选的有：FLAT、SUNKEN、RAISED、GROOVE、RIDGE。默认为 FLAT。| 
 |selectbackground|选中文字的背景颜色|
 |selectborderwidth|选中文字的背景边框宽度|
-|selectforeground|选中文字的颜色|
+|selectforeground|选中文字的颜色| 
 |show|指定文本框内容显示为字符，值随意，满足字符即可。如密码可以将值设为 show="*"|
-|state|默认为 state=NORMAL, 文框状态，分为只读和可写，值为：normal/disabled|
+|state|默认为 state=NORMAL, 文框状态，分为只读和可写，值为：normal/disabled| 
 |textvariable|文本框的值，是一个StringVar()对象|
 |width|文本框宽度|
 |xscrollcommand|设置水平方向滚动条，一般在用户输入的文本框内容宽度大于文本框显示的宽度时使用。|
 
-方法：
-下表为文本框组件常用的方法
+方法： 下表为文本框组件常用的方法
 
 |可选项|描述|
 |:--|:--|
@@ -494,8 +522,8 @@ option说明：
 |xview(index)|该方法在文本框链接到水平滚动条上很有用。|
 |xview_scroll(number,what)|用于水平滚动文本框。 what 参数可以是 UNITS, 按字符宽度滚动，或者可以是 PAGES, 按文本框组件块滚动。 number 参数，正数为由左到右滚动，负数为由右到左滚动。|
 
-模拟获取用户名+密码完成登录功能的示例代码：
-test_Entry_StringVar.py
+模拟获取用户名+密码完成登录功能的示例代码： test_Entry_StringVar.py
+
 ```sh
 from tkinter import *
 from tkinter import messagebox
@@ -554,15 +582,16 @@ if __name__ == '__main__':
     root.mainloop()
 ```
 
-
 ### Text多行文本框
-Text(多行文本框)的主要用于显示多行文本，还可以显示网页链接、图片、HTML页面、甚至CSS样式表，添加组件等。因此，也常被当做简单的文本处理器，文本编辑器，或者网页浏览器来
-使用
+
+Text(多行文本框)的主要用于显示多行文本，还可以显示网页链接、图片、HTML页面、甚至CSS样式表，添加组件等。因此，也常被当做简单的文本处理器，文本编辑器，或者网页浏览器来 使用
 
 语法格式：
+
 ```sh
 text=Text(master, option, ...)
 ```
+
 * master:父容器
 * options: 可选项，即该按钮的可设置的属性。这些选项可以用键 = 值的形式设置，并以逗号分隔。
 
@@ -589,8 +618,7 @@ option说明：
 |xscrollcommand|该参数与 Scrollbar 相关联，表示沿水平方向上下滑动|
 |yscrollcommand|该参数与 Scrollbar 相关联，表示沿垂直方向左右滑动|
 
-方法：
-Text 中的方法有几十个之多，这里不进行一一列举，主要对常用的方法进行介绍，如下表所示：
+方法： Text 中的方法有几十个之多，这里不进行一一列举，主要对常用的方法进行介绍，如下表所示：
 
 |可选项|描述|
 |:--|:--|
@@ -607,6 +635,7 @@ Text 中的方法有几十个之多，这里不进行一一列举，主要对常
 
 示例代码:
 test_Text.py
+
 ```sh
 import webbrowser
 from tkinter import *
@@ -683,12 +712,15 @@ if __name__ == '__main__':
 ---
 
 ### Raduibutton单选框
+
 在同一组选项中选择一个，可以显示文本，也可以显示图像
 
 语法格式：
+
 ```sh
 radioBtn=Radiobutton(master, option, ...)
 ```
+
 * master:父容器
 * options: 可选项，即该按钮的可设置的属性。这些选项可以用键 = 值的形式设置，并以逗号分隔。
 
@@ -705,18 +737,17 @@ option说明：
 |takefocus|如果是 True，该组件接受输入焦点，默认为 False|
 |variable|表示与 Radiobutton 控件关联的变量，注意同一组中的所有按钮的 variable 选项应该都指向同一个变量，通过将该变量与 value 选项值对比，可以判断用户选中了哪个按钮|
 
-方法：
-常用方法如下所示：
+方法： 常用方法如下所示：
 
 |可选项|描述|
 |:--|:--|
 |deselect()|取消该按钮的选中状态|
-|flash()|刷新 Radiobutton 控件，该方法将重绘 Radiobutton控件若干次（即在"active" 和 "normal" 状态间切换）|
+|flash()|刷新 Radiobutton 控件，该方法将重绘 Radiobutton控件若干次（即在"active" 和 "normal"状态间切换）|
 |invoke()| 调用 Radiobutton 中 command 参数指定的函数，并返回函数的返回值;如果 Radiobutton 控件的 state(状态) 是 "disabled" （不可用）或没有指定 command 选项，则该方法无效|
 |select()|将 Radiobutton 控件设置为选中状态|
 
-示例代码：
-test_Radiobutton.py
+示例代码： test_Radiobutton.py
+
 ```sh
 import tkinter as tk
 from tkinter import *
@@ -755,15 +786,19 @@ if __name__ == '__main__':
     app = Applicaton(master=root)
     root.mainloop()
 ```
+
 ---
 
 ### CheckButton多选框
+
 CheckButton多选框，可以显示文本，也可以显示图像,各个选项之间属于并列的关系
 
 语法格式：
+
 ```sh
 checkBtn=CheckButton(master, option, ...)
 ```
+
 * master:父容器
 * options: 可选项，即该按钮的可设置的属性。这些选项可以用键 = 值的形式设置，并以逗号分隔。
 
@@ -781,8 +816,7 @@ option说明：
 |textvariable|Checkbutton 显示 Tkinter 变量（通常是一个 StringVar 变量）的内容，如果变量被修改，Checkbutton 的文本会自动更新|
 |wraplength|表示复选框文本应该被分成多少行，该选项指定每行的长度，单位是屏幕单元，默认值为 0|
 
-方法：
-常用方法如下所示：
+方法： 常用方法如下所示：
 
 |可选项|描述|
 |:--|:--|
@@ -792,8 +826,8 @@ option说明：
 |select()|将 Checkbutton 组件设置为选中状态，也就是设置 variable 为 onvalue|
 |toggle()|改变复选框的状态，如果复选框现在状态是 on，就改成 off，反之亦然|
 
-
 示例代码:
+
 ```sh
 import tkinter as tk
 from tkinter import *
@@ -835,14 +869,19 @@ if __name__ == '__main__':
     app = Applicaton(master=root)
     root.mainloop()
 ```
+
 ---
+
 ##### Canvas画布
+
 Canvas画布，画布是一个矩形区域，可添加图片、图像、组件等，可以绘制各种图形/图像；
 
 语法格式：
+
 ```sh
 canv=Canvas画布(master, option, ...)
 ```
+
 * master:父容器
 * options: 可选项，即该按钮的可设置的属性。这些选项可以用键 = 值的形式设置，并以逗号分隔。
 
@@ -865,8 +904,7 @@ option说明：
 |yscrollcommand|与 scrollbar 控件（滚动条）相关联（沿着 y 轴垂直方向）|
 |yscrollincrement|1. 该选项指定 Canvas 垂直滚动的“步长” ,例如 '3c' 表示 3 厘米，还可以选择的单位有 'i'（英寸），'m'（毫米）和 'p'（DPI，大约是 '1i' 等于 '72p'）.默认值是 0，表示可以垂直方向滚动到任意位置|
 
-方法：
-Cansvas 控件提供了一系列绘制几何图形的常用方法，下面对这些方法做简单介绍:
+方法： Cansvas 控件提供了一系列绘制几何图形的常用方法，下面对这些方法做简单介绍:
 
 |可选项|描述|
 |:--|:--|
@@ -881,10 +919,13 @@ Cansvas 控件提供了一系列绘制几何图形的常用方法，下面对这
 
 注意：上述方法都会返回一个画布对象的唯一 ID。关于 options 参数，下面会通过一个示例对经常使用的参数做相关介绍。（但由于可选参数较多，并且每个方法中的参数作用大同小异，因此对它们不再逐一列举）
 
-从上述表格不难看出，Canvas 控件采用了坐标系的方式来确定画布中的每一点。一般情况下，默认主窗口的左上角为坐标原点，这种坐标系被称作为“窗口坐标系”，但也会存在另外一种情况，即画布的大小可能大于主窗口，当发生这种情况的时，可以采用带滚动条的 Canvas 控件，此时会以画布的左上角为坐标原点，我们将这种坐标系称为“画布坐标系”。
+从上述表格不难看出，Canvas
+控件采用了坐标系的方式来确定画布中的每一点。一般情况下，默认主窗口的左上角为坐标原点，这种坐标系被称作为“窗口坐标系”，但也会存在另外一种情况，即画布的大小可能大于主窗口，当发生这种情况的时，可以采用带滚动条的 Canvas
+控件，此时会以画布的左上角为坐标原点，我们将这种坐标系称为“画布坐标系”。
 
 示例代码:
 test_Canvas.py
+
 ```sh
 import random
 import tkinter as tk
@@ -929,9 +970,13 @@ if __name__ == '__main__':
     app = Applicaton(master=root)
     root.mainloop() 
 ```
+
 ---
+
 ### Grid布局管理器
+
 一个完整的软件必定有许多的组件组成，这些组件的排布则通过布局管理器来进行管理；tkinter 提供了三种布局管理器，分别是
+
 1. pack:垂直/水平排列，此方法灵活性较差
 2. grid:表格布局管，采用表格结构管理组件，子组件的位置由行和列的单元格来确定，并且可以跨越行和列，从而实现复杂的页面布局，此种方法使用起来较为灵活
 3. place:位置管理器，通过像素位置控制组件，可以指定组件大小以及摆放位置，三个方法中最为灵活的布局方法
@@ -941,16 +986,17 @@ Grid布局介绍：
 |可选项|描述|
 |:--|:--|
 |column|指定组件插入的列（0 表示第 1 列）,默认值是 0|
-|columnspan|指定用多少列（跨列）显示该组件
-|ipadx|指定水平方向上的内边距|
+|columnspan|指定用多少列（跨列）显示该组件 |ipadx|指定水平方向上的内边距|
 |ipady|指定垂直方向上的内边距|
 |padx|指定水平方向上的外边距|
 |pady|指定垂直方向上的外边距|
 |row|指定组件插入的行（0 表示第 1 行）,指定用多少行（跨行）显示该组件|
-|sticky|控制组件在 grid 分配的空间中的位置;|可以使用 "n", "e", "s", "w" 以及它们的组合来定位（ewsn代表东西南北，上北下南左西右东）;使用加号（+）表示拉长填充，例如 "n" + "s" 表示将组件垂直拉长填充网格，"n" + "s" + "w" + "e" 表示填充整个网格;不指定该值则居中显示|
+|sticky|控制组件在 grid 分配的空间中的位置;|可以使用 "n", "e", "s", "w" 以及它们的组合来定位（ewsn代表东西南北，上北下南左西右东）;使用加号（+）表示拉长填充，例如 "n" + "s" 表示将组件垂直拉长填充网格，"n" + "s"
++ "w" + "e" 表示填充整个网格;不指定该值则居中显示|
 
 示例代码1:
 test_Grid.py
+
 ```sh
 import random
 import tkinter as tk
@@ -989,8 +1035,8 @@ if __name__ == '__main__':
     root.mainloop()
 ```
 
-行/列展示代码2：
-test_Grid2.py
+行/列展示代码2： test_Grid2.py
+
 ```sh
 import random
 import tkinter as tk
@@ -1019,12 +1065,16 @@ if __name__ == '__main__':
     app = Applicaton(master=root)
     root.mainloop()
 ```
+
 效果展示：
 
 ![](https://s2.loli.net/2022/04/07/R5blZe8JyfspaYG.png)
 ---
+
 ### 使用Grid实现计算器页面布局
+
 示例代码：
+
 ```sh
 import random
 import tkinter as tk
@@ -1073,6 +1123,7 @@ if __name__ == '__main__':
 ---
 
 ### Pack布局管理器
+
 pack() 是一种较为简单的布局方法，在不使用任何参数的情况下，它会将控件以添加时的先后顺序，自上而下，一行一行的进行排列，并且默认居中显示。pack() 方法的常用参数如下所示：
 
 |可选项|描述|
@@ -1085,6 +1136,7 @@ pack() 是一种较为简单的布局方法，在不使用任何参数的情况�
 |side|组件放置在窗口的哪个位置上，参数值 'top','bottom','left','right'。注意，单词小写时需要使用字符串格式，若为大写单词则不必使用字符串格式|
 
 示例代码：
+
 ```sh
 import random
 import tkinter as tk
@@ -1118,11 +1170,13 @@ if __name__ == '__main__':
     app = Applicaton(master=root)
     root.mainloop()
 ```
+
 效果展示:
 ![](https://s2.loli.net/2022/04/07/lARIaiDs9y4KF7L.png)
 ---
 
 ### Place布局管理器
+
 与前两种布局方法相比，采用 place() 方法进行布局管理要更加精细化，通过 place() 布局管理器可以直接指定控件在窗体内的绝对位置，或者相对于其他控件定位的相对位置。
 
 |可选项|描述|
@@ -1135,6 +1189,7 @@ if __name__ == '__main__':
 |relheight、relwidth|控件高度和宽度相对于根窗体高度和宽度的比例，取值也在 0.0~1.0 之间|
 
 示例代码:
+
 ```sh
 import random
 import tkinter as tk
@@ -1186,9 +1241,11 @@ if __name__ == '__main__':
 效果展示:
 ![](https://s2.loli.net/2022/04/07/742MtG3yxHiWTCg.png)
 ---
+
 ### Event事件
-Event事件处理：一个GUI应用整个生命周期都处在一个消息循环中(event loop)，它等待事件的发生，并做相应的处理。Tkinter 提供了用以处理相关事件的机制，处理函数可以被绑定给各个控件的各种事件
-widget.bind(event,handler)
+
+Event事件处理：一个GUI应用整个生命周期都处在一个消息循环中(event loop)，它等待事件的发生，并做相应的处理。Tkinter 提供了用以处理相关事件的机制，处理函数可以被绑定给各个控件的各种事件 widget.bind(
+event,handler)
 如果相关事件发生，handler函数会被处发，事件对象event会传递给handler函数
 
 部分鼠标和键盘事件
@@ -1202,13 +1259,12 @@ widget.bind(event,handler)
 |< Enter >|鼠标指针进入某一组件区域|
 |< Leave >|鼠标指针离开某一组件区域|
 |< MouseWheel >|滚动滚轮|
-|< KeyPress-a >|按下a键,a键可替代|
+|<KeyPress-a >|按下a键,a键可替代|
 |< KeyPrelease-a >|释放a键|
 |< KeyPress-A >|按下A键(大写A)|
 |< Alt-KeyPress-a >|同时按下alt和a键；alt可用ctrl和shift键代替|
 |< Double-KeyPress-a >|快速按下两次a键|
 |< Control-V >|Ctrl和V同时按下，V可换成其它键位|
-
 
 Event对象常用属性
 
@@ -1216,7 +1272,7 @@ Event对象常用属性
 |:--|:--|
 |char|按键字符，仅对键盘事件有效|
 |keycode|按键编码，仅对键盘事件有效|
-|keysym|按键名称，仅对键盘事件有效。比如按下a键：键的char:a  键的keycode 65; 键的keysym: a|
+|keysym|按键名称，仅对键盘事件有效。比如按下a键：键的char:a 键的keycode 65; 键的keysym: a|
 |num|鼠标按键，仅对鼠标事件有效|
 |type|所触发的事件类型|
 |widget|引起事件的组件|
@@ -1225,6 +1281,7 @@ Event对象常用属性
 |x_root/y_root|鼠标当前位置，相对于整个屏幕|
 
 示例代码:
+
 ```sh
 import random
 import tkinter as tk
@@ -1265,27 +1322,30 @@ root.bind("<KeyRelease-a>", release_a_test)
 
 root.mainloop()
 ```
+
 ---
 
-
 ### Lambda表达式和事件参数传递
-lambda 表达式 和事件传参:lambda 表达式是一个匿名函数，只适合简单的输入参数，简单返回计算结果，不适合复杂的场景
-lambda 表达式定义的匿名函数也有输入、输出、只是没有名字，语法格式如下：
-``sh
-lambda 参数值列表：表达式
+
+lambda 表达式 和事件传参:lambda 表达式是一个匿名函数，只适合简单的输入参数，简单返回计算结果，不适合复杂的场景 lambda 表达式定义的匿名函数也有输入、输出、只是没有名字，语法格式如下：
+``sh lambda 参数值列表：表达式
 ``
 参数值列表即为输入，表达式计算结构即为输出。
 
 示例代码:
+
 ```sh
 a=lambda x,y,z:x+y+z
 print(a(1,2,3))
 ```
+
 上面的表达式相当于下面的方法:
+
 ```sh
 def a(x,y,z):
     return x+y+z 
 ```
+
 lambda表达式的参数值列表内容：
 
 |可选项|描述|
@@ -1297,6 +1357,7 @@ lambda表达式的参数值列表内容：
 |lambda **kwargs:1|输入是任意键值对参数，输出是1|
 
 示例代码：
+
 ```sh
 import random
 import tkinter as tk
@@ -1326,26 +1387,35 @@ if __name__ == '__main__':
     app = Applicaton(master=root)
     root.mainloop()
 ```
+
 ---
+
 ### 三种事件绑定方式总结
+
 事件绑定汇总：
+
 * 组件对象的绑定：
 
 1.command属性绑定(适合简单不需要获取event对象)
+
 ```sh
 Button(self,text="点击",command=func)
 ```
+
 2.通过bind绑定（适合获取event对象）:
+
 ```sh
 c1=Canvars();c1.bind("<Button-1>",func)
 ```
-    
-* 组件类的绑定：
-调用对象的bind_class函数，将该组件类所有的组件绑定事件：
+
+* 组件类的绑定： 调用对象的bind_class函数，将该组件类所有的组件绑定事件：
+
 ```sh
 w.bind_class("Butten","Button-1",func)
 ```
+
 示例代码:
+
 ```sh 
 root = Tk()
 
@@ -1380,8 +1450,9 @@ root.mainloop()
 ```
 
 ### OptionMenu下拉选项
-OptionMenu 用来做多选一，选中的项在顶部显示
-示例代码:
+
+OptionMenu 用来做多选一，选中的项在顶部显示 示例代码:
+
 ```sh 
 import random
 import tkinter as tk
@@ -1411,9 +1482,10 @@ if __name__ == '__main__':
     app = Applicaton(master=root)
     root.mainloop()
 ```
+
 ### Scale移动滑块
-用于在指定的数值区间，通过滑块的移动来实现选择值
-示例代码:
+
+用于在指定的数值区间，通过滑块的移动来实现选择值 示例代码:
 
 ```sh 
 import random
@@ -1450,11 +1522,13 @@ if __name__ == '__main__':
     app = Applicaton(master=root)
     root.mainloop()
 ```
+
 ---
+
 ### Color颜色框
-颜色选择框可以设置背景色，前景色，画笔色，字体颜色等
-使用 colorchooser.askcolor 方法，需要导入包 colorchooser
-示例代码：
+
+颜色选择框可以设置背景色，前景色，画笔色，字体颜色等 使用 colorchooser.askcolor 方法，需要导入包 colorchooser 示例代码：
+
 ```sh 
 import tkinter as tk
 from tkinter import *
@@ -1486,11 +1560,12 @@ if __name__ == '__main__':
     app = Applicaton(master=root)
     root.mainloop()
 ```
+
 ---
 
 ### File文件选择框
-文件对话框：用来获取文件，可以实现操作目录，操作文件，将文件、目录的信息传入到程序中，文件对话框包含如下一些常用函数：
-使用 tkinter.filedialog里面的方法，例如导入方法askopenfile
+
+文件对话框：用来获取文件，可以实现操作目录，操作文件，将文件、目录的信息传入到程序中，文件对话框包含如下一些常用函数： 使用 tkinter.filedialog里面的方法，例如导入方法askopenfile
 
 |函数名|对话框|描述|
 |:--|:--|:--|
@@ -1501,8 +1576,6 @@ if __name__ == '__main__':
 |askdirectory(**options)|目录对话框|返回目录名|
 |asksavefile(**options)|保存对话框|返回保存的文件对象|
 |asksavefilename(**options)|保存对话框|返回保存的文件名|
-
-
 
 options参数常见值：
 
@@ -1516,6 +1589,7 @@ options参数常见值：
 |title|窗口标题|
 
 示例代码:
+
 ```sh 
 import tkinter as tk
 from tkinter import *
@@ -1550,8 +1624,11 @@ if __name__ == '__main__':
     root.mainloop()
 
 ```
+
 ---
+
 ### simpdialog简单对话框
+
 simpdialog包含如下常用函数：
 
 |函数名|描述|
@@ -1563,6 +1640,7 @@ simpdialog包含如下常用函数：
 参数中，title表示窗口标题;prompt是提示信息；命名参数kw为各种选项:initialvalue(初始值)/minvalue(最小值)/maxvalue(最大值)
 
 示例代码:
+
 ```sh 
 import tkinter as tk
 from tkinter.simpledialog import *
@@ -1585,20 +1663,24 @@ show.pack()
 root.mainloop()
 
 ```
+
 ---
+
 ### Messagebox通用消息框
+
 messagebox通用消息框用于和用户进行简单的交互，用户点击确定、取消，如下列出了messagebox常见函数：
 
 |函数名|说明|
-|:--|:--|
-|askokcancel(title,message,**options)|Ok/Cancel 对话框|
-|askquestion(title,message,**options)|Yes/No 对话框|
-|askretrycancle(title,message,**options)|Retry/Cancle 对话框|
-|showerror(title,message,**options)|错误消息 对话框|
-|showinfo(title,message,**options)|消息框|
+|:--|:--| 
+|askokcancel(title,message,**options)|Ok/Cancel 对话框| 
+|askquestion(title,message,**options)|Yes/No 对话框| 
+|askretrycancle(title,message,**options)|Retry/Cancle 对话框| 
+|showerror(title,message,**options)|错误消息 对话框| 
+|showinfo(title,message,**options)|消息框| 
 |showwarning(title,message,**options)|警告消息框|
 
 示例代码:
+
 ```sh 
 import tkinter as tk
 from tkinter import *
@@ -1613,13 +1695,245 @@ print(al)
 
 root.mainloop()
 ```
+
 ---
+
 ### ttk子模块控件
-我们在前面学习的组件是tkinter模块下的组件，整体风格比较老，为了弥补不足，推出了ttk组件，ttk组件更加美观、功能也更加强大，新增了许多新的组件。这里不再过多介绍，感兴趣的朋友可以自己研究学习，
-ttk子模块官方地址如下:
+
+我们在前面学习的组件是tkinter模块下的组件，整体风格比较老，为了弥补不足，推出了ttk组件，ttk组件更加美观、功能也更加强大，新增了许多新的组件。这里不再过多介绍，感兴趣的朋友可以自己研究学习， ttk子模块官方地址如下:
 [点我->ttk子模块](https://docs.python.org/3.10/library/tkinter.ttk.html)
 
 ---
-### 主菜单
 
-未完待续 ...
+### 主菜单和上下文菜单
+
+菜单通常为两种：主菜单和上下文菜单，主菜单通常位于程序的顶部 主菜单组件：Menu()
+示例图:
+![](https://s2.loli.net/2022/05/06/PIx9tjiz3YnhMZF.png)
+
+上下文菜单也称快捷菜单，是通过鼠标右键单击组件和弹出的菜单，一般是和这个组件相关的操作，比如：剪切、复制、粘贴等。 创建快捷菜单步骤如下：
+
+创建菜单
+
+```sh
+menubar=tk.Menu(root)
+
+menubar.add_command(label="字体")
+```
+
+绑定鼠标右键事件
+
+```sh
+def test(event):
+    #在鼠标右键单击坐标处显示菜单
+    menubar.post(event.x_root,y_root) 
+root.bind("<Button-3>",test)
+```
+
+示例代码:
+
+```sh
+import random
+import tkinter as tk
+from tkinter import *
+from tkinter import ttk, messagebox, colorchooser
+from tkinter.filedialog import *
+
+class Applicaton(Frame):
+
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.master = master
+        self.pack()
+        self.creatWidget()
+        self.textpad = None
+
+   
+    def creatWidget(self):
+        # 创建主菜单栏
+        menubar = Menu(root)
+
+        # 创建子菜单
+        menuFile = Menu(menubar)
+        menuEdit = Menu(menubar)
+        menuHelp = Menu(menubar)
+
+        # 将子菜单加入到主菜单
+        menubar.add_cascade(label="文件(F)", menu=menuFile)
+        menubar.add_cascade(label="编辑(E)", menu=menuEdit)
+        menubar.add_cascade(label="帮助(H)", menu=menuHelp)
+
+        # 添加菜单项 accelerator:快捷键
+        menuFile.add_command(label="新建", accelerator="ctrl+n", command=self.test)
+        menuFile.add_command(label="打开", accelerator="ctrl+o", command=self.openfile)
+        menuFile.add_command(label="保存", accelerator="ctrl+s", command=self.test)
+
+        # 添加分割线
+        menuFile.add_separator()
+        menuFile.add_command(label="退出", accelerator="ctrl+q", command=self.test)
+
+        # 将主菜单栏添加到跟窗口
+        root["menu"] = menubar
+
+        # 文本编辑区
+        self.textpad = Text(root, width=50, height=30)
+        self.textpad.pack()
+
+        # 创建上下菜单
+        self.contextMenu = Menu(root)
+        self.contextMenu.add_command(label="背景颜色", command=self.test)
+
+        # 为右键绑定事件
+        root.bind("<Button-3>", self.createContextMenu)
+
+    def createContextMenu(self,event):
+        # 菜单在鼠标右键单击的坐标处显示
+        self.contextMenu.post(event.x_root,event.y_root)
+
+    def openfile(self):
+        pass
+
+    def test(self):
+        print(11)
+
+
+if __name__ == '__main__':
+    root = Tk()
+    root.geometry("400x330+200+300")
+    app = Applicaton(master=root)
+    root.mainloop()
+
+```
+---
+### 记事本项目实战
+都是前面的内容，这里不再过多解释，只实现了部分功能给大家做个参考，部分bug未处理，感兴趣的可以自己完成后续内容开发，demo代码如下
+示例代码:
+```sh 
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# date:  2022/1/31 0031
+
+
+import random
+import tkinter as tk
+from tkinter import *
+from tkinter import ttk, messagebox, colorchooser
+from tkinter.filedialog import *
+
+
+class Applicaton(Frame):
+
+    def __init__(self, master=None):
+        super().__init__(master)
+        self.master = master
+        self.textpad = None
+        self.pack()
+        self.creatWidget()
+
+    # 颜色选择框
+    def creatWidget(self):
+        # 创建主菜单
+        menubar = Menu(self)
+
+        # 创建子菜单
+        menuFile = Menu(menubar)
+        menuEdit = Menu(menubar)
+        menuHelp = Menu(menubar)
+
+        # 将子菜单加入到主菜单
+        menubar.add_cascade(label="文件(F)", menu=menuFile)
+        menubar.add_cascade(label="编辑(E)", menu=menuEdit)
+        menubar.add_cascade(label="帮助(H)", menu=menuHelp)
+
+        # 添加菜单项
+        menuFile.add_command(label="新建", accelerator="ctrl+n", command=self.newFile)
+        menuFile.add_command(label="打开", accelerator="ctrl+o", command=self.openFile)
+        menuFile.add_command(label="保存", accelerator="ctrl+s", command=self.saveFile)
+
+        # 添加分割线
+        menuFile.add_separator()
+        menuFile.add_command(label="退出", accelerator="ctrl+q", command=self.exit)
+
+        # 将主菜单栏添加到跟窗口
+        self.master["menu"] = menubar
+
+        # 增加快捷键处理
+        self.master.bind("<Control-n>",lambda event:self.newFile())
+        self.master.bind("<Control-o>",lambda event:self.openFile())
+        self.master.bind("<Control-s>",lambda event:self.saveFile())
+        self.master.bind("<Control-q>",lambda event:self.exit())
+
+        # 文本编辑区
+        self.textpad = Text(self, width=50, height=30)
+        self.textpad.pack()
+
+        # 创建上下菜单
+        self.contextMenu = Menu(self)
+        self.contextMenu.add_command(label="背景颜色", command=self.openAskColor)
+
+        # 为右键绑定事件
+        self.master.bind("<Button-3>", self.createContextMenu)
+
+    def createContextMenu(self, event):
+        # 菜单在鼠标右键单击的坐标处显示
+        self.contextMenu.post(event.x_root, event.y_root)
+
+    def openFile(self):
+        """打开文件并展示"""
+        self.textpad.delete(1.0, END)
+        with askopenfile(title="打开文本文件") as f:
+            self.textpad.insert(INSERT, f.read())
+            self.fileName = f.name
+
+    def saveFile(self):
+        """保存文件"""
+        with open(self.fileName, "w") as f:
+            c = self.textpad.get(1.0, END)
+            f.write(c)
+
+    def exit(self):
+        """退出"""
+        self.quit()
+
+    def newFile(self):
+        """新建文件"""
+        self.textpad.delete(1.0, END)
+        self.fileName=asksaveasfilename(title="另存为", initialfile="未命名.txt", filetypes=[("文本文档", "*.txt")], defaultextension=".txt")
+        self.saveFile()
+
+    def openAskColor(self):
+        """修改背景颜色"""
+        s1=colorchooser.askcolor(color="red",title="选择颜色")
+        self.textpad.config(bg=s1[1])
+
+    def test(self):
+        print(11)
+
+
+if __name__ == '__main__':
+    root = Tk()
+    root.geometry("400x330+200+300")
+    app = Applicaton(master=root)
+    root.mainloop()
+```
+---
+### 打包成exe文件
+需要使用新的模块 pyinstaller 来将python项目打包成exe文件，操作步骤如下：
+1.安装 pyinstaller 模块：
+```sh
+pip install pyinstaller 
+```
+执行打包命令：
+在 pycharm 的terminal或者cmd进入项目，只想下面命令
+```sh
+pyinstaller -F xxx.py
+```
+
+注：相关参数如下
+--icon=图标路径(pyinstaller -f --icon=xxx.ico xxxx.py)
+-F 打包成一个exe文件
+-w 使用窗口，无控制台
+-c 使用控制台，无窗口
+-D 创建一个目录，里面包含exe以及其它一些依赖文件
+---
+完结撒花~
