@@ -12,12 +12,12 @@ tags:
 #### 查看帮助常用命令：
 *[help, whatis, info, which, whereis, man]*
 
-1. help :该命令是bash内建命令，用于显示bash内建命令的帮助信息。
-	- 格式语法
-	```sh 
-	help(选项)(参数)
-	```
-	-  常用参数：
+help :该命令是bash内建命令，用于显示bash内建命令的帮助信息。
+格式语法
+```sh 
+help(选项)(参数)
+```
+常用参数：
 
 | 参数  | 含义                                      |
 | :---: | :---------------------------------------: |
@@ -25,8 +25,8 @@ tags:
 | m     | 按照man手册的格式输出内建命令的帮助信息。 |
 | s     | 仅输出内建命令的命令格式。                |
 
-- 示例:
-    - 显示cd命令的帮助信息：
+示例:
+显示cd命令的帮助信息：
 ```sh
     [root@text~]# help cd
 
@@ -63,13 +63,13 @@ tags:
     Returns 0 if the directory is changed, and if $PWD is set successfully when
     -P is used; non-zero otherwise.
 ```
-    - 以短格式显示cd命令的帮助信息：
+以短格式显示cd命令的帮助信息：
 ```sh
 [root@text~]# help -s cd
 
 cd: cd [-L|[-P [-e]] [-@]] [dir]
 ```
-    - 输出cd命令的简短描述：
+输出cd命令的简短描述：
 ```sh
 [root@text~]# help -d cd
 
@@ -78,16 +78,18 @@ cd - Change the shell working directory.
 	
 	
 
-2. whatis:查看命令的简要说明
-3. info:查看命令的详细说明
-4. which:查看命令的位置 
-5. whereis:定位指令的二进制程序、源代码文件和 man 手册页等相关文件的路径
-6. man:查看命令的帮助手册（包含说明、用法等信息）
+whatis:查看命令的简要说明 
+info:查看命令的详细说明
+which:查看命令的位置 
+whereis:定位指令的二进制程序、源代码文件和 man 手册页等相关文件的路径
+man:查看命令的帮助手册（包含说明、用法等信息）
 
 #### 文件管理常用命令：
 *[cd, ls, pwd, mkdir, rmdir, tree, touch, ln, rename, stat, file, chmod, chown, locate, find, cp, mv, rm]*
-1. cd:切换目录
-- 语法格式：
+
+### cd:切换目录
+
+语法格式：
 ```sh
 cd [参数] [目录名]
 ```
@@ -99,42 +101,58 @@ cd [参数] [目录名]
 | --   | 仅使用”-“选项时，当前目录将被切换到环境变量”OLDPWD”对应值的目录  |
 | ~    | 切换至当前用户目录                                                   |
 | ..   | 切换至当前目录位置的上一级目录                                       |
-	- 示例：
-		- 将当前工作目录切换到dir目录，并使用pwd命令查看当前目录：
-		```sh
-		[root@text~]# cd dir
-		[root@text~]# cd pwd
-	
-		/home/text/桌面/linuxTest/dir
-		```
+示例：
+将当前工作目录切换到dir目录，并使用pwd命令查看当前目录：
+```sh
+  [root@text~]# cd dir
+  [root@text~]# cd pwd
+```
+输出：
+```
+/home/text/桌面/linuxTest/dir
+```
 
-	- 使用“cd ~ ”和“cd .. ”命令进行目录的切换操作，并使用pwd命令查看当前目录：
-		```sh
-		[root@text~]# cd ~
-		[root@text~]# cd pwd
+使用“cd ~ ”和“cd .. ”命令进行目录的切换操作，并使用pwd命令查看当前目录：
+```sh
+[root@text~]# cd ~
+[root@text~]# cd pwd
+```
+输出：
+```
+/home/text
+```	
 	
-		/home/text
-
-	  #cd ..表示退回到上一级目录
-		[root@text~]# cd ..   
-		[root@text~]# cd pwd
+cd ..表示退回到上一级目录
+```
+[root@text~]# cd ..   
+[root@text~]# cd pwd
+```
+输出：
+```
+/home/text/桌面/linuxTest
+```	
 	
-		/home/text/桌面/linuxTest
+    
 
-	  #退回多级目录，用 / 分隔开
-	  #cd ../..  :表示退回到上两级目录
-		[root@text~]# cd ../..   
-		[root@text~]# cd pwd
+退回多级目录，用 / 分隔开
+cd ../..  :表示退回到上两级目录
+```
+[root@text~]# cd ../..   
+[root@text~]# cd pwd
+```
+输出：
+```
+/home/text/桌面
+```	
 	
-		/home/text/桌面
-		```
 
-2. ls: 显示指定工作目录下的内容及属性信息
-	- 语法格式：
-	```sh
-	ls [选项] [文件]
-	```
-	- 常用参数：
+
+### ls: 显示指定工作目录下的内容及属性信息
+语法格式：
+```sh
+ls [选项] [文件]
+```
+常用参数：
 
 | 参数 | 含义                                                 |
 | :--- | ---------------------------------------------------: |
@@ -144,93 +162,110 @@ cd [参数] [目录名]
 | -t   | 根据最后的修改时间排序                               |
 | -A   | 同 -a ，但不列出 “.” (当前目录) 及 “..” (父目录) |
 | -S   | 根据文件大小排序                                     |
-| -R   | 递归列出所有子目录                                   |
-	- 示例:
-		- 默认展示当前目录的内容
-		```sh
-		[root@text~]# ls
-		
-		_config.landscape.yml  _config.yml  package-lock.json  package.json  scaffolds/  source/  themes/
-		```
-		- 列出所有文件(包括隐藏文件)：
-		```sh
-		[root@text~]# ls -a
-		
-		./  ../  .git/  .github/  .gitignore  .idea/  _config.landscape.yml  _config.yml  package-lock.json  package.json  scaffolds/  source/  themes/
-		```
-		- 列出文件的详细信息
-		```sh
-		[root@text~]# ls -l  #可以简写为 ll
-		
-		$ ls -l
-		total 84
-		-rw-r--r-- 1 text 1049089     0 Dec  3 11:13 _config.landscape.yml
-		-rw-r--r-- 1 text 1049089  3018 Dec  3 11:13 _config.yml
-		-rw-r--r-- 1 text 1049089 75525 Dec  3 11:13 package-lock.json
-		-rw-r--r-- 1 text 1049089   728 Dec  3 11:13 package.json
-		drwxr-xr-x 1 text 1049089     0 Dec  3 11:13 scaffolds/
-		drwxr-xr-x 1 text 1049089     0 Dec  3 11:13 source/
-		drwxr-xr-x 1 text 1049089     0 Dec  3 11:13 themes/
-		```
-		 列出根目录(/)下的所有目录
-		```sh
-		[root@text~]# ls /
-		
-		$ ls /
-		LICENSE.txt  ReleaseNotes.html  bin/  cmd/  dev/  etc/  git-bash.exe*  git-cmd.exe*  mingw64/  proc/  tmp/  unins000.dat  unins000.exe*  unins000.msg  usr/
-		```
-		列出当前工作目录下所有文件及目录并以文件的大小进行排序(从大到小):
-		```sh
-		[root@text~]# ls -lAS
-		
-		total 89
-		-rw-r--r-- 1 hanhongli 1049089 75525 Dec  3 11:13 package-lock.json
-		-rw-r--r-- 1 hanhongli 1049089  3018 Dec  3 11:13 _config.yml
-		-rw-r--r-- 1 hanhongli 1049089   728 Dec  3 11:13 package.json
-		-rw-r--r-- 1 hanhongli 1049089    71 Dec  3 11:13 .gitignore
-		drwxr-xr-x 1 hanhongli 1049089     0 Dec  6 10:15 .git/
-		drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .github/
-		drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .idea/
-		-rw-r--r-- 1 hanhongli 1049089     0 Dec  3 11:13 _config.landscape.yml
-		drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 scaffolds/
-		drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 source/
-		drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 themes/
-		```
-		列出当前工作目录下所有文件及目录并以文件的大小进行排序(从小到大，借助 参数 -r 进行反转):
-		```sh
-		[root@text~]# ls -lASr
-		
-		total 89
-		drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 themes/
-		drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 source/
-		drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 scaffolds/
-		-rw-r--r-- 1 hanhongli 1049089     0 Dec  3 11:13 _config.landscape.yml
-		drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .idea/
-		drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .github/
-		drwxr-xr-x 1 hanhongli 1049089     0 Dec  6 10:15 .git/
-		-rw-r--r-- 1 hanhongli 1049089    71 Dec  3 11:13 .gitignore
-		-rw-r--r-- 1 hanhongli 1049089   728 Dec  3 11:13 package.json
-		-rw-r--r-- 1 hanhongli 1049089  3018 Dec  3 11:13 _config.yml
-		-rw-r--r-- 1 hanhongli 1049089 75525 Dec  3 11:13 package-lock.json
-		```
+| -R   | 递归列出所有子目录 |
+
+示例:
+默认展示当前目录的内容
+```sh
+[root@text~]# ls
+```
+输出：
+```
+_config.landscape.yml  _config.yml  package-lock.json  package.json  scaffolds/  source/  themes/
+```	
+
+列出所有文件(包括隐藏文件)：
+```sh
+[root@text~]# ls -a
+```
+输出：
+```
+./  ../  .git/  .github/  .gitignore  .idea/  _config.landscape.yml  _config.yml  package-lock.json  package.json  scaffolds/  source/  themes/
+```
+列出文件的详细信息
+ ```sh
+ [root@text~]# ls -l  #可以简写为 ll
+```
+输出：
+```	
+ $ ls -l
+ total 84
+ -rw-r--r-- 1 text 1049089     0 Dec  3 11:13 _config.landscape.yml
+ -rw-r--r-- 1 text 1049089  3018 Dec  3 11:13 _config.yml
+ -rw-r--r-- 1 text 1049089 75525 Dec  3 11:13 package-lock.json
+ -rw-r--r-- 1 text 1049089   728 Dec  3 11:13 package.json
+ drwxr-xr-x 1 text 1049089     0 Dec  3 11:13 scaffolds/
+ drwxr-xr-x 1 text 1049089     0 Dec  3 11:13 source/
+ drwxr-xr-x 1 text 1049089     0 Dec  3 11:13 themes/
+ ```
+  列出根目录(/)下的所有目录
+ ```sh
+ [root@text~]# ls /
+```
+输出：
+```	
+ $ ls /
+ LICENSE.txt  ReleaseNotes.html  bin/  cmd/  dev/  etc/  git-bash.exe*  git-cmd.exe*  mingw64/  proc/  tmp/  unins000.dat  unins000.exe*  unins000.msg  usr/
+ ```
+ 列出当前工作目录下所有文件及目录并以文件的大小进行排序(从大到小):
+ ```sh
+ [root@text~]# ls -lAS
+```
+输出：
+```	
+ total 89
+ -rw-r--r-- 1 hanhongli 1049089 75525 Dec  3 11:13 package-lock.json
+ -rw-r--r-- 1 hanhongli 1049089  3018 Dec  3 11:13 _config.yml
+ -rw-r--r-- 1 hanhongli 1049089   728 Dec  3 11:13 package.json
+ -rw-r--r-- 1 hanhongli 1049089    71 Dec  3 11:13 .gitignore
+ drwxr-xr-x 1 hanhongli 1049089     0 Dec  6 10:15 .git/
+ drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .github/
+ drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .idea/
+ -rw-r--r-- 1 hanhongli 1049089     0 Dec  3 11:13 _config.landscape.yml
+ drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 scaffolds/
+ drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 source/
+ drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 themes/
+ ```
+ 列出当前工作目录下所有文件及目录并以文件的大小进行排序(从小到大，借助 参数 -r 进行反转):
+ ```sh
+ [root@text~]# ls -lASr
+```
+输出：
+```	
+ total 89
+ drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 themes/
+ drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 source/
+ drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 scaffolds/
+ -rw-r--r-- 1 hanhongli 1049089     0 Dec  3 11:13 _config.landscape.yml
+ drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .idea/
+ drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .github/
+ drwxr-xr-x 1 hanhongli 1049089     0 Dec  6 10:15 .git/
+ -rw-r--r-- 1 hanhongli 1049089    71 Dec  3 11:13 .gitignore
+ -rw-r--r-- 1 hanhongli 1049089   728 Dec  3 11:13 package.json
+ -rw-r--r-- 1 hanhongli 1049089  3018 Dec  3 11:13 _config.yml
+ -rw-r--r-- 1 hanhongli 1049089 75525 Dec  3 11:13 package-lock.json
+ ```
 	
-3. pwd: 显示当前工作目录的绝对路径
-	- 语法格式：
-		```sh
-		pwd
-		```
-	- 示例:
-		```sh
-		[root@text~]# pwd
-		
-		/e/WorkSpace/honlicc.github.io
-		```
-4. mkdir: 创建目录
-	- 语法格式：
-		```sh
-		 mkdir [参数] [目录]
-		```
-	- 常用参数：
+### pwd: 显示当前工作目录的绝对路径
+语法格式：
+	```sh
+	pwd
+	```
+示例:
+```sh
+[root@text~]# pwd
+```
+输出：
+```	
+/e/WorkSpace/honlicc.github.io
+```
+
+### mkdir: 创建目录
+语法格式：
+```sh
+mkdir [参数] [目录]
+```
+常用参数：
 	
 |参数| 含义 | 
 | ------ | 
@@ -238,7 +273,7 @@ cd [参数] [目录名]
 | -m | 建立目录的同时设置目录的权限 |
 | -z| 设置安全上下文|
 | -v | 显示目录的创建过程 |
-	- 示例:
+	示例:
 		在工作目录下，建立一个名为 dir 的子目录
 		```sh
 		[root@text~]# mkdir dir
@@ -271,12 +306,12 @@ cd [参数] [目录名]
 		```sh
 		[root@text~]# mkdir -p dir4/test
 		```
-5. rmdir: 删除空目录
-	- 语法格式：
-	```sh
-	 rmdir [参数] [目录]
-	```
-	- 常用参数：
+### rmdir: 删除空目录
+语法格式：
+```sh
+ rmdir [参数] [目录]
+```
+常用参数：
 
 | 参数                           | 含义                    |
 | ------------------------------ | ----------------------- |
@@ -284,77 +319,144 @@ cd [参数] [目录名]
 | -- -- ignore-fail-on-non-empty | 显示应用关联的 apk 文件 |
 | -v                             | 只显示 disabled 的应用  |
 
-	- 示例:
-		删除空目录
-		```sh
-		[root@text~]# rmdir dir
-		```
-		递归删除指定的目录树：
-		```sh
-		[root@text~]# rmdir -p dir/dir_1/dir_2
-		```
-	    显示指令详细执行过程：
-		```sh
-		[root@text~]# rmdir -v dir
-		rmdir: 正在删除目录 'dir'
-		```
+示例:
+删除空目录
+```sh
+[root@text~]# rmdir dir
+```
+递归删除指定的目录树：
+```sh
+[root@text~]# rmdir -p dir/dir_1/dir_2
+```
+显示指令详细执行过程：
+```sh
+[root@text~]# rmdir -v dir
+rmdir: 正在删除目录 'dir'
+```
+
 6. tree:以树状图列出目录内容
-7. touch:
-8. ln:
+7. touch: 创建空文件 
+8. 
+### ln: 建立链接文件(类似于windows 快捷方式)
+语法格式：
+```sh
+ln  [参数] [文件]
+```
+建立软连接：
+```
+ls -s filename
+```
+
+建立硬连接：
+```
+ls filename
+```
+
 9. rename:
 10. stat:
 11. file:
 12. chmod:
 13. chown:
 14. locate:
-15. find:
-16. cp:
-17. mv:
-18. rm:
+### find: 查找文件
+语法格式
+```
+find  path  -name "*.txt"
+```
+示例：
+查找当前目录下所有.log结尾的文件
+```
+find ./ -name "*.log"
+```
+查找当前目录下所有.txt结尾的文件并删除
+```
+find ./ -name "*.txt"|xargs rm
+```
+
+### cp: 拷贝文件
+语法格式：
+```
+cp  目标文件  目标路径
+```
+### mv:移动/重命名文件
+```
+mv   旧文件名  新文件名
+```
+### rm:删除文件/文件夹
+
 
 #### 文件内容常用命令：
 [cat, head, tail, more, less, sed, vi, grep]
-1. cat:
-2. head:
-3. tail:
-4. more:
-5. less:
-6. sed:
-7. vi:
-8. grep:
+### cat: 查看文件内容
+语法格式：
+```
+cat filename
+```
+
+
+### head:
+### tail:
+### more:查看文件内容(分页显示，底部显示百分百)
+示例
+```
+more nginx.log
+```
+翻页操作：
+```
+向下翻：按空格键
+向回翻：b
+按行翻：回车
+退出：q
+```
+### less:查看文件内容(分页显示)
+示例
+```
+less nginx.log
+```
+翻页操作：
+```
+向下翻：按空格键
+向回翻：b
+按行翻：回车
+退出：q
+```
+
+### sed:
+### vi:
+### grep:
 
 #### 文件压缩和解压：
 [tar, gzip, zip, unzip]
-1. tar:
-2. gzip:
-3. zip:
-4. unzip:
+### tar:
+### gzip:
+### zip:
+### unzip:
 
 #### 用户相关常用命令：
 [groupadd, groupdel, groupmod, useradd, userdel, usermod, passwd, su, sudo]
-1. groupadd:
-2. groupdel:
-3. groupmod:
-4. useradd:
-5. userdel:
-6. usermod:
-7. passwd:
-8. su:
-9. sudo:
+### groupadd:
+### groupdel:
+### groupmod:
+### useradd:
+### userdel:
+### usermod:
+### passwd:
+### su:
+### sudo:
 
 #### 系统管理常用命令：
 [eboot, exit, shutdown, date, mount, umount, ps, kill, systemctl, service, crontab]
-1. eboot:
-2. exit:
-3. shutdown:
-4. date:
-5. mount:
-6. umount:
-7. ps:
-8. kill:
-9. systemctl:
-10. service:
-11. crontab:
+### eboot:
+### exit:
+### shutdown:
+### date:
+### mount:
+### umount:
+### ps:
+### kill:
+### systemctl:
+### service:
+### crontab:
 
 
 #### 网络管理常用命令:
@@ -364,7 +466,7 @@ cd [参数] [目录名]
 3. telnet:
 4. ip:
 5. hostname:
-6. ifconfig:
+### ifconfig: 查看网卡信息
 7. route:
 8. ssh:
 9. ssh-keygen:
@@ -373,7 +475,14 @@ cd [参数] [目录名]
 12. host:
 13. nslookup:
 14. nc/netcat:
-15. ping:
+### ping: 测试远程主机连通性
+示例：
+```
+ping www.baidu.com 
+
+# -c: ping 的次数
+# -i: 每次ping的时间间隔
+```
 16. traceroute:
 17. netstat:
 
@@ -394,4 +503,5 @@ cd [参数] [目录名]
 
 
 
+# 待完善ing~
 
