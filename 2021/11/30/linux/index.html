@@ -8,15 +8,15 @@
   <link rel="dns-prefetch" href="http://example.com">
   <title>Linux | 宏利的博客</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="Linux Command查看帮助常用命令：[help, whatis, info, which, whereis, man]  help :该命令是bash内建命令，用于显示bash内建命令的帮助信息。 格式语法1help(选项)(参数)  常用参数：       参数 含义    -d 显示内建命令的简要描述。   m 按照man手册的格式输出内建命令的帮助信息。   s 仅输出内建命令的命令">
+  <meta name="description" content="Linux Command查看帮助常用命令：[help, whatis, info, which, whereis, man] help :该命令是bash内建命令，用于显示bash内建命令的帮助信息。格式语法 1help(选项)(参数) 常用参数：    参数 含义    -d 显示内建命令的简要描述。   m 按照man手册的格式输出内建命令的帮助信息。   s 仅输出内建命令的命令格式。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux">
 <meta property="og:url" content="http://example.com/2021/11/30/linux/index.html">
 <meta property="og:site_name" content="宏利的博客">
-<meta property="og:description" content="Linux Command查看帮助常用命令：[help, whatis, info, which, whereis, man]  help :该命令是bash内建命令，用于显示bash内建命令的帮助信息。 格式语法1help(选项)(参数)  常用参数：       参数 含义    -d 显示内建命令的简要描述。   m 按照man手册的格式输出内建命令的帮助信息。   s 仅输出内建命令的命令">
+<meta property="og:description" content="Linux Command查看帮助常用命令：[help, whatis, info, which, whereis, man] help :该命令是bash内建命令，用于显示bash内建命令的帮助信息。格式语法 1help(选项)(参数) 常用参数：    参数 含义    -d 显示内建命令的简要描述。   m 按照man手册的格式输出内建命令的帮助信息。   s 仅输出内建命令的命令格式。">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2021-11-30T14:36:20.000Z">
-<meta property="article:modified_time" content="2022-03-07T02:51:34.552Z">
+<meta property="article:modified_time" content="2022-07-31T15:49:32.008Z">
 <meta property="article:author" content="honlicc">
 <meta property="article:tag" content="linux">
 <meta name="twitter:card" content="summary">
@@ -181,13 +181,9 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h3 id="Linux-Command"><a href="#Linux-Command" class="headerlink" title="Linux Command"></a>Linux Command</h3><h4 id="查看帮助常用命令："><a href="#查看帮助常用命令：" class="headerlink" title="查看帮助常用命令："></a>查看帮助常用命令：</h4><p><em>[help, whatis, info, which, whereis, man]</em></p>
-<ol>
-<li>help :该命令是bash内建命令，用于显示bash内建命令的帮助信息。<ul>
-<li>格式语法<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">help</span>(选项)(参数)</span><br></pre></td></tr></table></figure></li>
-<li> 常用参数：</li>
-</ul>
-</li>
-</ol>
+<p>help :该命令是bash内建命令，用于显示bash内建命令的帮助信息。<br>格式语法</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">help</span>(选项)(参数)</span><br></pre></td></tr></table></figure>
+<p>常用参数：</p>
 <table>
 <thead>
 <tr>
@@ -208,30 +204,18 @@
 <td align="center">仅输出内建命令的命令格式。</td>
 </tr>
 </tbody></table>
-<ul>
-<li>示例:<ul>
-<li>显示cd命令的帮助信息：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># help cd</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span>: <span class="built_in">cd</span> [-L|[-P [-e]] [-@]] [dir]</span><br><span class="line">Change the shell working directory.</span><br><span class="line">Change the current directory to DIR.  The default DIR is the value of the</span><br><span class="line">HOME shell variable.</span><br><span class="line"></span><br><span class="line">The variable CDPATH defines the search path <span class="keyword">for</span> the directory containing</span><br><span class="line">DIR.  Alternative directory names <span class="keyword">in</span> CDPATH are separated by a colon (:).</span><br><span class="line">A null directory name is the same as the current directory.  If DIR begins</span><br><span class="line">with a slash (/), <span class="keyword">then</span> CDPATH is not used.</span><br><span class="line"></span><br><span class="line">If the directory is not found, and the shell option `cdable_vars<span class="string">&#x27; is set,</span></span><br><span class="line"><span class="string">the word is assumed to be  a variable name.  If that variable has a value,</span></span><br><span class="line"><span class="string">its value is used for DIR.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Options:</span></span><br><span class="line"><span class="string">    -L	force symbolic links to be followed: resolve symbolic links in</span></span><br><span class="line"><span class="string">    DIR after processing instances of `..&#x27;</span></span><br><span class="line">    -P	use the physical directory structure without following symbolic</span><br><span class="line">    links: resolve symbolic links <span class="keyword">in</span> DIR before processing instances</span><br><span class="line">    of `..<span class="string">&#x27;</span></span><br><span class="line"><span class="string">    -e	if the -P option is supplied, and the current working directory</span></span><br><span class="line"><span class="string">    cannot be determined successfully, exit with a non-zero status</span></span><br><span class="line"><span class="string">    -@  on systems that support it, present a file with extended attributes</span></span><br><span class="line"><span class="string">        as a directory containing the file attributes</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">The default is to follow symbolic links, as if `-L&#x27;</span> were specified.</span><br><span class="line">`..<span class="string">&#x27; is processed by removing the immediately previous pathname component</span></span><br><span class="line"><span class="string">back to a slash or the beginning of DIR.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Exit Status:</span></span><br><span class="line"><span class="string">Returns 0 if the directory is changed, and if $PWD is set successfully when</span></span><br><span class="line"><span class="string">-P is used; non-zero otherwise.</span></span><br></pre></td></tr></table></figure></li>
-<li>以短格式显示cd命令的帮助信息：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># help -s cd</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span>: <span class="built_in">cd</span> [-L|[-P [-e]] [-@]] [dir]</span><br></pre></td></tr></table></figure></li>
-<li>输出cd命令的简短描述：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># help -d cd</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> - Change the shell working directory.</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<ol start="2">
-<li>whatis:查看命令的简要说明</li>
-<li>info:查看命令的详细说明</li>
-<li>which:查看命令的位置 </li>
-<li>whereis:定位指令的二进制程序、源代码文件和 man 手册页等相关文件的路径</li>
-<li>man:查看命令的帮助手册（包含说明、用法等信息）</li>
-</ol>
+<p>示例:<br>显示cd命令的帮助信息：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># help cd</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span>: <span class="built_in">cd</span> [-L|[-P [-e]] [-@]] [dir]</span><br><span class="line">Change the shell working directory.</span><br><span class="line">Change the current directory to DIR.  The default DIR is the value of the</span><br><span class="line">HOME shell variable.</span><br><span class="line"></span><br><span class="line">The variable CDPATH defines the search path <span class="keyword">for</span> the directory containing</span><br><span class="line">DIR.  Alternative directory names <span class="keyword">in</span> CDPATH are separated by a colon (:).</span><br><span class="line">A null directory name is the same as the current directory.  If DIR begins</span><br><span class="line">with a slash (/), <span class="keyword">then</span> CDPATH is not used.</span><br><span class="line"></span><br><span class="line">If the directory is not found, and the shell option `cdable_vars<span class="string">&#x27; is set,</span></span><br><span class="line"><span class="string">the word is assumed to be  a variable name.  If that variable has a value,</span></span><br><span class="line"><span class="string">its value is used for DIR.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Options:</span></span><br><span class="line"><span class="string">    -L	force symbolic links to be followed: resolve symbolic links in</span></span><br><span class="line"><span class="string">    DIR after processing instances of `..&#x27;</span></span><br><span class="line">    -P	use the physical directory structure without following symbolic</span><br><span class="line">    links: resolve symbolic links <span class="keyword">in</span> DIR before processing instances</span><br><span class="line">    of `..<span class="string">&#x27;</span></span><br><span class="line"><span class="string">    -e	if the -P option is supplied, and the current working directory</span></span><br><span class="line"><span class="string">    cannot be determined successfully, exit with a non-zero status</span></span><br><span class="line"><span class="string">    -@  on systems that support it, present a file with extended attributes</span></span><br><span class="line"><span class="string">        as a directory containing the file attributes</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">The default is to follow symbolic links, as if `-L&#x27;</span> were specified.</span><br><span class="line">`..<span class="string">&#x27; is processed by removing the immediately previous pathname component</span></span><br><span class="line"><span class="string">back to a slash or the beginning of DIR.</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">Exit Status:</span></span><br><span class="line"><span class="string">Returns 0 if the directory is changed, and if $PWD is set successfully when</span></span><br><span class="line"><span class="string">-P is used; non-zero otherwise.</span></span><br></pre></td></tr></table></figure>
+<p>以短格式显示cd命令的帮助信息：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># help -s cd</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span>: <span class="built_in">cd</span> [-L|[-P [-e]] [-@]] [dir]</span><br></pre></td></tr></table></figure>
+<p>输出cd命令的简短描述：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># help -d cd</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">cd</span> - Change the shell working directory.</span><br></pre></td></tr></table></figure>
+<p>whatis:查看命令的简要说明<br>info:查看命令的详细说明<br>which:查看命令的位置<br>whereis:定位指令的二进制程序、源代码文件和 man 手册页等相关文件的路径<br>man:查看命令的帮助手册（包含说明、用法等信息）</p>
 <h4 id="文件管理常用命令："><a href="#文件管理常用命令：" class="headerlink" title="文件管理常用命令："></a>文件管理常用命令：</h4><p><em>[cd, ls, pwd, mkdir, rmdir, tree, touch, ln, rename, stat, file, chmod, chown, locate, find, cp, mv, rm]</em></p>
-<ol>
-<li>cd:切换目录</li>
-</ol>
+<h3 id="cd-切换目录"><a href="#cd-切换目录" class="headerlink" title="cd:切换目录"></a>cd:切换目录</h3><p>语法格式：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> [参数] [目录名]</span><br></pre></td></tr></table></figure>
 <ul>
-<li><p>语法格式：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> [参数] [目录名]</span><br></pre></td></tr></table></figure></li>
-<li><p>常用参数：</p>
-<table>
+<li>常用参数：<table>
 <thead>
 <tr>
 <th>参数</th>
@@ -258,25 +242,33 @@
 <td>..</td>
 <td>切换至当前目录位置的上一级目录</td>
 </tr>
+<tr>
+<td>示例：</td>
+<td></td>
+</tr>
+<tr>
+<td>将当前工作目录切换到dir目录，并使用pwd命令查看当前目录：</td>
+<td></td>
+</tr>
 </tbody></table>
-<ul>
-<li><p>示例：</p>
-<ul>
-<li>将当前工作目录切换到dir目录，并使用pwd命令查看当前目录：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># cd dir</span></span><br><span class="line">[root@text~]<span class="comment"># cd pwd</span></span><br><span class="line">	</span><br><span class="line">/home/text/桌面/linuxTest/dir</span><br></pre></td></tr></table></figure></li>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># cd dir</span></span><br><span class="line">[root@text~]<span class="comment"># cd pwd</span></span><br></pre></td></tr></table></figure>
+输出：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/home/text/桌面/linuxTest/dir</span><br></pre></td></tr></table></figure></li>
 </ul>
-</li>
-<li><p>使用“cd ~ ”和“cd .. ”命令进行目录的切换操作，并使用pwd命令查看当前目录：</p>
-  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># cd ~</span></span><br><span class="line">[root@text~]<span class="comment"># cd pwd</span></span><br><span class="line">	</span><br><span class="line">/home/text</span><br><span class="line"></span><br><span class="line"> <span class="comment">#cd ..表示退回到上一级目录</span></span><br><span class="line">[root@text~]<span class="comment"># cd ..   </span></span><br><span class="line">[root@text~]<span class="comment"># cd pwd</span></span><br><span class="line">	</span><br><span class="line">/home/text/桌面/linuxTest</span><br><span class="line"></span><br><span class="line"> <span class="comment">#退回多级目录，用 / 分隔开</span></span><br><span class="line"> <span class="comment">#cd ../..  :表示退回到上两级目录</span></span><br><span class="line">[root@text~]<span class="comment"># cd ../..   </span></span><br><span class="line">[root@text~]<span class="comment"># cd pwd</span></span><br><span class="line">	</span><br><span class="line">/home/text/桌面</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-</ul>
-<ol start="2">
-<li>ls: 显示指定工作目录下的内容及属性信息<ul>
-<li>语法格式：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls [选项] [文件]</span><br></pre></td></tr></table></figure></li>
-<li>常用参数：</li>
-</ul>
-</li>
-</ol>
+<p>使用“cd ~ ”和“cd .. ”命令进行目录的切换操作，并使用pwd命令查看当前目录：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># cd ~</span></span><br><span class="line">[root@text~]<span class="comment"># cd pwd</span></span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/home/text</span><br></pre></td></tr></table></figure>
+<p>cd ..表示退回到上一级目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]# cd ..   </span><br><span class="line">[root@text~]# cd pwd</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/home/text/桌面/linuxTest</span><br></pre></td></tr></table></figure>
+<p>退回多级目录，用 / 分隔开<br>cd ../..  :表示退回到上两级目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]# cd ../..   </span><br><span class="line">[root@text~]# cd pwd</span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/home/text/桌面</span><br></pre></td></tr></table></figure>
+<h3 id="ls-显示指定工作目录下的内容及属性信息"><a href="#ls-显示指定工作目录下的内容及属性信息" class="headerlink" title="ls: 显示指定工作目录下的内容及属性信息"></a>ls: 显示指定工作目录下的内容及属性信息</h3><p>语法格式：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls [选项] [文件]</span><br></pre></td></tr></table></figure>
+<p>常用参数：</p>
 <table>
 <thead>
 <tr>
@@ -313,33 +305,35 @@
 <td align="right">递归列出所有子目录</td>
 </tr>
 </tbody></table>
-<pre><code>- 示例:
-    - 默认展示当前目录的内容
-    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls</span></span><br><span class="line"></span><br><span class="line">_config.landscape.yml  _config.yml  package-lock.json  package.json  scaffolds/  <span class="built_in">source</span>/  themes/</span><br></pre></td></tr></table></figure>
-    - 列出所有文件(包括隐藏文件)：
-    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls -a</span></span><br><span class="line"></span><br><span class="line">./  ../  .git/  .github/  .gitignore  .idea/  _config.landscape.yml  _config.yml  package-lock.json  package.json  scaffolds/  <span class="built_in">source</span>/  themes/</span><br></pre></td></tr></table></figure>
-    - 列出文件的详细信息
-    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls -l  #可以简写为 ll</span></span><br><span class="line"></span><br><span class="line">$ ls -l</span><br><span class="line">total 84</span><br><span class="line">-rw-r--r-- 1 text 1049089     0 Dec  3 11:13 _config.landscape.yml</span><br><span class="line">-rw-r--r-- 1 text 1049089  3018 Dec  3 11:13 _config.yml</span><br><span class="line">-rw-r--r-- 1 text 1049089 75525 Dec  3 11:13 package-lock.json</span><br><span class="line">-rw-r--r-- 1 text 1049089   728 Dec  3 11:13 package.json</span><br><span class="line">drwxr-xr-x 1 text 1049089     0 Dec  3 11:13 scaffolds/</span><br><span class="line">drwxr-xr-x 1 text 1049089     0 Dec  3 11:13 <span class="built_in">source</span>/</span><br><span class="line">drwxr-xr-x 1 text 1049089     0 Dec  3 11:13 themes/</span><br></pre></td></tr></table></figure>
-     列出根目录(/)下的所有目录
-    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls /</span></span><br><span class="line"></span><br><span class="line">$ ls /</span><br><span class="line">LICENSE.txt  ReleaseNotes.html  bin/  cmd/  dev/  etc/  git-bash.exe*  git-cmd.exe*  mingw64/  proc/  tmp/  unins000.dat  unins000.exe*  unins000.msg  usr/</span><br></pre></td></tr></table></figure>
-    列出当前工作目录下所有文件及目录并以文件的大小进行排序(从大到小):
-    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls -lAS</span></span><br><span class="line"></span><br><span class="line">total 89</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089 75525 Dec  3 11:13 package-lock.json</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089  3018 Dec  3 11:13 _config.yml</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089   728 Dec  3 11:13 package.json</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089    71 Dec  3 11:13 .gitignore</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  6 10:15 .git/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .github/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .idea/</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089     0 Dec  3 11:13 _config.landscape.yml</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 scaffolds/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 <span class="built_in">source</span>/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 themes/</span><br></pre></td></tr></table></figure>
-    列出当前工作目录下所有文件及目录并以文件的大小进行排序(从小到大，借助 参数 -r 进行反转):
-    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls -lASr</span></span><br><span class="line"></span><br><span class="line">total 89</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 themes/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 <span class="built_in">source</span>/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 scaffolds/</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089     0 Dec  3 11:13 _config.landscape.yml</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .idea/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .github/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  6 10:15 .git/</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089    71 Dec  3 11:13 .gitignore</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089   728 Dec  3 11:13 package.json</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089  3018 Dec  3 11:13 _config.yml</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089 75525 Dec  3 11:13 package-lock.json</span><br></pre></td></tr></table></figure>
-</code></pre>
-<ol start="3">
-<li>pwd: 显示当前工作目录的绝对路径<ul>
-<li>语法格式：  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></table></figure></li>
-<li>示例:  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># pwd</span></span><br><span class="line"></span><br><span class="line">/e/WorkSpace/honlicc.github.io</span><br></pre></td></tr></table></figure></li>
-</ul>
-</li>
-<li>mkdir: 创建目录<ul>
-<li>语法格式：  <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir [参数] [目录]</span><br></pre></td></tr></table></figure></li>
-<li>常用参数：</li>
-</ul>
-</li>
-</ol>
-<p>|参数| 含义 |<br>| —— |<br>| -p | 递归创建多级目录 |<br>| -m | 建立目录的同时设置目录的权限 |<br>| -z| 设置安全上下文|<br>| -v | 显示目录的创建过程 |<br>    - 示例:<br>        在工作目录下，建立一个名为 dir 的子目录<br>        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># mkdir dir</span></span><br><span class="line"></span><br><span class="line">[root@text~]<span class="comment"># ll</span></span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:54 dir/</span><br></pre></td></tr></table></figure><br>        在工作目录下，建立一个名为 dir 的子目录<br>        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># mkdir dir</span></span><br><span class="line"></span><br><span class="line">[root@text~]<span class="comment"># ll</span></span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:54 dir/</span><br></pre></td></tr></table></figure><br>        在目录/usr/text下建立子目录dir，并且设置文件属主有读、写和执行权限，其他人无权访问:<br>        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># mkdir -m 700 /usr/text/dir</span></span><br></pre></td></tr></table></figure><br>        同时创建子目录dir1，dir2，dir3：<br>        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># mkdir dir1 dir2 dir3</span></span><br><span class="line"></span><br><span class="line">[root@text~]<span class="comment"># ll</span></span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:54 dir/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:57 dir1/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:57 dir2/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:57 dir3/</span><br></pre></td></tr></table></figure><br>        递归创建目录：<br>        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># mkdir -p dir4/test</span></span><br></pre></td></tr></table></figure><br>5. rmdir: 删除空目录<br>    - 语法格式：<br>    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rmdir [参数] [目录]</span><br></pre></td></tr></table></figure><br>    - 常用参数：</p>
+<p>示例:<br>默认展示当前目录的内容</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls</span></span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">_config.landscape.yml  _config.yml  package-lock.json  package.json  scaffolds/  source/  themes/</span><br></pre></td></tr></table></figure>
+
+<p>列出所有文件(包括隐藏文件)：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls -a</span></span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./  ../  .git/  .github/  .gitignore  .idea/  _config.landscape.yml  _config.yml  package-lock.json  package.json  scaffolds/  source/  themes/</span><br></pre></td></tr></table></figure>
+<p>列出文件的详细信息<br> <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls -l  #可以简写为 ll</span></span><br></pre></td></tr></table></figure><br>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ ls -l</span><br><span class="line">total 84</span><br><span class="line">-rw-r--r-- 1 text 1049089     0 Dec  3 11:13 _config.landscape.yml</span><br><span class="line">-rw-r--r-- 1 text 1049089  3018 Dec  3 11:13 _config.yml</span><br><span class="line">-rw-r--r-- 1 text 1049089 75525 Dec  3 11:13 package-lock.json</span><br><span class="line">-rw-r--r-- 1 text 1049089   728 Dec  3 11:13 package.json</span><br><span class="line">drwxr-xr-x 1 text 1049089     0 Dec  3 11:13 scaffolds/</span><br><span class="line">drwxr-xr-x 1 text 1049089     0 Dec  3 11:13 source/</span><br><span class="line">drwxr-xr-x 1 text 1049089     0 Dec  3 11:13 themes/</span><br></pre></td></tr></table></figure>
+<p>  列出根目录(/)下的所有目录<br> <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls /</span></span><br></pre></td></tr></table></figure><br>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls /</span><br><span class="line">LICENSE.txt  ReleaseNotes.html  bin/  cmd/  dev/  etc/  git-bash.exe*  git-cmd.exe*  mingw64/  proc/  tmp/  unins000.dat  unins000.exe*  unins000.msg  usr/</span><br></pre></td></tr></table></figure>
+<p> 列出当前工作目录下所有文件及目录并以文件的大小进行排序(从大到小):<br> <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls -lAS</span></span><br></pre></td></tr></table></figure><br>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">total 89</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089 75525 Dec  3 11:13 package-lock.json</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089  3018 Dec  3 11:13 _config.yml</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089   728 Dec  3 11:13 package.json</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089    71 Dec  3 11:13 .gitignore</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  6 10:15 .git/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .github/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .idea/</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089     0 Dec  3 11:13 _config.landscape.yml</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 scaffolds/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 source/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 themes/</span><br></pre></td></tr></table></figure>
+<p> 列出当前工作目录下所有文件及目录并以文件的大小进行排序(从小到大，借助 参数 -r 进行反转):<br> <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># ls -lASr</span></span><br></pre></td></tr></table></figure><br>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">total 89</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 themes/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 source/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 scaffolds/</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089     0 Dec  3 11:13 _config.landscape.yml</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .idea/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  3 11:13 .github/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  6 10:15 .git/</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089    71 Dec  3 11:13 .gitignore</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089   728 Dec  3 11:13 package.json</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089  3018 Dec  3 11:13 _config.yml</span><br><span class="line">-rw-r--r-- 1 hanhongli 1049089 75525 Dec  3 11:13 package-lock.json</span><br></pre></td></tr></table></figure>
+<h3 id="pwd-显示当前工作目录的绝对路径"><a href="#pwd-显示当前工作目录的绝对路径" class="headerlink" title="pwd: 显示当前工作目录的绝对路径"></a>pwd: 显示当前工作目录的绝对路径</h3><p>语法格式：<br>    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">pwd</span></span><br></pre></td></tr></table></figure><br>示例:</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># pwd</span></span><br></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/e/WorkSpace/honlicc.github.io</span><br></pre></td></tr></table></figure>
+
+<h3 id="mkdir-创建目录"><a href="#mkdir-创建目录" class="headerlink" title="mkdir: 创建目录"></a>mkdir: 创建目录</h3><p>语法格式：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir [参数] [目录]</span><br></pre></td></tr></table></figure>
+<p>常用参数：</p>
+<p>|参数| 含义 |<br>| —— |<br>| -p | 递归创建多级目录 |<br>| -m | 建立目录的同时设置目录的权限 |<br>| -z| 设置安全上下文|<br>| -v | 显示目录的创建过程 |<br>    示例:<br>        在工作目录下，建立一个名为 dir 的子目录<br>        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># mkdir dir</span></span><br><span class="line"></span><br><span class="line">[root@text~]<span class="comment"># ll</span></span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:54 dir/</span><br></pre></td></tr></table></figure><br>        在工作目录下，建立一个名为 dir 的子目录<br>        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># mkdir dir</span></span><br><span class="line"></span><br><span class="line">[root@text~]<span class="comment"># ll</span></span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:54 dir/</span><br></pre></td></tr></table></figure><br>        在目录/usr/text下建立子目录dir，并且设置文件属主有读、写和执行权限，其他人无权访问:<br>        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># mkdir -m 700 /usr/text/dir</span></span><br></pre></td></tr></table></figure><br>        同时创建子目录dir1，dir2，dir3：<br>        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># mkdir dir1 dir2 dir3</span></span><br><span class="line"></span><br><span class="line">[root@text~]<span class="comment"># ll</span></span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:54 dir/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:57 dir1/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:57 dir2/</span><br><span class="line">drwxr-xr-x 1 hanhongli 1049089     0 Dec  7 14:57 dir3/</span><br></pre></td></tr></table></figure><br>        递归创建目录：<br>        <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># mkdir -p dir4/test</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="rmdir-删除空目录"><a href="#rmdir-删除空目录" class="headerlink" title="rmdir: 删除空目录"></a>rmdir: 删除空目录</h3><p>语法格式：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rmdir [参数] [目录]</span><br></pre></td></tr></table></figure>
+<p>常用参数：</p>
 <table>
 <thead>
 <tr>
@@ -360,81 +354,59 @@
 <td>只显示 disabled 的应用</td>
 </tr>
 </tbody></table>
-<pre><code>- 示例:
-    删除空目录
-    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># rmdir dir</span></span><br></pre></td></tr></table></figure>
-    递归删除指定的目录树：
-    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># rmdir -p dir/dir_1/dir_2</span></span><br></pre></td></tr></table></figure>
-    显示指令详细执行过程：
-    <figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># rmdir -v dir</span></span><br><span class="line">rmdir: 正在删除目录 <span class="string">&#x27;dir&#x27;</span></span><br></pre></td></tr></table></figure>
-</code></pre>
+<p>示例:<br>删除空目录</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># rmdir dir</span></span><br></pre></td></tr></table></figure>
+<p>递归删除指定的目录树：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># rmdir -p dir/dir_1/dir_2</span></span><br></pre></td></tr></table></figure>
+<p>显示指令详细执行过程：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[root@text~]<span class="comment"># rmdir -v dir</span></span><br><span class="line">rmdir: 正在删除目录 <span class="string">&#x27;dir&#x27;</span></span><br></pre></td></tr></table></figure>
+
 <ol start="6">
 <li>tree:以树状图列出目录内容</li>
-<li>touch:</li>
-<li>ln:</li>
+<li>touch: 创建空文件 </li>
+<li><h3 id="ln-建立链接文件-类似于windows-快捷方式"><a href="#ln-建立链接文件-类似于windows-快捷方式" class="headerlink" title="ln: 建立链接文件(类似于windows 快捷方式)"></a>ln: 建立链接文件(类似于windows 快捷方式)</h3>语法格式：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ln  [参数] [文件]</span><br></pre></td></tr></table></figure>
+建立软连接：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls -s filename</span><br></pre></td></tr></table></figure></li>
+</ol>
+<p>建立硬连接：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls filename</span><br></pre></td></tr></table></figure>
+
+<ol start="9">
 <li>rename:</li>
 <li>stat:</li>
 <li>file:</li>
 <li>chmod:</li>
 <li>chown:</li>
-<li>locate:</li>
-<li>find:</li>
-<li>cp:</li>
-<li>mv:</li>
-<li>rm:</li>
+<li>locate:<h3 id="find-查找文件"><a href="#find-查找文件" class="headerlink" title="find: 查找文件"></a>find: 查找文件</h3>语法格式<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find  path  -name &quot;*.txt&quot;</span><br></pre></td></tr></table></figure>
+示例：<br>查找当前目录下所有.log结尾的文件<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ./ -name &quot;*.log&quot;</span><br></pre></td></tr></table></figure>
+查找当前目录下所有.txt结尾的文件并删除<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ./ -name &quot;*.txt&quot;|xargs rm</span><br></pre></td></tr></table></figure></li>
 </ol>
-<h4 id="文件内容常用命令："><a href="#文件内容常用命令：" class="headerlink" title="文件内容常用命令："></a>文件内容常用命令：</h4><p>[cat, head, tail, more, less, sed, vi, grep]</p>
-<ol>
-<li>cat:</li>
-<li>head:</li>
-<li>tail:</li>
-<li>more:</li>
-<li>less:</li>
-<li>sed:</li>
-<li>vi:</li>
-<li>grep:</li>
-</ol>
-<h4 id="文件压缩和解压："><a href="#文件压缩和解压：" class="headerlink" title="文件压缩和解压："></a>文件压缩和解压：</h4><p>[tar, gzip, zip, unzip]</p>
-<ol>
-<li>tar:</li>
-<li>gzip:</li>
-<li>zip:</li>
-<li>unzip:</li>
-</ol>
-<h4 id="用户相关常用命令："><a href="#用户相关常用命令：" class="headerlink" title="用户相关常用命令："></a>用户相关常用命令：</h4><p>[groupadd, groupdel, groupmod, useradd, userdel, usermod, passwd, su, sudo]</p>
-<ol>
-<li>groupadd:</li>
-<li>groupdel:</li>
-<li>groupmod:</li>
-<li>useradd:</li>
-<li>userdel:</li>
-<li>usermod:</li>
-<li>passwd:</li>
-<li>su:</li>
-<li>sudo:</li>
-</ol>
-<h4 id="系统管理常用命令："><a href="#系统管理常用命令：" class="headerlink" title="系统管理常用命令："></a>系统管理常用命令：</h4><p>[eboot, exit, shutdown, date, mount, umount, ps, kill, systemctl, service, crontab]</p>
-<ol>
-<li>eboot:</li>
-<li>exit:</li>
-<li>shutdown:</li>
-<li>date:</li>
-<li>mount:</li>
-<li>umount:</li>
-<li>ps:</li>
-<li>kill:</li>
-<li>systemctl:</li>
-<li>service:</li>
-<li>crontab:</li>
-</ol>
-<h4 id="网络管理常用命令"><a href="#网络管理常用命令" class="headerlink" title="网络管理常用命令:"></a>网络管理常用命令:</h4><p>[curl, wget, telnet, ip, hostname, ifconfig, route, ssh, ssh-keygen, firewalld, iptables, host, nslookup, nc/netcat, ping, traceroute, netstat]</p>
+<h3 id="cp-拷贝文件"><a href="#cp-拷贝文件" class="headerlink" title="cp: 拷贝文件"></a>cp: 拷贝文件</h3><p>语法格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp  目标文件  目标路径</span><br></pre></td></tr></table></figure>
+<h3 id="mv-移动-重命名文件"><a href="#mv-移动-重命名文件" class="headerlink" title="mv:移动/重命名文件"></a>mv:移动/重命名文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv   旧文件名  新文件名</span><br></pre></td></tr></table></figure>
+<h3 id="rm-删除文件-文件夹"><a href="#rm-删除文件-文件夹" class="headerlink" title="rm:删除文件/文件夹"></a>rm:删除文件/文件夹</h3><h4 id="文件内容常用命令："><a href="#文件内容常用命令：" class="headerlink" title="文件内容常用命令："></a>文件内容常用命令：</h4><p>[cat, head, tail, more, less, sed, vi, grep]</p>
+<h3 id="cat-查看文件内容"><a href="#cat-查看文件内容" class="headerlink" title="cat: 查看文件内容"></a>cat: 查看文件内容</h3><p>语法格式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat filename</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="head"><a href="#head" class="headerlink" title="head:"></a>head:</h3><h3 id="tail"><a href="#tail" class="headerlink" title="tail:"></a>tail:</h3><h3 id="more-查看文件内容-分页显示，底部显示百分百"><a href="#more-查看文件内容-分页显示，底部显示百分百" class="headerlink" title="more:查看文件内容(分页显示，底部显示百分百)"></a>more:查看文件内容(分页显示，底部显示百分百)</h3><p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">more nginx.log</span><br></pre></td></tr></table></figure>
+<p>翻页操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">向下翻：按空格键</span><br><span class="line">向回翻：b</span><br><span class="line">按行翻：回车</span><br><span class="line">退出：q</span><br></pre></td></tr></table></figure>
+<h3 id="less-查看文件内容-分页显示"><a href="#less-查看文件内容-分页显示" class="headerlink" title="less:查看文件内容(分页显示)"></a>less:查看文件内容(分页显示)</h3><p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">less nginx.log</span><br></pre></td></tr></table></figure>
+<p>翻页操作：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">向下翻：按空格键</span><br><span class="line">向回翻：b</span><br><span class="line">按行翻：回车</span><br><span class="line">退出：q</span><br></pre></td></tr></table></figure>
+
+<h3 id="sed"><a href="#sed" class="headerlink" title="sed:"></a>sed:</h3><h3 id="vi"><a href="#vi" class="headerlink" title="vi:"></a>vi:</h3><h3 id="grep"><a href="#grep" class="headerlink" title="grep:"></a>grep:</h3><h4 id="文件压缩和解压："><a href="#文件压缩和解压：" class="headerlink" title="文件压缩和解压："></a>文件压缩和解压：</h4><p>[tar, gzip, zip, unzip]</p>
+<h3 id="tar"><a href="#tar" class="headerlink" title="tar:"></a>tar:</h3><h3 id="gzip"><a href="#gzip" class="headerlink" title="gzip:"></a>gzip:</h3><h3 id="zip"><a href="#zip" class="headerlink" title="zip:"></a>zip:</h3><h3 id="unzip"><a href="#unzip" class="headerlink" title="unzip:"></a>unzip:</h3><h4 id="用户相关常用命令："><a href="#用户相关常用命令：" class="headerlink" title="用户相关常用命令："></a>用户相关常用命令：</h4><p>[groupadd, groupdel, groupmod, useradd, userdel, usermod, passwd, su, sudo]</p>
+<h3 id="groupadd"><a href="#groupadd" class="headerlink" title="groupadd:"></a>groupadd:</h3><h3 id="groupdel"><a href="#groupdel" class="headerlink" title="groupdel:"></a>groupdel:</h3><h3 id="groupmod"><a href="#groupmod" class="headerlink" title="groupmod:"></a>groupmod:</h3><h3 id="useradd"><a href="#useradd" class="headerlink" title="useradd:"></a>useradd:</h3><h3 id="userdel"><a href="#userdel" class="headerlink" title="userdel:"></a>userdel:</h3><h3 id="usermod"><a href="#usermod" class="headerlink" title="usermod:"></a>usermod:</h3><h3 id="passwd"><a href="#passwd" class="headerlink" title="passwd:"></a>passwd:</h3><h3 id="su"><a href="#su" class="headerlink" title="su:"></a>su:</h3><h3 id="sudo"><a href="#sudo" class="headerlink" title="sudo:"></a>sudo:</h3><h4 id="系统管理常用命令："><a href="#系统管理常用命令：" class="headerlink" title="系统管理常用命令："></a>系统管理常用命令：</h4><p>[eboot, exit, shutdown, date, mount, umount, ps, kill, systemctl, service, crontab]</p>
+<h3 id="eboot"><a href="#eboot" class="headerlink" title="eboot:"></a>eboot:</h3><h3 id="exit"><a href="#exit" class="headerlink" title="exit:"></a>exit:</h3><h3 id="shutdown"><a href="#shutdown" class="headerlink" title="shutdown:"></a>shutdown:</h3><h3 id="date"><a href="#date" class="headerlink" title="date:"></a>date:</h3><h3 id="mount"><a href="#mount" class="headerlink" title="mount:"></a>mount:</h3><h3 id="umount"><a href="#umount" class="headerlink" title="umount:"></a>umount:</h3><h3 id="ps"><a href="#ps" class="headerlink" title="ps:"></a>ps:</h3><h3 id="kill"><a href="#kill" class="headerlink" title="kill:"></a>kill:</h3><h3 id="systemctl"><a href="#systemctl" class="headerlink" title="systemctl:"></a>systemctl:</h3><h3 id="service"><a href="#service" class="headerlink" title="service:"></a>service:</h3><h3 id="crontab"><a href="#crontab" class="headerlink" title="crontab:"></a>crontab:</h3><h4 id="网络管理常用命令"><a href="#网络管理常用命令" class="headerlink" title="网络管理常用命令:"></a>网络管理常用命令:</h4><p>[curl, wget, telnet, ip, hostname, ifconfig, route, ssh, ssh-keygen, firewalld, iptables, host, nslookup, nc/netcat, ping, traceroute, netstat]</p>
 <ol>
 <li>curl:</li>
 <li>wget:</li>
 <li>telnet:</li>
 <li>ip:</li>
-<li>hostname:</li>
-<li>ifconfig:</li>
+<li>hostname:<h3 id="ifconfig-查看网卡信息"><a href="#ifconfig-查看网卡信息" class="headerlink" title="ifconfig: 查看网卡信息"></a>ifconfig: 查看网卡信息</h3></li>
 <li>route:</li>
 <li>ssh:</li>
 <li>ssh-keygen:</li>
@@ -442,8 +414,7 @@
 <li>iptables:</li>
 <li>host:</li>
 <li>nslookup:</li>
-<li>nc/netcat:</li>
-<li>ping:</li>
+<li>nc/netcat:<h3 id="ping-测试远程主机连通性"><a href="#ping-测试远程主机连通性" class="headerlink" title="ping: 测试远程主机连通性"></a>ping: 测试远程主机连通性</h3>示例：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">ping www.baidu.com </span><br><span class="line"></span><br><span class="line"># -c: ping 的次数</span><br><span class="line"># -i: 每次ping的时间间隔</span><br></pre></td></tr></table></figure></li>
 <li>traceroute:</li>
 <li>netstat:</li>
 </ol>
@@ -461,7 +432,7 @@
 <li>yum:</li>
 <li>apt-get:</li>
 </ol>
-
+<h1 id="待完善ing"><a href="#待完善ing" class="headerlink" title="待完善ing~"></a>待完善ing~</h1>
       
 
       
@@ -738,11 +709,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">每日一题</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color5">每日一题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -750,11 +721,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">unittest</a>
+                <a href="javascript:void(0)" class="js-tag color4">GUI</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GUI</a>
+                <a href="javascript:void(0)" class="js-tag color4">unittest</a>
               </li>
              
               <li class="article-tag-list-item">
