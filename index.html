@@ -2263,16 +2263,18 @@
 <p>建立硬连接：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls filename</span><br></pre></td></tr></table></figure>
 
-<ol start="9">
-<li>rename:</li>
-<li>stat:</li>
-<li>file:</li>
-<li>chmod:</li>
-<li>chown:</li>
-<li>locate:<h3 id="find-查找文件"><a href="#find-查找文件" class="headerlink" title="find: 查找文件"></a>find: 查找文件</h3>语法格式<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find  path  -name &quot;*.txt&quot;</span><br></pre></td></tr></table></figure>
-示例：<br>查找当前目录下所有.log结尾的文件<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ./ -name &quot;*.log&quot;</span><br></pre></td></tr></table></figure>
-查找当前目录下所有.txt结尾的文件并删除<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ./ -name &quot;*.txt&quot;|xargs rm</span><br></pre></td></tr></table></figure></li>
-</ol>
+<h3 id="rename"><a href="#rename" class="headerlink" title="rename:"></a>rename:</h3><h3 id="stat"><a href="#stat" class="headerlink" title="stat:"></a>stat:</h3><h3 id="file"><a href="#file" class="headerlink" title="file:"></a>file:</h3><h3 id="chmod-文件-文件夹权限操作："><a href="#chmod-文件-文件夹权限操作：" class="headerlink" title="chmod: 文件/文件夹权限操作："></a>chmod: 文件/文件夹权限操作：</h3><p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 nginx.log</span><br></pre></td></tr></table></figure>
+<p>权限说明：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">r: 读权限 read --4 </span><br><span class="line">w: 写权限 write --2</span><br><span class="line">x: 操作权限 execute --1</span><br><span class="line">-: 无权限 ---0</span><br></pre></td></tr></table></figure>
+
+<h3 id="chown"><a href="#chown" class="headerlink" title="chown:"></a>chown:</h3><h3 id="locate"><a href="#locate" class="headerlink" title="locate:"></a>locate:</h3><h3 id="find-查找文件"><a href="#find-查找文件" class="headerlink" title="find: 查找文件"></a>find: 查找文件</h3><p>语法格式</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find  path  -name &quot;*.txt&quot;</span><br></pre></td></tr></table></figure>
+<p>示例：<br>查找当前目录下所有.log结尾的文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ./ -name &quot;*.log&quot;</span><br></pre></td></tr></table></figure>
+<p>查找当前目录下所有.txt结尾的文件并删除</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">find ./ -name &quot;*.txt&quot;|xargs rm</span><br></pre></td></tr></table></figure>
+
 <h3 id="cp-拷贝文件"><a href="#cp-拷贝文件" class="headerlink" title="cp: 拷贝文件"></a>cp: 拷贝文件</h3><p>语法格式：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp  目标文件  目标路径</span><br></pre></td></tr></table></figure>
 <h3 id="mv-移动-重命名文件"><a href="#mv-移动-重命名文件" class="headerlink" title="mv:移动/重命名文件"></a>mv:移动/重命名文件</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv   旧文件名  新文件名</span><br></pre></td></tr></table></figure>
@@ -2290,7 +2292,20 @@
 <p>翻页操作：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">向下翻：按空格键</span><br><span class="line">向回翻：b</span><br><span class="line">按行翻：回车</span><br><span class="line">退出：q</span><br></pre></td></tr></table></figure>
 
-<h3 id="sed"><a href="#sed" class="headerlink" title="sed:"></a>sed:</h3><h3 id="vi"><a href="#vi" class="headerlink" title="vi:"></a>vi:</h3><h3 id="grep"><a href="#grep" class="headerlink" title="grep:"></a>grep:</h3><h4 id="文件压缩和解压："><a href="#文件压缩和解压：" class="headerlink" title="文件压缩和解压："></a>文件压缩和解压：</h4><p>[tar, gzip, zip, unzip]</p>
+<h3 id="sed"><a href="#sed" class="headerlink" title="sed:"></a>sed:</h3><h3 id="vi-vim-文本编辑"><a href="#vi-vim-文本编辑" class="headerlink" title="vi/vim: 文本编辑:"></a>vi/vim: 文本编辑:</h3><p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vi text  # 进入编辑页</span><br></pre></td></tr></table></figure>
+<p>进入编辑模式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">i</span><br></pre></td></tr></table></figure>
+<p>退出编辑模式:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Esc</span><br></pre></td></tr></table></figure>
+
+<p>退出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">q </span><br></pre></td></tr></table></figure>
+<p>保存并退出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wq </span><br></pre></td></tr></table></figure>
+
+
+<h3 id="grep"><a href="#grep" class="headerlink" title="grep:"></a>grep:</h3><h4 id="文件压缩和解压："><a href="#文件压缩和解压：" class="headerlink" title="文件压缩和解压："></a>文件压缩和解压：</h4><p>[tar, gzip, zip, unzip]</p>
 <h3 id="tar"><a href="#tar" class="headerlink" title="tar:"></a>tar:</h3><h3 id="gzip"><a href="#gzip" class="headerlink" title="gzip:"></a>gzip:</h3><h3 id="zip"><a href="#zip" class="headerlink" title="zip:"></a>zip:</h3><h3 id="unzip"><a href="#unzip" class="headerlink" title="unzip:"></a>unzip:</h3><h4 id="用户相关常用命令："><a href="#用户相关常用命令：" class="headerlink" title="用户相关常用命令："></a>用户相关常用命令：</h4><p>[groupadd, groupdel, groupmod, useradd, userdel, usermod, passwd, su, sudo]</p>
 <h3 id="groupadd"><a href="#groupadd" class="headerlink" title="groupadd:"></a>groupadd:</h3><h3 id="groupdel"><a href="#groupdel" class="headerlink" title="groupdel:"></a>groupdel:</h3><h3 id="groupmod"><a href="#groupmod" class="headerlink" title="groupmod:"></a>groupmod:</h3><h3 id="useradd"><a href="#useradd" class="headerlink" title="useradd:"></a>useradd:</h3><h3 id="userdel"><a href="#userdel" class="headerlink" title="userdel:"></a>userdel:</h3><h3 id="usermod"><a href="#usermod" class="headerlink" title="usermod:"></a>usermod:</h3><h3 id="passwd"><a href="#passwd" class="headerlink" title="passwd:"></a>passwd:</h3><h3 id="su"><a href="#su" class="headerlink" title="su:"></a>su:</h3><h3 id="sudo"><a href="#sudo" class="headerlink" title="sudo:"></a>sudo:</h3><h4 id="系统管理常用命令："><a href="#系统管理常用命令：" class="headerlink" title="系统管理常用命令："></a>系统管理常用命令：</h4><p>[eboot, exit, shutdown, date, mount, umount, ps, kill, systemctl, service, crontab]</p>
 <h3 id="eboot"><a href="#eboot" class="headerlink" title="eboot:"></a>eboot:</h3><h3 id="exit"><a href="#exit" class="headerlink" title="exit:"></a>exit:</h3><h3 id="shutdown"><a href="#shutdown" class="headerlink" title="shutdown:"></a>shutdown:</h3><h3 id="date"><a href="#date" class="headerlink" title="date:"></a>date:</h3><h3 id="mount"><a href="#mount" class="headerlink" title="mount:"></a>mount:</h3><h3 id="umount"><a href="#umount" class="headerlink" title="umount:"></a>umount:</h3><h3 id="ps"><a href="#ps" class="headerlink" title="ps:"></a>ps:</h3><h3 id="kill"><a href="#kill" class="headerlink" title="kill:"></a>kill:</h3><h3 id="systemctl"><a href="#systemctl" class="headerlink" title="systemctl:"></a>systemctl:</h3><h3 id="service"><a href="#service" class="headerlink" title="service:"></a>service:</h3><h3 id="crontab"><a href="#crontab" class="headerlink" title="crontab:"></a>crontab:</h3><h4 id="网络管理常用命令"><a href="#网络管理常用命令" class="headerlink" title="网络管理常用命令:"></a>网络管理常用命令:</h4><p>[curl, wget, telnet, ip, hostname, ifconfig, route, ssh, ssh-keygen, firewalld, iptables, host, nslookup, nc/netcat, ping, traceroute, netstat]</p>
@@ -2299,7 +2314,8 @@
 <li>wget:</li>
 <li>telnet:</li>
 <li>ip:</li>
-<li>hostname:<h3 id="ifconfig-查看网卡信息"><a href="#ifconfig-查看网卡信息" class="headerlink" title="ifconfig: 查看网卡信息"></a>ifconfig: 查看网卡信息</h3></li>
+<li>hostname:<h3 id="ifconfig-查看网卡信息"><a href="#ifconfig-查看网卡信息" class="headerlink" title="ifconfig: 查看网卡信息"></a>ifconfig: 查看网卡信息</h3>示例<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ifconfig</span><br></pre></td></tr></table></figure>
+输出：<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">docker0   Link encap:以太网  硬件地址 02:42:f3:15:f4:5e  </span><br><span class="line">          inet 地址:172.17.0.1  广播:172.17.255.255  掩码:255.255.0.0</span><br><span class="line">          UP BROADCAST MULTICAST  MTU:1500  跃点数:1</span><br><span class="line">          接收数据包:0 错误:0 丢弃:0 过载:0 帧数:0</span><br><span class="line">          发送数据包:0 错误:0 丢弃:0 过载:0 载波:0</span><br><span class="line">          碰撞:0 发送队列长度:0 </span><br><span class="line">          接收字节:0 (0.0 B)  发送字节:0 (0.0 B)</span><br><span class="line"></span><br><span class="line">ens33     Link encap:以太网  硬件地址 00:0c:29:9a:fd:95  </span><br><span class="line">          inet 地址:192.168.74.128  广播:192.168.74.255  掩码:255.255.255.0</span><br><span class="line">          inet6 地址: fe80::d18:8f0d:93e7:258b/64 Scope:Link</span><br><span class="line">          UP BROADCAST RUNNING MULTICAST  MTU:1500  跃点数:1</span><br><span class="line">          接收数据包:35854 错误:0 丢弃:0 过载:0 帧数:0</span><br><span class="line">          发送数据包:9206 错误:0 丢弃:0 过载:0 载波:0</span><br><span class="line">          碰撞:0 发送队列长度:1000 </span><br><span class="line">          接收字节:12477619 (12.4 MB)  发送字节:883554 (883.5 KB)</span><br><span class="line"></span><br><span class="line">lo        Link encap:本地环回  </span><br><span class="line">          inet 地址:127.0.0.1  掩码:255.0.0.0</span><br><span class="line">          inet6 地址: ::1/128 Scope:Host</span><br><span class="line">          UP LOOPBACK RUNNING  MTU:65536  跃点数:1</span><br><span class="line">          接收数据包:1075 错误:0 丢弃:0 过载:0 帧数:0</span><br><span class="line">          发送数据包:1075 错误:0 丢弃:0 过载:0 载波:0</span><br><span class="line">          碰撞:0 发送队列长度:1 </span><br><span class="line">          接收字节:99616 (99.6 KB)  发送字节:99616 (99.6 KB)</span><br></pre></td></tr></table></figure></li>
 <li>route:</li>
 <li>ssh:</li>
 <li>ssh-keygen:</li>
@@ -2444,105 +2460,6 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/11/26/adbTools/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/09/docker/">Docker</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/09/docker/" class="archive-article-date">
-  	<time datetime="2021-11-09T14:30:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h2 id="1-docker-历史"><a href="#1-docker-历史" class="headerlink" title="1.docker 历史:"></a>1.docker 历史:</h2><ul>
-<li>2013 ~ 开源应用容器引擎，go语言开发，可以让开发者打包他们的应用及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的系统</li>
-</ul>
-<h2 id="2-docker-优点"><a href="#2-docker-优点" class="headerlink" title="2.docker 优点:"></a>2.docker 优点:</h2><ul>
-<li>快速交付应用，打包快，加快测试，加快发布，缩短交付周期</li>
-<li>复杂环境管理，应用隔离，开发环境/测试环境/线上环境</li>
-<li>轻量级：对系统来说，一个docker只是一个进程，一个系统可以运行上千个容器</li>
-</ul>
-<h2 id="3-docker-架构"><a href="#3-docker-架构" class="headerlink" title="3. docker 架构:"></a>3. docker 架构:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- client:</span><br><span class="line">	docker build</span><br><span class="line">	docker pull</span><br><span class="line">	docker run</span><br><span class="line">	</span><br><span class="line">- docker_host:</span><br><span class="line">	docker_dameon</span><br><span class="line">	</span><br><span class="line">- registry:</span><br><span class="line">	下载。。。</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-docker与虚拟机的区别"><a href="#4-docker与虚拟机的区别" class="headerlink" title="4.docker与虚拟机的区别:"></a>4.docker与虚拟机的区别:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">容器与容器只是进程的隔离，虚拟机则是完全的资源隔离</span><br><span class="line">虚拟机启动慢，可能要几分钟，docker秒启动</span><br><span class="line">容器使用宿主操作系统的内核，虚拟机是完全独立的内核</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念:"></a>5.基本概念:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">镜像： docker images,每个镜像都可能依赖一个或多个下层的镜像组成另一个镜像，AUFS文件系统</span><br><span class="line">仓库：Docker registry 集中放镜像的地方</span><br><span class="line">容器：docker containers，镜像运行后的进程</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-docker安装与配置"><a href="#6-docker安装与配置" class="headerlink" title="6.docker安装与配置:"></a>6.docker安装与配置:</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/09/docker/">展开全文 >></a>
         </p>
       
 
@@ -4659,6 +4576,105 @@
 
 
   
+    <article id="post-docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/09/docker/">Docker</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/09/docker/" class="archive-article-date">
+  	<time datetime="2021-11-09T14:30:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="1-docker-历史"><a href="#1-docker-历史" class="headerlink" title="1.docker 历史:"></a>1.docker 历史:</h2><ul>
+<li>2013 ~ 开源应用容器引擎，go语言开发，可以让开发者打包他们的应用及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的系统</li>
+</ul>
+<h2 id="2-docker-优点"><a href="#2-docker-优点" class="headerlink" title="2.docker 优点:"></a>2.docker 优点:</h2><ul>
+<li>快速交付应用，打包快，加快测试，加快发布，缩短交付周期</li>
+<li>复杂环境管理，应用隔离，开发环境/测试环境/线上环境</li>
+<li>轻量级：对系统来说，一个docker只是一个进程，一个系统可以运行上千个容器</li>
+</ul>
+<h2 id="3-docker-架构"><a href="#3-docker-架构" class="headerlink" title="3. docker 架构:"></a>3. docker 架构:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- client:</span><br><span class="line">	docker build</span><br><span class="line">	docker pull</span><br><span class="line">	docker run</span><br><span class="line">	</span><br><span class="line">- docker_host:</span><br><span class="line">	docker_dameon</span><br><span class="line">	</span><br><span class="line">- registry:</span><br><span class="line">	下载。。。</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-docker与虚拟机的区别"><a href="#4-docker与虚拟机的区别" class="headerlink" title="4.docker与虚拟机的区别:"></a>4.docker与虚拟机的区别:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">容器与容器只是进程的隔离，虚拟机则是完全的资源隔离</span><br><span class="line">虚拟机启动慢，可能要几分钟，docker秒启动</span><br><span class="line">容器使用宿主操作系统的内核，虚拟机是完全独立的内核</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念:"></a>5.基本概念:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">镜像： docker images,每个镜像都可能依赖一个或多个下层的镜像组成另一个镜像，AUFS文件系统</span><br><span class="line">仓库：Docker registry 集中放镜像的地方</span><br><span class="line">容器：docker containers，镜像运行后的进程</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-docker安装与配置"><a href="#6-docker安装与配置" class="headerlink" title="6.docker安装与配置:"></a>6.docker安装与配置:</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/09/docker/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-exercises" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -5063,11 +5079,11 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
