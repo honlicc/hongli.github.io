@@ -11,6 +11,24 @@ tags:
 
 **注：本文内容较长，建议收藏/订阅后慢慢学习**
 
+目录：
+
+* [前言](#前言)
+* [Pytest介绍](#Pytest)
+* [特点](#特点)
+* [安装](#安装)
+* [查看版本](#查看版本)
+* [第一个脚本](#第一个脚本)
+* [pytest运行规则](#pytest运行规则)
+* [以类的形式编写case](#以类的形式编写case)
+* [命名规则](#命名规则)
+* [运行多条用例](#运行多条用例)
+* [fixTure:测试装置介绍(前置、后置条件、装饰器)](#fixTure)
+* [常用命令行参数](#常用命令行参数)
+* [Mark:标记测试用例](#Mark标记测试用例)
+* [Mark:跳过(skip)及预期失败(xFail)](#Mark跳过测试用例以及预期失败)
+* [Mark:参数化](#参数化)
+
 ### 前言：
 
 * 自动化测试前：需要提前准备好测试数据，测试完成后，需要自动清里测试脏数据，有没有更好用的框架？
@@ -52,9 +70,9 @@ pytest --version
 def test_answer():
     assert 3==5
 ```
-<br> 
+
 打开cmd  进入 test_demo.py 文件所在文件夹,输入 pytest 或者 pytest test_demo.py,结果如下：
-```sh
+```
 ================================================= test session starts =================================================
 platform win32 -- Python 3.7.7, pytest-6.2.5, py-1.10.0, pluggy-1.0.0
 rootdir: E:\test1\aabb\case
@@ -74,7 +92,7 @@ test_sample.py:3: AssertionError
 FAILED test_sample.py::test_answer - assert 3 == 5
 ================================================== 1 failed in 0.14s ==================================================
 ```
-<br> 
+
 
 ### pytest运行规则：
 pytest运行规则：查找当前目录及其子目录下以test_*.py或*_test.py文件，找到文件后，在文件中找到以test开头函数并执行
@@ -354,7 +372,10 @@ FAILED test_sample.py::TestCase::test_four - AssertionError: assert False
 
 
 
-### fixTure:测试装置介绍(前置、后置条件、装饰器)
+### fixTure
+
+测试装置介绍(前置、后置条件、装饰器)
+
 | 类型       | 规则                   |
 |:------|:----------------|
 | setup_module/teardown_module         |全局模块级,模块始末，全局的(优先级最高)|
@@ -1043,17 +1064,530 @@ FAILED test_pytest.py::test_case_sum_5 - assert 5 == 4
 
 说明：可以看到 只执行了带有"sum"关键字的case
 
+### Mark标记测试用例
+
+* 场景：只执行 符合要求的某一部分用例，可以把一个web项目划分多个模块，然后制定模块名称执行
+* 解决：在测试用例方法上添加@pytest.mark.标签名
+* 执行：-m 参数执行自定义标签的相关用例
+
+``` 
+pytest -s test_mark_demo.py -m=int
+pytest -s test_mark_demo.py -m str
+pytest -s test_mark_demo.py -m "not str"
+```
+
+示例：
+新建test_mark_demo.py文件，复制如下代码
+``` 
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+import pytest
 
 
+def double(a):
+    return a * 2
 
 
+# 测试数据：整型
+@pytest.mark.int
+def test_double_int():
+    print("double_int")
+    assert 2 == double(1)
 
+
+# 测试数据：负数
+@pytest.mark.minus
+def test_double_minus():
+    print("double_minus")
+    assert -2 == double(-1)
+
+
+# 测试数据：浮点数
+@pytest.mark.float
+def test_double_float():
+    print("double_float")
+    assert 0.2 == double(0.1)
+
+
+# 测试数据：浮点数
+@pytest.mark.float
+def test_double2_float():
+    print("double2_float")
+    assert -10.2 == double(-0.1)
+
+
+@pytest.mark.zero
+def test_double_zero():
+    print("double_zero")
+    assert 10 == double(0)
+
+
+@pytest.mark.bignum
+def test_double_bignum():
+    print("double_bignum")
+    assert 200 == double(100)
+
+
+@pytest.mark.str
+def test_double_str():
+    print("double_str")
+    assert "aa" == double("a")
+
+
+@pytest.mark.str
+def test_double2_str():
+    print("double2_str")
+    assert "a$a$" == double("a$")
+
+```
+
+示例：执行如下命令
+``` 
+pytest -vs .\test_mark_demo.py -m=str
+```
+
+输出：
+``` 
+collected 8 items / 6 deselected / 2 selected                                                                                                                                                                                             
+
+test_mark_demo.py::test_double_str double_str
+PASSED
+test_mark_demo.py::test_double2_str double2_str
+PASSED
+
+============================================================================================================ warnings summary ============================================================================================================
+test_mark_demo.py:12
+  E:\WorkSpace\hogwarts\test_pytest\test_mark_demo.py:12: PytestUnknownMarkWarning: Unknown pytest.mark.int - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how
+-to/mark.html
+    @pytest.mark.int
+
+test_mark_demo.py:19
+  E:\WorkSpace\hogwarts\test_pytest\test_mark_demo.py:19: PytestUnknownMarkWarning: Unknown pytest.mark.minus - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/h
+ow-to/mark.html
+    @pytest.mark.minus
+
+test_mark_demo.py:26
+  E:\WorkSpace\hogwarts\test_pytest\test_mark_demo.py:26: PytestUnknownMarkWarning: Unknown pytest.mark.float - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/h
+ow-to/mark.html
+    @pytest.mark.float
+
+test_mark_demo.py:33
+  E:\WorkSpace\hogwarts\test_pytest\test_mark_demo.py:33: PytestUnknownMarkWarning: Unknown pytest.mark.float - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/h
+ow-to/mark.html
+    @pytest.mark.float
+
+test_mark_demo.py:39
+  E:\WorkSpace\hogwarts\test_pytest\test_mark_demo.py:39: PytestUnknownMarkWarning: Unknown pytest.mark.zero - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/ho
+w-to/mark.html
+    @pytest.mark.zero
+
+test_mark_demo.py:45
+  E:\WorkSpace\hogwarts\test_pytest\test_mark_demo.py:45: PytestUnknownMarkWarning: Unknown pytest.mark.bignum - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/
+how-to/mark.html
+    @pytest.mark.bignum
+
+test_mark_demo.py:51
+  E:\WorkSpace\hogwarts\test_pytest\test_mark_demo.py:51: PytestUnknownMarkWarning: Unknown pytest.mark.str - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how
+-to/mark.html
+    @pytest.mark.str
+
+test_mark_demo.py:57
+  E:\WorkSpace\hogwarts\test_pytest\test_mark_demo.py:57: PytestUnknownMarkWarning: Unknown pytest.mark.str - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how
+-to/mark.html
+    @pytest.mark.str
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+============================================================================================== 2 passed, 6 deselected, 8 warnings in 0.01s ===============================================================================================
+```
+
+说明：可以看到只执行了2条标记有 str 关键字的case；除此之外还存在8条警告，出现警告的原因是没有注册标签；
+新建一个pytest.ini文件，复制如下内容注册标签，然后再执行，就不会再出现警告
+``` 
+[pytest]
+markers = str
+          bignum
+          float
+          int
+          zero
+          minus
+```
+
+### Mark跳过测试用例以及预期失败
+
+* 这是pytest的内置标签，可以处理一些特殊的测试用例，不能成功的测试用例
+* skip:始终跳过该测试用例
+* skipif:遇见特定情况跳过该测试用例
+* xFail:遇见特定情况，产生一个"期望失败"输出
+
+解决1：添加装饰器
+
+``` 
+@pytest.mark.skip
+@pytest.mark.skipif
+@pytest.mark.xfail
+```
+
+解决2：代码中添加跳过代码
+``` 
+@pytest.skip(reason)
+```
+
+示例：
+新建test_skip.py文件，复制如下代码
+``` 
+import pytest
+import sys
+
+
+# 跳过case
+@pytest.mark.skip
+def test_aaa():
+    assert True
+
+
+@pytest.mark.skip(reason="代码未实现")
+def test_bbb():
+    assert False
+
+
+# 根据条件判断跳过
+print(sys.platform)
+
+
+@pytest.mark.skipif(sys.platform == "darwn", reason="dose not run on mac")
+def test_caase1():
+    assert True
+
+
+@pytest.mark.skipif(sys.platform == "win32", reason="dose not run on windows")
+def test_case2():
+    assert True
+
+
+# 代码中跳过
+def check_login():
+    return False
+
+
+def test_function():
+    print("start")
+    if not check_login():
+        pytest.skip("登录失败，后续不用在执行")
+    print("end")
+
+
+# 预期错误
+@pytest.mark.xfail
+def test_case_xfail():
+    print("test_xfail 方法执行1")
+    assert 2 == 2
+
+
+@pytest.mark.xfail
+def test_case_xfail2():
+    print("test_xfail 方法执行2")
+    assert 1 == 2
+
+
+xfail = pytest.mark.xfail
+
+
+@xfail(reason="bug 110")
+def test_case_hello():
+    assert 0
+
+
+def test_xfail():
+    print("start")
+    pytest.mark.xfail(reason="功能暂未完成")
+    print("测试过程")
+    assert 1 == 1
+
+```
+
+示例：执行如下命令
+
+``` 
+ pytest -vs .\test_skip.py
+```
+
+输出：
+``` 
+collecting ... win32
+collected 9 items                                                                                                                                                                                                                         
+
+test_skip.py::test_aaa SKIPPED (unconditional skip)
+test_skip.py::test_bbb SKIPPED (代码未实现)
+test_skip.py::test_caase1 PASSED
+test_skip.py::test_case2 SKIPPED (dose not run on windows)
+test_skip.py::test_function start
+SKIPPED (登录失败，后续不用在执行)
+test_skip.py::test_case_xfail test_xfail 方法执行1
+XPASS
+test_skip.py::test_case_xfail2 test_xfail 方法执行2
+XFAIL
+test_skip.py::test_case_hello XFAIL (bug 110)
+test_skip.py::test_xfail start
+测试过程
+PASSED
+
+=========================================================================================== 2 passed, 4 skipped, 2 xfailed, 1 xpassed in 0.07s ===========================================================================================
+
+```
+
+
+### 参数化
+
+参数化设计方法就是将模型中的定量信息变量化，使之成为任意调整的参数。
+对于变量化参数赋予不同数值，就可得到不同大小和形状的零件模型。
+
+mark参数化测试函数的使用
+语法：
+``` 
+@pytest.mark.parametrize(argnames,argvalues)
+argnames:要参数化的变量，string(逗号分割),list,tuple
+argvalue:参数化的值，list,list[tuple]
+```
+
+* 单参数
+* 多参数
+* 用例重命名:通过ids参数实现
+* 笛卡尔积：适用于数据组合情况
+
+演示：新建test_mark_parmes.py,复制如下代码
+
+``` 
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+
+import pytest
+
+search_list = ["appium", "selenium", "pytest"]
+
+
+# 1.参数化的名字，要与方法中的参数名一一对应
+# 2.如果传递多个参数的话，要放在列表中，列表中嵌套列表/元组
+# 3.ids 用于给case命名，ids个数要与参数个数相对应
+
+# 单参数
+@pytest.mark.parametrize("name", search_list)
+def test_search(name):
+    assert name in search_list
+
+
+# 多参数/case改名
+@pytest.mark.parametrize("test_input,expected", [("3+5", 8), ("2+5", 7), ("7+5", 12)], ids=["case1", "case2", "case3"])
+def test_mark_more(test_input, expected):
+    assert eval(test_input) == expected
+
+
+# 笛卡尔积
+@pytest.mark.parametrize("wd", ["appium", "selenium", "pytest"])
+@pytest.mark.parametrize("code", ["utf8", "gbk", "gbk2312"])
+def test_dkej(wd, code):
+    print("wd:{},code:{}".format(wd, code))
+
+
+```
+
+示例1：
+运行单参数case，执行如下命令
+``` 
+ pytest -vs .\test_mark_parames.py::test_search
+```
+
+输出：
+```
+collected 3 items                                                                                                                                                                                                                         
+
+test_mark_parames.py::test_search[appium] PASSED
+test_mark_parames.py::test_search[selenium] PASSED
+test_mark_parames.py::test_search[pytest] PASSED
+
+=========================================================================================================== 3 passed in 0.01s ============================================================================================================
+```
+
+示例2：
+运行多参数case并为case重命名，执行如下命令
+``` 
+pytest -vs .\test_mark_parames.py::test_mark_more
+```
+
+输出：
+```
+collected 3 items                                                                                                                                                                                                                         
+
+test_mark_parames.py::test_mark_more[case1] PASSED
+test_mark_parames.py::test_mark_more[case2] PASSED
+test_mark_parames.py::test_mark_more[case3] PASSED
+
+=========================================================================================================== 3 passed in 0.01s ============================================================================================================
+```
+
+示例2：
+运行笛卡尔积case，执行如下命令
+``` 
+pytest -vs .\test_mark_parames.py::test_dkej
+```
+
+输出：
+``` 
+collected 9 items                                                                                                                                                                                                                         
+
+test_mark_parames.py::test_dkej[utf8-appium] wd:appium,code:utf8
+PASSED
+test_mark_parames.py::test_dkej[utf8-selenium] wd:selenium,code:utf8
+PASSED
+test_mark_parames.py::test_dkej[utf8-pytest] wd:pytest,code:utf8
+PASSED
+test_mark_parames.py::test_dkej[gbk-appium] wd:appium,code:gbk
+PASSED
+test_mark_parames.py::test_dkej[gbk-selenium] wd:selenium,code:gbk
+PASSED
+test_mark_parames.py::test_dkej[gbk-pytest] wd:pytest,code:gbk
+PASSED
+test_mark_parames.py::test_dkej[gbk2312-appium] wd:appium,code:gbk2312
+PASSED
+test_mark_parames.py::test_dkej[gbk2312-selenium] wd:selenium,code:gbk2312
+PASSED
+test_mark_parames.py::test_dkej[gbk2312-pytest] wd:pytest,code:gbk2312
+PASSED
+
+=========================================================================================================== 9 passed in 0.01s ============================================================================================================
+```
+
+### 使用yaml文件进行参数化
+
+yaml安装：
+
+pycharm编译器打开settings->project->python interpreter,点击依赖包旁的'+'加号，搜索pyyaml
+选择"PyYAML"（注意字母大小写，别装错了），点击下方install package
+
+yaml基本用法：
+
+* yaml实现list
+``` 
+list:
+    - 10
+    - 20
+    - 30 
+```
+
+* yaml实现字典
+``` 
+dict:
+    by:id
+    locator:name
+    action:click 
+```
+
+* yaml实现嵌套
+
+``` 
+-
+    - by:id
+    - locator:name
+    - action:click 
+```
+
+* 加载yaml文件
+``` 
+yaml.safe_load(open(filepath))
+```
+
+代码演示：
+创建data.yaml文件，复制如下内容
+
+``` 
+-
+  - 10
+  - 20
+
+-
+  - 20
+  - 30
+
+-
+  - 40
+  - 50
+```
+
+创建test_yaml.py文件，复制如下代码
+``` 
+import pytest
+import yaml
+
+class TestData:
+
+    @pytest.mark.parametrize(("a","b"),yaml.safe_load(open("./data.yaml")))
+    def test_data(self,a,b):
+        print(a+b)
+```
+
+示例：
+执行如下命令，运行case
+``` 
+pytest -vs test_yaml.py
+```
+
+输出：
+``` 
+collected 3 items                                                                                                                                                                                                                         
+
+test_yaml.py::TestData::test_data[10-20] 30
+PASSED
+test_yaml.py::TestData::test_data[20-30] 50
+PASSED
+test_yaml.py::TestData::test_data[40-50] 90
+PASSED
+
+=========================================================================================================== 3 passed in 0.07s ============================================================================================================
+
+```
+
+### 异常处理
+
+* try...except...
+* pytest.raaises()
+
+示例代码:
+新建test_raises.py,复制如下代码
+
+``` 
+import pytest
+
+# try方法
+
+try:
+    a = int(input("请输入被除数："))
+    b = int(input("请输入除数："))
+    c = a / b
+    print("您输入的两个数相除结果为：", c)
+
+except(ValueError, AttributeError):
+    print("程序发生错误，数字格式异常")
+except:
+    print("未知错误")
+
+print("继续运行")
+
+
+# pytest.raises
+def test_raise():
+    with pytest.raises(ValueError) as exc_info:
+        raise ValueError("value must be 42")
+    assert exc_info.type in ValueError
+    assert exc_info.value.args[0] == "value must be 42"
+```
+
+### 数据驱动
 
 **持续补充ing~**
 。。。
 
 。。。
-### fixture：
 
 
 
