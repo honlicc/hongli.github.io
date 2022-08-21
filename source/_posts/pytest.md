@@ -521,6 +521,133 @@ teardown_module：全局模块级,模块最末尾，全局的(优先级最高)�
 
 
 
+### Fixture在自动化中的应用场景
+
+场景1：
+测试用例执行时，有的用例需要登录才能执行，有的不需要登录，setup和teardown无法满足，fixture则可以，默认scope function
+
+步骤：
+
+* 导入pytest
+* 在登录函数上面加上@pytest.fixture()
+* 在需要使用的测试发方法中传入(登录函数名称)，就先登录
+* 不传入就不登录直接执行测试方法
+
+演示：
+新建test_fixture1.py文件，复制如下代码
+
+``` 
+import pytest
+
+
+def test_start_app():
+    print("启动app")
+
+
+@pytest.fixture()
+def login():
+    print("登录功能，登录成功")
+
+
+def test_search():
+    print("搜索功能")
+
+
+def test_cart(login):
+    print("添加购物车")
+
+
+def test_order(login):
+    # 需要提前登录
+    print("下单功能")
+
+```
+
+示例：
+执行如下命令
+``` 
+pytest -vs .\test_fixture1.py::test_order
+```
+
+输出：
+```
+collected 1 item                                                                                                                                                                                                                          
+
+test_fixture1.py::test_order 登录功能，登录成功
+下单功能
+PASSED
+
+=========================================================================================================== 1 passed in 0.04s ============================================================================================================
+```
+
+说明：可以看到，在代码中给 login方法添加了@pytest.fixture()装饰器，
+在测试用例test_order中添加参数login(与login名称要一致)，执行test_order用例时自动先执行了login方法
+
+
+
+场景2：
+当与其他开发人员共同开发项目时，公共的模块要在大家都访问的到的地方
+
+解决：
+使用conftest.py模块进行共享，并且他可以放在不同的范围共享
+
+前提：
+
+* conftest文件名不能换
+* 放在项目下是全局共享的地方
+
+演示：
+新建conftest.py文件，复制如下代码
+```
+@pytest.fixure()
+def login():
+    print("登录") 
+```
+
+新建test_fixure2.py,复制如下代码
+```
+import pytest
+
+def test_order(login):
+    print("订单case")
+```
+
+执行如下命令：
+``` 
+pytest --vs test_fixure2.py
+```
+
+
+输出：
+``` 
+collected 1 item                                                                                                                                                                                                                        
+
+test_fixure2.py::test_order 登录成功
+登录模块
+PASSED
+
+========================================================================================================== 1 passed in 0.01s ===========================================================================================================
+```
+
+说明：可以看到，case仍旧可以执行  
+
+
+Fixture用法总结：
+
+* 模拟setup/teardown(一个用例可以引用d多个fixture)
+* yield用法
+* 作用域(session,module,class,function)
+``` 
+ 取值	    范围	    说明
+function	函数级	每一个函数或方法都会调用
+class	    类级别	每个测试类只运行一次
+module	    模块级	每一个.py文件调用一次
+session	    会话级	每次会话只需要运行一次，会话内所有方法及类，模块都共享这个方法
+```
+* 自动执行(autouse=True)
+* conftest.py用法，一般会把fixture写在conftest.py文件中(名字不能改，必须为conftest)
+
+
 
 ### 常用命令行参数：
 
@@ -1583,6 +1710,188 @@ def test_raise():
 ```
 
 ### 数据驱动
+
+数据驱动就是数据的改变从而驱动自动化测试的执行，最终引起测试结果的改变。简单来说，就是参数化的应用。
+数据量小的测试用例可以使用代码的参数化来实现数据驱动，数据量大的情况下建议大家使用一种结构化的文件(如yaml,json等)来
+对数据进行存储，然后再测试用例中读取这些数据。
+
+应用场景：
+
+* App/Web/接口自动化测试
+* 测试步骤的数据驱动
+* 测试数据的数据驱动
+* 配置的数据驱动
+
+### Allure测试框架
+
+* allure介绍
+* allure安装
+* Allure特性分析
+* Allure运行
+* Allure报告中嵌入文本、图片、视频等资源
+
+
+介绍：
+allure是一个轻量级、灵活的，支持多语言的测试报告工具
+多平台的，奢华的report框架
+可以为dev/qa提供详尽的测试报告，测试步骤，log等
+也可以为管理层提供high level统计报告
+Java语言开发的，支持pytest,JavaScript,PHP,ruby等
+可以集成到Jenkins
+
+
+allure常用特性：
+
+场景：
+希望在报告中看到测试功能，子功能或场景，测试步骤，包括测试附加信息
+
+解决：
+``` 
+@Feature,@story,@step,@attach
+```
+
+步骤：
+``` 
+import allure
+
+功能上加 @allure.feature('功能名称')
+子功能上加@alure.story('子功能')
+步骤上加 @allure.step('步骤细节')
+@allure.attach('具体文本信息'),需要附加的信息可以是数据、文本、图片、视频、网页
+如果只测试登录功能运行的时候可以加限制过滤：
+
+pytest 文件名 --allure.ffeatures '购物车功能' --allure-stories '加入购物车'(注意这里 --allure-feature)
+```
+
+
+
+
+安装：
+``` 
+pip install allure-pytest
+```
+
+运行：
+在执行测试期间收集结果
+``` 
+pytest [测试文件] -s -q --alluredir=./result/(指定存储目录)
+```
+
+查看测试报告：
+方式一：测试完后查看实际报告，在线报告，会直接打开默认浏览器展示当前报告
+``` 
+allure serve ./result/
+```
+
+方式二：从结果生成报告，启动tomact服务，需要两个步骤，生成报告，打开报告
+
+* 生成报告：
+``` 
+allure generate ./result/ -o ./report/ --clean(注意：覆盖路径加 --clean)
+ 
+```
+
+* 打开报告：
+``` 
+allure open -h 127.0.0.1 -p 8883 ./report/ 
+```
+
+
+### pytest插件开发
+
+pytest插件分类
+
+* 外部插件：
+``` 
+pip install 安装的插件 
+```
+
+* 本地插件：
+``` 
+pytest自动模块发现机制(conftest.py存放的)
+```
+
+* 内置插件：
+``` 
+代码内部的 _pytest目录加载 
+```
+
+pytest插件介绍
+常用插件
+```
+pip install pytest-ordering  控制用例执行顺序(重点) 
+pip install pytest-xdist  分布式并发执行测试用例(重点) 
+pip install pytest-dependency 控制用例的依赖(了解) 
+pip install pytest-rerunfailures 失败重跑(了解) 
+pip install pytest-assume 多重校验(了解) 
+pip install pytest-random-order 用例随机执行(了解) 
+pip install pytest-html 测试报告(了解) 
+```
+
+pytest-ordering  控制用例执行顺序:
+
+场景：
+对于集成测试，经常会有上下文依赖关系的测试用例，比如10个步骤，拆成10条case，这时候需要能知道到底执行到
+哪步报错
+用例默认执行顺序：自上二而下执行
+
+解决：
+可以通过 setup/teardown 和 fixture解决，也可以使用插件解决
+
+安装：
+```
+pip install pytest-ordering 
+```
+用法：
+
+``` 
+@pytest.mark.run(order=2)
+```
+
+注意：多个插件装饰器(>2)时，有可能会发生冲突
+
+
+
+
+pytest-xdist  分布式并发执行测试用例:
+
+场景1：
+测试用例1000条，1个用例执行1分钟，一个测试人员需要1000分钟。
+通常我们会用人力成本换取时间成本，加几个人一起执行，时间就会缩短。
+如果10个人执行只需要100分钟，这就是一种分布式场景
+
+场景2：
+假设有个报名系统，对报名总数统计，数据同时进行修改操作时可能出现问题，
+需要模拟这个场景，需要多用户并发请求数据。
+
+解决：
+
+使用分布式并发执行测试用例，分布式插件，pytest-xdist
+
+安装：
+```
+pip install pytest-xdist
+```
+
+注意：用例多的时候效果明显，多进程并发执行，同时支持allure
+
+使用：
+``` 
+pytest -n 4
+```
+
+
+pytest hook执行顺序
+
+待补充
+
+### pytest配置文件
+
+待补充
+
+### log日志模块
+
+待补充
 
 **持续补充ing~**
 。。。
