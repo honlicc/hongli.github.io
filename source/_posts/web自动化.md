@@ -28,6 +28,8 @@ tags:
 * [web控件的交互](#web控件的交互)
 * [表单操作](#表单操作)
 * [多窗口处理与网页frame](#多窗口处理与网页frame)
+* [执行JavaScript脚本](#执行JavaScript脚本)
+* [弹窗处理](#弹窗处理)
 ---
 
 <br>
@@ -554,8 +556,226 @@ pytest -vs test_touchAction.py::TestTouchAciton::test_case_click
 
 ### 多窗口处理与网页frame
 
-待补充
+selenium处理多窗口场景
 
+* 多窗口识别
+* 多窗口之间切换
+
+多窗口处理：
+点击某链接，会重新打开一个窗口，对于这种情况，想在新页面上操作，就得先切换窗口了。
+获取窗口的唯一标识用句柄标识，所以只需要切换句柄，就可以在多个页面灵活操作了。
+
+处理流程：
+* 先获取到当前窗口的句柄```driver.current_window_handle```
+* 在获取到所有的窗口的句柄```driver.window_handles```
+* 判断释放是想要操作的窗口，如果是就直接进行操作，如果不是，就切换到想要操作的窗口```driver.switch_to.window```
+
+新建test_windows.py文件，复制如下代码：
+```html
+import pytest
+from selenium import webdriver
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.keys import Keys
+import time
+
+
+class TestWindows():
+
+    def setup(self):
+        self.driver = webdriver.Chrome()
+        self.driver.implicitly_wait(5)
+        self.driver.maximize_window()
+
+    def teardown(self):
+        self.driver.quit()
+
+    def test_case_login_window_check(self):
+        '''
+        打开百度首页，点击登录按钮
+        展示登录弹窗，点击注册按钮
+        跳转到注册页面
+        输入用户名
+        :return:
+        '''
+        self.driver.get("https://www.baidu.com")
+
+        self.driver.find_element_by_link_text("登录").click()
+        self.driver.find_element_by_link_text("立即注册").click()
+
+        print(self.driver.current_window_handle)
+        print(self.driver.window_handles)
+
+        windows = self.driver.window_handles
+
+        self.driver.switch_to.window(windows[-1])
+
+        self.driver.find_element_by_id("TANGRAM__PSP_4__userName").send_keys("username")
+
+        time.sleep(5)
+
+```
+
+执行case:
+```html
+pytest -vs test_windows.py::TestWindows::test_case_login_window_check
+```
+
+selenium处理frame
+
+* 多个frame识别
+* 多个frame切换
+
+frame介绍：
+在web自动化中，如果一个元素定位不到，那么很大可能是在iframe中。
+
+frame是html中的框架，在html中，所谓的框架就是可以在同一个浏览器中显示不止一个页面。
+基于html框架，又分为垂直框架和水平框架(cols,rows)。
+
+Frame分类：
+Frame标签包含frameset,frame,iframe三种。
+frameset和普通标签一样，不会影响正常的定位，可以使用index/id/name/webelement任意种方式定位frame。
+而frame与iffame妒忌selenium而言定位是一样的，selenium有一组方法对frame进行操作。
+
+frame切换：
+frame存在两种情况：
+一种是嵌套的，一种是未嵌套的。
+
+切换frame:
+```
+driver.switch_to.frame() # 根据元素id或者index切换frame
+driver.switch_to.defalut_content() # 切换到默认的frame
+driver.switch_to.parent_frame() # 切换到父级frame
+```
+
+处理未嵌套的iframe:
+
+```html
+driver.switch_to_frame("frame 的 id")
+driver.switch_to_frame("frame-index") # frame无id时可以同通过index索引来处理，索引从0开始(driver.switch_to_frame(0))
+```
+
+处理嵌套的iframe:
+对于嵌套的先进入到父级节点，再进到子节点，然后在对子节点里的对象进行处理操作。
+```html
+
+driver.switch_to.frame("父节点")
+driver.switch_to.frame("子节点")
+```
+
+新建test_frame.py文件，复制如下代码：
+```html
+import pytest
+from selenium import webdriver
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.keys import Keys
+import time
+
+
+class TestFrame():
+
+    def setup(self):
+        self.driver = webdriver.Chrome()
+        self.driver.implicitly_wait(5)
+        self.driver.maximize_window()
+
+    def teardown(self):
+        self.driver.quit()
+
+    def test_case_frame(self):
+        '''
+        打开百度首页，点击登录按钮
+        展示登录弹窗，点击注册按钮
+        跳转到注册页面
+        输入用户名
+        :return:
+        '''
+        self.driver.get("https://www.runoob.com/try/try.php?filename=jqueryui-api-droppable")
+
+        # 切换到frame子节点
+        self.driver.switch_to.frame("iframeResult")
+
+        print(self.driver.find_element_by_id("draggable").text)
+
+        # 切换回父节点或切换回默认节点
+        # self.driver.switch_to.parent_frame()
+        self.driver.switch_to.default_content()
+```
+
+执行case：
+```html
+pytest -vs test_frame.py::TestFrame::test_case_frame
+```
+
+<br>
+
+### 执行JavaScript脚本
+
+selenium执行js:
+
+execute_script:执行js
+return:返回js执行结果
+
+新建test_js.py,复制如下代码：
+```html
+import pytest
+from selenium import webdriver
+
+import time
+
+
+class TestJs():
+
+    def setup(self):
+        option = webdriver.ChromeOptions()
+        option.add_experimental_option("w3c", False)
+
+        self.driver = webdriver.Chrome(options=option)
+        self.driver.implicitly_wait(5)
+        self.driver.maximize_window()
+
+    def teardown(self):
+        self.driver.quit()
+
+    def test_case_js_scroll(self):
+        """
+        1:打开Chrome浏览器
+        2:打开百度首页
+        3：输入selenium
+        4：点击搜索按钮
+        5：滑动到底部
+        :return:
+        """
+
+        self.driver.get("http://www.baidu.com")
+
+        self.driver.find_element_by_id('kw').send_keys("selenium测试")
+        self.driver.find_element_by_id('su').click()
+
+        time.sleep(2)
+        self.driver.execute_script("document.documentElement.scrollTop=10000")
+        time.sleep(5)
+```
+
+执行case：
+```html
+pytest -vs test_js.py::TestJs::test_case_js_scroll
+```
+
+<br>
+
+### 弹窗处理
+
+在操作页面过程中有时会遇见JavaScript所生成的alert/confirm/prompt等弹框，可以使用switch_to.alert()方法定位，
+然后使用text/accept/dismiss/send_keys等方法进行操作
+
+alert常用方法：
+```html
+switch_to.alert():获取当前页面上的警告弹窗
+text:返回alert/confirm/prompt中的文字信息
+accept():接受现有警告框
+dismiss():解散现有警告框
+send_keys(KeyToSend):发送文本至警告框，keysToSend:将文本发送至警告框
+```
 
 
 # 持续更新ing~
