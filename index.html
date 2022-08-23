@@ -159,6 +159,398 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-web自动化" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/08/22/web%E8%87%AA%E5%8A%A8%E5%8C%96/">Python Web自动化(selenium)</a>
+    </h1>
+  
+
+        
+        <a href="/2022/08/22/web%E8%87%AA%E5%8A%A8%E5%8C%96/" class="archive-article-date">
+  	<time datetime="2022-08-21T16:20:53.670Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-08-22</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h3 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h3><h3 id="注：本文借助pytest实现自动化case"><a href="#注：本文借助pytest实现自动化case" class="headerlink" title="注：本文借助pytest实现自动化case"></a>注：本文借助pytest实现自动化case</h3><p><a target="_blank" rel="noopener" href="https://www.selenium.dev/">点我-&gt;官方文档</a></p>
+<h2 id="目录"><a href="#目录" class="headerlink" title="目录"></a>目录</h2><ul>
+<li><a href="#%E7%AE%80%E4%BB%8B">简介</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85">安装selenium库</a></li>
+<li><a href="#webDriver%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE">webDriver安装配置</a></li>
+<li><a href="#%E7%AC%AC%E4%B8%80%E4%B8%AAselenium%E7%A8%8B%E5%BA%8F">第一个selenium程序</a></li>
+<li><a href="#%E7%BC%96%E5%86%99%E7%AC%AC%E4%B8%80%E6%9D%A1%E6%B5%8B%E8%AF%95%E7%94%A8%E4%BE%8B">编写第一条测试用例</a></li>
+<li><a href="#selenium%E4%B8%89%E7%A7%8D%E7%AD%89%E5%BE%85%E6%96%B9%E5%BC%8F">selenium三种等待方式</a></li>
+<li><a href="#web%E6%8E%A7%E4%BB%B6%E5%AE%9A%E4%BD%8D%E4%B8%8E%E5%B8%B8%E8%A7%81%E6%93%8D%E4%BD%9C">web控件定位与常见操作</a></li>
+<li><a href="#xpath%E5%AE%9A%E4%BD%8D">xpath定位</a></li>
+<li><a href="#css%E5%AE%9A%E4%BD%8D">css定位</a></li>
+<li><a href="#web%E6%8E%A7%E4%BB%B6%E7%9A%84%E4%BA%A4%E4%BA%92">web控件的交互</a></li>
+<li><a href="#%E8%A1%A8%E5%8D%95%E6%93%8D%E4%BD%9C">表单操作</a></li>
+<li><a href="#%E5%A4%9A%E7%AA%97%E5%8F%A3%E5%A4%84%E7%90%86%E4%B8%8E%E7%BD%91%E9%A1%B5frame">多窗口处理与网页frame</a></li>
+</ul>
+<hr>
+<br>
+
+<h3 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h3><p>用于web浏览器测试工具，支持的浏览器包括IE、Firefox、Safari、Chrome等。<br>使用简单，可以使用Java、Python等多种语言编写。<br>主要由三个工具构成：webdriver/ide/Grid。</p>
+<br>
+
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>安装selenium库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip --default-timeout=100 install selenium==3.141.0 -i http://pypi.douban.com/simple --trusted-host pypi.douban.com</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<h3 id="webDriver安装配置"><a href="#webDriver安装配置" class="headerlink" title="webDriver安装配置"></a>webDriver安装配置</h3><p>Driver介绍:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://www.selenium.dev/zh-cn/documentation/webdriver/</span><br></pre></td></tr></table></figure>
+<br>
+
+<p>Driver下载：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">官方地址：</span><br><span class="line">https://chromedriver.chromium.org/downloads</span><br><span class="line"></span><br><span class="line">淘宝镜像（推荐）：</span><br><span class="line">https://registry.npmmirror.com/binary.html?path=chromedriver/</span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="第一个selenium程序"><a href="#第一个selenium程序" class="headerlink" title="第一个selenium程序"></a>第一个selenium程序</h3><p>新建test_selenium.py文件，复制如下代码：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">from selenium import webdriver</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def test_selenium():</span><br><span class="line">    driver = webdriver.Chrome()</span><br><span class="line">    driver.get(<span class="string">&quot;http://www.baidu.com&quot;</span>)</span><br><span class="line">    time.sleep(3)</span><br><span class="line">    driver.quit()</span><br></pre></td></tr></table></figure>
+
+<p>执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest -vs .\test_demo.py </span><br></pre></td></tr></table></figure>
+<p>说明：可以正常打开Chrome浏览器并访问百度及证明环境搭建完成。</p>
+<br>
+
+<h3 id="编写第一条测试用例"><a href="#编写第一条测试用例" class="headerlink" title="编写第一条测试用例"></a>编写第一条测试用例</h3><p>测试用例的核心要素：</p>
+<ul>
+<li>一条测试用例的最终结果只有一个，成功or失败。</li>
+<li>三大核心要素为：标题、步骤、断言<ul>
+<li>标题：是对测试用例的描述。</li>
+<li>步骤：对测试执行过程进行描述。</li>
+<li>断言：实际结果与预期结果对比。</li>
+</ul>
+</li>
+</ul>
+<p>新建test_search.py文件，复制如下代码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">from selenium import webdriver</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">def test_search():</span><br><span class="line">    driver = webdriver.Chrome()</span><br><span class="line">    driver.implicitly_wait(5)  # 隐式等待</span><br><span class="line"></span><br><span class="line">    # 打开百度首页</span><br><span class="line">    driver.get(&quot;http://www.baidu.com&quot;)</span><br><span class="line"></span><br><span class="line">    # 搜索框输入selenium关键字</span><br><span class="line">    driver.find_element_by_css_selector(&quot;#kw&quot;).send_keys(&quot;selenium&quot;)</span><br><span class="line"></span><br><span class="line">    # 点击搜索</span><br><span class="line">    driver.find_element_by_css_selector(&quot;#su&quot;).click()</span><br><span class="line"></span><br><span class="line">    # 获取搜索结果</span><br><span class="line">    result = driver.find_element_by_xpath(&quot;//*[@aria-label=&#x27;selenium，WEB自动化工具，百度百科&#x27;]&quot;).text</span><br><span class="line"></span><br><span class="line">    # 断言</span><br><span class="line">    assert result == &quot;Selenium(WEB自动化工具) - 百度百科&quot;</span><br><span class="line">    </span><br><span class="line">    driver.quit()</span><br></pre></td></tr></table></figure>
+
+<p>执行：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest -vs test_search.py</span><br></pre></td></tr></table></figure>
+
+<p>输出：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">collected 1 item                                                                                                                                                                                                                          </span><br><span class="line"></span><br><span class="line">test_search.py::test_search</span><br><span class="line">DevTools listening on ws://127.0.0.1:4553/devtools/browser/2b223324-fc59-4739-ba32-c39188bab609</span><br><span class="line">PASSED</span><br><span class="line"></span><br><span class="line">=========================================================================================================== 1 passed in 3.37s ============================================================================================================</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>说明：能够成功打开浏览器并搜索selenium。</p>
+<br>
+
+<h3 id="selenium三种等待方式"><a href="#selenium三种等待方式" class="headerlink" title="selenium三种等待方式"></a>selenium三种等待方式</h3><ul>
+<li>直接等待：</li>
+</ul>
+<p>强制等待，休眠一定时间。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">time.sleep()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>隐式等待：</li>
+</ul>
+<p>设置一个等待时间，轮训查找(默认间隔0.5s)元素是否出现，如果时间内没有出现则抛出异常。<br>为全局设置</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">driver.implicitly_wait(5)  </span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>显示等待：</li>
+</ul>
+<p>在代码中定义等待条件，当条件发生时才继续执行代码。<br>‘WebDriverWait’配合until()或until_not()方法，根据判断条件进行等待。<br>程序每隔一段时间(默认0.5s)进行条件判断，如果条件成立，则执行下一步，否则继续等待，直到超过设置的最长时间。</p>
+<br>
+
+<h3 id="web控件定位与常见操作"><a href="#web控件定位与常见操作" class="headerlink" title="web控件定位与常见操作"></a>web控件定位与常见操作</h3><p>selenium的点击与输入</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">driver.find_element(By.ID,&quot;kw&quot;).send_keys(&quot;selenium&quot;)</span><br><span class="line">driver.find_element(By.ID,&#x27;su&#x27;).click()</span><br></pre></td></tr></table></figure>
+<br>
+
+<h4 id="xpath定位"><a href="#xpath定位" class="headerlink" title="xpath定位"></a>xpath定位</h4><table>
+<thead>
+<tr>
+<th align="left">表达式</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">/booksotre/book[1]</td>
+<td align="left">选取booksotre子元素的第一个book元素</td>
+</tr>
+<tr>
+<td align="left">/booksotre/book[last()]</td>
+<td align="left">选取booksotre子元素的倒数第一个book元素</td>
+</tr>
+<tr>
+<td align="left">/booksotre/book[lst()-1]</td>
+<td align="left">选取booksotre子元素的倒数第二个book元素</td>
+</tr>
+<tr>
+<td align="left">/booksotre/book[position()&lt;1]</td>
+<td align="left">选取最前面的两个属于booksotre子元素的book元素</td>
+</tr>
+<tr>
+<td align="left">//title[@lang=”eng”]</td>
+<td align="left">选取所有title元素，且这些元素拥有值为eng的lang属性</td>
+</tr>
+<tr>
+<td align="left">/booksotre/book[price()&gt;35]</td>
+<td align="left">选取booksotre元素所有book元素，且其中的price元素值必须大于35</td>
+</tr>
+<tr>
+<td align="left">/booksotre/book[price()&gt;35]/title</td>
+<td align="left">选取booksotre元素所有title元素，且其中的price元素值必须大于35</td>
+</tr>
+</tbody></table>
+<hr>
+<table>
+<thead>
+<tr>
+<th align="left">表达式</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">nodename</td>
+<td align="left">选取此节点的所有子节点</td>
+</tr>
+<tr>
+<td align="left">/</td>
+<td align="left">从根节点选取</td>
+</tr>
+<tr>
+<td align="left">//</td>
+<td align="left">从匹配选择的当前节点选择文档中的节点，而不考虑它们的位置</td>
+</tr>
+<tr>
+<td align="left">.</td>
+<td align="left">选取当前节点</td>
+</tr>
+<tr>
+<td align="left">..</td>
+<td align="left">选取当前节点的父节点</td>
+</tr>
+<tr>
+<td align="left">@</td>
+<td align="left">选取属性</td>
+</tr>
+</tbody></table>
+<br>
+
+<h4 id="css定位"><a href="#css定位" class="headerlink" title="css定位"></a>css定位</h4><table>
+<thead>
+<tr>
+<th align="left">表达式</th>
+<th align="left">示例</th>
+<th align="left">描述</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">.class</td>
+<td align="left">.intro</td>
+<td align="left">选择class=”intro”的所有元素</td>
+</tr>
+<tr>
+<td align="left">#id</td>
+<td align="left">#firstname</td>
+<td align="left">选择id=”firstname”的所有元素</td>
+</tr>
+<tr>
+<td align="left">*</td>
+<td align="left">*</td>
+<td align="left">选择所有元素</td>
+</tr>
+<tr>
+<td align="left">element</td>
+<td align="left">p</td>
+<td align="left">选择所有<p>标签元素</td>
+</tr>
+<tr>
+<td align="left">element,element</td>
+<td align="left">div,p</td>
+<td align="left">选择所有<div>标签元素和所有<p>标签元素</td>
+</tr>
+<tr>
+<td align="left">element element</td>
+<td align="left">div p</td>
+<td align="left">选择所有<div>标签元素内的<p>标签元素</td>
+</tr>
+<tr>
+<td align="left">element&gt;element</td>
+<td align="left">div&gt;p</td>
+<td align="left">选择父元素为<div>标签元素的<p>标签元素</td>
+</tr>
+<tr>
+<td align="left">element+element</td>
+<td align="left">div+p</td>
+<td align="left">选择紧接在<div>标签元素之后的<p>标签元素</td>
+</tr>
+</tbody></table>
+<p>注意：<br>css selector定位是非常核心的定位方式，其它定位比如 id定位，name定位等，最终都是通过 css selector来完成的。<br>下面贴一段webdriver中 find_element方法的源码：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">def find_element(self, by=By.ID, value=None):</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    Find an element given a By strategy and locator. Prefer the find_element_by_* methods when</span><br><span class="line">    possible.</span><br><span class="line"></span><br><span class="line">    :Usage:</span><br><span class="line">        element = driver.find_element(By.ID, &#x27;foo&#x27;)</span><br><span class="line"></span><br><span class="line">    :rtype: WebElement</span><br><span class="line">    &quot;&quot;&quot;</span><br><span class="line">    if self.w3c:</span><br><span class="line">        if by == By.ID:</span><br><span class="line">            by = By.CSS_SELECTOR</span><br><span class="line">            value = &#x27;[id=&quot;%s&quot;]&#x27; % value</span><br><span class="line">        elif by == By.TAG_NAME:</span><br><span class="line">            by = By.CSS_SELECTOR</span><br><span class="line">        elif by == By.CLASS_NAME:</span><br><span class="line">            by = By.CSS_SELECTOR</span><br><span class="line">            value = &quot;.%s&quot; % value</span><br><span class="line">        elif by == By.NAME:</span><br><span class="line">            by = By.CSS_SELECTOR</span><br><span class="line">            value = &#x27;[name=&quot;%s&quot;]&#x27; % value</span><br><span class="line">    return self.execute(Command.FIND_ELEMENT, &#123;</span><br><span class="line">        &#x27;using&#x27;: by,</span><br><span class="line">        &#x27;value&#x27;: value&#125;)[&#x27;value&#x27;]</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+
+<hr>
+<br>
+
+<h3 id="web控件的交互"><a href="#web控件的交互" class="headerlink" title="web控件的交互"></a>web控件的交互</h3><p>常用的操作事件(右键点击，页面滑动，表单操作等等)</p>
+<p>Actions:</p>
+<ul>
+<li>ActionChains:执行PC端的鼠标点击，双击，右键，拖拽等事件。</li>
+<li>TouchActions:模拟PC和移动端的点击，滑动，拖拽，多点触控等多种手势操作。</li>
+</ul>
+<br>
+
+<p>ActionChains：</p>
+<p>执行原理：<br>调用ActionChains方法时，不会立即执行，而是将所有的操作按顺序存放在一个队列中，当调用perform()方法时，队列中的事件会依次执行。</p>
+<p>基本用法：<br>生成一个动作action=ActionChains(driver)<br>添加方法1： action.方法1<br>添加方法2： action.方法2<br>…<br>…<br>调用perform()方法执行(action.perform())</p>
+<p>具体写法：</p>
+<p>链式写法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ActionChains(driver).move_to_element(element).click(element).perform()</span><br></pre></td></tr></table></figure>
+<br>
+
+<p>分布写法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">action=ActopnChains(driver)</span><br><span class="line">action.move_to_element(element)</span><br><span class="line">action.clcik(element)</span><br><span class="line">action.perform()</span><br></pre></td></tr></table></figure>
+
+<p>示例1：点击，双击,右键</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">action=ActionChains(driver)</span><br><span class="line">action.click(element)</span><br><span class="line">action.double_click(element)</span><br><span class="line">action.context_click(element)</span><br><span class="line">action.perform()</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p>新建test_ActionChains.py文件，复制如下代码:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">import pytest</span><br><span class="line">from selenium import webdriver</span><br><span class="line">from selenium.webdriver import ActionChains</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class TestActionChains():</span><br><span class="line"></span><br><span class="line">    def setup(self):</span><br><span class="line">        self.driver = webdriver.Chrome()</span><br><span class="line">        self.driver.implicitly_wait(5)</span><br><span class="line">        self.driver.maximize_window()</span><br><span class="line"></span><br><span class="line">    def teardown(self):</span><br><span class="line">        self.driver.quit()</span><br><span class="line"></span><br><span class="line">    def test_case_click(self):</span><br><span class="line">        self.driver.get(&quot;http://sahitest.com/demo/clicks.htm&quot;)</span><br><span class="line"></span><br><span class="line">        # 通过 ActionChains来实现对元素的点击，右键，双击操作</span><br><span class="line">        element_click = self.driver.find_element_by_xpath(&#x27;//input[@value=&quot;click me&quot;]&#x27;)</span><br><span class="line">        element_dbl_click = self.driver.find_element_by_xpath(&#x27;//input[@value=&quot;dbl click me&quot;]&#x27;)</span><br><span class="line">        element_right_click = self.driver.find_element_by_xpath(&#x27;//input[@value=&quot;right click me&quot;]&#x27;)</span><br><span class="line"></span><br><span class="line">        action = ActionChains(self.driver)</span><br><span class="line">        action.click(element_click)</span><br><span class="line">        action.double_click(element_dbl_click)</span><br><span class="line">        action.context_click(element_right_click)</span><br><span class="line"></span><br><span class="line">        action.perform()</span><br><span class="line"></span><br><span class="line">        time.sleep(5)</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p>执行case：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest -vs test_ActionChains.py::TestActionChains::test_case_click</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p>示例2：鼠标移动到某个元素上</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">action=ActionChains(driver)</span><br><span class="line">action.move_to_element(element)</span><br><span class="line">action.perform()</span><br></pre></td></tr></table></figure>
+
+<p>打开上面的test_ActionChains.py文件，添加如下代码:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">def test_case_move_to(self):</span><br><span class="line">    # 百度首页，将鼠标移动到&quot;更多&quot;按钮上</span><br><span class="line">    self.driver.get(&quot;http://www.baidu.com&quot;)</span><br><span class="line">    element_setting = self.driver.find_element_by_link_text(&quot;更多&quot;)</span><br><span class="line">    action = ActionChains(self.driver)</span><br><span class="line">    action.move_to_element(element_setting)</span><br><span class="line">    action.perform()</span><br><span class="line"></span><br><span class="line">    time.sleep(3)</span><br></pre></td></tr></table></figure>
+
+<p>执行case:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest -vs test_ActionChains.py::TestActionChains::test_case_move_to</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p>示例3：将一个元素拖拽到另一个元素</p>
+<p>有三种方法实现：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">action=ActionChains(driver)</span><br><span class="line"></span><br><span class="line"># 方式1：</span><br><span class="line">action.drag_and_drop(element1,element2)</span><br><span class="line"></span><br><span class="line"># 方式2：</span><br><span class="line">action.click_and_hold().release(element_drop)</span><br><span class="line"></span><br><span class="line"># 方式3：</span><br><span class="line">action.click_and_hold(element_drag).move_to_element(element_drop).release()</span><br><span class="line"></span><br><span class="line">action.perform()</span><br></pre></td></tr></table></figure>
+
+<p>打开上面的test_ActionChains.py文件，添加如下代码:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">def test_case_drag_drop(self):</span><br><span class="line">       # 将元素拖拽到另一个元素</span><br><span class="line">       self.driver.get(&quot;https://sahitest.com/demo/dragDropMooTools.htm&quot;)</span><br><span class="line">       element_drag = self.driver.find_element_by_id(&quot;dragger&quot;)</span><br><span class="line">       element_drop = self.driver.find_element_by_xpath(&quot;/html/body/div[2]&quot;)</span><br><span class="line">       action = ActionChains(self.driver)</span><br><span class="line">    </span><br><span class="line">       # 方式1：</span><br><span class="line">       action.drag_and_drop(element_drag, element_drop)</span><br><span class="line">    </span><br><span class="line">       # 方式2：</span><br><span class="line">       # action.click_and_hold(element_drag).release(element_drop)</span><br><span class="line">    </span><br><span class="line">       # 方式3：</span><br><span class="line">       # action.click_and_hold(element_drag).move_to_element(element_drop).release()</span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">       action.perform()</span><br><span class="line">       </span><br><span class="line">       time.sleep(3)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>执行case:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest -vs test_ActionChains.py::TestActionChains::test_case_drag_drop</span><br></pre></td></tr></table></figure>
+
+<br>
+
+<p>示例4：ActionChains模拟按键方法<br>模拟按键有多种方法，能够用win32API来实现，能用SendKeys()来实现，也可以用selenium的WebElement对象的<br>send_keys()方法来实现，ActionChains类也提供了几个模拟按键的方法。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">action=ActionChains(driver)</span><br><span class="line">action_send_keys(Keys.BACK_SPACE)</span><br><span class="line">或者 action.key_down(Keys.CONTROL).send_keys(&quot;a&quot;).key_up(Keys.CONTROL)</span><br><span class="line">action.perform()</span><br></pre></td></tr></table></figure>
+
+
+<p>打开上面的test_ActionChains.py文件，添加如下代码:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">def test_case_keys(self):</span><br><span class="line">    self.driver.get(&quot;https://sahitest.com/demo/label.htm&quot;)</span><br><span class="line">    ele = self.driver.find_element_by_xpath(&quot;//label/input[@type=&#x27;textbox&#x27;]&quot;)</span><br><span class="line">    ele.click()</span><br><span class="line"></span><br><span class="line">    action = ActionChains(self.driver)</span><br><span class="line">    action.send_keys(&quot;username&quot;).pause(1)</span><br><span class="line">    action.send_keys(Keys.SPACE).pause(1)</span><br><span class="line">    action.send_keys(&quot;tom&quot;).pause(1)</span><br><span class="line">    action.send_keys(Keys.BACK_SPACE)</span><br><span class="line">    action.perform()</span><br></pre></td></tr></table></figure>
+
+<p>执行case:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest -vs test_ActionChains.py::TestActionChains::test_case_keys</span><br></pre></td></tr></table></figure>
+
+<p>TouchActions:</p>
+<p>类似于ActionChains,ActionChains只针对于PC端程序鼠标模拟的一系列操作，对H5页面操作时无效，TouchAction可以对h5进行操作，通过<br>TouchAction可以实现点击、滑动、拖拽、多点触控、以及模拟手势的各种操作。</p>
+<p>手势控制：</p>
+<ul>
+<li>tap–在指定元素上敲击。</li>
+<li>double_tap–在指定元素上双敲击。</li>
+<li>tap_and_hold–在指定元素上点击但不释放。</li>
+<li>move–手势移动指定偏移(未释放)。</li>
+<li>release–释放手势。</li>
+<li>scroll–手势点击并滚动。</li>
+<li>scroll_form_element–从某个元素位置开始手势点击并滚动(向下滚动为负数，向上滑动为正数)。</li>
+<li>long_press–长按元素。</li>
+<li>flick–手势滑动。</li>
+<li>flick_element–从某个元素位置开始手势滑动(向上滑动为负数，向下滑动为正数)。</li>
+<li>preform–执行。</li>
+</ul>
+<p>新建 test_touchAction.py文件，复制如下代码</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">import pytest</span><br><span class="line">from selenium import webdriver</span><br><span class="line">from selenium.webdriver import TouchActions</span><br><span class="line">from selenium.webdriver.common.keys import Keys</span><br><span class="line">import time</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">class TestTouchAciton():</span><br><span class="line"></span><br><span class="line">    def setup(self):</span><br><span class="line">        option = webdriver.ChromeOptions()</span><br><span class="line">        option.add_experimental_option(&quot;w3c&quot;, False)</span><br><span class="line"></span><br><span class="line">        self.driver = webdriver.Chrome(options=option)</span><br><span class="line">        self.driver.implicitly_wait(5)</span><br><span class="line">        self.driver.maximize_window()</span><br><span class="line"></span><br><span class="line">    def teardown(self):</span><br><span class="line">        self.driver.quit()</span><br><span class="line"></span><br><span class="line">    def test_case_click(self):</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line">        1:打开Chrome浏览器</span><br><span class="line">        2:打开百度首页</span><br><span class="line">        3：输入selenium</span><br><span class="line">        4：点击搜索按钮</span><br><span class="line">        5：滑动到底部</span><br><span class="line">        :return:</span><br><span class="line">        &quot;&quot;&quot;</span><br><span class="line"></span><br><span class="line">        self.driver.get(&quot;http://www.baidu.com&quot;)</span><br><span class="line"></span><br><span class="line">        element_input = self.driver.find_element_by_id(&#x27;kw&#x27;)</span><br><span class="line">        element_search = self.driver.find_element_by_id(&#x27;su&#x27;)</span><br><span class="line"></span><br><span class="line">        element_input.send_keys(&quot;selenium测试&quot;)</span><br><span class="line">        action = TouchActions(self.driver)</span><br><span class="line">        action.tap(element_search)</span><br><span class="line"></span><br><span class="line">        action.perform()</span><br><span class="line"></span><br><span class="line">        action.scroll_from_element(element_input, 0, 10000).perform()</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>执行case：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pytest -vs test_touchAction.py::TestTouchAciton::test_case_click</span><br></pre></td></tr></table></figure>
+<br>
+
+<h3 id="表单操作"><a href="#表单操作" class="headerlink" title="表单操作"></a>表单操作</h3><p>表单是一个包含表单元素的区域。<br>表单元素是允许用户在表单中输入信息的元素。<br>表单使用表单标签<code>&lt;form&gt;</code>定义。</p>
+<p>操作表单步骤：<br>首先要定位到表单元素。<br>然后去操作元素(清空，输入或者点击等)。</p>
+<p>例如登录功能等，同其它元素定位操作相同，这里不再过多介绍。</p>
+<br>
+
+<h3 id="多窗口处理与网页frame"><a href="#多窗口处理与网页frame" class="headerlink" title="多窗口处理与网页frame"></a>多窗口处理与网页frame</h3><p>待补充</p>
+<h1 id="持续更新ing"><a href="#持续更新ing" class="headerlink" title="持续更新ing~"></a>持续更新ing~</h1>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">selenium</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/python//" class="article-tag-list-link color2">python</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/08/22/web%E8%87%AA%E5%8A%A8%E5%8C%96/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-tkinter" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1805,164 +2197,6 @@
 
 
   
-    <article id="post-Java基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/30/Java%E5%9F%BA%E7%A1%80/">Java</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/30/Java%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-  	<time datetime="2021-11-30T14:39:39.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-30</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="Java基础"><a href="#Java基础" class="headerlink" title="Java基础 "></a><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Lf4y1U7Cz?spm_id_from=333.999.0.0">Java基础 </a></h2><h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><ol>
-<li> 基础语法</li>
-</ol>
-<p><strong>Helloword入门程序</strong></p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">// 这是一行注释</span><br><span class="line">public class Helloword &#123; // 这是一行注释</span><br><span class="line">    public static void main(String[] args)&#123;</span><br><span class="line">	/*</span><br><span class="line">	 这是一行注释</span><br><span class="line">	 这是一行注释</span><br><span class="line">	 这是一行注释</span><br><span class="line">	*/</span><br><span class="line">	System.out.println(<span class="string">&quot;Hello word&quot;</span>);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>编译：javac  Helloword.java ,生成 Helloword.class 文件<br>执行：java Helloword.class<br>输出：</p>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Hello World</span><br></pre></td></tr></table></figure>
-<p><strong>注释</strong></p>
-<ul>
-<li> // 表示单行注释</li>
-<li> /*  */ 表示多行注释</li>
-</ul>
-<p><strong>关键字</strong></p>
-<ul>
-<li>特点：<ul>
-<li> 完全小写的字母</li>
-<li> 编译器中有特殊颜色</li>
-</ul>
-</li>
-</ul>
-<p><strong>标识符</strong></p>
-<ul>
-<li>是指在程序中，我们自己定义的内容，比如类的名字，方法名字，变量名字等等都是标识符</li>
-<li>命名规则：<ul>
-<li>可以包含英文字母(区分大小写)，数字，$和下划线_</li>
-<li>标识符不可以以数字开头</li>
-<li> 标识符不能是关键字</li>
-</ul>
-</li>
-<li>命名规范:<ul>
-<li>类名规范<ul>
-<li>首字母大写，后面每个字母大写(大驼峰式)</li>
-</ul>
-</li>
-<li>变量名规范<ul>
-<li>首字母小写，后面每个单词字母大写(小驼峰)</li>
-</ul>
-</li>
-<li>方法名称规范:<ul>
-<li>同变量名</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>常量</strong></p>
-<ul>
-<li> 常量：在程序运行期间，固定不变的量称为常量</li>
-<li>分类<ol>
-<li>字符串常量：凡是用双引号引起来的部分，叫做字符串常量        // “abc”   “123”</li>
-<li>整数常量： 直接写的数字，没有小数点</li>
-<li>浮点数常量：直接写上的数字，但有小数</li>
-<li>字符常量：凡是用单引号引起来的单个字符，有且仅有一个字符，没有不行, 叫做字符常量  // ‘A’   ‘9’ ，</li>
-<li>布尔常量：true / false</li>
-<li>空常量：null ,没有是任何数据<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public class Demo01Const &#123;</span><br><span class="line">	public static void main(String []args) &#123;</span><br><span class="line">	</span><br><span class="line">		//字符串常量</span><br><span class="line">		System.out.println(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">		System.out.println(<span class="string">&quot;abc&quot;</span>);</span><br><span class="line">		System.out.println(<span class="string">&quot;&quot;</span>);</span><br><span class="line">		System.out.println(<span class="string">&quot;123&quot;</span>);</span><br><span class="line"></span><br><span class="line">		//整数常量</span><br><span class="line">		System.out.println(30);</span><br><span class="line">		System.out.println(-530);</span><br><span class="line"></span><br><span class="line">		//浮点数常量</span><br><span class="line">		System.out.println(3.14);</span><br><span class="line">		System.out.println(-2.5);</span><br><span class="line"></span><br><span class="line">		//字符常量</span><br><span class="line">		System.out.println(<span class="string">&#x27;a&#x27;</span>);</span><br><span class="line">		System.out.println(<span class="string">&#x27;6&#x27;</span>);</span><br><span class="line">		//System.out.println(<span class="string">&#x27;&#x27;</span>);  两个单引号之间必须有且仅有一个字符，没有不行，两个也不行</span><br><span class="line">		//System.out.println(<span class="string">&#x27;ab&#x27;</span>);</span><br><span class="line"></span><br><span class="line">		//布尔常量</span><br><span class="line">		System.out.println(<span class="literal">true</span>);</span><br><span class="line">		System.out.println(<span class="literal">false</span>);</span><br><span class="line"></span><br><span class="line">		//空常量</span><br><span class="line">		//System.out.println(null); 空常量不能直接用来打印输出</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-输出：<figure class="highlight sh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Hello World</span><br><span class="line">abc</span><br><span class="line"></span><br><span class="line">123</span><br><span class="line">30</span><br><span class="line">-530</span><br><span class="line">3.14</span><br><span class="line">-2.5</span><br><span class="line">a</span><br><span class="line">6</span><br><span class="line"><span class="literal">true</span></span><br><span class="line"><span class="literal">false</span></span><br></pre></td></tr></table></figure></li>
-</ol>
-</li>
-</ul>
-<p><strong>基本数据类型   P19</strong></p>
-<ol start="2">
-<li><p>面向对象</p>
-</li>
-<li><p>继承与多态</p>
-</li>
-<li><p>常用API</p>
-</li>
-</ol>
-<h3 id="进阶"><a href="#进阶" class="headerlink" title="进阶"></a>进阶</h3><ol>
-<li> JDK新特性</li>
-<li> 集合</li>
-<li> 异常</li>
-<li> 多线程</li>
-</ol>
-<h3 id="File类与IO流"><a href="#File类与IO流" class="headerlink" title="File类与IO流"></a>File类与IO流</h3><h3 id="网络编程"><a href="#网络编程" class="headerlink" title="网络编程"></a>网络编程</h3><h1 id="持续更新中"><a href="#持续更新中" class="headerlink" title="持续更新中~"></a>持续更新中~</h1>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">Java</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/30/Java%E5%9F%BA%E7%A1%80/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-AdbPublic" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -2460,6 +2694,105 @@
       
         <p class="article-more-link">
           <a class="article-more-a" href="/2021/11/26/adbTools/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2021/11/09/docker/">Docker</a>
+    </h1>
+  
+
+        
+        <a href="/2021/11/09/docker/" class="archive-article-date">
+  	<time datetime="2021-11-09T14:30:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-09</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <hr>
+<h2 id="1-docker-历史"><a href="#1-docker-历史" class="headerlink" title="1.docker 历史:"></a>1.docker 历史:</h2><ul>
+<li>2013 ~ 开源应用容器引擎，go语言开发，可以让开发者打包他们的应用及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的系统</li>
+</ul>
+<h2 id="2-docker-优点"><a href="#2-docker-优点" class="headerlink" title="2.docker 优点:"></a>2.docker 优点:</h2><ul>
+<li>快速交付应用，打包快，加快测试，加快发布，缩短交付周期</li>
+<li>复杂环境管理，应用隔离，开发环境/测试环境/线上环境</li>
+<li>轻量级：对系统来说，一个docker只是一个进程，一个系统可以运行上千个容器</li>
+</ul>
+<h2 id="3-docker-架构"><a href="#3-docker-架构" class="headerlink" title="3. docker 架构:"></a>3. docker 架构:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- client:</span><br><span class="line">	docker build</span><br><span class="line">	docker pull</span><br><span class="line">	docker run</span><br><span class="line">	</span><br><span class="line">- docker_host:</span><br><span class="line">	docker_dameon</span><br><span class="line">	</span><br><span class="line">- registry:</span><br><span class="line">	下载。。。</span><br></pre></td></tr></table></figure>
+
+<h2 id="4-docker与虚拟机的区别"><a href="#4-docker与虚拟机的区别" class="headerlink" title="4.docker与虚拟机的区别:"></a>4.docker与虚拟机的区别:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">容器与容器只是进程的隔离，虚拟机则是完全的资源隔离</span><br><span class="line">虚拟机启动慢，可能要几分钟，docker秒启动</span><br><span class="line">容器使用宿主操作系统的内核，虚拟机是完全独立的内核</span><br></pre></td></tr></table></figure>
+
+<h2 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念:"></a>5.基本概念:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">镜像： docker images,每个镜像都可能依赖一个或多个下层的镜像组成另一个镜像，AUFS文件系统</span><br><span class="line">仓库：Docker registry 集中放镜像的地方</span><br><span class="line">容器：docker containers，镜像运行后的进程</span><br></pre></td></tr></table></figure>
+
+<h2 id="6-docker安装与配置"><a href="#6-docker安装与配置" class="headerlink" title="6.docker安装与配置:"></a>6.docker安装与配置:</h2>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+	<div class="article-category tagcloud">
+		<i class="icon-book icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2021/11/09/docker/">展开全文 >></a>
         </p>
       
 
@@ -4576,105 +4909,6 @@
 
 
   
-    <article id="post-docker" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2021/11/09/docker/">Docker</a>
-    </h1>
-  
-
-        
-        <a href="/2021/11/09/docker/" class="archive-article-date">
-  	<time datetime="2021-11-09T14:30:11.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-11-09</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <hr>
-<h2 id="1-docker-历史"><a href="#1-docker-历史" class="headerlink" title="1.docker 历史:"></a>1.docker 历史:</h2><ul>
-<li>2013 ~ 开源应用容器引擎，go语言开发，可以让开发者打包他们的应用及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的系统</li>
-</ul>
-<h2 id="2-docker-优点"><a href="#2-docker-优点" class="headerlink" title="2.docker 优点:"></a>2.docker 优点:</h2><ul>
-<li>快速交付应用，打包快，加快测试，加快发布，缩短交付周期</li>
-<li>复杂环境管理，应用隔离，开发环境/测试环境/线上环境</li>
-<li>轻量级：对系统来说，一个docker只是一个进程，一个系统可以运行上千个容器</li>
-</ul>
-<h2 id="3-docker-架构"><a href="#3-docker-架构" class="headerlink" title="3. docker 架构:"></a>3. docker 架构:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">- client:</span><br><span class="line">	docker build</span><br><span class="line">	docker pull</span><br><span class="line">	docker run</span><br><span class="line">	</span><br><span class="line">- docker_host:</span><br><span class="line">	docker_dameon</span><br><span class="line">	</span><br><span class="line">- registry:</span><br><span class="line">	下载。。。</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-docker与虚拟机的区别"><a href="#4-docker与虚拟机的区别" class="headerlink" title="4.docker与虚拟机的区别:"></a>4.docker与虚拟机的区别:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">容器与容器只是进程的隔离，虚拟机则是完全的资源隔离</span><br><span class="line">虚拟机启动慢，可能要几分钟，docker秒启动</span><br><span class="line">容器使用宿主操作系统的内核，虚拟机是完全独立的内核</span><br></pre></td></tr></table></figure>
-
-<h2 id="5-基本概念"><a href="#5-基本概念" class="headerlink" title="5.基本概念:"></a>5.基本概念:</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">镜像： docker images,每个镜像都可能依赖一个或多个下层的镜像组成另一个镜像，AUFS文件系统</span><br><span class="line">仓库：Docker registry 集中放镜像的地方</span><br><span class="line">容器：docker containers，镜像运行后的进程</span><br></pre></td></tr></table></figure>
-
-<h2 id="6-docker安装与配置"><a href="#6-docker安装与配置" class="headerlink" title="6.docker安装与配置:"></a>6.docker安装与配置:</h2>
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-	<div class="article-category tagcloud">
-		<i class="icon-book icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="/categories/测试开发//" class="article-tag-list-link color5">测试开发</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2021/11/09/docker/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-exercises" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -5069,15 +5303,15 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">Java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">Markdnow</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">自动化测试</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -5089,11 +5323,7 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">自动化测试</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">GUI</a>
+                <a href="javascript:void(0)" class="js-tag color4">selenium</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -5102,6 +5332,10 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">随笔</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">GUI</a>
               </li>
             
             <div class="clearfix"></div>
